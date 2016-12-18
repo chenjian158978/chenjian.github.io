@@ -14,6 +14,8 @@
                         </a>
                     </li>
                     {% endif %}
+
+                    <!-- twitter -->
                     {% if site.twitter_username %}
                     <li>
                         <a href="https://twitter.com/{{ site.twitter_username }}">
@@ -25,7 +27,7 @@
                     </li>
                     {% endif %}
 
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    <!-- add zhihu, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
                     {% if site.zhihu_username %}
                     <li>
                         <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
@@ -36,6 +38,20 @@
                         </a>
                     </li>
                     {% endif %}
+
+                     <!-- add Douban, add target = "_blank" to <a> by chenjian -->
+                    {% if site.douban_username %}
+                    <li>
+                        <a target="_blank" href="https://www.douban.com/people/{{ site.douban_username }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">豆</i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <!-- weibo -->
                     {% if site.weibo_username %}
                     <li>
                         <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
@@ -47,7 +63,7 @@
                     </li>
                     {% endif %}
 
-
+                    <!-- facebook -->
                     {% if site.facebook_username %}
                     <li>
                         <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
@@ -58,6 +74,8 @@
                         </a>
                     </li>
                     {% endif %}
+
+                    <!-- weibo -->
                     {% if site.github_username %}
                     <li>
                         <a target="_blank" href="https://github.com/{{ site.github_username }}">
@@ -68,7 +86,21 @@
                         </a>
                     </li>
                     {% endif %}
+
+                    <!-- stackoverflow -->
+                    {% if site.stackoverflow_username %}
+                    <li>
+                        <a target="_blank" href="http://stackoverflow.com/users/{{ site.stackoverflow_username }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
                 </ul>
+
                 <p class="copyright text-muted">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
                     <br>

@@ -16,7 +16,9 @@ weibo_username:     2453761964
 zhihu_username:     chen-jian-19-82
 github_username:    chenjian158978
 #twitter_username:  huxpro
-facebook_username:  huxpro
+#facebook_username:  huxpro
+douban_username: 81104510
+stackoverflow_username: 6355684
 
 
 
@@ -47,10 +49,10 @@ kramdown:
 
 
 # Disqus settings
-#disqus_username: _your_disqus_short_name_
+disqus_username: chenjian158978
 
 # Duoshuo settings
-duoshuo_username: huxblog
+#duoshuo_username: huxblog
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
@@ -60,7 +62,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 # Analytics settings
 # Baidu Analytics
 ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-# Google Analytics
+# Google ChenJians
 ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
 ga_domain: huangxuan.me
 
