@@ -4,7 +4,7 @@ title:      "Deploy K8s by Kebeadm on Ubuntu16.04"
 subtitle:   ""
 date:       Thu, Dec 8 17:55:56 GMT+8
 author:     "ChenJian"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/.jpg"
 tags:
     - 工作
     - kubernetes
