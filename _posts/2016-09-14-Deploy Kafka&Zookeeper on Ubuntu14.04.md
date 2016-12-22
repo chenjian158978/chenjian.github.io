@@ -4,7 +4,7 @@ title:      "Deploy Kafka&Zookeeper on Ubuntu14.04"
 subtitle:   ""
 date:       Mon, Nov 14 17:40:56 GMT+8
 author:     "ChenJian"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/in-post/Deploy-Kafka&Zookeeper-on-Ubuntu14.04/head_blog.jpg"
 tags:
     - 工作
 ---

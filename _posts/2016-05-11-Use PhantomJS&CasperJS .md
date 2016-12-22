@@ -4,7 +4,7 @@ title:      "Use PhantomJS&CasperJS"
 subtitle:   " \"Hello World, Hello Blog\""
 date:       Wed, May 18 14:42:29 GMT+8
 author:     "ChenJian"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/in-post/Use-PhantomJS&CasperJS/head_blog.jpg"
 tags:
     - 工作
     - javascript

@@ -4,7 +4,7 @@ title:      "Deploy K8s by Kebeadm on Ubuntu16.04"
 subtitle:   ""
 date:       Thu, Dec 8 17:55:56 GMT+8
 author:     "ChenJian"
-header-img: "img/.jpg"
+header-img: "img/in-post/Deploy-K8s-by-Kebeadm-on-Ubuntu16.04/head_blog.jpg"
 tags:
     - 工作
     - kubernetes
@@ -609,7 +609,6 @@ template:
 原本的spec以下的内容（第21行到第41行）移至同metadata平齐(右移四个空格)，在vim下面用`:21,41s/^/    /`命令
 
 - 分别使用`create -f`和`describe`来创建与查看端口。进入kibana界面后，点create便可创建
-
 
 ### Troubleshooting
 
