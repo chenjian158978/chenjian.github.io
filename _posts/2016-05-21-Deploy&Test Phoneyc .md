@@ -1,7 +1,8 @@
 ---
 layout:     post
 title:      "Deploy&Test Phoneyc"
-subtitle:   " \"Hello World, Hello Blog\""
+subtitle:   "Consider and hear me, O Lord my God:
+lighten mine eyes, lest I sleep the sleep of death. Psa 13:3"
 date:       Sat, May 21 18:07:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy&Test-Phoneyc/head_blog.jpg"

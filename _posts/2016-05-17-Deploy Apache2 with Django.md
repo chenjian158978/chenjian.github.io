@@ -1,7 +1,8 @@
 ---
 layout:     post
 title:      "Deploy Apache2 with Django"
-subtitle:   " \"Hello World, Hello Blog\""
+subtitle:   "I will be glad and rejoice in thee:
+I will sing praise to thy name, O thou most High. Psa 9:2"
 date:       Tue, May 17 15:16:04 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Apache2-With-Django/head_blog.png"

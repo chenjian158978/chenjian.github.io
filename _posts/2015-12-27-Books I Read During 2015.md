@@ -1,7 +1,8 @@
 ---
 layout:     post
 title:      "Books I Read During 2015"
-subtitle:   ""
+subtitle:   "My defence is of God,
+which saveth the upright in heart. Psa 7:10"
 date:       Sun, Dec 27 09:53:56 GMT+8 2015
 author:     "ChenJian"
 header-img: "img/in-post/Books-I-Read-During-2015/head_blog.png"

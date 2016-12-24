@@ -1,7 +1,8 @@
 ---
 layout:     post
 title:      "Use PhantomJS&CasperJS"
-subtitle:   " \"Hello World, Hello Blog\""
+subtitle:   "O Lord our Lord,
+how excellent is thy name in all the earth! Psa 8:9"
 date:       Wed, May 18 14:42:29 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Use-PhantomJS&CasperJS/head_blog.jpg"
