@@ -254,7 +254,7 @@ Vim是一个类似于Vi的著名的功能强大、高度可定制的文本编辑
 
 ### 安装
 
-命令:`sudo apt install vim`
+命令:`sudo apt install vim -y`
 
 
 
