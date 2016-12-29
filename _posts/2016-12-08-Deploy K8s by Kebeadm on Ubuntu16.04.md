@@ -224,7 +224,9 @@ kubeadm join --token=e3b02c.5c85004416c2370c 192.168.1.167
 
 ### pod网络创建
 采用*Flannel*：
+
 `kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml`
+
 这里会pull镜像quay.io/coreos/flannel-git:v0.6.1-28-g5dde68d-amd64，其托管在quay.io上，不需要梯子
 
 ### 查看集群状态

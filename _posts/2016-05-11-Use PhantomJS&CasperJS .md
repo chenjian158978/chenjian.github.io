@@ -27,7 +27,7 @@ CasperJS是一个开源的导航脚本处理和测试工具，基于PhantomJS（
 
 ### Casperjs
 
-- Casperjs安装：去 [Casperjs官网](http://casperjs.org/)下载，解药到对应的目录中，
+- Casperjs安装：去 [Casperjs官网](http://casperjs.org/)下载，解压到对应的目录中，
 - 做个链接：
 `sudo ln -sf /home/chenjian/App/casperjs-1.1.1/bin/casperjs /usr/local/bin/casperjs`
 - 检测：`casperjs --version`

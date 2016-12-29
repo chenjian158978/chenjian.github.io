@@ -29,30 +29,30 @@ tags:
 
 按照官网的说明：
 
-1. `wget http://download.redis.io/releases/redis-x.x.x.tar.gz`
+- `wget http://download.redis.io/releases/redis-x.x.x.tar.gz`
 
-2. `tar xzf redis-x.x.x.tar.gz`
+- `tar xzf redis-x.x.x.tar.gz`
 
-3. `cd redis-3.2.4`
+- `cd redis-3.2.4`
 
-4. `make`
+- `make`
 
 *如果你认真读redis的readme，你会发现上面操作是建立一个“要开启”的redis-server， 往下读，你会发现如何建立永久的redis-ser*
 在**readme中的Installing Redis**
 
-1. `make install` 
+- `make install` 
 
 对于生产环境(production system)
 
-1. `cd utils`
+- `cd utils`
 
-2. `sudo ./install_server.sh`  随后的一些问题选默认即可
+- `sudo ./install_server.sh`  随后的一些问题选默认即可
 
 ### redis简易操作
 
 启动redis服务：
 
-命令： `cd /etc/init.d/` $\rightarrow$ `redis-server &`
+命令： `cd /etc/init.d/`  $\rightarrow$  `redis-server &`
 
 * 加上`&`号使redis以后台程序方式运行
 
@@ -187,6 +187,8 @@ appendfsync：appendonlylog如何同步到磁盘（三个选项，分别是每�
 ### redis开启远程 
 
 - 修改redis配置文件(`/etc/redis/6379.conf`), 将`bind localhost`或`bind 127.0.0.1`注释掉；
+
+- 修改`protected-mode`
 
 遇到`(error) DENIED Redis is running in protected mode because protected mode is enabled`这个问题，需要把配置文件中的`protected-mode `的值改为`no`；
 

@@ -46,61 +46,9 @@ Eshell V5.10.4  (abort with ^G)
 
 3. 如果遇到问题，修复依赖关系：`sudo apt-get install -f -y`,然后再尝试
 
-
-### RabbitMQ设置
-
-- 添加用户：`sudo rabbitmqctl add_user chenjian chenjian`
-
-- 添加虚拟队列： `sudo rabbitmqctl add_vhost chenjian`
-
-- 添加后台管理插件：`sudo rabbitmq-plugins enable rabbitmq_management`
-显示：
-
-``` sh
-administrator@administrator159:~$ sudo rabbitmq-plugins enable rabbitmq_management
-
-The following plugins have been enabled:
-  mochiweb
-  webmachine
-  rabbitmq_web_dispatch
-  amqp_client
-  rabbitmq_management_agent
-  rabbitmq_management
-
-Applying plugin configuration to rabbit@administrator159... started 6 plugins.
-```
-
-- 添加用户权限： `rabbitmqctl set_permissions -p chenjian chenjian ".*" ".*" ".*"` 或者 `sudo rabbitmqctl set_permissions -p chenjian chenjian ConfP  WriteP  ReadP`
-
-结果：
-``` sh
-Setting permissions for user "chenjian" in vhost "chenjian" ...
-```
-
-- 修改用户角色：`sudo rabbitmqctl set_user_tags chenjian administrator`
-结果：
-
-``` sh
-Setting tags for user "chenjian" to [administrator] ...
-```
-
-- 设置高可用策略
-
-为了使用HAProxy做负载均衡，必须将整个RabbitMQ集群的状态设置为镜像模式，具体方式是通过以下命令，注意策略的设置也是在3.x版本中添加的功能，2.x版本是没有的。
-
-命令： `sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'`
-
-``` sh
-administrator@administrator158:~$ sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'
-
-Setting policy "ha-allqueue" for pattern "^" to "{\"ha-mode\":\"all\"}" with priority "0" ...
-```
-
-在浏览器中输入`192.168.1.159:15672`便可进入rabbitmq界面。
-
-
 ### RabbitMQ集群
-####集群IP与名称
+
+#### 集群IP与名称
 1. 192.168.1.157 作为集群的**内存节点**
 2. 192.168.1.158 作为集群的**磁盘节点**
 3. 192.168.1.159 作为集群的**内存节点**
@@ -170,8 +118,11 @@ AZPRQAAHZQUNBRRDXNLX
 root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
 	
 -r-------- 1 rabbitmq rabbitmq 20 10月 28 00:00 /var/lib/rabbitmq/.erlang.cookie
+
 root@administrator157:/home/administrator# chmod 777 /var/lib/rabbitmq/.erlang.cookie
+
 root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
+
 -rwxrwxrwx 1 rabbitmq rabbitmq 20 10月 28 00:00 /var/lib/rabbitmq/.erlang.cookie*
 ```
 	
@@ -185,6 +136,10 @@ AZPRQAAHZQUNBRRDXNLX
 ```
 
 > **或者，可以通过sftp进行文件传输，一定要确保Cookie相同，例如读写（400），用户（rabbitmq），用户组权限（rabbitmq）。**
+
+> `chgrp rabbitmq /var/lib/rabbitmq/.erlang.cookie`
+
+> `chown rabbitmq /var/lib/rabbitmq/.erlang.cookie` 
 
 - 再次修改`.erlang.cookie`权限
 
@@ -288,6 +243,58 @@ Listing queues ...
 
 - 登录浏览器`192.168.1.158：15672`或其他两个均可
 
+### RabbitMQ设置
+
+- 添加用户：`sudo rabbitmqctl add_user chenjian chenjian`
+
+- 添加虚拟队列： `sudo rabbitmqctl add_vhost chenjian`
+
+- 添加后台管理插件：`sudo rabbitmq-plugins enable rabbitmq_management`
+显示：
+
+``` sh
+administrator@administrator159:~$ sudo rabbitmq-plugins enable rabbitmq_management
+
+The following plugins have been enabled:
+  mochiweb
+  webmachine
+  rabbitmq_web_dispatch
+  amqp_client
+  rabbitmq_management_agent
+  rabbitmq_management
+
+Applying plugin configuration to rabbit@administrator159... started 6 plugins.
+```
+
+- 添加用户权限： `rabbitmqctl set_permissions -p chenjian chenjian ".*" ".*" ".*"` 或者 `sudo rabbitmqctl set_permissions -p chenjian chenjian ConfP  WriteP  ReadP`
+
+结果：
+``` sh
+Setting permissions for user "chenjian" in vhost "chenjian" ...
+```
+
+- 修改用户角色：`sudo rabbitmqctl set_user_tags chenjian administrator`
+结果：
+
+``` sh
+Setting tags for user "chenjian" to [administrator] ...
+```
+
+- 设置高可用策略
+
+为了使用HAProxy做负载均衡，必须将整个RabbitMQ集群的状态设置为镜像模式，具体方式是通过以下命令，注意策略的设置也是在3.x版本中添加的功能，2.x版本是没有的。
+
+命令： `sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'`
+
+``` sh
+administrator@administrator158:~$ sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'
+
+Setting policy "ha-allqueue" for pattern "^" to "{\"ha-mode\":\"all\"}" with priority "0" ...
+```
+
+在浏览器中输入`192.168.1.159:15672`便可进入rabbitmq界面。
+
+
 ### HaProxy反向代理
 
 #### haproxy安装 
@@ -345,6 +352,18 @@ listen rabbitmq_cluster *:5672
      server rqmaster 192.168.1.158:5672 check inter 2000 rise 2 fall 3
 ```
 
+在**ubuntu16.04**中，配置末尾添加：*
+
+``` sh
+listen rabbitmq_cluster 
+     bind *:5672
+     mode tcp
+     balance roundrobin
+     server rqslave1 192.168.1.157:5672 check inter 2000 rise 2 fall 3
+     server rqslave2 192.168.1.159:5672 check inter 2000 rise 2 fall 3
+     server rqmaster 192.168.1.158:5672 check inter 2000 rise 2 fall 3
+```
+
 #### 启动haproxy服务
 
 - `haproxy -f /etc/haproxy/haproxy.cfg -D`
@@ -375,6 +394,9 @@ BROKER_URL = "amqp://%s:%s@%s:%s/%s" % (CELERY_BROKER_USER,
                                         CELERY_BROKER_PASSWORD, CELERY_BROKER_HOST,
                                         CELERY_BROKER_PORT, CELERY_BROKER_VHOST)
 ```
+
+
+
 
 ### 博文：
 
