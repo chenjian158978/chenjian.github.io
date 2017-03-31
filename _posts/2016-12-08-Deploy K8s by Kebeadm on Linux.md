@@ -34,6 +34,33 @@ tags:
 
 > **以下开始的所有操作，在192.168.1.167单点中的root权限下操作**
 
+### CentOS7系统备份与还原
+
+> 备份：
+
+``` sh
+# sudo su
+
+# cd /
+
+# tar cvpzf backup.tgz --exclude=/proc --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+# 或者
+# tar cvpjf backup.tar.bz2 --exclude=/proc --exclude=/backup.tar.bz2 --exclude=/mnt --exclude=/sys /
+```
+
+> 系统恢复：
+
+``` sh
+# tar xvpfz backup.tgz -C /
+# 或者
+# tar xvpfj backup.tar.bz2 -C /
+
+# mkdir proc
+# mkdir lost+found
+# mkdir mnt
+# mkdir sys
+```
+
 ### 部分软件安装
 
 > Ubuntu16.04
@@ -61,6 +88,16 @@ tags:
 
 # setenforce是Linux的selinux防火墙配置命令 执行setenforce 0 表示关闭selinux防火墙。
 # setenforce 0
+```
+
+centos7以firewalld代替iptables，我们可以关闭自带的firewalld，启动iptables
+
+``` sh
+# sudo yum install -y iptables
+
+# sudo yum update iptables
+
+# sudo yum install -y iptables-services
 ```
 
 ### DOCKER安装与设置
@@ -108,6 +145,8 @@ TasksMax=infinity
 EOF
 ```
 
+岂是在`/usr/lib/systemd/system/docker.service`中有被注释掉的`#TasksMax=infinity`，可将其注释去掉
+
 - 重启docker服务：
 
 	- Ubuntu14.04: `sudo service docker restart`
@@ -154,7 +193,7 @@ EOF
 
 #### 搭建Etcd集群
 
-Etcd集群对整个k8s集群非常重要，需要抽出搭建。
+Etcd集群对整个k8s集群非常重要，需要抽出搭建。**当时kubeadm不支持高可用性，及不支持etcd集群**
 
 > 搭建环境：**CentOS7**
 > 
@@ -504,6 +543,8 @@ kubeadm join --token=b54b79.c8c5e44532a817ff 192.168.1.167
 
 ### pod网络创建
 
+**网络方式有多种选择。如果k8s集群建在虚拟机中，可以使用weave（较为稳定），或者flannel（有部分问题）；如果k8s集群创建在实体机中，建议是用calico（最好的选择）**
+
 采用*Flannel*：
 
 `kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml`
@@ -512,24 +553,14 @@ kubeadm join --token=b54b79.c8c5e44532a817ff 192.168.1.167
 
 但尽量先pull好镜像,并且整理好经常使用的yaml文件，可以节省时间。
 
+
 ### 查看集群状态
 
 ```sh
-kubectl get pods --all-namespaces
-
-NAMESPACE     NAME                                       READY     STATUS    RESTARTS   AGE
-kube-system   dummy-2088944543-59wwx                     1/1       Running   0          3m
-kube-system   etcd-administrator167                      1/1       Running   0          5m
-kube-system   kube-apiserver-administrator167            1/1       Running   0          6m
-kube-system   kube-controller-manager-administrator167   1/1       Running   0          3m
-kube-system   kube-discovery-1150918428-593z5            1/1       Running   0          3m
-kube-system   kube-dns-654381707-eyqdy                   2/3       Running   0          3m
-kube-system   kube-flannel-ds-rkznr                      2/2       Running   0          10s
-kube-system   kube-proxy-djxez                           1/1       Running   0          3m
-kube-system   kube-scheduler-administrator167            1/1       Running   0          5m
+kubectl get pods --all-namespaces -o wide
 ```
 
-> **到此，单节点的k8s集群已经搭建完成**
+> **但状态均为Running，到此，单节点的k8s集群已经搭建完成**
 
 ### 添加节点
 
@@ -616,13 +647,25 @@ Run 'kubectl get nodes' on the master to see this machine join.
 > 查看全部svc信息
 
 ``` sh
-# kubectl get svc -o wide --all-namespaces
+# kubectl get svc --all-namespaces -o wide
 ```
 
 > 查看全部deployments信息
 
 ``` sh
 # kubectl get deployments --all-namespaces
+```
+
+> 查看全部ingress信息
+
+``` sh
+# kubectl get ingresses --all-namespaces
+```
+
+> 查看全部secret信息
+
+``` sh
+# kubectl get secret --all-namespaces
 ```
 
 > 查看某pod的yaml文件内容
@@ -889,9 +932,60 @@ Session Affinity:       None
 
 - 具体设置，可阅读相关资料，例如[storage-schema](https://github.com/kubernetes/heapster/blob/master/docs/storage-schema.md)
 
+#### 添加邮件
+
+含有告警(Altering)功能，需要Grafana的版本在4.0之上，并且需要在启动脚本(run.sh)中添加一些参数
+
+- run.sh
+
+``` sh
+#!/bin/sh
+
+: "${GF_PATHS_DATA:=/var/lib/grafana}"
+: "${GF_PATHS_LOGS:=/var/log/grafana}"
+: "${GF_SMTP_ENABLED:=true}"
+: "${GF_SMTP_HOST:=smtp.163.com:25}"
+: "${GF_SMTP_USER:=qgssoft@163.com}"
+: "${GF_SMTP_PASSWORD:=qwer1234}"
+: "${GF_SMTP_SKIP_VERIFY:=true}"
+: "${GF_SMTP_FROM_ADDRESS:=qgssoft@163.com}"
+
+# Allow access to dashboards without having to log in
+# Export these variables so grafana picks them up
+export GF_AUTH_ANONYMOUS_ENABLED=${GF_AUTH_ANONYMOUS_ENABLED:-true}
+export GF_SERVER_HTTP_PORT=${GRAFANA_PORT}
+export GF_SERVER_PROTOCOL=${GF_SERVER_PROTOCOL:-http}
+
+echo "Starting a utility program that will configure Grafana"
+setup_grafana >/dev/stdout 2>/dev/stderr &
+
+echo "Starting Grafana in foreground mode"
+exec /usr/sbin/grafana-server \
+  --homepath=/usr/share/grafana \
+  --config=/etc/grafana/grafana.ini \
+  cfg:default.paths.data="$GF_PATHS_DATA"  \
+  cfg:default.paths.logs="$GF_PATHS_LOGS"   \
+  cfg:default.smtp.enabled="$GF_SMTP_ENABLED"    \
+  cfg:default.smtp.host="$GF_SMTP_HOST"     \
+  cfg:default.smtp.user="$GF_SMTP_USER"     \
+  cfg:default.smtp.password="$GF_SMTP_PASSWORD"    \
+  cfg:default.smtp.skip_verify="$GF_SMTP_SKIP_VERIFY" \
+  cfg:default.smtp.from_address="$GF_SMTP_FROM_ADDRESS"
+```
+
+> 其中添加的是smtp的参数。
+
+- DockerFile
+
+``` sh
+FROM 10.0.0.153:5000/k8s/heapster-grafana-amd64:v4.0.2
+ADD run.sh /
+RUN chmod 777 run.sh
+```
+
 ### Logging部署
 
-> 采用Fluentd（用于收集、处理、传输日志数据）+ Elasticsearch（用于实时查询和解析数据）+ Kibana（用于数据可视化）
+> 采用Fluentd（用于收集、处理、传输日志数据）+ Elasticsearch（用于实时查询和解析数据）+ Kibana（用于数据可视化）。在整个集群搭建后部署logging，从而记录所有的服务起始，具体操作可以参考文献。
 
 - 下载yaml文件
 
@@ -937,6 +1031,126 @@ template:
 原本的spec以下的内容（第21行到第41行）移至同metadata平齐(右移四个空格)，在vim下面用`:21,41s/^/    /`命令
 
 - 分别使用`create -f`和`describe`来创建与查看端口。进入kibana界面后，点create便可创建
+
+### Ingress部署http
+
+#### 部署默认后端
+
+`kubectl create -f default-backend.yaml`
+
+#### 部署 Ingress Controller
+
+修改yaml文件中，添加`hostNetwork: true`，使其监听宿主机 80 端口：
+
+``` sh
+spec:
+  template:
+    metadata:
+      labels:
+        name: nginx-ingress-lb
+    spec:
+      terminationGracePeriodSeconds: 60
+      hostNetwork: true
+```
+
+`kubectl create -f nginx-ingress-daemonset.yaml`
+
+#### 部署 Ingress
+
+`kubectl create -f dashboard-ingress.yaml`
+
+#### 修改hosts文件
+
+添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
+
+`echo "10.0.0.171  dashboard.chenjian.com" >> /etc/hosts`
+
+### Ingress部署TLS（HTTPS）
+
+#### 创建证书
+
+``` sh
+# 生成CA自签证书文件夹
+mkdir cert && cd cert
+
+# 生成CA自签证书的密钥
+openssl genrsa -out ca-key.pem 2048
+
+# 生成CA自签证书
+openssl req -x509 -new -nodes -key ca-key.pem -days 10000 -out ca.pem -subj "/CN=kube-ca"
+
+# 配置openssl部署
+cp /etc/pki/tls/openssl.cnf .
+vim openssl.cnf
+
+# 修改如下
+[ req ]
+req_extensions = v3_req # 这行默认注释关着的 把注释删掉
+# 下面配置是新增的
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = dashboard.chenjian.me
+DNS.2 = kibana.chenjian.me
+
+# 生成证书密钥
+openssl genrsa -out ingress-key.pem 2048
+
+# 生成证书的申请表
+openssl req -new -key ingress-key.pem -out ingress.csr -subj "/CN=kube-ingress" -config openssl.cnf
+
+# 生成证书 有效期为365天
+openssl x509 -req -in ingress.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out ingress.pem -days 365 -extensions v3_req -extfile openssl.cnf
+```
+
+#### 创建secret
+
+ingress-secret.yaml文件格式如下：
+
+``` sh
+apiVersion: v1
+data:
+  tls.crt: ##内容为ingress.pem里的内容##
+  tls.key: ##内容为ingress-key.pem里的内容##
+kind: Secret
+metadata:
+  name: ingress-secret
+  namespace: kube-system
+type: Opaque
+```
+
+create完成：
+
+`kubectl create -f ingress-secret.yaml`
+
+或者直接用文件：
+
+`kubectl create secret tls ingress-secret --key cert/ingress-key.pem --cert cert/ingress.pem --namespace kube-system`
+
+#### 部署Ingress
+
+`kubectl create -f dashboard-ingress-tls.yaml`
+
+#### 修改hosts文件
+
+添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
+
+`echo "10.0.0.171  dashboard.chenjian.com" >> /etc/hosts`
+
+#### 访问地址dashboard.chenjian.com
+
+部署TLS后的80端口会自动重定向到443（HTTPS端口）
+
+开始出现“Your connnection is not private”
+
+在chrome浏览器中，HTTPS/SSL中添加ca.pem文件，并给予全部权限。
+
+再次打开，没有https提示（钥匙上带叉的logo），但是URL栏中出现“Not Secure”这样的红色字样。
+
+解决这个问题，需要重服务商买权威的CA证书。
+
 
 ### Troubleshooting
 
@@ -1047,6 +1261,14 @@ fi
 # kubeadm init xxxx
 ```
 
+#### tcp 10.96.0.1:443: i/o timeout
+
+- 在基本的k8s集群建立后,均为正常。开启一个服务（例如busybox），服务总出于ContainerCreating中。通过对node上的docker容器观察，一直处于pause容器创建过程中，问题是无法tcp连接到kubernetes服务的Apiserver（10.96.0.1:443）上
+
+- 解决方法，在节点上添加：
+
+`route add 10.96.0.1 gw <your real master IP>`
+
 
 ### 参考文献：
 1.  [Installing Kubernetes on Linux with kubeadm](http://kubernetes.io/docs/getting-started-guides/kubeadm/)
@@ -1061,3 +1283,10 @@ fi
 10. [Installing Kubernetes Cluster with 3 minions on CentOS 7 to manage pods and services](http://severalnines.com/blog/installing-kubernetes-cluster-minions-centos7-manage-pods-services)
 11. [基于 CentOS7 的 Kubernetes 集群](http://blog.opskumu.com/k8s-cluster-centos7.html)
 12. [Kubernetes 1.4.5](http://xf80.com/2016/10/31/kubernetes-update-1.4.5/)
+13. [centos7系统备份与还原](http://www.itdadao.com/articles/c15a1080406p0.html)
+14. [CentOS7系统升级备份恢复实验](http://www.centoscn.com/CentOS/Intermediate/2016/0112/6648.html)
+15. [Kibana4指南](http://www.code123.cc/docs/kibana-logstash/v4/index.html)
+16. [elasticsearch + fluentd + kibana4(EFK) 安裝詳細流程 in ubuntu14.04](http://chi15036-blog.logdown.com/posts/297025-elasticsearch-fluentd-kibana4-installation-details-processes-in-ubuntu1404)
+17. [Kibana4学习<三>](http://www.cnblogs.com/guozhe/p/5206216.html)
+18. [How to fix weave-net CrashLoopBackOff for the second node?
+](http://stackoverflow.com/questions/39872332/how-to-fix-weave-net-crashloopbackoff-for-the-second-node#40338365)

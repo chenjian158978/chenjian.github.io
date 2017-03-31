@@ -30,6 +30,7 @@ Docker version 1.11.2, build b9f10c9
 
 `docker images`
 
+
 ### 创建一个image
 
 `docker build -t chenjian158978/wmcluster_sitealive .` 
@@ -55,6 +56,14 @@ Docker version 1.11.2, build b9f10c9
 再次进入命令行（在容器运行才行）：`docker exec -it container_id /bin/bash`
 
 后台运行容器：`docker run -idt image_name`
+
+### 查看docker(images/container)详细信息
+
+`docker inspect images_id/container_id` 
+
+### 由改变后的container生成image
+
+`docker commit -m='change server.xml' container_id tomcat-process:test`
 
 ### 登录到docker
 
@@ -96,9 +105,9 @@ Docker version 1.11.2, build b9f10c9
 
 - 添加--insecure-registry参数
 
-    - 解决https问题(用于ubuntu14.04，docker1.11)：`sudo vim /etc/default/docker`
- 
-添加：`DOCKER_OPTS="$DOCKER_OPTS --insecure-registry=192.168.1.78:5000"`
+    - 解决https问题(用于ubuntu14.04，docker1.11)：
+    
+`echo "DOCKER_OPTS=\"\$DOCKER_OPTS --insecure-registry=192.168.1.78:5000\"" >> /etc/default/docker`
 
 - 解决https问题(用于ubuntu16.04，docker1.12)：
 
@@ -127,6 +136,13 @@ curl http://192.168.1.78:5000/v2/heapster/tags/list
 
 **建立私有仓库，不仅能保护docker的安全性，有助于下载与上传，同时对于使用kubernets更加方便**
 
+### 从容器中拷贝出文件
+
+`docker cp container_id:/run.sh /home/administrator/run.sh`
+
+### 将外部文件拷贝到容器中
+
+`docker cp /home/administrator/run.sh container_id:/run.sh`
 
 ### 保存(save)docker镜像
 
