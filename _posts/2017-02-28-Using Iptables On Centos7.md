@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Using Iptables On Centos7"
-subtitle:   " \"Hello World, Hello Blog\""
+subtitle:   "But thou art holy, O thou that inhabitest the praises of Israel. Psa 22:3"
 date:       Tue, Feb 28 15:04:33 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Iptables-On-Centos7/head_blog.png"
@@ -17,7 +17,7 @@ tags:
 
 ## 准备工作
 
-``` shell
+``` bash
 # 关闭firewalld服务
 sudo systemctl disable firewalld
 sudo systemctl stop firewalld
@@ -42,7 +42,7 @@ sudo yum install -y iptables-services
 
 - 基本操作：
 
-``` shell
+``` bash
 ## 查看iptables现有规则
 iptables -L -v -n --line-number
 
@@ -61,7 +61,7 @@ iptables -D INPUT 5
 
 - 添加8080端口：
 
-``` shell
+``` bash
 iptables -A INPUT -d 10.0.0.42 -p tcp --dport 8080 -m limit --limit 2/second --limit-burst 3 -m state --state NEW -j ACCEPT
 ```
 
@@ -89,7 +89,7 @@ iptables -A INPUT -d 10.0.0.42 -p tcp --dport 8080 -m limit --limit 2/second --l
 
 目标：只允许10.0.0.44可以ssh（端口22）链接192.168.1.179
 
-``` shell
+``` bash
 # 首先是允许10.0.0.44可以ssh链接
 iptables -A INPUT -d 10.0.0.44 -p tcp --dport 22 -j ACCEPT
 iptables -A OUTPUT -d 10.0.0.44 -p tcp --dport 22 -j ACCEPT
@@ -101,7 +101,7 @@ iptables -A OUTPUT -p tcp --sport 22 -j DROP
 
 查看iptables状态
 
-``` shell
+``` bash
 # iptables -L -v -n --line-number
 
 Chain INPUT (policy ACCEPT 20151 packets, 3544K bytes)
@@ -133,7 +133,7 @@ num   pkts bytes target     prot opt in     out     source               destina
 
 ## 启动iptables服务
 
-``` shell
+``` bash
 # 保存上述规则
 service iptables save
 
