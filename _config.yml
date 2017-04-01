@@ -54,11 +54,10 @@ disqus_username: chenjian158978
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-# Google ChenJians
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
-
+ba_track_id: bf7180fd3fe951377da2bc5cf7833ca1
+# Google Analytics
+ga_track_id: 'UA-96581873-1'            # Format: UA-xxxxxx-xx
+ga_domain: o-my-chenjian.com
 
 
 # Sidebar settings
