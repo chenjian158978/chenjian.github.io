@@ -81,6 +81,9 @@ layout: default
                 col-xs-12
                 sidebar-container
             ">
+                <!-- 添加搜索栏 -->
+                {% include sidebar-search.html %}
+
                 <!-- Featured Tags -->
                 {% if site.featured-tags %}
                 <section>
@@ -173,6 +176,7 @@ layout: default
                         </ul>
                     </div>
                 </section>
+
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>

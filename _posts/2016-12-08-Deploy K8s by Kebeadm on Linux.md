@@ -38,27 +38,27 @@ tags:
 
 > 备份：
 
-``` sh
-# sudo su
+``` bash
+sudo su
 
-# cd /
+cd /
 
-# tar cvpzf backup.tgz --exclude=/proc --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+tar cvpzf backup.tgz --exclude=/proc --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
 # 或者
-# tar cvpjf backup.tar.bz2 --exclude=/proc --exclude=/backup.tar.bz2 --exclude=/mnt --exclude=/sys /
+tar cvpjf backup.tar.bz2 --exclude=/proc --exclude=/backup.tar.bz2 --exclude=/mnt --exclude=/sys /
 ```
 
 > 系统恢复：
 
-``` sh
-# tar xvpfz backup.tgz -C /
+``` bash
+tar xvpfz backup.tgz -C /
 # 或者
-# tar xvpfj backup.tar.bz2 -C /
+tar xvpfj backup.tar.bz2 -C /
 
-# mkdir proc
-# mkdir lost+found
-# mkdir mnt
-# mkdir sys
+mkdir proc
+mkdir lost+found
+mkdir mnt
+mkdir sys
 ```
 
 ### 部分软件安装
@@ -79,33 +79,33 @@ tags:
 
 - 关闭firewalls等:
 
-``` sh
-# systemctl disable firewalld
+``` bash
+sudo systemctl disable firewalld
 
-# systemctl stop firewalld
+sudo systemctl stop firewalld
 
-# yum install -y ebtables
+sudo yum install -y ebtables
 
 # setenforce是Linux的selinux防火墙配置命令 执行setenforce 0 表示关闭selinux防火墙。
-# setenforce 0
+sudo setenforce 0
 ```
 
 centos7以firewalld代替iptables，我们可以关闭自带的firewalld，启动iptables
 
-``` sh
-# sudo yum install -y iptables
+``` bash
+sudo yum install -y iptables
 
-# sudo yum update iptables
+sudo yum update iptables
 
-# sudo yum install -y iptables-services
+sudo yum install -y iptables-services
 ```
 
 ### DOCKER安装与设置
 
 > Ubuntu16.04
 
-```sh
-# wget -qO- https://get.docker.com/ | sh
+```bash
+wget -qO- https://get.docker.com/ | sh
 
 administrator@administrator167:~$ docker -v
 Docker version 1.12.3, build 6b644ec
@@ -127,19 +127,19 @@ Docker version 1.12.3, build 6b644ec
 	
 	- 用于Centos7，docker1.12：
 
-```sh
-# sudo vim /usr/lib/systemd/system/docker.service
+``` bash
+sudo vim /usr/lib/systemd/system/docker.service
 
-#ExecStart=/usr/bin/dockerd 
+ExecStart=/usr/bin/dockerd 
 ExecStart=/usr/bin/dockerd --insecure-registry 10.0.0.153:5000
 ```
 
 - 解决docker的容器数量限制
 
-``` sh
-# sudo mkdir -p /etc/systemd/system/docker.service.d/
+``` bash
+sudo mkdir -p /etc/systemd/system/docker.service.d/
 
-# sudo tee /etc/systemd/system/docker.service.d/tasksmax.conf <<-'EOF'
+sudo tee /etc/systemd/system/docker.service.d/tasksmax.conf <<-'EOF'
 [Service]
 TasksMax=infinity
 EOF
@@ -155,14 +155,14 @@ EOF
 
 	- Centos7： 
 
-```
-# sudo systemctl stop docker
+``` bash
+sudo systemctl stop docker
 
-# sudo systemctl daemon-reload 
+sudo systemctl daemon-reload 
 
-# sudo systemctl enable docker
+sudo systemctl enable docker
 
-# sudo systemctl start docker
+sudo systemctl start docker
 ```
 
 - 更换镜像的tag：`docker tag 40a673399858 192.168.1.78:5000/docker-whale`
@@ -173,16 +173,16 @@ EOF
 
 - 浏览器输入：
 
-``` sh
-# curl http://192.168.1.78:5000/v2/_catalog
+``` bash
+curl http://192.168.1.78:5000/v2/_catalog
 	
 {"repositories":["addon-resizer","docker-whale","grafana","heapster","influxdb","kube-ui","kube_test","kubedns-amd64","kubernetes-dashboard-amd64","llll","pause","test_docker"]}
 ```
 
 - 查询镜像tag： 
 
-``` sh
-# curl http://192.168.1.78:5000/v2/heapster/tags/list
+``` bash
+curl http://192.168.1.78:5000/v2/heapster/tags/list
 	
 "name":"heapster","tags":["v1","canary","latest"]}
 ```
@@ -206,22 +206,22 @@ Etcd集群对整个k8s集群非常重要，需要抽出搭建。**当时kubeadm�
 
 - 关闭防火墙
 
-```sh
-# systemctl stop firewalld
+``` bash
+sudo systemctl stop firewalld
 
-# systemctl disable firewalld
+sudo systemctl disable firewalld
 ```
 
 
 - 安装命令：
 
-```sh
-# yum install etcd -y
+``` bash
+sudo yum install etcd -y
 ```
 
 
-```sh
-# etcd --version
+``` bash
+etcd --version
 
 etcd Version: 2.3.7
 Git SHA: fd17c91
@@ -233,10 +233,10 @@ Go OS/Arch: linux/amd64
 
 默认文件位于`/etc/etcd/etcd.conf`
 
-```sh
-# rm -rf /etc/etcd/etcd.conf
+``` bash
+rm -rf /etc/etcd/etcd.conf
 
-# sudo cat <<EOF |  sudo tee /etc/etcd/etcd.conf
+sudo cat <<EOF |  sudo tee /etc/etcd/etcd.conf
 ETCD_NAME=etcd0
 ETCD_DATA_DIR="/var/lib/etcd/etcd0"
 ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
@@ -252,8 +252,8 @@ EOF
 
 - 修改etcd的service文件
 
-```sh
-# sudo cat <<EOF |  sudo tee /lib/systemd/system/etcd.service
+``` bash
+sudo cat <<EOF |  sudo tee /lib/systemd/system/etcd.service
 [Unit]
 Description=Etcd Server
 After=network.target
@@ -278,22 +278,22 @@ EOF
 
 - 启动etcd的service
 
-```sh
-# sudo systemctl stop etcd
+``` bash
+sudo systemctl stop etcd
 
-# sudo systemctl daemon-reload 
+sudo systemctl daemon-reload 
 
-# sudo systemctl enable etcd
+sudo systemctl enable etcd
 
-# sudo systemctl start etcd
+sudo systemctl start etcd
 
-# sudo systemctl status etcd
+sudo systemctl status etcd
 ```
 
 - 查看etcd的启动参数
 
-```sh
-# ps aux|grep etcd
+``` bash
+ps aux|grep etcd
 
 etcd     16010  1.3  1.1  49112 20728 ?        Ssl  10:18   2:30 /usr/bin/etcd --name=etcd0 --data-dir=/var/lib/etcd/etcd0 --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001 --advertise-client-urls=http://192.168.1.157:2379,http://192.168.1.157:4001 --initial-cluster-token=etcd-cluster --initial-cluster=etcd0=http://192.168.1.157:2380,etcd1=http://192.168.1.158:2380,etcd2=http://192.168.1.159:2380 --initial-cluster-state=new
 root     18440  0.0  0.0 112652   956 pts/0    S+   13:28   0:00 grep --color=auto etcd
@@ -301,8 +301,8 @@ root     18440  0.0  0.0 112652   956 pts/0    S+   13:28   0:00 grep --color=au
 
 - 查看etcd集群的节点信息
 
-```sh
-# etcdctl member list
+``` bash
+etcdctl member list
 
 5a2567911e869c1: name=etcd1 peerURLs=http://192.168.1.158:2380 clientURLs=http://192.168.1.158:2379,http://192.168.1.158:4001 isLeader=true
 588d5e8d3a8648b5: name=etcd2 peerURLs=http://192.168.1.159:2380 clientURLs=http://192.168.1.159:2379,http://192.168.1.159:4001 isLeader=false
@@ -311,8 +311,8 @@ bd2d658f033f9bcc: name=etcd0 peerURLs=http://192.168.1.157:2380 clientURLs=http:
 
 - 查看etcd集群的健康情况
 
-```sh
-# etcdctl cluster-health
+``` bash
+etcdctl cluster-health
 
 member 5a2567911e869c1 is healthy: got healthy result from http://192.168.1.158:2379
 member 588d5e8d3a8648b5 is healthy: got healthy result from http://192.168.1.159:2379
@@ -329,13 +329,13 @@ cluster is healthy
 
 - `sudo vim /etc/hostname`修改为想要的
 
-``` sh
+``` bash
 192-168-1-167.master
 ```
 
 - `sudo vim /etc/hosts`，改第二行`127.0.1.1 administrator167`
 
-```sh
+``` bash
 127.0.0.1       localhost
 127.0.1.1       192-168-1-167.master
 
@@ -351,16 +351,13 @@ ff02::2 ip6-allrouters
 
 > CentOS7
 
-``` sh
-# ipname=192-168-1-167
+``` bash
+ipname=192-168-1-167
+nodetype=master
 
-# nodetype=master
-
-# echo "${ipname}.${nodetype}" > /etc/hostname
-
-# echo "127.0.0.1   ${ipname}.${nodetype}" >> /etc/hosts
-
-# sysctl kernel.hostname=${ipname}.${nodetype}
+echo "${ipname}.${nodetype}" > /etc/hostname
+echo "127.0.0.1   ${ipname}.${nodetype}" >> /etc/hosts
+sysctl kernel.hostname=${ipname}.${nodetype}
 ```
 
 #### 制作kubelet kubeadm kubectl kubernetes-cni
@@ -371,8 +368,8 @@ ff02::2 ip6-allrouters
 
 查看自己的系统信息：
 
-```sh
-# lsb_release -a
+``` bash
+lsb_release -a
 
 No LSB modules are available.
 Distributor ID: Ubuntu
@@ -412,8 +409,8 @@ EOF`
 
 > 为避免再次下载这些deb文件，可以将其保存，其中`apt install`的包位置如下：
 
-```sh
-# ll /var/cache/apt/archives/kube*.deb
+``` bash
+ll /var/cache/apt/archives/kube*.deb
 
 -rw-r--r-- 1 root root 12165700 12月  8 20:49 /var/cache/apt/archives/kubeadm_1.5.0-alpha.2-421-a6bea3d79b8bba-00_amd64.deb
 -rw-r--r-- 1 root root 10292542 12月  8 20:44 /var/cache/apt/archives/kubectl_1.4.4-00_amd64.deb
@@ -427,8 +424,8 @@ EOF`
 
 启动kubelet服务：
 
-``` sh
-# systemctl enable kubelet && systemctl start kubelet
+``` bash
+sudo systemctl enable kubelet && systemctl start kubelet
 ```
 
 
@@ -459,16 +456,17 @@ EOF`
 
 查看私有库文件：
 
-```sh
-# curl http://10.0.0.153:5000/v2/_catalog
+``` bash
+curl http://10.0.0.153:5000/v2/_catalog
 	
 {"repositories":["kube-apiserver-amd64","exechealthz-amd64","etcd-amd64","kube-controller-manager-amd64","kube-discovery-amd64","kube-dnsmasq-amd64","kube-proxy-amd64","kube-scheduler-amd64","kubedns-amd64","pause-amd64"]}
 ```
 
 - 批量准备所需镜像
 
-```sh
-# images=(kube-discovery-amd64:1.0 kube-proxy-amd64:v1.5.1 kube-scheduler-amd64:v1.5.1 kube-controller-manager-amd64:v1.5.1 kube-apiserver-amd64:v1.5.1 etcd-amd64:3.0.14-kubeadm pause-amd64:3.0 kubedns-amd64:1.9 kube-dnsmasq-amd64:1.4 exechealthz-amd64:1.2 dnsmasq-metrics-amd64:1.0)
+``` bash
+images=(kube-discovery-amd64:1.0 kube-proxy-amd64:v1.5.1 kube-scheduler-amd64:v1.5.1 kube-controller-manager-amd64:v1.5.1 kube-apiserver-amd64:v1.5.1 etcd-amd64:3.0.14-kubeadm pause-amd64:3.0 kubedns-amd64:1.9 kube-dnsmasq-amd64:1.4 exechealthz-amd64:1.2 dnsmasq-metrics-amd64:1.0)
+
 for image in ${images[@]}; do
 	docker pull 10.0.0.153:5000/k8s/$image
 	docker tag 10.0.0.153:5000/k8s/$image gcr.io/google_containers/$image
@@ -478,8 +476,8 @@ done
 
 ### kubeadm初始化
 
-```sh
-# kubeadm init --api-advertise-addresses 192.168.1.167  --use-kubernetes-version v1.5.1 --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints http://192.168.1.157:2379,http://192.168.1.158:2379,http://192.168.1.159:2379
+``` bash
+kubeadm init --api-advertise-addresses 192.168.1.167  --use-kubernetes-version v1.5.1 --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints http://192.168.1.157:2379,http://192.168.1.158:2379,http://192.168.1.159:2379
 
 Flag --external-etcd-endpoints has been deprecated, this flag will be removed when componentconfig exists
 [kubeadm] WARNING: kubeadm is in alpha, please do not use it for production clusters.
@@ -517,20 +515,17 @@ kubeadm join --token=b54b79.c8c5e44532a817ff 192.168.1.167
 
 - 记住token的值，这个在后续需要。如果你丢失了，可使用以下命令：
 
-```sh
-# kubectl -n kube-system get secret clusterinfo -o yaml | grep token-map | awk '{print $2}' | base64 -d | sed "s|{||g;s|}||g;s|:|.|g;s/\"//g;" | xargs echo
+``` bash
+kubectl -n kube-system get secret clusterinfo -o yaml | grep token-map | awk '{print $2}' | base64 -d | sed "s|{||g;s|}||g;s|:|.|g;s/\"//g;" | xargs echo
 ```
 
 - 如果init失败，下一次开始前输入：
 	
-``` sh
-# kubeadm reset
-
-# docker rm `docker ps -a -q`
-
-# find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v
-
-# rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
+``` bash
+kubeadm reset
+docker rm `docker ps -a -q`
+find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v
+rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
 ``` 
 	
 - `--api-advertise-addresses 192.168.1.167`设置指定的网络接口
@@ -556,7 +551,7 @@ kubeadm join --token=b54b79.c8c5e44532a817ff 192.168.1.167
 
 ### 查看集群状态
 
-```sh
+``` bash
 kubectl get pods --all-namespaces -o wide
 ```
 
@@ -592,7 +587,7 @@ The connection to the server localhost:8080 was refused - did you specify the ri
 
 在`192.168.1.168`上操作：
 
-```sh
+``` bash
 kubeadm join --token=e3b02c.5c85004416c2370c 192.168.1.167
 
 Running pre-flight checks
@@ -622,119 +617,119 @@ Run 'kubectl get nodes' on the master to see this machine join.
 
 > 查看集群信息
 
-``` sh
-# kubectl cluster-info
+``` bash
+kubectl cluster-info
 ```  
 
 > 查看集群节点信息
 
-``` sh
-# kubectl get nodes --show-labels
+``` bash
+kubectl get nodes --show-labels
 ```
 
 > 描述某个节点的信息
 
 ``` sh
-# kubectl describe node 10-0-0-171.node
+kubectl describe node 10-0-0-171.node
 ```
 
 > 查询全部pod信息
 
-``` sh
-# kubectl get pods -o wide --all-namespaces
+``` bash
+kubectl get pods -o wide --all-namespaces
 ```
 
 > 查看全部svc信息
 
-``` sh
-# kubectl get svc --all-namespaces -o wide
+``` bash
+kubectl get svc --all-namespaces -o wide
 ```
 
 > 查看全部deployments信息
 
-``` sh
-# kubectl get deployments --all-namespaces
+``` bash
+kubectl get deployments --all-namespaces
 ```
 
 > 查看全部ingress信息
 
-``` sh
-# kubectl get ingresses --all-namespaces
+``` bash
+kubectl get ingresses --all-namespaces
 ```
 
 > 查看全部secret信息
 
-``` sh
-# kubectl get secret --all-namespaces
+``` bash
+kubectl get secret --all-namespaces
 ```
 
 > 查看某pod的yaml文件内容
 
-``` sh
-# kubectl get pod weave-net-xhh0h --namespace=kube-system -o yaml
+``` bash
+kubectl get pod weave-net-xhh0h --namespace=kube-system -o yaml
 ```
 
 > 描述某pod的运行状态
 
-``` sh
-# kubectl describe pod calico-etcd --namespace=kube-system
+``` bash
+kubectl describe pod calico-etcd --namespace=kube-system
 ```
 
 > 描述某svc的运行状态
 
-``` sh
-# kubectl describe svc kube-dns --namespace=kube-system
+``` bash
+kubectl describe svc kube-dns --namespace=kube-system
 ```
 
 > 描述某deployments的运行状态
 
-``` sh
-# kubectl describe deployments sitealive --namespace=wmcluster2016
+``` bash
+kubectl describe deployments sitealive --namespace=wmcluster2016
 ```
 
 > 删除某pod
 
-``` sh
-# kubectl delete pod sitealive-3553544168-q4gtx --namespace=wmcluster2016
+``` bash
+kubectl delete pod sitealive-3553544168-q4gtx --namespace=wmcluster2016
 ```
 
 > 查询某pod的log
 
-``` sh
-# kubectl logs proxycrawler-2347617609-mwzts --namespace=wmcluster2016
+``` bash
+kubectl logs proxycrawler-2347617609-mwzts --namespace=wmcluster2016
 ```
 
 > 进去某pod的容器
 
-``` sh
-# kubectl exec -it busybox -- sh
+``` bash
+kubectl exec -it busybox -- sh
 
 # ubuntu系统
-# kubectl exec -it ubuntu-system -- /bin/bash
+kubectl exec -it ubuntu-system -- /bin/bash
 ```
 
 > 在某pod的容器中执行一段命令
 
-``` sh
-# kubectl exec -it busybox -- nslookup kubernetes.default
+``` bash
+kubectl exec -it busybox -- nslookup kubernetes.default
 ```
 
 > 更新某deployments的replicas
 
-``` sh
-# kubectl scale deployments sitealive --namespace=cluster2016 --replicas=25
+``` bash
+kubectl scale deployments sitealive --namespace=cluster2016 --replicas=25
 ```
 
 > 为某个node添加tag
 
-``` sh
-# kubectl label nodes administrator167 master=heapster-master
+``` bash
+kubectl label nodes administrator167 master=heapster-master
 ```
 
 > 添加namespace
 
-``` sh
-# kubectl create namespace cludfdfdf20d
+``` bash
+kubectl create namespace cludfdfdf20d
 ```
 
 ### Dashboard部署
@@ -753,8 +748,8 @@ Run 'kubectl get nodes' on the master to see this machine join.
 
 - 部署
 
-```sh
-# kubectl create -f kubernetes-dashboard.yaml
+``` bash
+kubectl create -f kubernetes-dashboard.yaml
 	
 deployment "kubernetes-dashboard" created
 service "kubernetes-dashboard" created
@@ -762,8 +757,8 @@ service "kubernetes-dashboard" created
 
 - 查看deployments
 
-```sh
-# kubectl get deployment --all-namespaces
+``` bash
+kubectl get deployment --all-namespaces
 	
 NAMESPACE     NAME                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 kube-system   kube-discovery         1         1         1            1           22h
@@ -774,8 +769,8 @@ kube-system   kubernetes-dashboard   1         1         1            1         
 	
 - 查看service
 
-```sh
-# kubectl get service --all-namespaces
+``` bash
+kubectl get service --all-namespaces
 	
 NAMESPACE     NAME                   CLUSTER-IP     EXTERNAL-IP   PORT(S)         AGE
 default       kubernetes             10.96.0.1      <none>        443/TCP         23h
@@ -785,8 +780,8 @@ kube-system   kubernetes-dashboard   10.101.241.6   <nodes>       80/TCP        
 	
 - 查看dashboard的端口
 
-```sh
-# kubectl describe svc kubernetes-dashboard --namespace kube-system
+``` bash
+kubectl describe svc kubernetes-dashboard --namespace kube-system
 	
 Name:                   kubernetes-dashboard
 Namespace:              kube-system
@@ -807,8 +802,8 @@ Session Affinity:       None
 
 - 删除部署
 
-```sh
-# kubectl delete -f kubernetes-dashboard.yaml
+``` bash
+kubectl delete -f kubernetes-dashboard.yaml
 	
 deployment "kubernetes-dashboard" deleted
 service "kubernetes-dashboard" deleted
@@ -816,8 +811,8 @@ service "kubernetes-dashboard" deleted
 
 - 查询Linux暴露出来的端口
 
-``` sh
-# netstat -tnlp
+``` bash
+netstat -tnlp
 ```
 
 ### Monitoring部署
@@ -840,7 +835,7 @@ service "kubernetes-dashboard" deleted
 	
 	* 在`influxdb-service.yaml`文件中，修改成：
 	
-```sh
+``` bash
 ...
 spec:
 	type: NodePort
@@ -859,7 +854,7 @@ spec:
 
 - 部署
 
-```sh
+``` bash
 pwd
 	
 /home/administrator/heapster/deploy/kube-config/influxdb
@@ -878,7 +873,7 @@ service "monitoring-influxdb" created
 
 - 查看grafana的端口
 
-```sh
+``` bash
 kubectl describe svc monitoring-grafana --namespace kube-system
 	
 Name:                   monitoring-grafana
@@ -898,7 +893,7 @@ Session Affinity:       None
 
 或者查看数据库通过：
 	
-```sh
+``` bash
 curl http://192.168.1.168:32735/api/datasources/proxy/1/query?db=k8s&q=SHOW%20DATABASES&epoch=ms
 	
 {"results":[{"series":[{"name":"databases","columns":["name"],"values":[["_internal"],["k8s"]]}]}]}
@@ -908,7 +903,7 @@ curl http://192.168.1.168:32735/api/datasources/proxy/1/query?db=k8s&q=SHOW%20DA
 
 - 查看influxdb的端口
 
-```sh
+``` bash
 kubectl describe svc monitoring-influxdb --namespace kube-system
 	
 Name:                   monitoring-influxdb
@@ -938,7 +933,7 @@ Session Affinity:       None
 
 - run.sh
 
-``` sh
+``` bash
 #!/bin/sh
 
 : "${GF_PATHS_DATA:=/var/lib/grafana}"
@@ -977,7 +972,7 @@ exec /usr/sbin/grafana-server \
 
 - DockerFile
 
-``` sh
+``` bash
 FROM 10.0.0.153:5000/k8s/heapster-grafana-amd64:v4.0.2
 ADD run.sh /
 RUN chmod 777 run.sh
@@ -1006,7 +1001,7 @@ RUN chmod 777 run.sh
 
 - 在`kibana-service.yaml`中添加`NodePort`，让其暴露出端口
 	
-```sh
+``` bash
 spec:
 type: NodePort
 ports:
@@ -1019,7 +1014,7 @@ ports:
 	* 将kind改为DaemonSet（让每个node都各创建一个）；
 	* 加入template：
 	
-```sh
+``` bash
 spec:
 template:
   metadata:
@@ -1158,7 +1153,7 @@ create完成：
 
 - 某些节点失败 
 
-```sh
+``` bash
 kubectl get nodes
 	
 NAME            STATUS     AGE
@@ -1169,7 +1164,7 @@ NAME            STATUS     AGE
 	
 - 查看详细信息
 	
-```sh
+``` bash
 kubectl describe node 192.168.1.157
 	
 ......
@@ -1184,7 +1179,7 @@ Ready         Unknown         Sat, 28 May 2016 12:56:01 +0000         Sat, 28 Ma
 从中可以看到节点unready的原因是**outofdisk**，从而导致**Kubelet stopped posting node status.**
 所以可以查看下`192.168.1.157`的容量，其操作系统是ubuntu14.04，可通过`df`进行查看：
 	
-```sh
+``` bash
 df
 	
 Filesystem     1K-blocks     Used Available Use% Mounted on
@@ -1201,12 +1196,12 @@ none              102400       40    102360   1% /run/user
 	
 - 重启kubelet
 	
-```sh
-1. ssh administrator@192.168.1.157
+``` bash
+ssh administrator@192.168.1.157
 
-2. sudo su
+sudo su
 
-3. /etc/init.d/kubelet restart
+/etc/init.d/kubelet restart
 	
 stop: Unknown instance: 
 kubelet start/running, process 59261
@@ -1229,16 +1224,16 @@ NAME            STATUS    AGE
 
 - 重新kubeadm init出现kube-discovery
 
-```sh
+``` bash
 failed to create "kube-discovery" deployment [deployments.extensions "kube-discovery" already exists]
 ```
 
 问题在于外部的etcd集群内还有上一些的k8s集群信息，需要在每个etcd节点中删除数据，重启服务
 
-```sh
-# rm -rf /var/lib/etcd/etcd0 
+``` bash
+rm -rf /var/lib/etcd/etcd0 
 
-# if [[ true ]]; then
+if [[ true ]]; then
 	systemctl stop etcd
 	systemctl start etcd 
 	systemctl status etcd
@@ -1247,18 +1242,17 @@ fi
 
 在master上面重启k8s
 
-```sh
-# systemctl stop kubelet
+``` bash
+systemctl stop kubelet
 
-# docker rm -f -v $(docker ps -q)
+docker rm -f -v $(docker ps -q)
 
-# find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v
+find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v
 
-# rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
+rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
+systemctl start kubelet
 
-# systemctl start kubelet
-
-# kubeadm init xxxx
+kubeadm init xxxx
 ```
 
 #### tcp 10.96.0.1:443: i/o timeout
