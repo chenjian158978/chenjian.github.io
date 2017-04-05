@@ -3,7 +3,7 @@ layout:     post
 title:      "A Most Disgusting Song"
 subtitle:   "Lord, who shall abide in thy tabernacle?
 who shall dwell in thy holy hill? Psa 15:1"
-date:       Tue, Sep 01 16:13:51 2016 GMT+8
+date:       Tue, Sep 01 2016 16:13:51 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/A-Most-Disgusting-Song/head_blog.jpg"
 tags:

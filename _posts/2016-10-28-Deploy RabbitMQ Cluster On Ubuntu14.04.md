@@ -3,7 +3,7 @@ layout:     post
 title:      "Deploy RabbitMQ Cluster On Ubuntu14.04"
 subtitle:   "Hold up my goings in thy paths,
 that my footsteps slip not. Psa 17:5"
-date:       Fri, Oct 28 18:03:59 2016 GMT+8
+date:       Fri, Oct 28 2016 18:03:59 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-RabbitMQ-Cluster-On-Ubuntu14.04/head_blog.jpg"
 tags:

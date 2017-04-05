@@ -2,7 +2,7 @@
 layout:     post
 title:      "Deploy Tomcat&Maven On Ubuntu14.04"
 subtitle:   "I will love thee, O Lord, my strength. Psa 18:1"
-date:       Mon, Oct 15 09:52:25 2016 GMT+8
+date:       Mon, Oct 15 2016 09:52:25 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Tomcat&Maven-On-Ubuntu14.04/head_blog.jpg"
 tags:

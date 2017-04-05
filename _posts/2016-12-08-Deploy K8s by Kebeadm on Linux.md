@@ -3,7 +3,7 @@ layout:     post
 title:      "Deploy K8s by Kebeadm on Linux"
 subtitle:   "There were they in great fear:
 for God is in the generation of the righteous. Psa 14:5"
-date:       Thu, Dec 8 17:55:56 GMT+8
+date:       Thu, Dec 8 2016 17:55:56 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-K8s-by-Kebeadm-on-Linux/head_blog.jpg"
 tags:

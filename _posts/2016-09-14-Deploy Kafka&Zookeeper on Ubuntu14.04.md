@@ -2,7 +2,7 @@
 layout:     post
 title:      "Deploy Kafka&Zookeeper on Ubuntu14.04"
 subtitle:   "I will sing unto the Lord, because he hath dealt bountifully with me. Psa 13:6"
-date:       Mon, Nov 14 17:40:56 GMT+8
+date:       Mon, Nov 14 2016 17:40:56 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Kafka&Zookeeper-on-Ubuntu14.04/head_blog.jpg"
 tags:

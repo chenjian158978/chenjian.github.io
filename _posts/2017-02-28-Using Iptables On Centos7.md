@@ -2,7 +2,7 @@
 layout:     post
 title:      "Using Iptables On Centos7"
 subtitle:   "But thou art holy, O thou that inhabitest the praises of Israel. Psa 22:3"
-date:       Tue, Feb 28 15:04:33 GMT+8
+date:       Tue, Feb 28 2017 15:04:33 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Iptables-On-Centos7/head_blog.jpg"
 tags:

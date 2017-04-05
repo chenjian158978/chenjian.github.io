@@ -3,7 +3,7 @@ layout:     post
 title:      "Deploy Redis Sentinel Cluster With K8s"
 subtitle:   "Be thou exalted, Lord, in thine own strength:
 so will we sing and praise thy power. Psa 21:13"
-date:       Mon, Feb 6 09:42:59 GMT+8
+date:       Mon, Feb 6 2017 09:42:59 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-Sentinel-Cluster-With-K8s/head_blog.jpg"
 tags:
