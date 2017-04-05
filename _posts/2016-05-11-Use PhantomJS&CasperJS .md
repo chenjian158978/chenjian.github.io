@@ -35,7 +35,7 @@ CasperJS是一个开源的导航脚本处理和测试工具，基于PhantomJS（
 
 ## CasperJS实例
 
-目标：![淘宝一物品](/img/in-post/Use-PhantomJS-CasperJS/1482053889447_2.png)
+目标：![淘宝一物品](/img/in-post/Use-PhantomJS-CasperJS/1482053889447_2.jpg)
 
 `casperjs amzoe.js`的代码：
 
