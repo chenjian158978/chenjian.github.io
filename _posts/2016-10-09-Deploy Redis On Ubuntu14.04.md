@@ -5,7 +5,7 @@ subtitle:   "He sent from above, he took me,
 he drew me out of many waters. Psa 18:16"
 date:       Sun, Oct 09 17:49:22 2016 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Deploy-Redis-On-Ubuntu14.04/head_blog.png"
+header-img: "img/in-post/Deploy-Redis-On-Ubuntu14.04/head_blog.jpg"
 tags:
     - 工作
 ---

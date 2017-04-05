@@ -5,7 +5,7 @@ subtitle:   "Send thee help from the sanctuary,
 and strengthen thee out of Zion; Psa 20:2"
 date:       Fri, April 18 2014 11:33:06 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Ideas-About-Cien-años-de-soledad/head_blog.png"
+header-img: "img/in-post/Ideas-About-Cien-años-de-soledad/head_blog.jpg"
 tags:
     - 生活
     - 读后随笔

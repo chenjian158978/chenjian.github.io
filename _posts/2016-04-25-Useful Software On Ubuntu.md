@@ -5,7 +5,7 @@ subtitle:   "Hold up my goings in thy paths,
 that my footsteps slip not. Psa 17:5"
 date:       Mon, Apr 25 18:02:54 2016 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Useful-Software-On-Ubuntu/head_blog.png"
+header-img: "img/in-post/Useful-Software-On-Ubuntu/head_blog.jpg"
 tags:
     - 工作
     - Ubuntu

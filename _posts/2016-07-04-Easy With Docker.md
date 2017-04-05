@@ -5,7 +5,7 @@ subtitle:   "They cried, but there was none to save them:
 even unto the Lord, but he answered them not. Psa 18:41"
 date:       Mon, July 4 2016 17:32:07 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Easy-With-Docker/head_blog.png"
+header-img: "img/in-post/Easy-With-Docker/head_blog.jpg"
 tags:
     - 工作
     - Docker

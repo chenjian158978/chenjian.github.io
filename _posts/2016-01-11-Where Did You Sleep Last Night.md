@@ -5,7 +5,7 @@ subtitle:   "For who is God save the Lord?
 or who is a rock save our God? Psa 18:31"
 date:       Mon, Jan 11 2016 18:04:47 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Where-Did-You-Sleep-Last-Night/head_blog.png"
+header-img: "img/in-post/Where-Did-You-Sleep-Last-Night/head_blog.jpg"
 tags:
     - 生活
     - 翻译

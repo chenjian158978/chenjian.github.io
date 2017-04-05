@@ -5,7 +5,7 @@ subtitle:   "His glory is great in thy salvation:
 honour and majesty hast thou laid upon him. Psa：21:5"
 date:       Tue, Mar 7 2017 15:40:58 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Deploy-Zabbix-With-Docker/head_blog.png"
+header-img: "img/in-post/Deploy-Zabbix-With-Docker/head_blog.jpg"
 tags:
     - 工作
     - Docker

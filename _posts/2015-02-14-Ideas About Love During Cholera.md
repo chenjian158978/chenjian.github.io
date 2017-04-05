@@ -5,7 +5,7 @@ subtitle:   "They prevented me in the day of my calamity:
 but the Lord was my stay. Psa 18:18"
 date:       Sat, Feb 14 2015 00:38:26 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Ideas-About-Love-During-Cholera/head_blog.png"
+header-img: "img/in-post/Ideas-About-Love-During-Cholera/head_blog.jpg"
 tags:
     - 生活
     - 读后随笔

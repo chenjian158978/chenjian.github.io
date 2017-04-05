@@ -5,7 +5,7 @@ subtitle:   "They are brought down and fallen:
 but we are risen, and stand upright. Psa 20:8"
 date:       Tue, Oct 22 2013 16:56:11 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/A-Letter-To-Little-Brother/head_blog.png"
+header-img: "img/in-post/A-Letter-To-Little-Brother/head_blog.jpg"
 tags:
     - 生活
     - 读后随笔

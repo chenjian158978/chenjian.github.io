@@ -5,7 +5,7 @@ subtitle:   "Give ear to my words, O Lord,
 consider my meditation. Psa 5:1"
 date:       Wed, Dec 31 17:55:56 GMT+8 2014
 author:     "ChenJian"
-header-img: "img/in-post/Books-I-Read-During-2014/head_blog.png"
+header-img: "img/in-post/Books-I-Read-During-2014/head_blog.jpg"
 tags:
     - 读书
 ---

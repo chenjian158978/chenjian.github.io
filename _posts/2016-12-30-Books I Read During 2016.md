@@ -5,7 +5,7 @@ subtitle:   "He sent from above, he took me,
 he drew me out of many waters. Psa 18:16"
 date:       Fri, Dec 30 00:05:53 2016 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Books-I-Read-During-2016/head_blog.png"
+header-img: "img/in-post/Books-I-Read-During-2016/head_blog.jpg"
 tags:
     - 读书
 ---
