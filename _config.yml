@@ -66,7 +66,7 @@ ga_domain: o-my-chenjian.com
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Searching For A Heart of GOLD."
-sidebar-avatar: /img/avatar-chenjian.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar-chenjian.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
