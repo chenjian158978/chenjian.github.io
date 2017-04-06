@@ -6,12 +6,13 @@ I will sing praise to thy name, O thou most High. Psa 9:2"
 date:       Tue, May 17 2016 15:16:04 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Apache2-With-Django/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
     - Python
 ---
 
-## Django项目
+### Django项目
 
 - 参考于[《自强学堂——django后台》](http://www.ziqiangxuetang.com/django/django-admin.html)
 
@@ -19,33 +20,34 @@ tags:
 
 - 项目path： `/home/chenjian/PycharmProjects/zqxt_admin`
 
-----------
 
-## 安装 apache2 和 mod_wsgi   
+##### 安装 apache2 和 mod_wsgi   
 
 - Ubuntu 16.04
 
-```sh
-# sudo apt-get install apache2
+``` bash
+sudo apt-get install apache2
  
 # Python 2
-# sudo apt-get install libapache2-mod-wsgi
+sudo apt-get install libapache2-mod-wsgi
  
 # Python 3
-# sudo apt-get install libapache2-mod-wsgi-py3
+sudo apt-get install libapache2-mod-wsgi-py3
 ```
 
 - Centos7
 
-```sh
-# yum install httpd
+``` bash
+yum install httpd
 
 # 设置Apache服务开机自启动
-# /sbin/chkconfig httpd on
+/sbin/chkconfig httpd on
 
-# yum install -y httpd-devel
-# yum install mod_wsgi
-# echo "LoadModule  wsgi_module modules/mod_wsgi.so" >> /etc/httpd/conf/httpd.conf
+yum install -y httpd-devel
+
+yum install mod_wsgi
+
+echo "LoadModule  wsgi_module modules/mod_wsgi.so" >> /etc/httpd/conf/httpd.conf
 
 # 优化httpd,具体参数根据情况而定
 sudo cat >> /etc/httpd/conf/httpd.conf <<-'EOF'
@@ -61,12 +63,12 @@ EOF
 ```
 
 
-## 确认apache版本
+##### 确认apache版本
 
 - Ubuntu16.04
 
-``` sh
-# apachectl -v
+``` bash
+apachectl -v
 
 Server version: Apache/2.4.18 (Ubuntu)
 Server built:   2016-04-15T18:00:57
@@ -74,24 +76,24 @@ Server built:   2016-04-15T18:00:57
 
 - Centos7
 
-``` sh
-# httpd -v
+``` bash
+httpd -v
 # 或者
-# apachectl -v
+apachectl -v
 
 Server version: Apache/2.4.6 (CentOS)
 Server built:   Nov 14 2016 18:04:44
 ```
 
-## 遇到的问题
+### 遇到的问题
 
-### 处理使用virtualenv带来的问题
+##### 处理使用virtualenv带来的问题
 
 参考：[部署apache，使用virtualenv，遇到的no module named django.core.wsgi](http://www.thinksaas.cn/topics/0/349/349343.html)
 
 在wsgi.py中修改为以下：
 
-```python
+``` python
 # -*- coding:utf-8 -*-
 
 import os
@@ -108,11 +110,11 @@ application = get_wsgi_application()
 
 ```
 
-### 处理Permission denied
+##### 处理Permission denied
 
 具体内容如下：
 
-```sh
+``` bash
 Permission denied: [client 192.168.1.243:46572] AH00035: access to /mon/ denied (filesystem path '/home/usr/webvul') because search permissions are missing on a component of the path
 ```
 
@@ -123,7 +125,7 @@ Permission denied: [client 192.168.1.243:46572] AH00035: access to /mon/ denied 
 命令：`sudo chmod -R 777 webvul/`
 
 
-## 创建zqxt_admin的apache配置
+### 创建zqxt_admin的apache配置
 
 - Ubuntu16.04
 
@@ -131,7 +133,7 @@ Permission denied: [client 192.168.1.243:46572] AH00035: access to /mon/ denied 
 
 输入内容：
 
-```
+``` bash
 # 访问的服务器名称，localhost就是127.0.0.1，也可自己编写
 ServerName 192.168.1.68
 Listen 8003
@@ -163,7 +165,7 @@ WSGIPythonPath /home/chenjian/PycharmProjects/zqxt_admin
 
 内容如下：
 
-``` sh
+``` bash
 ServerName 192.168.1.68
 Listen 8003
 DocumentRoot /home/administrator/projectname
@@ -176,7 +178,7 @@ Require all granted
 </Directory>
 ```
 
-## 激活网站
+### 激活网站
 
 - Ubuntu16.04
 
@@ -185,7 +187,7 @@ Require all granted
 > centos7没有此步骤
 
 
-## 停止与启动apache服务器
+### 停止与启动apache服务器
 
 - Ubuntu16.04
 
@@ -195,18 +197,18 @@ p.s. 如果apache2总是失败，除了看error.log日志，勿忘重启apache�
 
 - Centos7
 
-```sh
+``` bash
 # 开启apache服务
-# sudo systemctl start httpd.service
+sudo systemctl start httpd.service
 
 # 查看状态
-# sudo systemctl status httpd.service
+sudo systemctl status httpd.service
 
 # 停止状态
-# sudo systemctl stop httpd.service
+sudo systemctl stop httpd.service
 ```
 
-## 重启apache服务器
+### 重启apache服务器
 
 - Ubuntu16.04
 
@@ -214,12 +216,12 @@ p.s. 如果apache2总是失败，除了看error.log日志，勿忘重启apache�
 
 - Centos7
 
-```sh
-# sudo systemctl restart httpd.service
+``` bash
+sudo systemctl restart httpd.service
 ```
 
 
-## 访问网站
+### 访问网站
 
 - Ubuntu16.04
 
@@ -234,7 +236,7 @@ chrome浏览器中输入：[http://127.0.0.1/admin/](http://127.0.0.1/admin/)
 访问`http://localhost:80`
 
 
-## 错误查看
+### 错误查看
 
 - Ubuntu16.04
 
@@ -251,14 +253,14 @@ chrome浏览器中输入：[http://127.0.0.1/admin/](http://127.0.0.1/admin/)
 `cat /etc/httpd/logs/error_log`
 
 
-## 其他
+### 其他
 
 1. 修改settings.py文件中ALLOWED_HOSTS改为：`['127.0.0.1']`或者`'*'`，后者表示全部
 
 2. 编码问题，在wsgi.py中加入`#-*- coding:ut-8 -*-`
 
 
-## 参考：
+### 参考
 1. [《自强学堂——Django 部署(Apache)》](http://www.ziqiangxuetang.com/django/django-deploy.html)
 2. [Problems with Apache servers and A LOT of httpd processes](http://stackoverflow.com/questions/15922194/problems-with-apache-servers-and-a-lot-of-httpd-processes)
 3. [Apache MPM Common Directives](https://httpd.apache.org/docs/current/mod/mpm_common.html)

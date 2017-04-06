@@ -6,24 +6,27 @@ lighten mine eyes, lest I sleep the sleep of death. Psa 13:3"
 date:       Sat, May 21 2016 18:07:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy&Test-Phoneyc/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
 ---
-## 介绍
+
+### 介绍
 
 honeynet是一个致力于研究蜜罐系统的非盈利组织,以了解黑客使用的工具,策略和行为.在honeynet的带领下,牛人门提出了多种不同的蜜罐系统,简单可以分为低交互和高交互两种,某些项目的入口可以在这里找到.其中,phoneyc是一种低交互的蜜罐系统,它提供了一个javascript引擎,用来执行网页中的js代码,依据其行为特征判断该网页是否含有恶意js代码.这里是某位跟着phoneyc的作者jose大牛混的北大学生对phoneyc的介绍,源码可以在google code下载.
 
 
-## phoneyc结构图
+### phoneyc结构图
 
-![phoneyc结构图](/img/in-post/Deploy-Test-Phoneyc/1481300891650_2.png)
+![phoneyc结构图](/img/in-post/Deploy&Test-Phoneyc/1481300891650_2.jpg)
 
-## 安装
+### 安装
 
-### nspr安装
+#### nspr安装
+
 命令：`sudo apt-get install libnspr4-0d libnspr4-dev`
 
-### python安装
+#### python安装
 
 命令：
 1. `sudo apt-get install python-dev`
@@ -31,7 +34,8 @@ honeynet是一个致力于研究蜜罐系统的非盈利组织,以了解黑客�
 3. `sudo apt-get install libmozjs-dev`
 4. `sudo apt-get install python-setuptools`
 
-### curl安装
+#### curl安装
+
 命令：
 
 1. `wget --no-check-certificate curl.haxx.se/download/curl-7.20.0.tar.gz`
@@ -51,14 +55,14 @@ honeynet是一个致力于研究蜜罐系统的非盈利组织,以了解黑客�
 
 结果：
 
-```
+``` bash
 curl 7.20.0 (i686-pc-linux-gnu) libcurl/7.22.0 OpenSSL/1.0.1 zlib/1.2.3.4 libidn/1.23 librtmp/2.3
 Protocols: dict file ftp ftps gopher http https imap imaps ldap pop3 pop3s rtmp rtsp smtp smtps telnet tftp 
 Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz 
 
 ```
 
-### pycurl安装
+#### pycurl安装
 
 命令：
 
@@ -68,17 +72,22 @@ Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz
 4. `python setup.py build`
 5. `sudo python setup.py install`
 
-### libemu-trunk安装
+#### libemu-trunk安装
 
 命令：
 
+``` bash
+wget godorz.info/wp-content/uploads/2010/04/libemu-trunk.tar.bz2
+
+tar jvxf libemu-trunk.tar.bz2
+
+cd libemu-trunk
+
+sudo apt-get install automake
+
+suto apt-get install libtool
 ```
-1. `wget godorz.info/wp-content/uploads/2010/04/libemu-trunk.tar.bz2`
-2. `tar jvxf libemu-trunk.tar.bz2`
-3. `cd libemu-trunk`
-4. `sudo apt-get install automake`
-5. `suto apt-get install libtool`
-```
+
 **以上安装有待考虑！**
 
 1. `sudo ldconfig`
@@ -103,7 +112,7 @@ Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz
 
 结果：
 
-```
+``` bash
 [2016-05-22 19:03:44] [ALERT] NeoTracePro.TraceTarget overflow in arg0
 Log written into: log/ad5048081277127857aad08e0bfd5e55
 
@@ -148,6 +157,7 @@ eb0359eb05e8f8ffffff494937494949494949494949494949494949515a6a625830423050416b41
 |ENTROPY:0.00344388991898
 |MISC:{'sledge_char': 'A', 'sec_char_cnt': 33, 'sledge_cnt': 4193514, 'sec_char': 'K'}
 ```
+
 OK 安装成功~
 
 ## 参考

@@ -9,10 +9,21 @@ layout: default
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
+        position: relative;
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
+
+    {% if page.header-mask %}
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    background: rgba(0,0,0, {{ page.header-mask }});
+    }
+    {% endif %}
 </style>
 <header class="intro-header" >
+    <div class="header-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -24,10 +35,10 @@ layout: default
                     </div>
                     <h1>{{ page.title }}</h1>
                     {% comment %}
-                        always create a h2 for keeping the margin , Hux
+                    always create a h2 for keeping the margin , Hux
                     {% endcomment %}
                     {% comment %} if page.subtitle {% endcomment %}
-                    <h2 class="subheading" style="font-size: 20px">{{ page.subtitle }}</h2>
+                    <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
                     <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
                 </div>
@@ -41,15 +52,35 @@ layout: default
     <div class="container">
         <div class="row">
 
-    <!-- Post Container -->
+            <!-- Post Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
 
-				{{ content }}
+                {{ content }}
 
                 <hr>
+
+                <!-- 添加向前向后翻动 -->
+                <ul class="pager">
+                    {% if page.previous.url %}
+                    <li class="previous">
+                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                            Previous<br>
+                            <span>{{page.previous.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if page.next.url %}
+                    <li class="next">
+                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                            Next<br>
+                            <span>{{page.next.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
 
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
@@ -62,7 +93,28 @@ layout: default
 
             </div>
 
-    <!-- Sidebar Container -->
+            <!-- Side Catalog Container -->
+            {% if page.catalog %}
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+
+
+                <div class="side-catalog">
+                    <!-- 添加搜索栏 -->
+                    {% include sidebar-search.html %}
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -74,14 +126,14 @@ layout: default
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-        				{% for tag in site.tags %}
-                            {% if tag[1].size > site.featured-condition-size %}
-                				<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
-        				{% endfor %}
-        			</div>
+                        {% for tag in site.tags %}
+                        {% if tag[1].size > site.featured-condition-size %}
+                        <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                            {{ tag[0] }}
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
                 </section>
                 {% endif %}
 
@@ -91,7 +143,7 @@ layout: default
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
-                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
+                    <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}
@@ -99,26 +151,6 @@ layout: default
         </div>
     </div>
 </article>
-
-{% if site.duoshuo_username %}
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User by Hux
-    var _user = '{{site.duoshuo_username}}';
-
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
-{% endif %}
 
 
 {% if site.disqus_username %}
@@ -143,21 +175,21 @@ layout: default
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
     async("https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
+            visible: 'always',
+            placement: 'right',
+            icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })

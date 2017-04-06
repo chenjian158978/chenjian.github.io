@@ -6,6 +6,7 @@ that my footsteps slip not. Psa 17:5"
 date:       Fri, Oct 28 2016 18:03:59 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-RabbitMQ-Cluster-On-Ubuntu14.04/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
 ---
@@ -14,7 +15,7 @@ tags:
 
 MQ全称为Message Queue, 消息队列（MQ）是一种应用程序对应用程序的通信方法。本版本为3.6.1
 
-### Erlang安装
+##### Erlang安装
 
 rabbitMQ需要erlang语言的支持，因此需要先安装erlang语言
 
@@ -22,8 +23,8 @@ rabbitMQ需要erlang语言的支持，因此需要先安装erlang语言
 
 测试：启动`erl`，能否进入
 
-``` sh
-root@administrator159:/home/administrator# erl
+``` bash
+erl
 
 Erlang R16B03 (erts-5.10.4) [source] [64-bit] [smp:8:8] [async-threads:10] [kernel-poll:false]
 
@@ -33,7 +34,7 @@ Eshell V5.10.4  (abort with ^G)
 
 可以看出来erlang的版本为5.10.4
 
-### RabbitMQ安装
+##### RabbitMQ安装
 
 * 鼠标操作模式：
 在[rabbitMQ官网](http://www.rabbitmq.com/)中下载相应的ubuntu安装包deb,下载后双击即可安装完毕
@@ -48,25 +49,29 @@ Eshell V5.10.4  (abort with ^G)
 
 ### RabbitMQ集群
 
-#### 集群IP与名称
+##### 集群IP与名称
+
 1. 192.168.1.157 作为集群的**内存节点**
 2. 192.168.1.158 作为集群的**磁盘节点**
 3. 192.168.1.159 作为集群的**内存节点**
 4. 192.168.1.78 作为**反向代理(Haproxy)**
+
 > 集群中有两种节点：
+
 * 内存节点：只保存状态到内存（一个例外的情况是：持久的queue的持久内容将被保存到disk）
+
 *  磁盘节点：保存状态到内存和磁盘。
 内存节点虽然不写入磁盘，但是它执行比磁盘节点要好。集群中，只需要一个磁盘节点来保存状态 就足够了
 如果集群中只有内存节点，那么不能停止它们，否则所有的状态，消息等都会丢失。
 
-#### 对hostname和hosts的操作 
+##### 对hostname和hosts的操作 
  
 对157,158,159进行操作，以192.168.1.158为例子：
 
 -  记住IP：`cat /etc/hostname` 
 
-``` sh
-root@administrator158:/home/administrator# cat /etc/hostname
+``` bash
+cat /etc/hostname
 
 administrator158
 ```
@@ -75,8 +80,8 @@ administrator158
 
 修改为：
 
-``` sh
-root@administrator158:/home/administrator# cat /etc/hosts
+``` bash
+cat /etc/hosts
 
 127.0.0.1       localhost
 127.0.1.1       administrator158
@@ -94,9 +99,10 @@ ff02::2 ip6-allrouters
 ```
 
 > **修改完后，重启电脑。**
+
 **请注意RabbitMQ集群节点必须在同一个网段里，如果是跨广域网效果就差。**
 
-#### 设置节点的Cookie 
+##### 设置节点的Cookie 
 
 以192.168.1.158为例：
 
@@ -104,8 +110,8 @@ ff02::2 ip6-allrouters
 
 内容：
 
-```bash
-root@administrator157:/home/administrator# cat /var/lib/rabbitmq/.erlang.cookie
+``` bash
+cat /var/lib/rabbitmq/.erlang.cookie
 
 AZPRQAAHZQUNBRRDXNLX
 ```
@@ -114,7 +120,7 @@ AZPRQAAHZQUNBRRDXNLX
 
 - 查看修改`.erlang.cookie`权限
 
-``` sh
+``` bash
 root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
 	
 -r-------- 1 rabbitmq rabbitmq 20 10月 28 00:00 /var/lib/rabbitmq/.erlang.cookie
@@ -128,7 +134,7 @@ root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
 	
 - 修改Cookie
 		
-``` sh
+``` bash
 root@administrator157:/home/administrator# vim /var/lib/rabbitmq/.erlang.cookie
 root@administrator157:/home/administrator# cat /var/lib/rabbitmq/.erlang.cookie
 
@@ -143,7 +149,7 @@ AZPRQAAHZQUNBRRDXNLX
 
 - 再次修改`.erlang.cookie`权限
 
-``` sh
+``` bash
 root@administrator157:/home/administrator# chmod 400 /var/lib/rabbitmq/.erlang.cookie
 root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
 
@@ -154,15 +160,15 @@ root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
 
 - `rabbitmqctl stop`
 
-``` sh
- root@administrator159:/home/administrator# rabbitmqctl stop
+``` bash
+root@administrator159:/home/administrator# rabbitmqctl stop
 
 Stopping and halting node rabbit@administrator159 ...
 ```
 
 -  `service rabbitmq-server start`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# sudo service rabbitmq-server start
  
  * Starting message broker rabbitmq-server
@@ -170,13 +176,13 @@ root@administrator159:/home/administrator# sudo service rabbitmq-server start
    ...done.
 ```
 
-#### 链接nodes
+##### 链接nodes
 
 在192.168.1.159上操作：
 
 - `rabbitmqctl stop_app`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# rabbitmqctl stop_app
 
 Stopping node rabbit@administrator159 ...
@@ -184,7 +190,7 @@ Stopping node rabbit@administrator159 ...
 
 - `rabbitmqctl reset`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# rabbitmqctl reset
 
 Resetting node rabbit@administrator159 ...
@@ -192,7 +198,7 @@ Resetting node rabbit@administrator159 ...
 
 - `rabbitmqctl join_cluster --ram rabbit@administrator158`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# rabbitmqctl join_cluster --ram rabbit@administrator158
 
 Clustering node rabbit@administrator159 with rabbit@administrator158 ...
@@ -202,7 +208,7 @@ Clustering node rabbit@administrator159 with rabbit@administrator158 ...
 
 - `rabbitmqctl start_app`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# rabbitmqctl start_app
 
 Starting node rabbit@administrator159 ...
@@ -210,7 +216,7 @@ Starting node rabbit@administrator159 ...
 
 - 查看集群状态：`rabbitmqctl cluster_status`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# rabbitmqctl cluster_status
 
 Cluster status of node rabbit@administrator159 ...
@@ -229,7 +235,7 @@ Cluster status of node rabbit@administrator159 ...
 
 - 队列消息一致：`rabbitmqctl list_queues -p chenjian`
 
-``` sh
+``` bash
 root@administrator159:/home/administrator# rabbitmqctl list_queues -p hrsystem
 
 Listing queues ...
@@ -252,7 +258,7 @@ Listing queues ...
 - 添加后台管理插件：`sudo rabbitmq-plugins enable rabbitmq_management`
 显示：
 
-``` sh
+``` bash
 administrator@administrator159:~$ sudo rabbitmq-plugins enable rabbitmq_management
 
 The following plugins have been enabled:
@@ -269,14 +275,15 @@ Applying plugin configuration to rabbit@administrator159... started 6 plugins.
 - 添加用户权限： `rabbitmqctl set_permissions -p chenjian chenjian ".*" ".*" ".*"` 或者 `sudo rabbitmqctl set_permissions -p chenjian chenjian ConfP  WriteP  ReadP`
 
 结果：
-``` sh
+
+``` bash
 Setting permissions for user "chenjian" in vhost "chenjian" ...
 ```
 
 - 修改用户角色：`sudo rabbitmqctl set_user_tags chenjian administrator`
 结果：
 
-``` sh
+``` bash
 Setting tags for user "chenjian" to [administrator] ...
 ```
 
@@ -286,7 +293,7 @@ Setting tags for user "chenjian" to [administrator] ...
 
 命令： `sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'`
 
-``` sh
+``` bash
 administrator@administrator158:~$ sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'
 
 Setting policy "ha-allqueue" for pattern "^" to "{\"ha-mode\":\"all\"}" with priority "0" ...
@@ -297,7 +304,7 @@ Setting policy "ha-allqueue" for pattern "^" to "{\"ha-mode\":\"all\"}" with pri
 
 ### HaProxy反向代理
 
-#### haproxy安装 
+##### haproxy安装 
 
 IP: `192.168.1.78`
 
@@ -308,13 +315,13 @@ IP: `192.168.1.78`
 作用：**负载均衡器**会监听5672端口，轮询我们的两个内存节点192.168.1.157、192.168.1.159的5672端口，192.168.1.158为磁盘节点，只做备份不提供给生产者、消费者使用，当然如果我们服务器资源充足情况也可以配置多个磁盘节点
 ，这样磁盘节点除了故障也不会影响，除非同时出故障
 
-#### 修改haproxy配置内容
+##### 修改haproxy配置内容
 
 命令： `sudo vim /etc/haproxy/haproxy.cfg`
 
 - 修改默认`option httplog`为`option tcplog`
 
-``` sh
+``` bash
 defaults
         log     global
         mode    tcp
@@ -326,7 +333,7 @@ defaults
 
 添加：
 
-``` sh
+``` bash
 listen admin_stat
 bind 0.0.0.0:8888
 mode http
@@ -343,7 +350,7 @@ stats auth admin:admin
 
 - 配置末尾添加：
 
-``` sh
+``` bash
 listen rabbitmq_cluster *:5672
      mode tcp
      balance roundrobin
@@ -354,7 +361,7 @@ listen rabbitmq_cluster *:5672
 
 在**ubuntu16.04**中，配置末尾添加：*
 
-``` sh
+``` bash
 listen rabbitmq_cluster 
      bind *:5672
      mode tcp
@@ -364,7 +371,7 @@ listen rabbitmq_cluster
      server rqmaster 192.168.1.158:5672 check inter 2000 rise 2 fall 3
 ```
 
-#### 启动haproxy服务
+##### 启动haproxy服务
 
 - `haproxy -f /etc/haproxy/haproxy.cfg -D`
 
@@ -373,7 +380,8 @@ listen rabbitmq_cluster
 查看haproxy的监听：
 
 `netstat -nl| grep 5672`
-```bash
+
+``` bash
 root@administrator78:/etc/haproxy# netstat -nl| grep 5672
 
 tcp        0      0 0.0.0.0:5672            0.0.0.0:*               LISTEN
@@ -383,7 +391,7 @@ tcp        0      0 0.0.0.0:5672            0.0.0.0:*               LISTEN
 
 ### python程序中填写
 
-```python
+``` python
 CELERY_BROKER_USER = "chenjian"
 CELERY_BROKER_PASSWORD = "chenjian"
 CELERY_BROKER_HOST = "192.168.1.78"
@@ -395,22 +403,13 @@ BROKER_URL = "amqp://%s:%s@%s:%s/%s" % (CELERY_BROKER_USER,
                                         CELERY_BROKER_PORT, CELERY_BROKER_VHOST)
 ```
 
-
-
-
-### 博文：
+### 参考
 
 1. [rabbitmq的web管理界面无法使用guest用户登录](http://www.cnblogs.com/mingaixin/p/4134920.html)
-
 2. [Rabbitmq集群高可用测试
 ](http://www.cnblogs.com/flat_peach/archive/2013/04/07/3004008.html)
-
 3. [Rabbitmq cluster setup with HAproxy](http://www.cloudkb.net/rabbitmq-cluster-setup-haproxy/)
-
 4. [RabbitMQ Clustering on Ubuntu 14.04](http://www.serverlab.ca/tutorials/linux/message-queue/ubuntu-14-04-rabbitmq-clustering/)
-
 5. [RabblitMQ Cluster + HAProxy(负载均衡)](http://flyingdutchman.iteye.com/blog/1912690)
-
 6. [为OpenStack搭建高可用RabbitMQ集群](http://www.tuicool.com/articles/bQ3iu2r)
-
 7. [rabbitmq集群+haproxy 相关 安装与配置和注意事项](https://segmentfault.com/a/1190000003720119)

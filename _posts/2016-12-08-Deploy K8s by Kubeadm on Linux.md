@@ -1,11 +1,12 @@
 ---
 layout:     post
-title:      "Deploy K8s by Kebeadm on Linux"
+title:      "Deploy K8s by Kubeadm on Linux"
 subtitle:   "There were they in great fear:
 for God is in the generation of the righteous. Psa 14:5"
 date:       Thu, Dec 8 2016 17:55:56 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Deploy-K8s-by-Kebeadm-on-Linux/head_blog.jpg"
+header-img: "img/in-post/Deploy-K8s-by-Kubeadm-on-Linux/head_blog.jpg"
+catalog:     true
 tags:
     - 工作
     - kubernetes
@@ -191,7 +192,7 @@ curl http://192.168.1.78:5000/v2/heapster/tags/list
 
 ### 安装kubernets之前的准备
 
-#### 搭建Etcd集群
+##### 搭建Etcd集群
 
 Etcd集群对整个k8s集群非常重要，需要抽出搭建。**当时kubeadm不支持高可用性，及不支持etcd集群**
 
@@ -321,7 +322,7 @@ cluster is healthy
 ```
 
 
-#### 修改Linux主机名
+##### 修改Linux主机名
 
 > Ubuntu16.04
 
@@ -360,7 +361,7 @@ echo "127.0.0.1   ${ipname}.${nodetype}" >> /etc/hosts
 sysctl kernel.hostname=${ipname}.${nodetype}
 ```
 
-#### 制作kubelet kubeadm kubectl kubernetes-cni
+##### 制作kubelet kubeadm kubectl kubernetes-cni
 
 > Ubuntu16.04
 
@@ -429,7 +430,7 @@ sudo systemctl enable kubelet && systemctl start kubelet
 ```
 
 
-#### 下载kubeadm需要的镜像
+##### 下载kubeadm需要的镜像
 
 |images name | version |
 |:----------:|:-------:|
@@ -583,7 +584,7 @@ The connection to the server localhost:8080 was refused - did you specify the ri
 
 这时候，重启一下机器
 	
-#### kubeadm join
+### kubeadm join
 
 在`192.168.1.168`上操作：
 
@@ -1029,11 +1030,11 @@ template:
 
 ### Ingress部署http
 
-#### 部署默认后端
+##### 部署默认后端
 
 `kubectl create -f default-backend.yaml`
 
-#### 部署 Ingress Controller
+##### 部署 Ingress Controller
 
 修改yaml文件中，添加`hostNetwork: true`，使其监听宿主机 80 端口：
 
@@ -1050,19 +1051,19 @@ spec:
 
 `kubectl create -f nginx-ingress-daemonset.yaml`
 
-#### 部署 Ingress
+##### 部署 Ingress
 
 `kubectl create -f dashboard-ingress.yaml`
 
-#### 修改hosts文件
+##### 修改hosts文件
 
 添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
 
 `echo "10.0.0.171  dashboard.chenjian.com" >> /etc/hosts`
 
-### Ingress部署TLS（HTTPS）
+#### Ingress部署TLS（HTTPS）
 
-#### 创建证书
+##### 创建证书
 
 ``` sh
 # 生成CA自签证书文件夹
@@ -1100,7 +1101,7 @@ openssl req -new -key ingress-key.pem -out ingress.csr -subj "/CN=kube-ingress" 
 openssl x509 -req -in ingress.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out ingress.pem -days 365 -extensions v3_req -extfile openssl.cnf
 ```
 
-#### 创建secret
+##### 创建secret
 
 ingress-secret.yaml文件格式如下：
 
@@ -1124,17 +1125,17 @@ create完成：
 
 `kubectl create secret tls ingress-secret --key cert/ingress-key.pem --cert cert/ingress.pem --namespace kube-system`
 
-#### 部署Ingress
+##### 部署Ingress
 
 `kubectl create -f dashboard-ingress-tls.yaml`
 
-#### 修改hosts文件
+##### 修改hosts文件
 
 添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
 
 `echo "10.0.0.171  dashboard.chenjian.com" >> /etc/hosts`
 
-#### 访问地址dashboard.chenjian.com
+##### 访问地址dashboard.chenjian.com
 
 部署TLS后的80端口会自动重定向到443（HTTPS端口）
 
@@ -1149,7 +1150,7 @@ create完成：
 
 ### Troubleshooting
 
-#### Node status is NotReady
+##### Node status is NotReady
 
 - 某些节点失败 
 
@@ -1255,7 +1256,7 @@ systemctl start kubelet
 kubeadm init xxxx
 ```
 
-#### tcp 10.96.0.1:443: i/o timeout
+##### tcp 10.96.0.1:443: i/o timeout
 
 - 在基本的k8s集群建立后,均为正常。开启一个服务（例如busybox），服务总出于ContainerCreating中。通过对node上的docker容器观察，一直处于pause容器创建过程中，问题是无法tcp连接到kubernetes服务的Apiserver（10.96.0.1:443）上
 

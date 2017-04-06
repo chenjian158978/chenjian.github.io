@@ -6,6 +6,7 @@ even unto the Lord, but he answered them not. Psa 18:41"
 date:       Mon, July 4 2016 17:32:07 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Easy-With-Docker/head_blog.jpg"
+catalog:     true
 tags:
     - 工作
     - Docker
@@ -122,13 +123,13 @@ Docker version 1.11.2, build b9f10c9
 - 下载镜像： `docker pull 192.168.1.78:5000/docker-whale`
 - 浏览器输入： `http://192.168.1.78:5000/v2/_catalog`
 
-``` sh
+``` bash
 {"repositories":["docker-whale","test_docker"]}
 ```
 
 - 查询镜像tag： 
 
-```bash
+``` bash
 curl http://192.168.1.78:5000/v2/heapster/tags/list
 	
 "name":"heapster","tags":["v1","canary","latest"]}
@@ -209,7 +210,7 @@ exported-imported：丢失所有历史,无法进行回滚
 
 * python中获得系统环境变量
 
-```python
+``` python
 # -*- coding:utf8 -*-
 
 __author__ = 'chenjian'
@@ -235,7 +236,7 @@ print os_res  # chenjian
 
 docker信息：`sudi docker info`
 
-``` sh
+``` bash
 Containers: 7
  Running: 7
  Paused: 0
@@ -277,7 +278,7 @@ Insecure Registries:
 当容器开到40-50个的时候，开始出现：
 `docker: Error response from daemon: containerd: container did not start before the specified timeout`
 
-#### 具体操作
+##### 具体操作
 
 ```shell
 sudo mkdir -p /etc/systemd/system/docker.service.d/
@@ -306,7 +307,7 @@ P.S. **项目中的DNShj，由于网络链接一直不行，则采用了host模�
 - brige(defult)
 bridge模式是Docker默认的网络设置，此模式会为每一个容器分配Network Namespace、设置IP等，并将一个主机上的Docker容器连接到一个虚拟网桥上。 
 
-### wmcluster中celery.py
+##### wmcluster中celery.py
 
 添加C_FORCE_ROOT：
 
@@ -347,7 +348,7 @@ platforms.C_FORCE_ROOT = True
 
 2.解决：在curl-7.20.0/lib/ssluse.c中注释掉以下内容：
 
-```c
+``` c
   case CURL_SSLVERSION_SSLv2:
     req_method = SSLv2_client_method();
     use_sni(FALSE);
@@ -362,7 +363,7 @@ platforms.C_FORCE_ROOT = True
 
 结果：
 
-```
+``` bash
 curl 7.20.0 (i686-pc-linux-gnu) libcurl/7.22.0 OpenSSL/1.0.1 zlib/1.2.3.4 libidn/1.23 librtmp/2.3
 Protocols: dict file ftp ftps gopher http https imap imaps ldap pop3 pop3s rtmp rtsp smtp smtps telnet tftp 
 Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz 
@@ -372,7 +373,7 @@ Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz
 
 1. `locate libcurl.so.4`
 
-```powershell
+``` bash
 /home/administrator/apps/curl-7.20.0/lib/.libs/libcurl.so.4
 /home/administrator/apps/curl-7.20.0/lib/.libs/libcurl.so.4.2.0
 /usr/lib/x86_64-linux-gnu/libcurl.so.4
@@ -397,7 +398,7 @@ Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz
 
 $host-ip 是主的shipyard节点的IP，该脚本需要运行在从node的主机上,不是主机节点的机器上。
 
-### 参考文献
+### 参考
 
 1. [Docker私有仓库Registry的搭建验证](http://www.cnblogs.com/lienhua34/p/4922130.html)
 2. [Linux查看环境变量当前信息和查看命令](http://os.51cto.com/art/201005/202463.htm)

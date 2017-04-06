@@ -5,22 +5,23 @@ subtitle:   "I will love thee, O Lord, my strength. Psa 18:1"
 date:       Mon, Oct 15 2016 09:52:25 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Tomcat&Maven-On-Ubuntu14.04/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
 ---
 
-## TOMCAT
+###  TOMCAT
 
-### tomcat介绍
+##### tomcat介绍
 
 Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache 服务器，可利用它响应HTML（标准通用标记语言下的一个应用）页面的访问请求。实际上Tomcat 部分是Apache 服务器的扩展，但它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。
 
-### 下载
+##### 下载
 
 * tomcat官网：[tomcat官网](http://tomcat.apache.org/index.html)
 * 找到下载页面的core下的tar.gz，下载
 
-### 安装
+##### 安装
 
 参考博客：
 
@@ -56,7 +57,7 @@ Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于
 
 - 在`# OS specific support. $var _must_ be set t`上面一行添加（看文件内容就知道为何要在这行添加）：
 
-``` sh
+``` bash
 CATALINA_HOME=/usr/local/tomcat8
 JAVA_HOME=/usr/lib/jvm/java-8-oracle
 JRE_HOME=${JAVA_HOME}/jre
@@ -71,7 +72,7 @@ TOMCAT_HOME=/usr/lib/tomcat8
 
 结果内容如下：
 
-``` sh
+``` bash
 Using CATALINA_BASE:   /usr/local/tomcat8
 Using CATALINA_HOME:   /usr/local/tomcat8
 Using CATALINA_TMPDIR: /usr/local/tomcat8/temp
@@ -86,7 +87,7 @@ Tomcat started.
 
 内容如下：
 
-``` sh
+``` bash
 Using CATALINA_BASE:   /usr/local/tomcat8
 Using CATALINA_HOME:   /usr/local/tomcat8
 Using CATALINA_TMPDIR: /usr/local/tomcat8/temp
@@ -113,19 +114,19 @@ Note: Waiting for the process to end and use of the -force option require that $
 - 在浏览器中输入`127.0.0.1:8080`，便可看到tomcat的界面
 
 
-## MAVEN
+### MAVEN
 
-### 介绍
+##### 介绍
 
 Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。
 
-### 下载
+##### 下载
 
 * [MAVEN官网](http://maven.apache.org/index.html)
 
 * 找到download中的`apache-maven-3.3.9-bin.tar.gz`
 
-### 安装
+##### 安装
 
 - [ubuntu14.04安装maven](http://jinjzk.iteye.com/blog/2094289)
 - [ubuntu maven环境安装配置](https://my.oschina.net/hongdengyan/blog/150472)https://my.oschina.net/hongdengyan/blog/150472
@@ -147,7 +148,7 @@ Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目�
 
 在末尾加入：
 
-``` sh
+``` bash
 # maven setting
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin  
@@ -160,7 +161,7 @@ export PATH=$M2:$PATH
 
 内容如下：
 
-``` sh
+``` bash
 Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-11T00:41:47+08:00)
 Maven home: /usr/local/maven
 Java version: 1.8.0_101, vendor: Oracle Corporation
@@ -179,7 +180,7 @@ OS name: "linux", version: "4.2.0-42-generic", arch: "amd64", family: "unix"
 
 修改以下内容：
 
-```bash
+``` bash
 <!-- localRepository
    | The path to the local repository maven will use to store artifacts.
    |
@@ -190,7 +191,7 @@ OS name: "linux", version: "4.2.0-42-generic", arch: "amd64", family: "unix"
 
 为
 
-```bash
+``` bash
 <!-- localRepository
    | The path to the local repository maven will use to store artifacts.
    |

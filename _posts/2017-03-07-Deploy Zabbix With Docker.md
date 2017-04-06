@@ -6,18 +6,19 @@ honour and majesty hast thou laid upon him. Psa：21:5"
 date:       Tue, Mar 7 2017 15:40:58 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Zabbix-With-Docker/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
     - Docker
 ---
 
-# 镜像
+### 镜像
 
 名称： berngp/docker-zabbix
 
 GitHub： [berngp/docker-zabbix](https://github.com/berngp/docker-zabbix)
 
-## 在Docker中使用Zabbix 进行监控
+##### 在Docker中使用Zabbix 进行监控
 
 > Zabbix Server 端口号10051.
 
@@ -31,7 +32,7 @@ GitHub： [berngp/docker-zabbix](https://github.com/berngp/docker-zabbix)
 
 > Monit管理在这里 (http://$container_ip:2812, user 'myuser' and password 'mypassword').  monit是一款进程、文件、目录和设备的监测软件，用于Unix平台。
 
-## 如何使用
+##### 如何使用
 
 你可以执行以下命令运行Zabbix服务.
 
@@ -43,15 +44,16 @@ GitHub： [berngp/docker-zabbix](https://github.com/berngp/docker-zabbix)
 
 一个将端口 80 映射到 49184 端口的例子。
 
-``` sh
-$ docker ps -f name=zabbix
+``` bash
+sudo docker ps -f name=zabbix
+
 CONTAINER ID        IMAGE                         COMMAND                CREATED             STATUS              PORTS                                                                                                NAMES
 970eb1571545        berngp/docker-zabbix:latest   "/bin/bash /start.sh   18 hours ago        Up 2 hours          0.0.0.0:49181->10051/tcp, 0.0.0.0:49182->10052/tcp, 0.0.0.0:49183->2812/tcp, 0.0.0.0:49184->80/tcp   zabbix
 ```
 
 如果你想在Docker主机绑定容器特定的端口，你可以执行以下命令：
 
-``` sh
+``` bash
 docker run -d \
            -p 10051:10051 \
            -p 10052:10052 \
@@ -65,31 +67,31 @@ docker run -d \
 
 以上都做完了*Zabbix Web UI* 就已经运行了 你可以通过 http://$container_ip/zabbix 访问. 用户名是**admin**密码是**zabbix**.
 
-## Apparmor细节 (仅仅在Debian和Ubuntu)
+##### Apparmor细节 (仅仅在Debian和Ubuntu)
 
 如果你想容器使用Monit控制和监视各个进程, 你需要配置Docker的默认Apparmor配置文件. 目前，唯一的办法就是添加 trace 能力和运行的容器通过AppArmor，使用下面的标识 RUN command:
 
 --cap-add SYS_PTRACE  --security-opt apparmor:unconfined
 如果添加*vast*号日志信息写入你得你的系统日志，并每10秒跟踪一次进程！
 
-## 挖掘Docker Zabbix 容器
+##### 挖掘Docker Zabbix 容器
 
 如果你想查看部署运行容器的内容, 你可以通过如下命令 bash shell through docker's exec . 执行以下命令.
 
 `docker exec -i -t zabbix /bin/bash`
 
 
-## 进入容器构建代码目录
+##### 进入容器构建代码目录
 
 `cd /docker/docker-zabbix`
 
-## 构建容器
+##### 构建容器
 
 `docker build -t berngp/docker-zabbix .`
 
-## CentOS7 mini上搭建zabbix-agent
+##### CentOS7 mini上搭建zabbix-agent
 
-``` sh
+``` bash
 # 安装网络工具
 yum install net-tools
 
@@ -124,7 +126,7 @@ systemctl status zabbix-agent.service
 
 zabbix界面添加agent主机
 
-# 镜像
+### 镜像
 
 名称：
  
@@ -137,11 +139,11 @@ GitHub：
 - [docker-zabbix-agent](https://github.com/million12/docker-zabbix-agent)
 - [docker-zabbix-server](https://github.com/million12/docker-zabbix-server)
 
-## 如何使用
+##### 如何使用
 
-### mariadb
+##### mariadb
 
-``` sh
+``` bash
 docker run \
     -d \
     --name zabbix-db \
@@ -151,9 +153,9 @@ docker run \
     million12/mariadb
 ```
 
-### zabbix-server
+##### zabbix-server
 
-``` sh
+``` bash
 docker run \
     -d \
     --name zabbix \
@@ -170,9 +172,9 @@ docker run \
     million12/zabbix-server
 ```
 
-### zabbix-agent
+##### zabbix-agent
 
-``` sh
+``` bash
 docker run \
 	-d \
 	--name zabbix-agent \
@@ -187,7 +189,7 @@ docker run \
 	million12/zabbix-agent
 ```
 
-## 参考资料
+### 参考
 
 1. [Git@OSC 项目推荐 —— Zabbix 的 Docker 映像](http://www.tuicool.com/articles/MFrAZf6)
 2. [centos7 安装zabbix-agent](http://blog.csdn.net/linglong0820/article/details/48196895)

@@ -5,6 +5,7 @@ subtitle:   "I will sing unto the Lord, because he hath dealt bountifully with m
 date:       Mon, Nov 14 2016 17:40:56 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Kafka&Zookeeper-on-Ubuntu14.04/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
 ---
@@ -16,11 +17,11 @@ tags:
 - 192.168.1.158
 - 192.168.1.159
 
-## ZooKeeper
+### ZooKeeper
 
-### 安装
+##### 安装
 
-```sh
+``` bash
 # 下载zookeeper-3.4.8
 sudo wget http://archive.apache.org/dist/zookeeper/zookeeper-3.4.8/zookeeper-3.4.8.tar.gz
 
@@ -28,9 +29,9 @@ sudo wget http://archive.apache.org/dist/zookeeper/zookeeper-3.4.8/zookeeper-3.4
 sudo tar zxvf zookeeper-3.4.8.tar.gz -C /opt/
 ```
 
-### 配置
+##### 配置
 
-```sh
+``` bash
 # 进入zookeeper配置文件下
 cd /opt/zookeeper-3.4.8/conf/
 
@@ -58,9 +59,9 @@ administrator@administrator158:/opt/zookeeper-3.4.8$ cat data/myid
 1
 ```
 
-### 启动
+##### 启动
 
-```sh
+``` bash
 cd /opt/zookeeper-3.4.8/
 
 administrator@administrator158:/opt/zookeeper-3.4.8/$ sudo ./bin/zkServer.sh start
@@ -72,7 +73,7 @@ Starting zookeeper ... STARTED
 
 遇到*Error contacting service. It is probably not running*的问题[^error]：
 
-```sh
+``` bash
 # 以前台方式启动，可以看到
 sudo ./zkServer.sh start-foreground
 
@@ -95,23 +96,24 @@ Caused by: java.lang.IllegalArgumentException: /tmp/zookeeper-3.4.8/data/myid fi
 Invalid config, exiting abnormally
 ```
 
-### 查看状态
+##### 查看状态
 
-```sh
+``` bash
 sudo ./zkServer.sh status
 
 ZooKeeper JMX enabled by default
 Using config: /opt/zookeeper-3.4.8/bin/../conf/zoo.cfg
 Mode: follower
 ```
+
 三个zookeeper的节点中，有一个的mode为leader，当前死掉后，follower会变成leader
 
 
-## Kafka
+### Kafka
 
-### 安装
+##### 安装
 
-```sh
+``` bash
 # 下载kafka_2.11-0.10.0.0
 sudo wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/0.10.0.0/kafka_2.11-0.10.0.0.tgz
 
@@ -119,9 +121,9 @@ sudo wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/0.10.0.0/kafka_2.11-0
 sudo tar zxvf kafka_2.11-0.10.0.0.tgz -C /opt/
 ```
 
-### 配置
+##### 配置
 
-```sh
+``` bash
 # 进入config文件下
 cd /opt/kafka_2.11-0.10.0.0/config/
 
@@ -133,9 +135,9 @@ sudo vim server.properties
 # 3.修改：zookeeper.connect=192.168.1.158:2181,192.168.1.157:2181,192.168.1.159:2181
 ```
 
-### 启动服务
+##### 启动服务
 
-```sh
+``` bash
 # 进入kafka文件下
 cd /opt/kafka_2.11-0.10.0.0/
 
@@ -145,17 +147,17 @@ sudo ./bin/kafa-server-start.sh config/server.properties &
 
 **后面加`&`，可以退出终端，让其在后台运行**
 
-### 停止服务
+##### 停止服务
 
-```sh
+``` bash
 sudo ./bin/kafa-server-stop.sh config/server.properties
 ```
 
 ### topic上的操作
 
-#### create topic
+##### create topic
 
-```sh
+``` bash
 sudo ./bin/kafka-topics.sh --create --zookeeper 192.168.1.158:2181 --replication-factor 3 --partitions 1 --topic cj_test
 
 WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
@@ -170,41 +172,41 @@ Created topic "cj_test".
 > 
 > --topic: 主题名称
 
-#### list topic
+##### list topic
 
-```sh
+``` bash
 sudo ./bin/kafka-topics.sh --list --zookeeper 192.168.1.158:2181
 cj_test
 ```
 
-#### describe topics
+##### describe topics
 
-```sh
+``` bash
 sudo ./bin/kafka-topics.sh --describe --zookeeper 192.168.1.158:2181 --topic cj_test
 
 Topic:cj_test   PartitionCount:1        ReplicationFactor:3     	Configs:
 	Topic: cj_test  Partition: 0    Leader: 1       Replicas: 2,1,0 Isr: 1
 ```
 
-#### send message
+##### send message
 
-```sh
+``` bash
 sudo ./bin/kafka-console-producer.sh --broker-list 192.168.1.158:9092 --topic cj_test
 
 this is chenjian test
 ```
 
-#### consumer message
+##### consumer message
 
-```sh
+``` bash
 sudo ./bin/kafka-console-consumer.sh --zookeeper 192.168.1.158:2181 	--topic cj_test --from-beginning
 
 this is chenjian test
 ```
 
-#### add partitions
+##### add partitions
 
-```sh
+``` bash
 sudo ./bin/kafka-topics.sh -zookeeper 192.168.1.157:2181,192.168.1.158:2181,192.168.1.159:2181 –alter –partitions  3 –topic hiddenlink
 	
 WARNING: If partitions are increased for a topic that has a key, the partition logic or ordering of the messages will be affected

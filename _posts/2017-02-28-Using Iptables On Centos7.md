@@ -5,17 +5,18 @@ subtitle:   "But thou art holy, O thou that inhabitest the praises of Israel. Ps
 date:       Tue, Feb 28 2017 15:04:33 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Iptables-On-Centos7/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
     - Linux
     - Kubernetes
 ---
 
-## 前言
+### 前言
 
 在部署Kubernetes中遇到了关闭Firewalld服务问题，于是涉及到iptables的设置。Centos7系统采用新的firewalld服务代替iptables，但并没有摒弃iptables。
 
-## 准备工作
+### 准备工作
 
 ``` bash
 # 关闭firewalld服务
@@ -38,7 +39,7 @@ sudo yum update iptables
 sudo yum install -y iptables-services
 ```
 
-## iptalbes操作命令
+#### iptalbes操作命令
 
 - 基本操作：
 
@@ -85,7 +86,7 @@ iptables -A INPUT -d 10.0.0.42 -p tcp --dport 8080 -m limit --limit 2/second --l
 > 
 > -j ACCEPT 添加处理机制，ACCEPT接受，DROP丢弃
 
-## 用例
+##### 用例
 
 目标：只允许10.0.0.44可以ssh（端口22）链接192.168.1.179
 
@@ -131,7 +132,7 @@ num   pkts bytes target     prot opt in     out     source               destina
 
 > 还有很多服务，例如ssh服务的22，邮件服务器的25,110端口， FTP服务器的21端口，DNS服务器的53端口，HTTP的80端口，HTTPS的443端口等等
 
-## 启动iptables服务
+##### 启动iptables服务
 
 ``` bash
 # 保存上述规则
@@ -148,7 +149,7 @@ systemctl start iptables.service
 systemctl status iptables.service
 ```
 
-## 参考文献
+### 参考
 
 1. [centos7搭建集群必知：centos7已经无iptables，只有firewall](http://www.aboutyun.com/thread-17535-1-1.html)
 2. [看了那么多iptables的教程，这篇教程还是比较全面易懂的](https://www.91yun.org/archives/1690)

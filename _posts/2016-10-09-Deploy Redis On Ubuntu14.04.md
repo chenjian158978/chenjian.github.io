@@ -6,6 +6,7 @@ he drew me out of many waters. Psa 18:16"
 date:       Sun, Oct 09 2016 17:49:22 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-On-Ubuntu14.04/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
 ---
@@ -48,7 +49,7 @@ tags:
 
 - `sudo ./install_server.sh`  随后的一些问题选默认即可
 
-### redis简易操作
+##### redis简易操作
 
 启动redis服务：
 
@@ -64,7 +65,7 @@ tags:
 
 内容如下：
 
-``` sh
+``` bash
 # Server
 redis_version:3.2.4
 redis_git_sha1:00000000
@@ -167,7 +168,7 @@ cluster_enabled:0
 db0:keys=1,expires=0,avg_ttl=0
 ```
 
-### redis.conf的主要参数
+##### redis.conf的主要参数
 
 >daemonize：是否以后台daemon方式运行
 pidfile：pid文件位置
@@ -184,7 +185,7 @@ appendonly：是否开启appendonlylog，开启的话每次写操作会记一条
 appendfsync：appendonlylog如何同步到磁盘（三个选项，分别是每次写都强制调用fsync、每秒启用一次fsync、不调用fsync等待系统自己同步）
 
 
-### redis开启远程 
+##### redis开启远程 
 
 - 修改redis配置文件(`/etc/redis/6379.conf`), 将`bind localhost`或`bind 127.0.0.1`注释掉；
 
@@ -196,14 +197,14 @@ appendfsync：appendonlylog如何同步到磁盘（三个选项，分别是每�
 
 - 验证：`ps -aux| grep redis`
 
-```bash
+``` bash
 root      5674  0.0  0.1  40448  9164 ?        Ssl  11:56   0:00 /usr/local/bin/redis-server *:6379              
 chenjian  5680  0.0  0.0  15944  2224 pts/7    S+   11:56   0:00 grep --color=auto redis
 ```
 
 - 本机(10.0.0.44)redis内容如下：
 
-```bash
+``` bash
 (python2.7) chenjian@chenjian-Pc:/usr/local/bin$ redis-cli 
 127.0.0.1:6379> KEYS *
 1) "chenjian"
@@ -212,8 +213,8 @@ chenjian  5680  0.0  0.0  15944  2224 pts/7    S+   11:56   0:00 grep --color=au
 ```
 
 - 远程在10.0.0.41中的python程序“
-
-```python
+ 
+``` python
 # -*- encoding=utf-8 -*-
 
 import redis
@@ -228,21 +229,17 @@ print r.get('chenjian')
 ```
 
 结果：
-```bash
+
+``` bash
 ['chenjian']
 26
 ```
 
-### 博文
+### 参考
 
 1. [Redis的三种启动方式](http://www.tuicool.com/articles/aQbQ3u)
-
 2. [redis安装部署维护备份](http://blog.csdn.net/huwei2003/article/details/40536905)
-
 3. [Redis开启远程登录连接](http://www.cnblogs.com/machanghai/p/5497084.html)
-
 4. [redis 报错 Redis protected-mode 配置文件没有真正启动](http://www.th7.cn/db/nosql/201608/201681.shtml) 
-
 5. [redis教程-自强教程](http://www.runoob.com/redis/redis-tutorial.html)
-
 6. [redis快速入门](http://www.yiibai.com/redis/redis_quick_guide.html)

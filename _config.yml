@@ -82,16 +82,10 @@ friends: [
         title: "Hux Blog",
         href: "http://huangxuan.me"
     },{
-        title: "Foo",
-        href: "#"
+        title: "nMask's Blog",
+        href: "http://thief.one/"
     },{
-        title: "Bar",
-        href: "#"
-    },{
-        title: "Example Friends",
-        href: "#"
-    },{
-        title: "It helps SEO",
-        href: "#"
+        title: "漠然",
+        href: "https://mritd.me/"
     }
 ]

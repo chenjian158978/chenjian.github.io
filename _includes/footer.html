@@ -6,7 +6,7 @@
                 <ul class="list-inline text-center">
                     {% if site.RSS %}
                     <li>
-                        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                        <a href="{{ '/feed.xml' | prepend: site.baseurl }}">
                         <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -107,7 +107,7 @@
                     Theme by <a href="http://huangxuan.me">Hux</a> |
                     <iframe
                             style="margin-left: 2px; margin-bottom:-5px;"
-                            frameborder="0" scrolling="0" width="91px" height="20px"
+                            frameborder="0" scrolling="0" width="100px" height="20px"
                             src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
                     </iframe>
                 </p>
@@ -117,21 +117,34 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ '/js/jquery.min.js' | prepend: site.baseurl }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ '/js/bootstrap.min.js' | prepend: site.baseurl }}"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ '/js/hux-blog.min.js' | prepend: site.baseurl }}"></script>
+
+<!-- Service Worker -->
+{% if site.service-worker %}
+<script type="text/javascript">
+    if(navigator.serviceWorker){
+        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+        navigator.serviceWorker
+                .register('/sw.js')
+                .then((registration) => {console.log('Service Worker Registered. ', registration)})
+                .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    }
+</script>
+{% endif %}
 
 
 <!-- async load function -->
 <script>
     function async(u, c) {
         var d = document, t = 'script',
-            o = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
         o.src = u;
         if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
         s.parentNode.insertBefore(o, s);
@@ -161,7 +174,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}',function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -199,7 +212,7 @@
 {% endif %}
 
 
-<!-- Baidu Tongji -->
+<!-- Baidu Analytics -->
 {% if site.ba_track_id %}
 <script>
     // dynamic User by Hux
@@ -215,3 +228,52 @@
     })();
 </script>
 {% endif %}
+
+<!-- Side Catalog -->
+{% if page.catalog %}
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     * 侧栏滑动效果，滑动时保持在一个页面上
+     */
+    async("{{ '/js/jquery.nav.js' | prepend: site.baseurl }}", function () {
+        $('.side-catalog').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+{% endif %}
+

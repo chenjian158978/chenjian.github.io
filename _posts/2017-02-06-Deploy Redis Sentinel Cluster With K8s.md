@@ -6,12 +6,13 @@ so will we sing and praise thy power. Psa 21:13"
 date:       Mon, Feb 6 2017 09:42:59 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-Sentinel-Cluster-With-K8s/head_blog.jpg"
+catalog:    true
 tags:
     - 工作
     - kubernetes
 ---
 
-## 参照官网与GITHUB
+### 参照官网与GITHUB
 
 主要是github上面的[Reliable, Scalable Redis on Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/storage/redis)
 
@@ -176,7 +177,7 @@ redis.get('foo', function (err, res) {
 bar
 ```
 
-## 参考文献
+### 参考
 
 1. [Reliable, Scalable Redis on Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/storage/redis)
 2. [redis的python客户端redis-py初识](http://www.tuicool.com/articles/FzmaeiY)
