@@ -1,0 +1,28 @@
+---
+layout:     post
+title:      "Books I Read During 2017"
+subtitle:   "But I am a worm, and no man;
+a reproach of men, and despised of the people. Psa 22:6"
+date:       Thu, Apr 6 2017 18:05:46 GMT+8
+author:     "ChenJian"
+header-img: "img/in-post/Books-I-Read-During-2017/head_blog.jpg"
+catalog:    true
+tags:
+    - 读书
+---
+
+
+### 《安吉拉·卡特的精怪故事集》![安吉拉·卡特的精怪故事集](https://img1.doubanio.com/lpic/s6870889.jpg)- 作家：[英] 安吉拉·卡特- 出版社：南京大学出版社- 译者：郑冉然- 出版年：2011-9
+
+### 《Eva Re-take》![eva re-take](https://img3.doubanio.com/lpic/s6951611.jpg)- 作家：KIMIMARU - 出版社：同人社「スタジオKIMIGABUCHI」- 出版年：2005-12-29
+
+### 《岛上书店》![岛上书店](https://img3.doubanio.com/lpic/s28049685.jpg)- 作家：加布瑞埃拉- 出版社：江苏凤凰文艺出版社- 译者：孙仲旭/李玉瑶 - 出版年：2015-5
+
+### 《三体1-地球往事》![三体1](https://img1.doubanio.com/lpic/s2768378.jpg)- 作家： 刘慈欣 - 出版社：重庆出版社- 出版年：2008-1
+
+### 《三体2-黑暗森林》![三体2](https://img3.doubanio.com/lpic/s4542660.jpg)- 作家： 刘慈欣 - 出版社：重庆出版社- 出版年：2008-5
+
+### 《三体3-死神永生》![三体3](https://img3.doubanio.com/lpic/s26012674.jpg)- 作家： 刘慈欣 - 出版社：重庆出版社- 出版年：2010-11
+
+### 《月亮和六便士》![月亮和六便士](https://img1.doubanio.com/lpic/s2659208.jpg)- 作家： 威廉·萨默塞特·毛姆  - 出版社: 上海译文出版社
+- 译者:  傅惟慈- 出版年：2006-8

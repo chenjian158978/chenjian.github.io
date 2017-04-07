@@ -12,7 +12,7 @@ tags:
     - Docker
 ---
 
-### 镜像
+### 镜像berngp
 
 名称： berngp/docker-zabbix
 
@@ -126,7 +126,7 @@ systemctl status zabbix-agent.service
 
 zabbix界面添加agent主机
 
-### 镜像
+### 镜像million12
 
 名称：
  
