@@ -54,9 +54,13 @@
 
 - 更新icon
 
+- 修改about内容
+
 - 序列化部分文章
 
-- 添加RSS订阅
+- 添加RSS订阅,又取消掉了
+
+- 添加下栏分享功能，插件[share.js](https://github.com/overtrue/share.js)
 
 #### 打算做的
 
