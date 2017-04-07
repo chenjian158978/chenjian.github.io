@@ -243,3 +243,6 @@ print r.get('chenjian')
 4. [redis 报错 Redis protected-mode 配置文件没有真正启动](http://www.th7.cn/db/nosql/201608/201681.shtml) 
 5. [redis教程-自强教程](http://www.runoob.com/redis/redis-tutorial.html)
 6. [redis快速入门](http://www.yiibai.com/redis/redis_quick_guide.html)
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/10/09/Deploy-Redis-On-Ubuntu14.04/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

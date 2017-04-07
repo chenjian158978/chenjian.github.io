@@ -28,4 +28,4 @@ tags:
 王尔德的散文诗不像印象中的长句短句排列，更像一个个迷你的童话。其中《弟子》一篇我最是喜欢，从这里可以看到王尔德的叙事能力，他能从不同的角度去看问题。其实万物相生，每一个事物都是一个独立存在却不能分离的，想要从不同角度看问题，首先要会观察到这个角度，然后设身处世的去思考，而且还要多幻想，不同的身份加入进去。我想这样才能写的像王尔德的故事了。
 《快乐王子集》，真心的感谢与你相遇相知。
 有生之年，定会再次拜读。
-浙江理工大学
+浙江理工大学<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2014/12/24/Ideas-About-The-Happy-Prince-And-Other-Tales/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

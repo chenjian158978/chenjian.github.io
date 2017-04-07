@@ -208,3 +208,6 @@ Lost, even, at Martha's Vineyard, again
 * 歌词来源： [A Most Disgusting Song](http://genius.com/Rodriguez-a-most-disgusting-song-lyrics)
 * 歌曲-网站Spotify: [A Most Disgusting Song](https://play.spotify.com/album/4Aa53iJ3EuGEkrna4nhAHn)
 * 歌曲-网站网易云音乐：[A Most Disgusting Song](http://music.163.com/#/song?id=29379916)
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/09/01/A-Most-Disgusting-Song/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

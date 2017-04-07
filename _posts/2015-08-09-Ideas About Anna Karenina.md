@@ -29,4 +29,4 @@ tags:
 3. 事务繁忙，交际圈大。可以看出很多故事的描写都是奥勃朗斯基的事务的衍生，而交际圈中几乎都很熟悉；
 4. 这个人物不仅能解决问题，还自己要有问题。故事中不能总要求他去解决别人的问题，有时也需别人来解决他的问题，例如开始安娜的劝告之旅（讲到这一点，就想起作品开头——“幸福的家庭家家相似，不幸的家庭各各不同”，很有嘲笑风味）。当然在全部的150个人物中，还有很多连接点，他们就像织网中的每个节点，完成了整个演出。
 所有的感触就写到这吧，很喜欢这本书。
-浙江理工大学
+浙江理工大学<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2015/08/09/Ideas-About-Anna-Karenina/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

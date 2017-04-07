@@ -26,3 +26,5 @@ tags:
 
 ### 《月亮和六便士》![月亮和六便士](https://img1.doubanio.com/lpic/s2659208.jpg)- 作家： 威廉·萨默塞特·毛姆  - 出版社: 上海译文出版社
 - 译者:  傅惟慈- 出版年：2006-8
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

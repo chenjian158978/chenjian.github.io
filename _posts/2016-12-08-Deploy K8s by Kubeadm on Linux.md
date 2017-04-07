@@ -1265,7 +1265,7 @@ kubeadm init xxxx
 `route add 10.96.0.1 gw <your real master IP>`
 
 
-### 参考文献：
+### 参考
 1.  [Installing Kubernetes on Linux with kubeadm](http://kubernetes.io/docs/getting-started-guides/kubeadm/)
 2. [漠然博客](https://mritd.me/)
 3. [ubuntu 16.04 L2TP](http://blog.csdn.net/hhbgk/article/details/52549816)
@@ -1285,3 +1285,6 @@ kubeadm init xxxx
 17. [Kibana4学习<三>](http://www.cnblogs.com/guozhe/p/5206216.html)
 18. [How to fix weave-net CrashLoopBackOff for the second node?
 ](http://stackoverflow.com/questions/39872332/how-to-fix-weave-net-crashloopbackoff-for-the-second-node#40338365)
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

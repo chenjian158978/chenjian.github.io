@@ -116,4 +116,8 @@ My girl, my girl, don’t lie to me
 2.	第二遍，叙述完她丈夫的死，他回想到女人的体温，一种渴望，或者欲望填入感情，他怕刚才的抱怨会让女人更加远离自己，于是带上了一丝丝胆怯与祈求，祷告女人能更快出现，带他离开已经渐渐深入的森林；
 3.	第三遍，是什么能让女人回来，是什么，已在不归的路上，这成了没有答案的问题。唱者悲痛万分，在自己的墓碑前一问再问。他发狠了，他发怒了，他质问他的女人，但他已到黄泉尽头，他不甘，但他还爱着。
 这三段重复各有不同，讲着不同的感情，或者不同的故事。以至于我脑洞打开，编起了这样的故事：已婚女人爱上外来男人，不断偷情。被发现后，由于挚爱妻子，丈夫投火车而死。女人后悔万分，感到深深的羞愧，在丈夫死后，一人离去。外来男人同样挚爱女人，面对女人的无故离开，他想不通，决定赴死。
-好了，脑洞结束，剧情有点老套，但是我感觉还不错。浙江理工大学
+好了，脑洞结束，剧情有点老套，但是我感觉还不错。浙江理工大学
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/01/11/Where-Did-You-Sleep-Last-Night/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。
+

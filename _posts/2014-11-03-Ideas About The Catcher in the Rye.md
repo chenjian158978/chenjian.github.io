@@ -20,3 +20,5 @@ tags:
 这部书给我的启示目前也许就这些，但是我想一定还有。当然我要时刻保护着我内心的霍尔顿，总能在我耳边告诉我要抓住自己，不要放弃自己天性，不要迷失自己的梦想。
 2014.11.03
 浙江理工大学
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2014/11/03/Ideas-About-The-Catcher-in-the-Rye/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

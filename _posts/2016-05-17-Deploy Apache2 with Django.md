@@ -271,3 +271,6 @@ chrome浏览器中输入：[http://127.0.0.1/admin/](http://127.0.0.1/admin/)
 8. [Optimize Apache Performance on CentOS 7](https://devops.profitbricks.com/tutorials/optimize-apache-performance-on-centos-7-1/)
 9. [CentOS6服务管理之WEB-Apache httpd配置文件详解](http://sohudrgon.blog.51cto.com/3088108/1589775/)
 10. [CentOS 7 + Apache + mod_wsgi 部署Django项目](http://www.jianshu.com/p/8a2163db7ab5)
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/05/17/Deploy-Apache2-with-Django/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

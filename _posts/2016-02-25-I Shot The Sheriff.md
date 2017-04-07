@@ -27,3 +27,5 @@ tags:
 	朋友们，是警长，我开枪的是警长，我没有杀副警长呀！I SHOT THE SHERIFF原创来自于雷鬼之父BOB MARLEY，作者曾表述这首歌曲的主题就是“公平”。其中的sheriff，代替了police和doctor两个词，前者是为政府与审查制度的问题，后者就MARLEY女友说是MARLEY发对她使用避孕药（birth control pills）。
 这首歌较为著名的翻唱来自于ERIC CLAPTON，其中有很长时间的吉他solo，将歌曲融入乐soft rock和雷鬼，超级赞。也是我接触这首歌的原因，同时让我想起那句话“牛人之所以牛，不是他有多厉害，而是他的辛酸”，只有不断的练习，才能有所成就。相对于原版，就吉他solo更为出色，而原版能给乐者更多感受，例如I & shot的反复使用，有种无奈与冲动，从而给歌曲更多的乐趣感（这便是雷鬼）。
 还有来自WARREN G的版本，这个从全新的方式，即用rap来讲述这段故事，更改了歌词，也是很不错，但我没有太多深入的了解。
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/02/25/I-Shot-The-Sheriff/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。

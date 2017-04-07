@@ -62,6 +62,8 @@
 
 - 添加下栏分享功能，插件[share.js](https://github.com/overtrue/share.js)
 
+- 博文末尾添加cc4协议
+
 #### 打算做的
 
 - 进一步修改博客的问题

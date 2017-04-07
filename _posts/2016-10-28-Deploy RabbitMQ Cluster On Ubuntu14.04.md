@@ -413,3 +413,6 @@ BROKER_URL = "amqp://%s:%s@%s:%s/%s" % (CELERY_BROKER_USER,
 5. [RabblitMQ Cluster + HAProxy(负载均衡)](http://flyingdutchman.iteye.com/blog/1912690)
 6. [为OpenStack搭建高可用RabbitMQ集群](http://www.tuicool.com/articles/bQ3iu2r)
 7. [rabbitmq集群+haproxy 相关 安装与配置和注意事项](https://segmentfault.com/a/1190000003720119)
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/10/28/Deploy-RabbitMQ-Cluster-On-Ubuntu14.04/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。
