@@ -12,13 +12,23 @@ tags:
     - kubernetes
 ---
 
+### 系列博文
+
+- [Deploy K8s by Kubeadm on Linux](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
+- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
+- [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+
 ### 系统环境与IP
 
 * 系统环境： 
 
 	- 之前使用ubuntu16.04.1-desktop-amd64, 使用清华的源
 
-	- 随后使用centos7(推荐)
+	- 随后使用centos7-server(推荐)
 
 * 集群信息：
 
@@ -30,12 +40,14 @@ tags:
 	
 
 >*整个环境在VM下完成，可用master克隆出两个子机*
-
+>
 >**注意VM的网络设置。发现只有weave网络能在虚拟机中使用，但是flannel，calico和weave均能在物理机上使用，即DNS解析没有问题**
-
+>
 > **以下开始的所有操作，在192.168.1.167单点中的root权限下操作**
 
 ### CentOS7系统备份与还原
+
+当使用centos7-server时，为避免重复装系统，则采用备份复原的方式。
 
 > 备份：
 
@@ -103,224 +115,12 @@ sudo yum install -y iptables-services
 
 ### DOCKER安装与设置
 
-> Ubuntu16.04
-
-```bash
-wget -qO- https://get.docker.com/ | sh
-
-administrator@administrator167:~$ docker -v
-Docker version 1.12.3, build 6b644ec
-```
-
-> CentOS7
-
-所需的两个docker的rpm文件的链接：[kubeadm-rpm](https://pan.baidu.com/s/1pLrrlCR)
-
-然后，`sudo yum install * -y`
-
-链接docker私有库：
-
-- 解决https问题
-	
-	- 用于ubuntu16.04，docker1.12：`echo { \"insecure-registries\":[\"10.0.0.153:5000\"] } > /etc/docker/daemon.json`
-	
-	- 用于Centos7, docker1.10:`echo "INSECURE_REGISTRY='--insecure-registry 10.0.0.153:5000'" >> /etc/sysconfig/docker`
-	
-	- 用于Centos7，docker1.12：
-
-``` bash
-sudo vim /usr/lib/systemd/system/docker.service
-
-ExecStart=/usr/bin/dockerd 
-ExecStart=/usr/bin/dockerd --insecure-registry 10.0.0.153:5000
-```
-
-- 解决docker的容器数量限制
-
-``` bash
-sudo mkdir -p /etc/systemd/system/docker.service.d/
-
-sudo tee /etc/systemd/system/docker.service.d/tasksmax.conf <<-'EOF'
-[Service]
-TasksMax=infinity
-EOF
-```
-
-岂是在`/usr/lib/systemd/system/docker.service`中有被注释掉的`#TasksMax=infinity`，可将其注释去掉
-
-- 重启docker服务：
-
-	- Ubuntu14.04: `sudo service docker restart`
-
-	- Ubuntu16.04: `sudo systemctl restart docker`
-
-	- Centos7： 
-
-``` bash
-sudo systemctl stop docker
-
-sudo systemctl daemon-reload 
-
-sudo systemctl enable docker
-
-sudo systemctl start docker
-```
-
-- 更换镜像的tag：`docker tag 40a673399858 192.168.1.78:5000/docker-whale`
-
-- 上传镜像： `docker push 10.0.0.153:5000/docker-whale`
-
-- 下载镜像： `docker pull 10.0.0.153:5000/docker-whale`
-
-- 浏览器输入：
-
-``` bash
-curl http://192.168.1.78:5000/v2/_catalog
-	
-{"repositories":["addon-resizer","docker-whale","grafana","heapster","influxdb","kube-ui","kube_test","kubedns-amd64","kubernetes-dashboard-amd64","llll","pause","test_docker"]}
-```
-
-- 查询镜像tag： 
-
-``` bash
-curl http://192.168.1.78:5000/v2/heapster/tags/list
-	
-"name":"heapster","tags":["v1","canary","latest"]}
-```
-
-**建立私有仓库，不仅能保护docker的安全性，有助于下载与上传，同时对于使用kubernets更加方便**
+- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+	- [docker安装](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/#docker安装)
+	- [建立docker私有仓库](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/#建立docker私有仓库)
+	- [docker容器数目限制问题](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/#docker容器数目限制问题)
 
 ### 安装kubernets之前的准备
-
-##### 搭建Etcd集群
-
-Etcd集群对整个k8s集群非常重要，需要抽出搭建。**当时kubeadm不支持高可用性，及不支持etcd集群**
-
-> 搭建环境：**CentOS7**
-> 
-> 
-|  Node |     IP       |
-|:-----:|:------------:|
-| etcd0 | 192.168.1.157|
-| etcd1 | 192.168.1.158|
-| etcd2 | 192.168.1.159|
-
-- 关闭防火墙
-
-``` bash
-sudo systemctl stop firewalld
-
-sudo systemctl disable firewalld
-```
-
-
-- 安装命令：
-
-``` bash
-sudo yum install etcd -y
-```
-
-
-``` bash
-etcd --version
-
-etcd Version: 2.3.7
-Git SHA: fd17c91
-Go Version: go1.6.3
-Go OS/Arch: linux/amd64
-```
-
-- 修改etcd配置
-
-默认文件位于`/etc/etcd/etcd.conf`
-
-``` bash
-rm -rf /etc/etcd/etcd.conf
-
-sudo cat <<EOF |  sudo tee /etc/etcd/etcd.conf
-ETCD_NAME=etcd0
-ETCD_DATA_DIR="/var/lib/etcd/etcd0"
-ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
-ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379,http://0.0.0.0:4001"
-ETCD_INITIAL_ADVERTISE_PEER_URLS="http://192.168.1.157:2380"
-ETCD_INITIAL_CLUSTER="etcd0=http://192.168.1.157:2380,etcd1=http://192.168.1.158:2380,etcd2=http://192.168.1.159:2380"
-ETCD_INITIAL_CLUSTER_STATE="new"
-ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
-ETCD_ADVERTISE_CLIENT_URLS="http://192.168.1.157:2379,http://192.168.1.157:4001"
-ETCD_DISCOVERY=""
-EOF
-```
-
-- 修改etcd的service文件
-
-``` bash
-sudo cat <<EOF |  sudo tee /lib/systemd/system/etcd.service
-[Unit]
-Description=Etcd Server
-After=network.target
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=notify
-WorkingDirectory=/var/lib/etcd/
-EnvironmentFile=-/etc/etcd/etcd.conf
-User=etcd
-# set GOMAXPROCS to number of processors
-ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/bin/etcd --name=\"${ETCD_NAME}\" --data-dir=\"${ETCD_DATA_DIR}\" --listen-client-urls=\"${ETCD_LISTEN_CLIENT_URLS}\" 
---advertise-client-urls=\"${ETCD_ADVERTISE_CLIENT_URLS}\" --initial-cluster-token=\"${ETCD_INITIAL_CLUSTER_TOKEN}\" --initial-cluster=\"${ETCD_INITIAL_CLUSTER}\" --initial-cluster-state=\"${ETCD_INITIAL_CLUSTER_STATE}\""
-Restart=on-failure
-LimitNOFILE=65536
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-
-- 启动etcd的service
-
-``` bash
-sudo systemctl stop etcd
-
-sudo systemctl daemon-reload 
-
-sudo systemctl enable etcd
-
-sudo systemctl start etcd
-
-sudo systemctl status etcd
-```
-
-- 查看etcd的启动参数
-
-``` bash
-ps aux|grep etcd
-
-etcd     16010  1.3  1.1  49112 20728 ?        Ssl  10:18   2:30 /usr/bin/etcd --name=etcd0 --data-dir=/var/lib/etcd/etcd0 --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001 --advertise-client-urls=http://192.168.1.157:2379,http://192.168.1.157:4001 --initial-cluster-token=etcd-cluster --initial-cluster=etcd0=http://192.168.1.157:2380,etcd1=http://192.168.1.158:2380,etcd2=http://192.168.1.159:2380 --initial-cluster-state=new
-root     18440  0.0  0.0 112652   956 pts/0    S+   13:28   0:00 grep --color=auto etcd
-```
-
-- 查看etcd集群的节点信息
-
-``` bash
-etcdctl member list
-
-5a2567911e869c1: name=etcd1 peerURLs=http://192.168.1.158:2380 clientURLs=http://192.168.1.158:2379,http://192.168.1.158:4001 isLeader=true
-588d5e8d3a8648b5: name=etcd2 peerURLs=http://192.168.1.159:2380 clientURLs=http://192.168.1.159:2379,http://192.168.1.159:4001 isLeader=false
-bd2d658f033f9bcc: name=etcd0 peerURLs=http://192.168.1.157:2380 clientURLs=http://192.168.1.157:2379,http://192.168.1.157:4001 isLeader=false
-```
-
-- 查看etcd集群的健康情况
-
-``` bash
-etcdctl cluster-health
-
-member 5a2567911e869c1 is healthy: got healthy result from http://192.168.1.158:2379
-member 588d5e8d3a8648b5 is healthy: got healthy result from http://192.168.1.159:2379
-member bd2d658f033f9bcc is healthy: got healthy result from http://192.168.1.157:2379
-cluster is healthy
-```
-
 
 ##### 修改Linux主机名
 
@@ -394,7 +194,7 @@ Codename:       xenial
 
 1. 在ubuntu16.04上安装L2TP，详见文献参考；
 
-2. 登上梯子，这个不叙述;
+2. 登上梯子，这个不叙述。若想知道方法，请留言或gmail;
 
 3. `curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -`
 
@@ -406,7 +206,7 @@ EOF`
 
 6. `apt-get install -y kubelet kubeadm kubectl kubernetes-cni`
 
-> 相关下载的deb文件可以从[这里](https://pan.baidu.com/s/1jHChOtK)下载，然后通过`sudo dpkg -i *`即可安装完毕
+> 相关下载的deb文件可以从[这里](https://pan.baidu.com/s/1pLhmqzL)下载，然后通过`sudo dpkg -i *`即可安装完毕
 
 > 为避免再次下载这些deb文件，可以将其保存，其中`apt install`的包位置如下：
 
@@ -430,7 +230,7 @@ sudo systemctl enable kubelet && systemctl start kubelet
 ```
 
 
-##### 下载kubeadm需要的镜像
+##### 下载kubeadm需要的镜像(k8s版本为1.5.1)
 
 |images name | version |
 |:----------:|:-------:|
@@ -453,7 +253,7 @@ sudo systemctl enable kubelet && systemctl start kubelet
 |gcr.io/google_containers/kibana|v4.6.1|
 
 1. 这些images可以在漠然大神的[dockerhub](https://hub.docker.com/u/mritd/)上pull,需要注意tag问题，需要什么版本，拉什么tag。然后push到私有库上。
-2. 同时，可以从[这里](https://pan.baidu.com/s/1jHChOtK)下载对应镜像的tar文件
+2. 同时，可以从[这里](https://pan.baidu.com/s/1pLhmqzL)下载对应镜像的tar文件
 
 查看私有库文件：
 
@@ -476,6 +276,8 @@ done
 ```
 
 ### kubeadm初始化
+
+**这里初始化参数是一次性全部写入，读者需要根据自己的需求来选择对应的参数。**
 
 ``` bash
 kubeadm init --api-advertise-addresses 192.168.1.167  --use-kubernetes-version v1.5.1 --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints http://192.168.1.157:2379,http://192.168.1.158:2379,http://192.168.1.159:2379
@@ -535,7 +337,7 @@ rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
 
 - `--pod-network-cidr 10.244.0.0/16`设置指定的网段(Flannel需要)
 
-- `--external-etcd-endpoints http://192.168.1.157:2379,http://192.168.1.158:2379,http://192.168.1.159:2379`设置外部的etcd集群.**目前使用kubeadm不支持HA，即etcd集群，只支持单节点的etcd**
+- `--external-etcd-endpoints http://192.168.1.157:2379,http://192.168.1.158:2379,http://192.168.1.159:2379`设置外部的etcd集群.**目前使用kubeadm不支持HA，即[etcd集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)，只支持单节点的etcd**
 
 ### pod网络创建
 
@@ -547,7 +349,9 @@ rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
 
 这里会pull镜像quay.io/coreos/flannel-git:v0.6.1-28-g5dde68d-amd64，其托管在quay.io上，不需要梯子
 
-但尽量先pull好镜像,并且整理好经常使用的yaml文件，可以节省时间。
+**但尽量先pull好镜像,并且整理好经常使用的yaml文件，可以节省时间**
+
+读者想要对应的yaml文件，可到[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载。
 
 
 ### 查看集群状态
@@ -556,11 +360,11 @@ rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd
 kubectl get pods --all-namespaces -o wide
 ```
 
-> **但状态均为Running，到此，单节点的k8s集群已经搭建完成**
+> **当状态均为Running，到此，单节点的k8s的master已经搭建完成**
 
 ### 添加节点
 
-#### 说明
+##### 使用虚拟机前提下的说明
 
 1. 添加节点`192.168.1.168`的虚拟机，直接克隆`192.168.1.167`，然后改IP；
 
@@ -613,6 +417,8 @@ Node join complete:
 
 Run 'kubectl get nodes' on the master to see this machine join.
 ```
+
+> **到此，两台k8s的集群已经搭建完成**
 
 ### Kubectl的基本命令
 
@@ -685,7 +491,7 @@ kubectl describe svc kube-dns --namespace=kube-system
 > 描述某deployments的运行状态
 
 ``` bash
-kubectl describe deployments sitealive --namespace=wmcluster2016
+kubectl describe deployments sitealive --namespace=cluster2016
 ```
 
 > 删除某pod
@@ -732,420 +538,6 @@ kubectl label nodes administrator167 master=heapster-master
 ``` bash
 kubectl create namespace cludfdfdf20d
 ```
-
-### Dashboard部署
-
-- 下载yaml文件
-
-`https://rawgit.com/kubernetes/dadashboard/master/src/deploy/kubernetes-dashboard.yaml`
-	
-- 将镜像`gcr.io/google_containers/kubernetes-dadashboard-amd64:v1.5.0`放进私有库中
-
-- 修改yaml文件
-
-	1. 去掉`imagePullPolicy: Always`,在[漠大神的博客](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/#section-6)中将值改为IfNotPresent或者Never，但是仍然出错；
-	
-	2. image地址改为`192.168.1.78:5000/kubernetes-dashboard-amd64:v1.5.0`
-
-- 部署
-
-``` bash
-kubectl create -f kubernetes-dashboard.yaml
-	
-deployment "kubernetes-dashboard" created
-service "kubernetes-dashboard" created
-```
-
-- 查看deployments
-
-``` bash
-kubectl get deployment --all-namespaces
-	
-NAMESPACE     NAME                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-kube-system   kube-discovery         1         1         1            1           22h
-kube-system   kube-dns               1         1         1            1           22h
-kube-system   kubernetes-dashboard   1         1         1            1           30m
-```
-
-	
-- 查看service
-
-``` bash
-kubectl get service --all-namespaces
-	
-NAMESPACE     NAME                   CLUSTER-IP     EXTERNAL-IP   PORT(S)         AGE
-default       kubernetes             10.96.0.1      <none>        443/TCP         23h
-kube-system   kube-dns               10.96.0.10     <none>        53/UDP,53/TCP   23h
-kube-system   kubernetes-dashboard   10.101.241.6   <nodes>       80/TCP          34m
-```
-	
-- 查看dashboard的端口
-
-``` bash
-kubectl describe svc kubernetes-dashboard --namespace kube-system
-	
-Name:                   kubernetes-dashboard
-Namespace:              kube-system
-Labels:                 app=kubernetes-dashboard
-Selector:               app=kubernetes-dashboard
-Type:                   NodePort
-IP:                     10.101.241.6
-Port:                   <unset> 80/TCP
-NodePort:               <unset> 32688/TCP
-Endpoints:              10.244.1.14:9090
-Session Affinity:       None	
-```
-
-从中可以看出其类型为NodePort,端口为32688;或者可将该端口固定住。
-
-- 访问dashboard
-浏览器中输入：`http://192.168.1.168:32688/`即可
-
-- 删除部署
-
-``` bash
-kubectl delete -f kubernetes-dashboard.yaml
-	
-deployment "kubernetes-dashboard" deleted
-service "kubernetes-dashboard" deleted
-```
-
-- 查询Linux暴露出来的端口
-
-``` bash
-netstat -tnlp
-```
-
-### Monitoring部署
-
-> 采用Grafana+Heapster+Influxdb
-
-- 下载yaml文件
-
-`git clone https://github.com/kubernetes/heapster.git`
-	
-- 将镜像`gcr.io/google_containers/heapster_grafana:v3.1.1`,`kubernetes/heapster:canary`,`kubernetes/heapster_influxdb:v0.6`放进私有库中
-
-- 修改yaml文件
-
-	* 在`/home/administrator/heapster/deploy/kube-config/influxdb`下6个文件，将image地址分别改为:
-	
-	`192.168.1.78:5000/grafana:v3.1.1`
-	`192.168.1.78:5000/heapster:canary`
-	`192.168.1.78:5000/influxdb:v0.6`
-	
-	* 在`influxdb-service.yaml`文件中，修改成：
-	
-``` bash
-...
-spec:
-	type: NodePort
-	ports:
-	   - name: http
-        port: 8083
-        targetPort: 8083
-      - name: api
-        port: 8086
-        targetPort: 8086
-		selector:
-        k8s-app: influxdb
-```
-	
-暴露出influxdb的8083端口，注意yaml的文件格式，以及不要用tab键
-
-- 部署
-
-``` bash
-pwd
-	
-/home/administrator/heapster/deploy/kube-config/influxdb
-	
-kubectl create -f .
-	
-deployment "monitoring-grafana" created
-service "monitoring-grafana" created
-deployment "heapster" created
-service "heapster" created
-deployment "monitoring-influxdb" created
-service "monitoring-influxdb" created
-```
-	
-- 查看pod状态，确定均为`running`，失败的用`describe`来查看问题
-
-- 查看grafana的端口
-
-``` bash
-kubectl describe svc monitoring-grafana --namespace kube-system
-	
-Name:                   monitoring-grafana
-Namespace:              kube-system
-Labels:                 kubernetes.io/cluster-service=true
-                    kubernetes.io/name=monitoring-grafana
-Selector:               k8s-app=grafana
-Type:                   NodePort
-IP:                     10.96.33.128
-Port:                   <unset> 80/TCP
-NodePort:               <unset> 32735/TCP
-Endpoints:              10.244.1.18:3000
-Session Affinity:       None
-```
-
-通过`192.168.1.168:32735`进入grafana，进去后即可发现influxdb数据库已经链接好
-
-或者查看数据库通过：
-	
-``` bash
-curl http://192.168.1.168:32735/api/datasources/proxy/1/query?db=k8s&q=SHOW%20DATABASES&epoch=ms
-	
-{"results":[{"series":[{"name":"databases","columns":["name"],"values":[["_internal"],["k8s"]]}]}]}
-```
-	
-- 通过`http://192.168.1.167:4194`，`节点IP：4194`进入cAdvisor
-
-- 查看influxdb的端口
-
-``` bash
-kubectl describe svc monitoring-influxdb --namespace kube-system
-	
-Name:                   monitoring-influxdb
-Namespace:              kube-system
-Labels:                 kubernetes.io/cluster-service=true
-                    kubernetes.io/name=monitoring-influxdb
-                    task=monitoring
-Selector:               k8s-app=influxdb
-Type:                   NodePort
-IP:                     10.110.51.194
-Port:                   http    8083/TCP
-NodePort:               http    32552/TCP
-Endpoints:              10.244.1.23:8083
-Port:                   api     8086/TCP
-NodePort:               api     30758/TCP
-Endpoints:              10.244.1.23:8086
-Session Affinity:       None
-```
-	
-其中，通过`http://192.168.1.168:32552/`进入influxdb的UI端口，在设置中，填写`192.168.1.168:30758`完成设置
-
-- 具体设置，可阅读相关资料，例如[storage-schema](https://github.com/kubernetes/heapster/blob/master/docs/storage-schema.md)
-
-#### 添加邮件
-
-含有告警(Altering)功能，需要Grafana的版本在4.0之上，并且需要在启动脚本(run.sh)中添加一些参数
-
-- run.sh
-
-``` bash
-#!/bin/sh
-
-: "${GF_PATHS_DATA:=/var/lib/grafana}"
-: "${GF_PATHS_LOGS:=/var/log/grafana}"
-: "${GF_SMTP_ENABLED:=true}"
-: "${GF_SMTP_HOST:=smtp.163.com:25}"
-: "${GF_SMTP_USER:=qgssoft@163.com}"
-: "${GF_SMTP_PASSWORD:=qwer1234}"
-: "${GF_SMTP_SKIP_VERIFY:=true}"
-: "${GF_SMTP_FROM_ADDRESS:=qgssoft@163.com}"
-
-# Allow access to dashboards without having to log in
-# Export these variables so grafana picks them up
-export GF_AUTH_ANONYMOUS_ENABLED=${GF_AUTH_ANONYMOUS_ENABLED:-true}
-export GF_SERVER_HTTP_PORT=${GRAFANA_PORT}
-export GF_SERVER_PROTOCOL=${GF_SERVER_PROTOCOL:-http}
-
-echo "Starting a utility program that will configure Grafana"
-setup_grafana >/dev/stdout 2>/dev/stderr &
-
-echo "Starting Grafana in foreground mode"
-exec /usr/sbin/grafana-server \
-  --homepath=/usr/share/grafana \
-  --config=/etc/grafana/grafana.ini \
-  cfg:default.paths.data="$GF_PATHS_DATA"  \
-  cfg:default.paths.logs="$GF_PATHS_LOGS"   \
-  cfg:default.smtp.enabled="$GF_SMTP_ENABLED"    \
-  cfg:default.smtp.host="$GF_SMTP_HOST"     \
-  cfg:default.smtp.user="$GF_SMTP_USER"     \
-  cfg:default.smtp.password="$GF_SMTP_PASSWORD"    \
-  cfg:default.smtp.skip_verify="$GF_SMTP_SKIP_VERIFY" \
-  cfg:default.smtp.from_address="$GF_SMTP_FROM_ADDRESS"
-```
-
-> 其中添加的是smtp的参数。
-
-- DockerFile
-
-``` bash
-FROM 10.0.0.153:5000/k8s/heapster-grafana-amd64:v4.0.2
-ADD run.sh /
-RUN chmod 777 run.sh
-```
-
-### Logging部署
-
-> 采用Fluentd（用于收集、处理、传输日志数据）+ Elasticsearch（用于实时查询和解析数据）+ Kibana（用于数据可视化）。在整个集群搭建后部署logging，从而记录所有的服务起始，具体操作可以参考文献。
-
-- 下载yaml文件
-
-`git clone https://github.com/kubernetes/kubernetes.git`
-
-1. Elasticsearch和Kibana在`/home/administrator/kubernetes/cluster/addons/fluentd-elasticsearch`中
-	
-2. Fluentd在`/home/administrator/kubernetes/cluster/saltbase/salt/fluentd-es`中
-	
-- 将镜像`gcr.io/google_containers/fluentd-elasticsearch:1.20`,`gcr.io/google_containers/elasticsearch:v2.4.1`,`gcr.io/google_containers/kibana:v4.6.1`放进私有库中
-
-
-- 修改yaml文件, 更改image地址
-	
-	- `192.168.1.78:5000/fluentd-elasticsearch:1.20`
-	- `192.168.1.78:5000/elasticsearch:v2.4.1`
-	- `192.168.1.78:5000/kibana:v4.6.1`
-
-- 在`kibana-service.yaml`中添加`NodePort`，让其暴露出端口
-	
-``` bash
-spec:
-type: NodePort
-ports:
-	- port: 5601
-```
-	
-- 更改`fluentd-es.yaml`
-	
-	* 将apiVersion改为extensions/v1beta1；
-	* 将kind改为DaemonSet（让每个node都各创建一个）；
-	* 加入template：
-	
-``` bash
-spec:
-template:
-  metadata:
-    namespace: kube-system
-    labels:
-      k8s-app: fluentd-logging
-```
-	
-原本的spec以下的内容（第21行到第41行）移至同metadata平齐(右移四个空格)，在vim下面用`:21,41s/^/    /`命令
-
-- 分别使用`create -f`和`describe`来创建与查看端口。进入kibana界面后，点create便可创建
-
-### Ingress部署http
-
-##### 部署默认后端
-
-`kubectl create -f default-backend.yaml`
-
-##### 部署 Ingress Controller
-
-修改yaml文件中，添加`hostNetwork: true`，使其监听宿主机 80 端口：
-
-``` sh
-spec:
-  template:
-    metadata:
-      labels:
-        name: nginx-ingress-lb
-    spec:
-      terminationGracePeriodSeconds: 60
-      hostNetwork: true
-```
-
-`kubectl create -f nginx-ingress-daemonset.yaml`
-
-##### 部署 Ingress
-
-`kubectl create -f dashboard-ingress.yaml`
-
-##### 修改hosts文件
-
-添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
-
-`echo "10.0.0.171  dashboard.chenjian.com" >> /etc/hosts`
-
-#### Ingress部署TLS（HTTPS）
-
-##### 创建证书
-
-``` sh
-# 生成CA自签证书文件夹
-mkdir cert && cd cert
-
-# 生成CA自签证书的密钥
-openssl genrsa -out ca-key.pem 2048
-
-# 生成CA自签证书
-openssl req -x509 -new -nodes -key ca-key.pem -days 10000 -out ca.pem -subj "/CN=kube-ca"
-
-# 配置openssl部署
-cp /etc/pki/tls/openssl.cnf .
-vim openssl.cnf
-
-# 修改如下
-[ req ]
-req_extensions = v3_req # 这行默认注释关着的 把注释删掉
-# 下面配置是新增的
-[ v3_req ]
-basicConstraints = CA:FALSE
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName = @alt_names
-[alt_names]
-DNS.1 = dashboard.chenjian.me
-DNS.2 = kibana.chenjian.me
-
-# 生成证书密钥
-openssl genrsa -out ingress-key.pem 2048
-
-# 生成证书的申请表
-openssl req -new -key ingress-key.pem -out ingress.csr -subj "/CN=kube-ingress" -config openssl.cnf
-
-# 生成证书 有效期为365天
-openssl x509 -req -in ingress.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out ingress.pem -days 365 -extensions v3_req -extfile openssl.cnf
-```
-
-##### 创建secret
-
-ingress-secret.yaml文件格式如下：
-
-``` sh
-apiVersion: v1
-data:
-  tls.crt: ##内容为ingress.pem里的内容##
-  tls.key: ##内容为ingress-key.pem里的内容##
-kind: Secret
-metadata:
-  name: ingress-secret
-  namespace: kube-system
-type: Opaque
-```
-
-create完成：
-
-`kubectl create -f ingress-secret.yaml`
-
-或者直接用文件：
-
-`kubectl create secret tls ingress-secret --key cert/ingress-key.pem --cert cert/ingress.pem --namespace kube-system`
-
-##### 部署Ingress
-
-`kubectl create -f dashboard-ingress-tls.yaml`
-
-##### 修改hosts文件
-
-添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
-
-`echo "10.0.0.171  dashboard.chenjian.com" >> /etc/hosts`
-
-##### 访问地址dashboard.chenjian.com
-
-部署TLS后的80端口会自动重定向到443（HTTPS端口）
-
-开始出现“Your connnection is not private”
-
-在chrome浏览器中，HTTPS/SSL中添加ca.pem文件，并给予全部权限。
-
-再次打开，没有https提示（钥匙上带叉的logo），但是URL栏中出现“Not Secure”这样的红色字样。
-
-解决这个问题，需要重服务商买权威的CA证书。
 
 
 ### Troubleshooting
@@ -1287,4 +679,4 @@ kubeadm init xxxx
 ](http://stackoverflow.com/questions/39872332/how-to-fix-weave-net-crashloopbackoff-for-the-second-node#40338365)
 
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

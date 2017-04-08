@@ -12,7 +12,33 @@ tags:
     - Docker
 ---
 
+### 系列博文
+
+- [Deploy K8s by Kubeadm on Linux](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
+- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
+- [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+
 ### docker安装
+
+> Ubuntu16.04
+
+```bash
+wget -qO- https://get.docker.com/ | sh
+
+administrator@administrator167:~$ docker -v
+Docker version 1.12.3, build 6b644ec
+```
+
+> CentOS7
+
+所需的两个docker的rpm文件的链接：[kubeadm-rpm](https://pan.baidu.com/s/1pLrrlCR)
+
+然后，`sudo yum install * -y`
+
 
 命令：`wget -qO- https://get.docker.com/ | sh `
 
@@ -86,6 +112,8 @@ Docker version 1.11.2, build b9f10c9
 
 ### 建立docker私有仓库
 
+##### 搭建私有库
+
 例如在`192.168.1.78`上，创建私有仓库
 
 1. 下载registry镜像：`docker pull registry`
@@ -104,23 +132,47 @@ Docker version 1.11.2, build b9f10c9
 
 在`192.168.1.157`上，上传image到私有仓库
 
-- 添加--insecure-registry参数
+##### 添加--insecure-registry参数
 
-    - 解决https问题(用于ubuntu14.04，docker1.11)：
+对于各种系统和各种docker版本的解决https问题的方法：
+
+- 用于ubuntu14.04，docker1.11：
     
-`echo "DOCKER_OPTS=\"\$DOCKER_OPTS --insecure-registry=192.168.1.78:5000\"" >> /etc/default/docker`
+``` bash
+echo "DOCKER_OPTS=\"\$DOCKER_OPTS --insecure-registry=192.168.1.78:5000\"" >> /etc/default/docker
+```
 
-- 解决https问题(用于ubuntu16.04，docker1.12)：
+- 用于ubuntu16.04，docker1.12：
 
-`echo { \"insecure-registries\":[\"192.168.1.78:5000\"] } > /etc/docker/daemon.json`
+``` bash
+echo { \"insecure-registries\":[\"10.0.0.153:5000\"] } > /etc/docker/daemon.json
+```
+
+- 用于Centos7, docker1.10:
+
+``` bash
+echo "INSECURE_REGISTRY='--insecure-registry 10.0.0.153:5000'" >> /etc/sysconfig/docker
+```
+	
+- 用于Centos7，docker1.12：
+
+``` bash
+sudo vim /usr/lib/systemd/system/docker.service
+
+ExecStart=/usr/bin/dockerd 
+ExecStart=/usr/bin/dockerd --insecure-registry 10.0.0.153:5000
+```
 
 - 重启docker服务：`sudo service docker restart`
+
+##### 私有库的基本操作
 
 - 更换镜像的tag：`docker tag 40a673399858 192.168.1.78:5000/docker-whale`
 
 - 上传镜像： `docker push 192.168.1.78:5000/docker-whale`
 
 - 下载镜像： `docker pull 192.168.1.78:5000/docker-whale`
+
 - 浏览器输入： `http://192.168.1.78:5000/v2/_catalog`
 
 ``` bash
@@ -289,8 +341,10 @@ TasksMax=infinity
 EOF
 
 # ubuntu 16+ / Centos7
-sudo systemctl daemon-reload
-sudo systemctl restart docker
+sudo systemctl stop docker
+sudo systemctl daemon-reload 
+sudo systemctl enable docker
+sudo systemctl start docker
 
 # ubuntu 14.04
 sudo service docker restart
@@ -412,4 +466,4 @@ $host-ip 是主的shipyard节点的IP，该脚本需要运行在从node的主机
 10. [Docker网络详解及pipework源码解读与实践](http://www.infoq.com/cn/articles/docker-network-and-pipework-open-source-explanation-practice/)
 11. [http://www.shipyard-project.com/](http://www.shipyard-project.com/)
  
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="o-my-chenjian.com" rel="dct:source">o-my-chenjian.com</a>上的作品创作。
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
