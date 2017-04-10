@@ -87,5 +87,8 @@ friends: [
     },{
         title: "漠然",
         href: "https://mritd.me/"
+    },{
+        title: "{turnoff.us}",
+        href: "http://turnoff.us/"
     }
 ]

@@ -9,7 +9,8 @@ header-img: "img/in-post/Use-PhantomJS&CasperJS/head_blog.jpg"
 catalog:    true
 tags:
     - 工作
-    - javascript
+    - PhantomJS
+    - JavaScript
 ---
 
 ### 摘要

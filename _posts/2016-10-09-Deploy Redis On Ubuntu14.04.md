@@ -9,6 +9,8 @@ header-img: "img/in-post/Deploy-Redis-On-Ubuntu14.04/head_blog.jpg"
 catalog:    true
 tags:
     - 工作
+    - Redis
+    - Ubuntu
 ---
 
 ### Redis的安装

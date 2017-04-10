@@ -9,7 +9,8 @@ header-img: "img/in-post/Deploy-K8s-by-Kubeadm-on-Linux/head_blog.jpg"
 catalog:     true
 tags:
     - 工作
-    - kubernetes
+    - Linux
+    - Kubernetes
 ---
 
 ### 系列博文
@@ -21,6 +22,7 @@ tags:
 - [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
 - [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
 - [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+- [Deploy Redis Sentinel Cluster With K8s](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
 
 ### 系统环境与IP
 
@@ -674,7 +676,7 @@ kubeadm init xxxx
 14. [CentOS7系统升级备份恢复实验](http://www.centoscn.com/CentOS/Intermediate/2016/0112/6648.html)
 15. [Kibana4指南](http://www.code123.cc/docs/kibana-logstash/v4/index.html)
 16. [elasticsearch + fluentd + kibana4(EFK) 安裝詳細流程 in ubuntu14.04](http://chi15036-blog.logdown.com/posts/297025-elasticsearch-fluentd-kibana4-installation-details-processes-in-ubuntu1404)
-17. [Kibana4学习<三>](http://www.cnblogs.com/guozhe/p/5206216.html)
+17. [Kibana4学习三](http://www.cnblogs.com/guozhe/p/5206216.html)
 18. [How to fix weave-net CrashLoopBackOff for the second node?
 ](http://stackoverflow.com/questions/39872332/how-to-fix-weave-net-crashloopbackoff-for-the-second-node#40338365)
 

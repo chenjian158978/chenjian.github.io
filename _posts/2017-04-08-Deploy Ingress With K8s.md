@@ -9,7 +9,7 @@ header-img: "img/in-post/Deploy-Ingress-With-K8s/head_blog.jpg"
 catalog:    true
 tags:
     - 工作
-    - kubernetes
+    - Kubernetes
 ---
 
 ### 系列博文
@@ -21,6 +21,7 @@ tags:
 - [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
 - [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
 - [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+- [Deploy Redis Sentinel Cluster With K8s](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
 
 ### 下载yaml文件
 
