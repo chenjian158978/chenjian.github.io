@@ -29,6 +29,12 @@ tags:
 	- [Python](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#python)
 	- [Sublime](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#sublime)
 	- [Macdown](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#macdown)
+	- [Chrome](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#chrome)
+	- [Microsoft Office](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#microsoft-office)
+	- [Dash](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#dash)
+	- [Alfred3](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#alfred3)
+	- [Flux](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#flux)
+	- [Sequel Pro](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#sequel-pro)
 
 
 ### Homebrew
@@ -199,9 +205,13 @@ User配置文件如下：
 }
 ```
 
+##### 参考
+
+[sublime官网](https://www.sublimetext.com/)
+
 ### Macdown
 
-写markdown使用Macdown，可以官网上下载。
+写markdown使用Macdown(暂时不支持vim)，可以官网上下载。
 
 - 字体：Monaco for Powerline
 
@@ -215,6 +225,88 @@ User配置文件如下：
 
 - 主题：Okaidia
 
+- 勾选*Show line numbers*
+
+- 勾选*Detect Jekyll front-matter*
+
+##### 参考
+
+[macdown官网](https://macdown.uranusjr.com/)
+
+
+### Chrome
+
+##### chrome插件
+
+- [AdBlock](https://chrome.google.com/webstore/detail/gighmmpiobklfepjocnamgkkbiglidom) 用来去除广告 
+- [Bilibili Helper: Bilibili.com Auxiliary](https://chrome.google.com/webstore/detail/kpbnombpnpcffllnianjibmpadjolanh) B站助手
+- [Evernote Web Clipper](https://chrome.google.com/webstore/detail/pioclpoplcdbaefihamjohnefbikjilc) evernote助手
+- [Multi-highlight](https://chrome.google.com/webstore/detail/pfgfgjlejbbpfmcfjhdmikihihddeeji) 页面关键字高亮
+- [Octotree](https://chrome.google.com/webstore/detail/bkhaagjahfmjljalopjnoealnfndnagc) github左侧文件树
+- [One-Click Extensions Manager](https://chrome.google.com/webstore/detail/niemebbfnfbjfojajlmnbiikmcpjkkja) 一键管理chrome插件工具
+- [Pinterest Save Button](https://chrome.google.com/webstore/detail/gpdjojdkbbmdfjfahjcgigfpmkopogic) pinterest网页保存
+- [Postman](https://chrome.google.com/webstore/detail/fhbjgbiflinjbdggehcddcbncdddomop) 发送请求工具
+- [Proxy SwitchyOmega](https://chrome.google.com/webstore/detail/padekgcemlokbadohgkifijomclgjgif) 代理工具
+- [SmoothScroll](https://chrome.google.com/webstore/detail/nbokbjkabcmbfdlbddjidfmibcpneigj) 顺滑滚动浏览页面
+
+##### 参考
+
+[chrome官网](https://www.google.com/chrome/browser/desktop/index.html)
+
+### Microsoft Office
+
+可到[这里](https://pan.baidu.com/s/1mhRdC1a)进行下载。
+**如果对你有帮助，请在博文下方进行留言表示支持，谢谢！**
+
+### Dash
+
+Dash用来查阅API文档和存储代码片段。
+
+目前升级需要fee，我没有升级，也发现dash的代码片段不能正常使用。
+
+##### 参考
+
+- [dash官网](https://kapeli.com/dash)
+- [如何看待 Dash 被 App Store 下架](https://www.zhihu.com/question/51357789)
+
+### Alfred3
+
+mac上**生产力第一**的工具。
+
+包括：
+
+- 文件查询
+- 网站查询
+- 计算器
+- 字典
+- 联系人
+- 工作流
+
+等等。总结下，就是**神器**。
+
+我已购买终身版。
+
+##### 参考
+
+[Alfred官网](https://www.alfredapp.com/)
+
+### Flux
+
+Flux是一款护眼软件。
+
+杭州经纬度：30.3362，120.117
+
+##### 参考
+
+[Flux官网](https://justgetflux.com/)
+
+### Sequel Pro
+
+数据库客户端
+
+##### 参考
+
+[Sequel Pro官网](https://www.sequelpro.com/)
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="blog_URL" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
