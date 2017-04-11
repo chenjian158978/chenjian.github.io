@@ -24,17 +24,17 @@ tags:
 
 ### 系列博文
 
-- [Useful Software On Mac C1](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/)
-	- [Homebrew](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#homebrew)
-	- [Python](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#python)
-	- [Sublime](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#sublime)
-	- [Macdown](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#macdown)
-	- [Chrome](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#chrome)
-	- [Microsoft Office](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#microsoft-office)
-	- [Dash](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#dash)
-	- [Alfred3](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#alfred3)
-	- [Flux](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#flux)
-	- [Sequel Pro](https://o-my-chenjian.com/2016/04/10/Useful-Software-On-Mac-C1/#sequel-pro)
+- [Useful Software On Mac C1](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/)
+	- [Homebrew](https://o-my-chenjian.com/20172017/04/10/Useful-Software-On-Mac-C1/#homebrew)
+	- [Python](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#python)
+	- [Sublime](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#sublime)
+	- [Macdown](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#macdown)
+	- [Chrome](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#chrome)
+	- [Microsoft Office](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#microsoft-office)
+	- [Dash](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#dash)
+	- [Alfred3](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#alfred3)
+	- [Flux](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#flux)
+	- [Sequel Pro](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#sequel-pro)
 
 
 ### Homebrew
