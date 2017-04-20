@@ -1,0 +1,305 @@
+---
+layout:     post
+title:      "Deploy Kafka And ZP With K8s"
+subtitle:   "A seed shall serve him;
+it shall be accounted to the Lord for a generation. Psa 22:30"
+date:       Wed, Apr 11 2017 16:01:18 GMT+8
+author:     "ChenJian"
+header-img: "img/in-post/Deploy-Kafka-And-ZP-With-K8s/head_blog.jpg"
+catalog:    true
+tags:
+    - 工作
+    - kubernetes
+---
+
+### 系列博文
+
+- [Deploy K8s by Kubeadm on Linux](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
+- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
+- [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+- [Deploy Redis Sentinel Cluster With K8s](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
+- [Deploy Kafka And ZP With K8s](https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/)
+
+### Github
+
+依据[Yolean/kubernetes-kafka](https://github.com/Yolean/kubernetes-kafka)
+
+### 镜像和Yaml文件
+
+可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载tar包
+
+当前使用的版本：
+
+- kafka 2.11-0.10.1.1
+- zookeeper 3.4.9
+
+### 一键部署
+
+可以直接运行脚本: `./run.sh`
+
+
+### 分布部署
+
+##### 创建命名空间
+
+`kubectl create -f namespace.yaml`
+
+##### 创建PV和PVC
+
+``` bash
+kubectl create -f pv.yaml
+kubectl create -f pvc.yaml
+```
+
+先pv后pvc，通过`kubectl get pv`可以看见三个pv已被**Bound**。
+
+注意：
+
+- pv路径在`/tmp/kafka-data/`下。当服务器重启后，`/tmp`文件夹会被清空；
+
+- pv与pvc的storeage需要注意；
+
+- 使用的是hostPath，可以改用为NFS。官方告知
+	- `single node testing only – local storage is not supported in any way and WILL NOT WORK in a multi-node cluster`
+
+- 需要对kafka的类型`StatefulSet`熟悉
+
+##### 搭建ZooKeeper
+
+``` bash
+kubectl create -f zookeeper/
+```
+
+注意：
+
+`terminationGracePeriodSeconds：60`， 这个参数可以优雅的每隔60s开启一个容器 
+
+##### 搭建Kafka
+
+``` bash
+kubectl create -f zookeeper/
+```
+
+##### 创建topics
+
+``` bash
+kubectl create -f createTopics/topic-create.yaml
+```
+
+其中使用的类型是**Job**，即一次性运行成功即可。
+
+在pv的数据存储路径下`/tmp/kafka-data/`下面可以看到创建的topics。
+
+**但是当你失去整个zookeeper集群时，kafka集群将不知晓已存在的topic，即使数据仍然存在，但是还需再次创建topics**
+
+
+### python连接Kafka/ZP
+
+##### Dockerfile
+
+没玩过**Docker**，来看[Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)吧！
+
+``` docker
+FROM ubuntu:14.04
+MAINTAINER chenjian "chenjian158978@gmail.com"
+
+# Set the locale
+RUN locale-gen zh_CN.UTF-8
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN:zh
+ENV LC_ALL zh_CN.UTF-8
+
+# set timezone
+RUN echo "Asia/Shanghai" > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
+# 换源
+ADD sources.list /
+RUN cp /etc/apt/sources.list /etc/apt/sources.list_backup
+RUN rm -rf /etc/apt/sources.list
+ADD sources.list /etc/apt/sources.list
+############################################
+
+RUN apt-get clean
+RUN apt-get update
+RUN apt-get -y upgrade
+
+RUN apt-get install -y python-dev
+RUN apt-get install -y build-essential
+RUN apt-get install -y python-pip
+
+ADD librdkafka /librdkafka
+WORKDIR /librdkafka
+RUN ./configure
+RUN make
+RUN make install
+RUN ldconfig
+
+RUN pip install confluent-kafka
+
+RUN apt-get clean
+
+WORKDIR /
+ADD confluentkafka.py /
+ADD whilerun.py /
+```
+
+##### whilerun.py
+
+为保证容器后台有一直运行的程序
+
+``` python
+# -*- coding:utf8 -*-
+
+"""
+@author: chenjian158978@gmail.com
+
+@date: Thu, Apr 20 2017
+
+@time: 15:20:08 GMT+8
+"""
+import time
+from datetime import datetime
+
+
+def main():
+    while 1:
+        print datetime.now()
+        time.sleep(60)
+
+
+if __name__ == '__main__':
+    main()
+```
+
+##### zpkafka.yaml
+
+``` yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zpkafka
+  namespace: kafka
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zpkafka
+    spec:
+      containers:
+        - name: zpkafka
+          image: zpkafka:test
+          command:
+            - "python"
+            - "whilerun.py" 
+```
+
+- 注意namespace要和kafka相同
+
+##### confluentkafka.py
+
+``` python
+# -*- coding:utf8 -*-
+
+"""
+Using confluent-kafka
+
+@author: chenjian158978@gmail.com
+
+@date: Wed, Nov 23
+
+@time: 11:39:30 GMT+8
+"""
+
+from confluent_kafka import Producer
+from confluent_kafka import Consumer, KafkaError, KafkaException
+
+
+class TestConfluentKafka(object):
+    def __init__(self):
+        self.broker = 'kafka:9092'
+        self.group_id = 'vul_test'
+        self.topic_con = ['vul_test']
+        self.topic_pro = 'vul_test'
+
+    def test_producer(self):
+        """ 消息生产者
+        
+        """
+        conf = {'bootstrap.servers': self.broker}
+
+        p = Producer(**conf)
+        some_data_source = [
+            "chennnnnnnnnnnnnnnnnnnnnn",
+            "jiansssssssssssssssssss",
+            "hellossssssssssssssss",
+            "dddddddddddddddddddddddd"]
+        for data in some_data_source:
+            p.produce(self.topic_pro, data.encode('utf-8'))
+
+        p.flush()
+
+    def test_consumer(self):
+        """ 消息消费者
+        
+        """
+        conf = {'bootstrap.servers': self.broker,
+                'group.id': self.group_id,
+                'default.topic.config': {'auto.offset.reset': 'smallest'}}
+
+        c = Consumer(**conf)
+        c.subscribe(self.topic_con)
+
+        try:
+            while True:
+                msg = c.poll(timeout=1.0)
+                if msg is None:
+                    continue
+                if msg.error():
+                    if msg.error().code() == KafkaError._PARTITION_EOF:
+                        print msg.topic(), msg.partition(), msg.offset()
+                    elif msg.error():
+                        raise KafkaException(msg.error())
+                else:
+                    print '%% %s [%d] at offset %d with key %s:\n' \
+                          % (msg.topic(),
+                             msg.partition(),
+                             msg.offset(),
+                             str(msg.key()))
+                    print msg.value()
+        except KeyboardInterrupt:
+            print '%% Aborted by user\n'
+
+        finally:
+            c.close()
+
+
+if __name__ == '__main__':
+    #TestConfluentKafka().test_producer()
+    TestConfluentKafka().test_consumer()
+```
+
+- 注意：
+	- 采用第三方库confluent-kafka，可以尝试换用其他库
+	- 在配置里面的topics，要和之前插入的topics相同。这个建议改用环境变量形式，在yaml中加入env即可
+	- 方法test_producer()是信息生产者，方法test_consumer()是消息消费者
+
+#### nodejs连接Kafka/ZP
+
+正在测试，敬请期待
+
+### 参考
+
+1. [工作日志——k8s_pv/pvc](http://blog.csdn.net/xts_huangxin/article/details/51494472)
+2. [工作日志——k8s_pv/pvc二](http://blog.csdn.net/xts_huangxin/article/details/51500358)
+3. [Graceful shutdown of pods with Kubernetes](https://pracucci.com/graceful-shutdown-of-kubernetes-pods.html)
+4. [Kubernetes 1.5配置Job](http://www.cnblogs.com/breezey/p/6582754.html)
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+
+

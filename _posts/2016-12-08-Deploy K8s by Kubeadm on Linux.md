@@ -23,6 +23,7 @@ tags:
 - [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
 - [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
 - [Deploy Redis Sentinel Cluster With K8s](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
+- [Deploy Kafka And ZP With K8s](https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/)
 
 ### 系统环境与IP
 
@@ -470,6 +471,24 @@ kubectl get ingresses --all-namespaces
 
 ``` bash
 kubectl get secret --all-namespaces
+```
+
+> 查看全部pv信息
+
+``` bash
+kubectl get pv
+```
+
+> 查看全部pvc信息
+
+``` bash
+kubectl get pvc --all-namespaces
+```
+
+> 查看全部job信息
+
+``` bash
+kubectl get job --all-namespaces -o wide
 ```
 
 > 查看某pod的yaml文件内容

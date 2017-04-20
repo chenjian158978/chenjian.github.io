@@ -14,11 +14,11 @@ tags:
 
 ### 前言
 
-无意中找到[turnoff.us/](http://turnoff.us/)，里面的漫画颇为有趣。其中一篇[Inside The Linux Kernel](http://turnoff.us/geek/inside-the-linux-kernel/)也能帮助我们理解Linux系统的内核工作原理。顺序是从下向上，从左到右。
+无意中找到[turnoff.us/](https://turnoff.us/)，里面的漫画颇为有趣。其中一篇[Inside The Linux Kernel](https://turnoff.us/geek/inside-the-linux-kernel/)也能帮助我们理解Linux系统的内核工作原理。顺序是从下向上，从左到右。
 
 ### 全图
 
-![inside-the-linux-kernel-full](http://turnoff.us/image/en/inside-the-linux-kernel-full.png)
+![inside-the-linux-kernel-full](https://turnoff.us/image/en/inside-the-linux-kernel-full.png)
 
 ### 文件系统层
 

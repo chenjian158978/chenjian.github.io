@@ -81,3 +81,13 @@
 
 **至此，整个博客基本完成**
 
+### 2017.04.13
+
+- 给README添加参考博文
+
+### 参考
+
+1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)
+2. [Hexo搭建博客教程](http://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/)
+3. [Hexo theme制作笔记-长期更新](https://blog.domeyi.com/2016/12/02/hexo-theme%E5%88%B6%E4%BD%9C%E7%AC%94%E8%AE%B0-%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/)
+4. [一步步在GitHub上创建博客主页-1](http://www.pchou.info/ssgithubPage/2013-01-03-build-github-blog-page-01.html)

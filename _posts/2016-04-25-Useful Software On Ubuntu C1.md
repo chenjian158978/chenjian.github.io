@@ -368,6 +368,8 @@ linux安装包deb
 
 - Text Entry Setting---+---Chinese
 
+- 设置fcitx---Input Method Configuration---Input Method---添加---Sogou Pinyin(要大写)
+
 - 设置fcitx---Input Method Configuration---Addon---sogoupinyin---configure
 
 - 在Input Method中可以查看当前输入法
