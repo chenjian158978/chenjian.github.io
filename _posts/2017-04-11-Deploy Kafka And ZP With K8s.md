@@ -291,7 +291,75 @@ if __name__ == '__main__':
 
 #### nodejs连接Kafka/ZP
 
-正在测试，敬请期待
+``` javascript
+/**
+ * Created by jianchan on 21/04/2017.
+ */
+
+var kafka = require('kafka-node');
+var util = require('util');
+var moment = require('moment');
+
+var params = {'zookeeper_connec': 'zookeeper:2181'};
+var topics = {'abc': 'abc_test'};
+var groupId = {'abc': 'abc_test'};
+
+
+var Client = kafka.Client;
+var KeyedMessage = kafka.KeyedMessage;
+var HighLevelProducer = kafka.HighLevelProducer;
+var HighLevelConsumer = kafka.HighLevelConsumer;
+
+var client = new Client(params.zookeeper_connec);
+
+// 消息生产者
+var producer = new HighLevelProducer(client);
+var data = {
+    "data": "dddddddxxxxxx"
+};
+
+producer.on('ready', function () {
+    var timeSpan = Date.now();
+    var sendData = JSON.stringify(data.data);
+    send(topics.abc, timeSpan, sendData);
+});
+
+producer.on('error', function (err) {
+    console.log(err);
+});
+
+function send(topic, key, value) {
+    if (!util.isString(key)) {
+        key = key.toString();
+    }
+    var keyedMessage = new KeyedMessage(key, value);
+    producer.send([{topic: topic, messages: [keyedMessage]}],
+        function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+            log(key, value);
+            console.log("=====================================");
+        });
+}
+
+function log(key, value) {
+    console.log('send message to kafka:--datetime: %s--key: %s--value: %s',
+        moment().format('YYYY-MM-DD HH:mm:ss'),
+        key,
+        value);
+}
+
+// 消息消费者
+var consumer = new HighLevelConsumer(
+    client, 
+    [{topic: topics.abc}], 
+    {groupId: groupId.abc}
+);
+consumer.on('message', function (message) {
+    console.log(message);
+});
+```
 
 ### 参考
 
@@ -299,6 +367,7 @@ if __name__ == '__main__':
 2. [工作日志——k8s_pv/pvc二](http://blog.csdn.net/xts_huangxin/article/details/51500358)
 3. [Graceful shutdown of pods with Kubernetes](https://pracucci.com/graceful-shutdown-of-kubernetes-pods.html)
 4. [Kubernetes 1.5配置Job](http://www.cnblogs.com/breezey/p/6582754.html)
+5. [kafka-node](https://www.npmjs.com/package/kafka-node#install-kafka)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
 

@@ -85,6 +85,10 @@
 
 - 给README添加参考博文
 
+### 2017.04.20
+
+- 添加google search console文件
+
 ### 参考
 
 1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)

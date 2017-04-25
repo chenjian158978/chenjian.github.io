@@ -431,6 +431,12 @@ Run 'kubectl get nodes' on the master to see this machine join.
 kubectl cluster-info
 ```  
 
+> 查看集群master节点功能
+
+``` bash
+kubectl get componentstatuses
+```  
+
 > 查看集群节点信息
 
 ``` bash

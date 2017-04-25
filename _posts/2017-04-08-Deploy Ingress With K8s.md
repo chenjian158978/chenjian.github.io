@@ -53,6 +53,30 @@ spec:
 
 `kubectl create -f dashboard-ingress.yaml`
 
+``` yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-ingress
+  namespace: kube-system
+spec:
+  rules:
+  - host: dashboard.chenjian.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
+  - host: kibana.chenjian.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kibana-logging
+          servicePort: 5601
+```
+
 ### 修改hosts文件
 
 添加集群中的某个node或master的IP到hosts文件中，例如Linux系统：
