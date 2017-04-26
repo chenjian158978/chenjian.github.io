@@ -1,0 +1,361 @@
+---
+layout:     post
+title:      "Deploy Master Of K8s"
+subtitle:   "Who shall ascend into the hill of the Lord?
+or who shall stand in his holy place? Psa 24:3"
+date:       Wed, Apr 26 2017 10:33:29 GMT+8
+author:     "ChenJian"
+header-img: "img/in-post/Deploy-Master-Of-K8s/head_blog.jpg"
+catalog:    true
+tags:
+    - 工作
+    - Kubernetes
+---
+
+### 系列博文
+
+- [Deploy K8s By Source Code On CentOS7](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
+- [Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
+- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Create The File Of Kubeconfig For K8s](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Deploy Master Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+- [Deploy Node Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
+- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Deploy Kubedns Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
+- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+
+### Master节点的组件
+
+该博文主要在master上部署三个息息相关的组件：
+
+- kube-apiserver
+- kube-scheduler
+- kube-controller-manager
+
+操作服务器IP：`192.168.1.171`，即`K8s-master`。在此之前，需要对服务器进行准备工作，具体操作请阅读Security Settings Of K8s
+
+### TLS证书
+
+通过之前的步骤，我们已经生成了所需的`token.csv`和各种`*.pem`文件
+
+``` bash
+ls /etc/kubernetes/
+<<'COMMENT'
+ssl  token.csv
+COMMENT
+
+ls /etc/kubernetes/ssl/
+<<'COMMENT'
+admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-key.pem  kubernetes.pem
+COMMENT
+```
+
+### 下载二进制文件
+
+``` bash
+# 下载最新版本的二进制文件
+wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.2/kubernetes.tar.gz
+tar -xzvf kubernetes.tar.gz
+cd kubernetes
+echo y | source cluster/get-kube-binaries.sh
+
+<<'COMMENT'
+Kubernetes release: v1.6.2
+Server: linux/amd64  (to override, set KUBERNETES_SERVER_ARCH)
+Client: linux/amd64  (autodetected)
+
+Will download kubernetes-server-linux-amd64.tar.gz from https://storage.googleapis.com/kubernetes-release/release/v1.6.2
+Is this ok? [Y]/n
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  347M  100  347M    0     0  5927k      0  0:00:59  0:00:59 --:--:-- 5905k
+
+md5sum(kubernetes-server-linux-amd64.tar.gz)=6d52bed027ba4ae82aa07bd88013857a
+sha1sum(kubernetes-server-linux-amd64.tar.gz)=b02937bbb35b74eb3db401c2a1d791bcfff18e4a
+COMMENT
+
+cd server
+tar -xzvf kubernetes-server-linux-amd64.tar.gz
+cd kubernetes
+tar -xzvf  kubernetes-src.tar.gz
+
+# 将二进制文件拷贝到指定路径
+sudo cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kubectl,kube-proxy,kubelet} /root/local/bin/
+
+ls /root/local/bin/
+<<'COMMENT'
+cfssl  cfssl-certinfo  cfssljson  environment.sh  kube-apiserver  kube-controller-manager  kubectl  kubefed  kubelet  kube-proxy  kube-scheduler
+COMMENT
+```
+
+所有资源可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载
+
+### 部署kube-apiserver
+
+##### kube-apiserver.service
+
+``` bash
+cat > kube-apiserver.service <<EOF 
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=network.target
+
+[Service]
+ExecStart=/root/local/bin/kube-apiserver \\
+  --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \\
+  --advertise-address=${MASTER_IP} \\
+  --bind-address=${MASTER_IP} \\
+  --insecure-bind-address=${MASTER_IP} \\
+  --authorization-mode=RBAC \\
+  --runtime-config=rbac.authorization.k8s.io/v1alpha1 \\
+  --kubelet-https=true \\
+  --experimental-bootstrap-token-auth \\
+  --token-auth-file=/etc/kubernetes/token.csv \\
+  --service-cluster-ip-range=${SERVICE_CIDR} \\
+  --service-node-port-range=${NODE_PORT_RANGE} \\
+  --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem \\
+  --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem \\
+  --client-ca-file=/etc/kubernetes/ssl/ca.pem \\
+  --service-account-key-file=/etc/kubernetes/ssl/ca-key.pem \\
+  --etcd-cafile=/etc/kubernetes/ssl/ca.pem \\
+  --etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem \\
+  --etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem \\
+  --etcd-servers=${ETCD_ENDPOINTS} \\
+  --enable-swagger-ui=true \\
+  --allow-privileged=true \\
+  --apiserver-count=3 \\
+  --audit-log-maxage=30 \\
+  --audit-log-maxbackup=3 \\
+  --audit-log-maxsize=100 \\
+  --audit-log-path=/var/lib/audit.log \\
+  --event-ttl=1h \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+Type=notify
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+- kube-apiserver 1.6版本开始使用etcd v3 API和存储格式
+
+- `--authorization-mode=RBAC`指定在安全端口使用RBAC授权模式，拒绝未通过授权的请求
+
+- `kube-scheduler`、`kube-controller-manager`和`kube-apiserver`部署在同一台机器上，它们使用非安全端口和kube-apiserver通信
+
+- kubelet、kube-proxy、kubectl部署在其它Node节点上，如果通过安全端口访问 kube-apiserver，则必须先通过TLS证书认证，再通过RBAC授权
+
+- kube-proxy、kubectl通过在使用的证书里指定相关的User、Group来达到通过RBAC授权的目的
+
+- 如果使用了kubelet TLS Boostrap机制，则不能再指定`--kubelet-certificate-authority`、`--kubelet-client-certificate`和`--kubelet-client-key`选项，否则后续kube-apiserver校验kubelet证书时出现`x509: certificate signed by unknown authority`错误
+
+- `--admission-control`值必须包含ServiceAccount
+
+- `--bind-address`不能为`127.0.0.1`
+
+- `--service-cluster-ip-range`指定Service Cluster IP地址段，该地址段不能路由可达
+
+- `--service-node-port-range=${NODE_PORT_RANGE}`指定 NodePort 的端口范围
+
+- 缺省情况下kubernetes对象保存在`etcd /registry`路径下，可以通过`--etcd-prefix`参数进行调整
+
+##### 启动kube-apiserver
+
+``` bash
+sudo cp kube-apiserver.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable kube-apiserver
+
+<<'COMMENT'
+Created symlink from /etc/systemd/system/multi-user.target.wants/kube-apiserver.service to /etc/systemd/system/kube-apiserver.service.
+COMMENT
+
+sudo systemctl start kube-apiserver
+sudo systemctl status kube-apiserver
+
+<<'COMMENT'
+● kube-apiserver.service - Kubernetes API Server
+   Loaded: loaded (/etc/systemd/system/kube-apiserver.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2017-04-24 13:14:28 CST; 4s ago
+     Docs: https://github.com/GoogleCloudPlatform/kubernetes
+ Main PID: 22121 (kube-apiserver)
+   CGroup: /system.slice/kube-apiserver.service
+           └─22121 /root/local/bin/kube-apiserver --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota --...
+
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.111325   22121 storage_rbac.go:227] created role.rbac.authorization.k8...-public
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.127263   22121 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1...:37198]
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.151106   22121 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta...:37198]
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.151522   22121 storage_rbac.go:257] created rolebinding.rbac.authoriza...-system
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.167308   22121 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1...:37198]
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.190575   22121 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta...:37198]
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.191811   22121 storage_rbac.go:257] created rolebinding.rbac.authoriza...-system
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.207522   22121 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1...:37198]
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.230253   22121 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta...:37198]
+Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.230690   22121 storage_rbac.go:257] created rolebinding.rbac.authoriza...-public
+Hint: Some lines were ellipsized, use -l to show in full.
+COMMENT
+```
+
+### 部署kube-controller-manager
+
+##### kube-controller-manager.service
+
+``` bash
+cat > kube-controller-manager.service <<EOF 
+[Unit]
+Description=Kubernetes Controller Manager
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/root/local/bin/kube-controller-manager \\
+  --address=127.0.0.1 \\
+  --master=http://${MASTER_IP}:8080 \\
+  --allocate-node-cidrs=true \\
+  --service-cluster-ip-range=${SERVICE_CIDR} \\
+  --cluster-cidr=${CLUSTER_CIDR} \\
+  --cluster-name=kubernetes \\
+  --cluster-signing-cert-file=/etc/kubernetes/ssl/ca.pem \\
+  --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem \\
+  --service-account-private-key-file=/etc/kubernetes/ssl/ca-key.pem \\
+  --root-ca-file=/etc/kubernetes/ssl/ca.pem \\
+  --leader-elect=true \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+- `--address`值必须为`127.0.0.1`，因为当前kube-apiserver期望scheduler 和 controller-manager在同一台机器
+
+- `--master=http://{MASTER_IP}:8080`：使用非安全8080端口与kube-apiserver 通信
+
+- `--cluster-cidr`指定Cluster中Pod的CIDR范围，该网段在各Node间必须路由可达(flanneld保证)
+
+- `--service-cluster-ip-range`参数指定Cluster中Service的CIDR范围，该网络在各 Node间必须路由不可达，必须和kube-apiserver中的参数一致
+
+- `--cluster-signing-*` 指定的证书和私钥文件用来签名为TLS BootStrap创建的证书和私钥
+
+- `--root-ca-file`用来对kube-apiserver证书进行校验，指定该参数后，才会在Pod容器的ServiceAccount中放置该CA证书文件
+
+- `--leader-elect=true`部署多台机器组成的master集群时选举产生一处于工作状态的 kube-controller-manager进程
+
+##### 启动kube-controller-manager
+
+``` bash
+sudo cp kube-controller-manager.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable kube-controller-manager
+
+<<'COMMENT'
+Created symlink from /etc/systemd/system/multi-user.target.wants/kube-controller-manager.service to /etc/systemd/system/kube-controller-manager.service.
+COMMENT
+
+sudo systemctl start kube-controller-manager
+sudo systemctl status kube-controller-manager
+
+<<'COMMENT'
+● kube-controller-manager.service - Kubernetes Controller Manager
+   Loaded: loaded (/etc/systemd/system/kube-controller-manager.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2017-04-24 13:18:28 CST; 12s ago
+     Docs: https://github.com/GoogleCloudPlatform/kubernetes
+ Main PID: 22181 (kube-controller)
+   CGroup: /system.slice/kube-controller-manager.service
+           └─22181 /root/local/bin/kube-controller-manager --address=127.0.0.1 --master=http://192.168.1.171:8080 --allocate-node-cidrs=true --service-c...
+
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766205   22181 plugins.go:363] Loaded volume plugin "kubernete...ce-pd"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766238   22181 plugins.go:363] Loaded volume plugin "kubernete...inder"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766261   22181 plugins.go:363] Loaded volume plugin "kubernete...olume"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766287   22181 plugins.go:363] Loaded volume plugin "kubernete...olume"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766312   22181 plugins.go:363] Loaded volume plugin "kubernete...-disk"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766336   22181 plugins.go:363] Loaded volume plugin "kubernete...on-pd"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766358   22181 plugins.go:363] Loaded volume plugin "kubernete...aleio"
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.767540   22181 attach_detach_controller.go:223] Starting Attac...roller
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.821029   22181 taint_controller.go:180] Starting NoExecuteTaintManager
+Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.896085   22181 disruption.go:277] Sending events to api server.
+Hint: Some lines were ellipsized, use -l to show in full.
+COMMENT
+```
+
+### 部署kube-scheduler
+
+##### kube-scheduler.service
+
+``` bash
+cat > kube-scheduler.service <<EOF
+[Unit]
+Description=Kubernetes Scheduler
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/root/local/bin/kube-scheduler \\
+  --address=127.0.0.1 \\
+  --master=http://${MASTER_IP}:8080 \\
+  --leader-elect=true \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+##### 启动kube-scheduler
+
+``` bash
+sudo cp kube-scheduler.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable kube-scheduler
+
+<<'COMMENT'
+Created symlink from /etc/systemd/system/multi-user.target.wants/kube-scheduler.service to /etc/systemd/system/kube-scheduler.service.
+COMMENT
+
+
+sudo systemctl start kube-scheduler
+sudo systemctl status kube-scheduler
+
+<<'COMMENT'
+● kube-scheduler.service - Kubernetes Scheduler
+   Loaded: loaded (/etc/systemd/system/kube-scheduler.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2017-04-24 13:22:08 CST; 10s ago
+     Docs: https://github.com/GoogleCloudPlatform/kubernetes
+ Main PID: 22240 (kube-scheduler)
+   CGroup: /system.slice/kube-scheduler.service
+           └─22240 /root/local/bin/kube-scheduler --address=127.0.0.1 --master=http://192.168.1.171:8080 --leader-elect=true --v=2
+
+Apr 24 13:22:08 192-168-1-171.master systemd[1]: Started Kubernetes Scheduler.
+Apr 24 13:22:08 192-168-1-171.master systemd[1]: Starting Kubernetes Scheduler...
+Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.693163   22240 factory.go:300] Creating scheduler from algorithm provi...ovider'
+Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.693334   22240 factory.go:346] Creating scheduler with fit predicates ...skConfl
+Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.693770   22240 leaderelection.go:179] attempting to acquire leader lease...
+Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.719180   22240 leaderelection.go:189] successfully acquired lease kube...heduler
+Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.719712   22240 event.go:217] Event(v1.ObjectReference{Kind:"Endpoints", Names...
+Hint: Some lines were ellipsized, use -l to show in full.
+COMMENT
+```
+
+### 检验Master功能
+
+``` bash
+kubectl get componentstatuses
+<<'COMMENT'
+NAME                 STATUS    MESSAGE              ERROR
+scheduler            Healthy   ok                   
+controller-manager   Healthy   ok                   
+etcd-0               Healthy   {"health": "true"}   
+etcd-2               Healthy   {"health": "true"}   
+etcd-1               Healthy   {"health": "true"}  
+COMMENT
+```
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+

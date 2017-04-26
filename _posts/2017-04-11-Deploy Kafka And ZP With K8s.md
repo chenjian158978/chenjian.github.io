@@ -9,7 +9,7 @@ header-img: "img/in-post/Deploy-Kafka-And-ZP-With-K8s/head_blog.jpg"
 catalog:    true
 tags:
     - 工作
-    - kubernetes
+    - Kubernetes
 ---
 
 ### 系列博文

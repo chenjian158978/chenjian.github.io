@@ -26,16 +26,20 @@ tags:
 
 ### docker安装
 
-> Ubuntu16.04
+注：docker需在root权限下运行
+
+##### Ubuntu16.04
 
 ```bash
 wget -qO- https://get.docker.com/ | sh
 
-administrator@administrator167:~$ docker -v
+docker -v
+<<'COMMENT'
 Docker version 1.12.3, build 6b644ec
+COMMENT
 ```
 
-> CentOS7
+##### CentOS7之使用wget安装
 
 所需的两个docker的rpm文件的链接：[kubeadm-rpm](https://pan.baidu.com/s/1pLrrlCR)
 
@@ -52,8 +56,136 @@ Docker version 1.12.3, build 6b644ec
 Docker version 1.11.2, build b9f10c9
 ```
 
-注：docker需在root权限下运行
+##### CentOS7之二进制文件安装
 
+该小节主要配合[kubernetes集群的的二进制安装](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)。由于环境变量等问题，不支持单独使用，如有需要请进一步阅读相关博文。
+
+> 下载docker二进制文件
+
+``` bash
+wget https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz
+tar -xvf docker-17.04.0-ce.tgz
+cp docker/docker* /root/local/bin
+```
+
+> docker.service
+
+``` bash
+cat >> docker.service <<EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.io
+
+[Service]
+Environment="PATH=/root/local/bin:/bin:/sbin:/usr/bin:/usr/sbin"
+EnvironmentFile=-/run/flannel/docker
+ExecStart=/root/local/bin/dockerd --log-level=error $DOCKER_NETWORK_OPTIONS
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Delegate=yes
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+- dockerd运行时会调用其它docker命令，如docker-proxy，所以需要将docker命令所在的目录加到PATH环境变量中
+
+- flanneld启动时将网络配置写入到`/run/flannel/docker`文件中的变量`DOCKER_NETWORK_OPTIONS`，dockerd命令行上指定该变量值来设置`docker0`网桥参数
+
+- 不能关闭默认开启的`--iptables`和`--ip-masq`选项；
+
+- 如果内核版本比较新，建议使用`overlay`存储驱动；
+
+- docker从`1.13`版本开始，可能将`iptables FORWARD chain`的默认策略设置为DROP，从而导致ping其它Node上的Pod IP失败，遇到这种情况时，需要手动设置策略为 ACCEPT：
+
+``` bash
+# 设置iptalbes
+iptables -L
+<<'COMMENT'
+Chain FORWARD (policy DROP)
+target     prot opt source               destination         
+DOCKER-ISOLATION  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+DOCKER     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+COMMENT
+
+iptables -P FORWARD ACCEPT
+
+iptables -L
+<<'COMMENT'
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+DOCKER-ISOLATION  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+DOCKER     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere          
+COMMENT
+```
+
+> 启动 docker
+
+``` bash
+sudo cp docker.service /etc/systemd/system/docker.service
+sudo systemctl daemon-reload
+sudo iptables -F && sudo iptables -X && sudo iptables -F -t nat && sudo iptables -X -t nat
+sudo systemctl enable docker
+
+<<'COMMENT'
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /etc/systemd/system/docker.service.
+COMMENT
+
+sudo systemctl start docker
+sudo systemctl status docker
+
+<<'COMMENT'
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/etc/systemd/system/docker.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2017-04-24 15:30:01 CST; 8s ago
+     Docs: http://docs.docker.io
+ Main PID: 19017 (dockerd)
+   Memory: 14.9M
+   CGroup: /system.slice/docker.service
+           ├─19017 /root/local/bin/dockerd --log-level=error
+           └─19023 docker-containerd -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir ...
+
+Apr 24 15:30:01 192-168-1-173.node systemd[1]: Started Docker Application Container Engine.
+Apr 24 15:30:01 192-168-1-173.node systemd[1]: Starting Docker Application Container Engine...
+COMMENT
+```
+
+> 查看docker版本
+
+``` bash
+docker version
+
+<<'COMMENT'
+Client:
+ Version:      17.04.0-ce
+ API version:  1.28
+ Go version:   go1.7.5
+ Git commit:   4845c56
+ Built:        Wed Apr  5 23:33:17 2017
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      17.04.0-ce
+ API version:  1.28 (minimum version 1.12)
+ Go version:   go1.7.5
+ Git commit:   4845c56
+ Built:        Wed Apr  5 23:33:17 2017
+ OS/Arch:      linux/amd64
+ Experimental: false
+COMMENT
+```
 
 ### 查看images列表
 
@@ -291,6 +423,7 @@ print os_res  # chenjian
 docker信息：`sudi docker info`
 
 ``` bash
+<<'COMMENT'
 Containers: 7
  Running: 7
  Paused: 0
@@ -326,6 +459,7 @@ Registry: https://index.docker.io/v1/
 WARNING: No swap limit support
 Insecure Registries:
  127.0.0.0/8
+COMMENT
 ```
 
 **问题**
