@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Deploy Redis On Ubuntu14.04"
-subtitle:   "He sent from above, he took me,
-he drew me out of many waters. Psa 18:16"
+title:      "在Ubuntu14.04上部署Redis"
+subtitle:   "Deploy Redis On Ubuntu14.04"
 date:       Sun, Oct 09 2016 17:49:22 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-On-Ubuntu14.04/head_blog.jpg"

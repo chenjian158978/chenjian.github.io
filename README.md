@@ -89,6 +89,14 @@
 
 - 添加google search console文件
 
+### 2017.05.02
+
+- 修改404链接错误
+
+- 添加新博文
+
+- 提高可读性将题目改为中文，副标题改为英文
+
 ### 参考
 
 1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Where Did You Sleep Last Night"
-subtitle:   "For who is God save the Lord?
-or who is a rock save our God? Psa 18:31"
+title:      "词译-Where Did You Sleep Last Night"
+subtitle:   "Where Did You Sleep Last Night"
 date:       Mon, Jan 11 2016 18:04:47 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Where-Did-You-Sleep-Last-Night/head_blog.jpg"

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Deploy Etcd Cluster"
-subtitle:   "Deliver my soul from the sword;
-my darling from the power of the dog. Psa 22:20"
+title:      "Kubernetes集群之搭建ETCD集群"
+subtitle:   "Deploy Etcd Cluster"
 date:       Sat, Apr 8 2017 09:05:47 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Etcd-Cluster/head_blog.jpg"
@@ -17,7 +16,7 @@ tags:
 Etcd集群对整个k8s集群非常重要，需要抽出搭建。以下包含两种搭建：
 
 - 没有CA认证的etcd集群，即普通的搭建方法
-- 含有CA认证的etcd集群，此方法配合[k8s的二进制搭建](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
+- 含有CA认证的etcd集群，此方法配合[在CentOS7上使用二进制方式部署Kubernetes](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
 
 **同时，注意kubeadm不支持高可用性，及不支持etcd集群**
 
@@ -25,15 +24,15 @@ Etcd集群对整个k8s集群非常重要，需要抽出搭建。以下包含两�
 
 ##### 系列博文
 
-- [Deploy K8s by Kubeadm on Linux](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
-- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
-- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
-- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
-- [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
-- [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
-- [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
-- [Deploy Redis Sentinel Cluster With K8s](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
-- [Deploy Kafka And ZP With K8s](https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/)
+- [在Linux上使用Kubeadm工具部署Kubernetes](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
+- [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之Logging](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
+- [Kubernetes集群之Ingress](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+- [Kubernetes集群之Redis Sentinel集群](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
+- [Kubernetes集群之Kafka和ZooKeeper](https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/)
 
 ##### 集群信息
 
@@ -172,15 +171,15 @@ COMMENT
 
 ##### 系列博文
 
-- [Deploy K8s By Source Code On CentOS7](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
-- [Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
-- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
-- [Create The File Of Kubeconfig For K8s](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
-- [Deploy Master Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
-- [Deploy Node Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
-- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
-- [Deploy Kubedns Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
-- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [在CentOS7上使用二进制方式部署Kubernetes](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
+- [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
+- [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+- [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
+- [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
+- [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
 
 ##### 搭建前准备工作
 

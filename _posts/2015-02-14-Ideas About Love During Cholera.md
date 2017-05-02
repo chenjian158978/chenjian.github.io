@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About Love During Cholera"
-subtitle:   "They prevented me in the day of my calamity:
-but the Lord was my stay. Psa 18:18"
+title:      "我读我思-《霍乱时期的爱情》"
+subtitle:   "Ideas About Love During Cholera"
 date:       Sat, Feb 14 2015 00:38:26 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Love-During-Cholera/head_blog.jpg"

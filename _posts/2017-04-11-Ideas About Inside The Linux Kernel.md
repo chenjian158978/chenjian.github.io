@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About Inside The Linux Kernel"
-subtitle:   "A seed shall serve him;
-it shall be accounted to the Lord for a generation. Psa 22:30"
+title:      "带你走进Linux内核工作室"
+subtitle:   "Ideas About Inside The Linux Kernel"
 date:       Tue, Apr 11 2017 13:07:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Inside-The-Linux-Kernel/head_blog.jpg"

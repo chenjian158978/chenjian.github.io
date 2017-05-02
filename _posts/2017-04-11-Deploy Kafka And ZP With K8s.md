@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Deploy Kafka And ZP With K8s"
-subtitle:   "A seed shall serve him;
-it shall be accounted to the Lord for a generation. Psa 22:30"
+title:      "Kubernetes集群之Kafka和ZooKeeper"
+subtitle:   "Deploy Kafka And ZP With K8s"
 date:       Wed, Apr 11 2017 16:01:18 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Kafka-And-ZP-With-K8s/head_blog.jpg"
@@ -14,15 +13,15 @@ tags:
 
 ### 系列博文
 
-- [Deploy K8s by Kubeadm on Linux](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
-- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
-- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
-- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
-- [Deploy Monitoring With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
-- [Deploy Logging With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
-- [Deploy Ingress With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
-- [Deploy Redis Sentinel Cluster With K8s](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
-- [Deploy Kafka And ZP With K8s](https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/)
+- [在Linux上使用Kubeadm工具部署Kubernetes](https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/)
+- [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之Logging](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
+- [Kubernetes集群之Ingress](https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/)
+- [Kubernetes集群之Redis Sentinel集群](https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/)
+- [Kubernetes集群之Kafka和ZooKeeper](https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/)
 
 ### Github
 
@@ -30,16 +29,12 @@ tags:
 
 ### 镜像和Yaml文件
 
-可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载tar包
+可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载tar包和yaml文件
 
 当前使用的版本：
 
 - kafka 2.11-0.10.1.1
 - zookeeper 3.4.9
-
-### 一键部署
-
-可以直接运行脚本: `./run.sh`
 
 
 ### 分布部署

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About The Happy Prince And Other Tales"
-subtitle:   "Who can understand his errors?
-cleanse thou me from secret faults. Psa 19:12"
+title:      "我读我思-《快乐王子集》"
+subtitle:   "Ideas About The Happy Prince And Other Tales"
 date:       Wed, Dec 24 2014 21:42:43 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-The-Happy-Prince-And-Other-Tales/head_blog.jpg"

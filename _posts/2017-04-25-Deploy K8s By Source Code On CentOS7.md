@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Deploy K8s By Source Code On CentOS7"
-subtitle:   "He restoreth my soul:
-he leadeth me in the paths of righteousness for his name's sake. Psa 23:3"
+title:      "在CentOS7上使用二进制方式部署Kubernetes"
+subtitle:   "Deploy K8s By Source Code On CentOS7"
 date:       Tue, Apr 25 2017 13:17:35 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-K8s-By-Source-Code-On-CentOS7/head_blog.jpg"
@@ -21,15 +20,19 @@ tags:
 
 ### 系列博文
 
-- [Deploy K8s By Source Code On CentOS7](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
-- [Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
-- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
-- [Create The File Of Kubeconfig For K8s](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
-- [Deploy Master Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
-- [Deploy Node Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
-- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
-- [Deploy Kubedns Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
-- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [在CentOS7上使用二进制方式部署Kubernetes](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
+- [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
+- [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+- [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
+- [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
+- [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+
+### Kubernetes框架
+
+![Kubernetes框架](/img/in-post/Deploy-K8s-By-Source-Code-On-CentOS7/k8s.jpg)
 
 
 ### 系统环境信息
@@ -57,34 +60,34 @@ tags:
 	- Flannel: 0.7.1
 - 所有的资源可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载
 
-### K8s集群的安全设置
+### Kubernetes集群之安全设置
 
-[Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
+[Kubernetes集群之安全设置-详文](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 	
-### 搭建ETCD集群
+### Kubernetes集群之搭建ETCD集群
 
-[Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+[Kubernetes集群之搭建ETCD集群-详文](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 
-### 创建kubectl/kubelet/kube-proxy的kubeconfig文件
+### Kubernetes集群之创建kubeconfig文件
 
-[Create The File Of Kubeconfig For K8s](Create-The-File-Of-Kubeconfig-For-K8s/)
+[Kubernetes集群之创建kubeconfig文件-详文](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
 
-### 部署k8s集群之Master节点
+### Kubernetes集群之Master节点
 
-[Deploy Master Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+[Kubernetes集群之Master节点-详文](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 
 
-### 部署k8s集群之Node节点
+### Kubernetes集群之Node节点
 
-[Deploy Node Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
+[Kubernetes集群之Node节点-详文](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 
-### 部署k8s集群之Kubedns
+### Kubernetes集群之Kubedns
 
-[Deploy Kubedns Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
+[Kubernetes集群之Kubedns-详文](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 
-### 部署k8s集群之Dashboard
+### Kubernetes集群之Dashboard
 
-[Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+[Kubernetes集群之Dashboard-详文](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
 
 
 

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Deploy Node Of K8s"
-subtitle:   "He shall receive the blessing from the Lord,
-and righteousness from the God of his salvation. Psa 24:5"
+title:      "Kubernetes集群之Node节点"
+subtitle:   "Deploy Node Of K8s"
 date:       Wed, Apr 26 2017 11:39:29 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Node-Of-K8s/head_blog.jpg"
@@ -14,15 +13,15 @@ tags:
 
 ### 系列博文
 
-- [Deploy K8s By Source Code On CentOS7](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
-- [Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
-- [Deploy Etcd Cluster](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
-- [Create The File Of Kubeconfig For K8s](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
-- [Deploy Master Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
-- [Deploy Node Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
-- [Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
-- [Deploy Kubedns Of K8s](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
-- [Deploy Dashboard With K8s](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [在CentOS7上使用二进制方式部署Kubernetes](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
+- [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
+- [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
+- [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+- [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
+- [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
+- [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
+- [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
 
 ### 准备工作
 
@@ -317,7 +316,7 @@ COMMENT
 
 ### 安装Docker
 
-请参考[CentOS7之二进制文件安装](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/#centos7)
+请参考[CentOS7之二进制文件安装](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/#centos7之二进制文件安装)
 
 ### 安装kubelet
 

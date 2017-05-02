@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About Anna Karenina"
-subtitle:   "Thou hast enlarged my steps under me,
-that my feet did not slip. Psa 18:36"
+title:      "我读我思-《安娜·卡列尼娜》"
+subtitle:   "Ideas About Anna Karenina"
 date:       Sun, Aug 9 2015 18:34:50 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Anna-Karenina/head_blog.jpg"

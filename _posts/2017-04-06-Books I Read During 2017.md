@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Books I Read During 2017"
-subtitle:   "But I am a worm, and no man; a reproach of men, and despised of the people. Psa 22:6"
+title:      "耕字问书之2017"
+subtitle:   "Books I Read During 2017"
 date:       Thu, Apr 6 2017 18:05:46 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Books-I-Read-During-2017/head_blog.jpg"

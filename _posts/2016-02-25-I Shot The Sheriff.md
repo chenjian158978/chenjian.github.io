@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "I Shot The Sheriff"
-subtitle:   "They cried unto thee, and were delivered:
-they trusted in thee, and were not confounded. Psa 22:5"
+title:      "词译-I Shot The Sheriff"
+subtitle:   "I Shot The Sheriff"
 date:       Thu, Feb 25 2016 23:26:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/I-Shot-The-Sheriff/head_blog.jpg"

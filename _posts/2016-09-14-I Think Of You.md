@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "I Think Of You"
-subtitle:   "He asked life of thee, and thou gavest it him,
-even length of days for ever and ever. Psa 21:4"
+title:      "词译-I Think Of You"
+subtitle:   "I Think Of You"
 date:       Wed, Sep 14 2016 04:19:07 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/I-Think-Of-You/head_blog.jpg"

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Useful Software On Mac C1"
-subtitle:   "A seed shall serve him;
-it shall be accounted to the Lord for a generation. Psa 22:30"
+title:      "MacBook上的优秀软件之第一章节"
+subtitle:   "Useful Software On Mac C1"
 date:       Mon, Apr 10 2017 17:16:49 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Useful-Software-On-Mac-C1/head_blog.jpg"
@@ -16,16 +15,16 @@ tags:
 
 1年前放弃Windows系统，开始使用Ubuntu系统。期间使用过Ubuntu系统的14.04和16.04桌面版本，CentOS7的桌面和服务器版本。写过相关优秀ubuntu系统的软件，如下三篇系列文章：
 
-- [Useful Software On Ubuntu C1](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/)
-- [Useful Software On Ubuntu C2](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/)
-- [Useful Software On Ubuntu C3](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/)
+- [Ubuntu上的优秀软件之第一章节](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/)
+- [Ubuntu上的优秀软件之第二章节](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/)
+- [Ubuntu上的优秀软件之第三章节](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/)
 
 半年前开始使用Mac，即macOS系统。这里也会进行总结与分享。
 
 ### 系列博文
 
-- [Useful Software On Mac C1](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/)
-	- [Homebrew](https://o-my-chenjian.com/20172017/04/10/Useful-Software-On-Mac-C1/#homebrew)
+- [MacBook上的优秀软件之第一章节](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/)
+	- [Homebrew](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#homebrew)
 	- [Python](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#python)
 	- [Sublime](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#sublime)
 	- [Macdown](https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/#macdown)
@@ -309,4 +308,4 @@ Flux是一款护眼软件。
 [Sequel Pro官网](https://www.sequelpro.com/)
 
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="blog_URL" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Use PhantomJS&CasperJS"
-subtitle:   "O Lord our Lord,
-how excellent is thy name in all the earth! Psa 8:9"
+title:      "使用PhantomJS和CasperJS"
+subtitle:   "Use PhantomJS&CasperJS"
 date:       Wed, May 11 2016 14:42:29 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Use-PhantomJS&CasperJS/head_blog.jpg"

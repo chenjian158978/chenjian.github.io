@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About Cien años de soledad"
-subtitle:   "Send thee help from the sanctuary,
-and strengthen thee out of Zion; Psa 20:2"
+title:      "我读我思-《百年孤独》"
+subtitle:   "Ideas About Cien años de soledad"
 date:       Fri, April 18 2014 11:33:06 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Cien-años-de-soledad/head_blog.jpg"

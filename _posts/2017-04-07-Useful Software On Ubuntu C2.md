@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Useful Software On Ubuntu C2"
-subtitle:   "He trusted on the Lord that he would deliver him:
-let him deliver him, seeing he delighted in him. Psa 22:8"
+title:      "Ubuntu上的优秀软件之第二章节"
+subtitle:   "Useful Software On Ubuntu C2"
 date:       Fri, Apr 7 2017 09:15:53 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Useful-Software-On-Ubuntu/head_blog.jpg"
@@ -14,7 +13,7 @@ tags:
 
 ### 系列博文
 
-- [Useful Software On Ubuntu C1](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/)
+- [Ubuntu上的优秀软件之第一章节](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/)
 	- [Ubuntu](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/#ubuntu)
 	- [Terminator](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/#terminator)
 	- [Uget+aria2](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/#ugetaria2)
@@ -26,7 +25,7 @@ tags:
 	- [12VPN](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/#12vpn)
 	- [源](https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/#源)
 
-- [Useful Software On Ubuntu C2](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/)
+- [Ubuntu上的优秀软件之第二章节](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/)
 	- [Git](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/#git)
 	- [Navicat](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/#navicat)
 	- [JDK](https://o-my-chenjian.com/20172017/04/07/04/07/Useful-Software-On-Ubuntu-C2/#jdk)
@@ -38,7 +37,7 @@ tags:
 	- [Wine](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/#wine)
 	- [Tree](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/#tree)
 
-- [Useful Software On Ubuntu C3](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/)
+- [Ubuntu上的优秀软件之第三章节](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/)
 	- [远程控制windows](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/#远程控制windows)
 	- [一鼠标一键盘控制多计算机](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/#一鼠标一键盘控制多计算机)
 	- [Rapidsvn](https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/#rapidsvn)

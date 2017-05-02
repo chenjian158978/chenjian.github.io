@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About Sherlock Holmes"
-subtitle:   "Grant thee according to thine own heart,
-and fulfil all thy counsel. Psa 20:4"
+title:      "我读我思-《福尔摩斯探案全集》"
+subtitle:   "Ideas About Sherlock Holmes"
 date:       Sun, May 11 2014 16:34:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Sherlock-Holmes/head_blog.jpg"

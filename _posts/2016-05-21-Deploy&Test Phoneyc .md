@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Deploy&Test Phoneyc"
-subtitle:   "Consider and hear me, O Lord my God:
-lighten mine eyes, lest I sleep the sleep of death. Psa 13:3"
+title:      "部署与测试蜜罐系统Phoneyc"
+subtitle:   "Deploy&Test Phoneyc"
 date:       Sat, May 21 2016 18:07:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy&Test-Phoneyc/head_blog.jpg"

@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Dancing With Shackle"
-subtitle:   "For I have kept the ways of the Lord,
-and have not wickedly departed from my God. Psa 18:21"
+title:      "我读我思-与镣铐同舞"
+subtitle:   "Dancing With Shackle"
 date:       Sun, Nov 9 2014 17:58:01 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Dancing-With-Shackle/head_blog.jpg"

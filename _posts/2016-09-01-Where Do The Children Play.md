@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Where Do The Children Play"
-subtitle:   "There were they in great fear:
-for God is in the generation of the righteous. Psa 14:5"
+title:      "词译-Where Do The Children Play"
+subtitle:   "Where Do The Children Play"
 date:       Tue, Sep 06 2016 11:22:24 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Where-Do-The-Children-Play/head_blog.jpg"

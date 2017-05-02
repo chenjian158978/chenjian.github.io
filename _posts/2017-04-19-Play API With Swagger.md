@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Play API With Swagger"
-subtitle:   "The Lord is my shepherd; I shall not want. Psa 23:1"
+title:      "玩转API框架之Swagger"
+subtitle:   "Play API With Swagger"
 date:       Wed, Apr 19 2017 10:13:44 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Play-API-With-Swagger/head_blog.jpg"
@@ -131,7 +131,7 @@ node index.js
 
 ##### 官方docker搭建
 
-没玩过**Docker**，来看[Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)吧！
+没玩过**Docker**，来看[带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)吧！
 
 ``` bash
 # 在Swagger-UI项目下
@@ -305,4 +305,4 @@ urlpatterns = [
 [^3]: [swagger环境的搭建](http://blog.csdn.net/ron03129596/article/details/53559803)
 [^4]: [一个简便的django-app将swagger-ui搬到项目中展示](http://www.ctolib.com/swaggerdoc.html)
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/04/19/Play-API-With-Swagger/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/19/Play-API-With-Swagger/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

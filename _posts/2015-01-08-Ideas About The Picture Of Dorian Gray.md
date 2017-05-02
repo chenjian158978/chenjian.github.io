@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About The Picture Of Dorian Gray"
-subtitle:   "But I am a worm, and no man;
-a reproach of men, and despised of the people. Psa 22:6"
+title:      "我读我思-《道连·格雷的画像》"
+subtitle:   "Ideas About The Picture Of Dorian Gray"
 date:       Thu, Jan 08 2015 23:42:10 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-The-Picture-Of-Dorian-Gray/head_blog.jpg"

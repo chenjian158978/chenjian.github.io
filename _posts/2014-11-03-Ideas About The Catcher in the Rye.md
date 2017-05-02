@@ -1,8 +1,7 @@
 ---
 layout:     post
-title:      "Ideas About The Catcher In The Rye"
-subtitle:   "Save, Lord:
-let the king hear us when we call. Psa 20:9"
+title:      "我读我思-《麦田里的守望者》"
+subtitle:   "Ideas About The Catcher In The Rye"
 date:       Mon, Nov 3 2014 17:08:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-The-Catcher-In-The-Rye/head_blog.jpg"
