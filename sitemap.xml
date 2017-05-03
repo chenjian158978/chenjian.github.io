@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>https://o-my-chenjian.com/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/about/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/tags/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/05/02/Horse-Latitudes/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/19/Play-API-With-Swagger/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/11/Deploy-Kafka-And-ZP-With-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/11/Ideas-About-Inside-The-Linux-Kernel/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/09/14/I-Think-Of-You/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/09/06/Where-Do-The-Children-Play/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/09/01/A-Most-Disgusting-Song/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/02/25/I-Shot-The-Sheriff/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/02/15/Rivers-of-Babylon/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/01/11/Where-Did-You-Sleep-Last-Night/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2015/10/17/GDDRSKCD/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2015/08/09/Ideas-About-Anna-Karenina/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2015/07/20/Looking-For-My-Cat-Looking-For-My-Self/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2015/02/14/Ideas-About-Love-During-Cholera/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2015/01/08/Ideas-About-The-Picture-Of-Dorian-Gray/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/12/24/Ideas-About-The-Happy-Prince-And-Other-Tales/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/11/09/Dancing-With-Shackle/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/11/03/Ideas-About-The-Catcher-in-the-Rye/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/05/26/Ideas-About-Recording-Of-JiaBian-Gou/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/05/11/Ideas-About-Sherlock-Holmes/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/04/18/Ideas-About-Cien-a%C3%B1os-de-soledad/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2013/10/22/A-Letter-To-Little-Brother/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/12/30/Books-I-Read-During-2016/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2015/12/27/Books-I-Read-During-2015/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2014/12/06/Books-I-Read-During-2014/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/10/Useful-Software-On-Mac-C1/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/08/Deploy-Ingress-With-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C3/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/04/07/Useful-Software-On-Ubuntu-C2/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/03/07/Deploy-Zabbix-With-Docker/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/02/28/Using-Iptables-On-Centos7/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2017/02/06/Deploy-Redis-Sentinel-Cluster-With-K8s/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/12/08/Deploy-K8s-by-Kubeadm-on-Linux/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/11/14/Deploy-Kafka&amp;Zookeeper-on-Ubuntu14.04/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/10/28/Deploy-RabbitMQ-Cluster-On-Ubuntu14.04/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/10/15/Deploy-Tomcat&amp;Maven-On-Ubuntu14.04/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/10/09/Deploy-Redis-On-Ubuntu14.04/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/05/21/Deploy&amp;Test-Phoneyc/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/05/17/Deploy-Apache2-with-Django/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/05/11/Use-PhantomJS&amp;CasperJS/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://o-my-chenjian.com/2016/04/25/Useful-Software-On-Ubuntu-C1/</loc>
+  <lastmod>2017-05-02T07:01:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+</urlset>
