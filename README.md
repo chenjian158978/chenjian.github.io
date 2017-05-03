@@ -97,6 +97,12 @@
 
 - 提高可读性将题目改为中文，副标题改为英文
 
+### 2017.05.03
+
+- 添加网站地图
+
+- 添加baidu认证文件
+
 ### 参考
 
 1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)
