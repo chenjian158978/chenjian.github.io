@@ -11,137 +11,161 @@ tags:
     - 音乐
 ---
 
-My girl, my girl, don’t lie to me
+> My girl, my girl, don’t lie to me
+>
+> Tell me where did you sleep last night
+> 
+> In the pines, in the pines
+> 
+> Where the sun don’t ever shine
+> 
+> I would shiver the whole night through
+> 
+> \~~~
+> 
+> My girl, my girl, where will you go
+> 
+> I’m going where the cold wind blows
+> 
+> In the pines, in the pines
+> 
+> Where the sun don’t ever shine
+> 
+> I would shiver the whole night through
+> 
+> Her husband, was a hard working man
+> 
+> Just about a mile from here
+> 
+> His head was found in a driving wheel
+> 
+> but his body never was found
+> 
+> \~~~
+> 
+> My girl, my girl, don’t lie to me
+> 
+> Tell me where did you sleep last night
+> 
+> In the pines, in the pines
+> 
+> Where the sun don’t ever shine
+> 
+> I would shiver the whole night through
+> 
+> \~~~
+> 
+> My girl, my girl, where will you go
+> 
+> I’m going where the cold wind blows
+> 
+> In the pines, in the pines
+> 
+> Where the sun don’t ever shine
+> 
+> I would shiver the whole night through
+> 
+> \~~~
+> 
+> My girl, my girl, don’t lie to me
+> 
+> Tell me where did you sleep last night
+> 
+> In the pines, in the pines
+> 
+> Where the sun don’t ever shine
+> 
+> I would shiver the whole night through
+> 
+> \~~~
+> 
+> My girl, my girl, where will you go
+>
+> I’m going where the cold wind blows
+> 
+> In the pines,pines,sun,sun
+> 
+> I would shiver the whole night through
+
+---
 
 > 女人，女人，不要含糊
-
-Tell me where did you sleep last night
-
+>
 > 告诉我，昨夜你在何处入眠
-
-In the pines, in the pines
-
+>
 > 森林里，森林里
-
-Where the sun don’t ever shine
-
+> 
 > 沉默的烛火
-
-I would shiver the whole night through
-
+> 
 > 整夜，我都在颤抖
-
-My girl, my girl, where will you go
-
+> 
+> \~~~
+> 
 > 女人，女人，你将要去哪儿
-
-I’m going where the cold wind blows
-
+>
 > 我将要去那风雪之地
-
-In the pines, in the pines
-
+>
 > 树木间，树木间
-
-Where the sun don’t ever shine
-
+> 
 > 充斥的黑暗
-
-I would shiver the whole night through
-
+> 
 > 整夜，我都在奔跑
-
-Her husband, was a hard working man
-
+> 
 > 她的男人，一个苦工
-
-Just about a mile from here
-
+> 
 > 从这儿到那儿，一里大约
-
-His head was found in a driving wheel
-
+>
 > 车轮与头额，飞奔着
-
-but his body never was found
-
+>
 > 木头和躯干，没入脚下
-
-My girl, my girl, don’t lie to me
-
+>
+> \~~~
+> 
 > 女人，女人，不要诱惑
-
-Tell me where did you sleep last night
-
+> 
 > 告诉我，昨夜你在何处缠绵
-
-In the pines, in the pines
-
+>
 > 梧桐鸣，梧桐鸣
-
-Where the sun don’t ever shine
-
+>
 > 铺盖的土地
-
-I would shiver the whole night through
-
+> 
 > 整夜，我都在徘徊
-
-My girl, my girl, where will you go
-
+> 
+> 
+> 
 > 女人，女人，哪儿是你的路
-
-I’m going where the cold wind blows
-
+> 
 > 我的路是黄泉尽头
-
-In the pines, in the pines
-
+> 
 > 枫叶红，枫叶红
-
-Where the sun don’t ever shine
-
+> 
 > 血染的落霞
-
-I would shiver the whole night through
-
+> 
 > 整夜，我都在擦洗
-
-My girl, my girl, don’t lie to me
-
+> 
+> \~~~
+> 
 > 女人，女人，不准欺骗
-
-Tell me where did you sleep last night
-
+> 
 > 告诉我，昨夜你在何处安息
-
-In the pines, in the pines
-
+> 
 > 松树中，松树中
-
-Where the sun don’t ever shine
-
+> 
 > 阳光的墓地
-
-I would shiver the whole night through
-
+> 
 > 整夜，我为你吟唱
-
-My girl, my girl, where will you go
-
+> 
+> \~~~
+> 
 > 女人，女人，你的路通向何方
-
-I’m going where the cold wind blows
-
+> 
 > 我的路已是冥冥幽径
-
-In the pines,pines,sun,sun
-
+> 
 > 在松树中，在松树中，体温，圣歌
-
-I would shiver the whole night through
-
+> 
 > 整夜，我为你伴舞
+
+
 
 
 “Where did you sleep last night”，这首歌我听的时间很短，也是Nirvana这个乐队第一首给我很深感触的歌曲。没有想到在短短的半天时间内，对这首歌曲的感受与理解会快速的发展并且完善，从而产生了这篇歌词的翻译和后文，以及对该乐队的兴趣。
