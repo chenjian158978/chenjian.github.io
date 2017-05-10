@@ -11,6 +11,14 @@ tags:
     - 音乐
 ---
 
+### 专辑Coming from Reality
+
+- [词译-Sandrevan Lullaby-Lifestyles](https://o-my-chenjian.com/2017/05/08/Sandrevan-Lullaby/)
+- [词译-I Think Of You](https://o-my-chenjian.com/2016/09/14/I-Think-Of-You/)
+- [词译-A Most Disgusting Song](https://o-my-chenjian.com/2016/09/01/A-Most-Disgusting-Song/)
+
+### A Most Disgusting Song
+
 I've played every kind of gig there is to play now
 
 > 类似的演出已是我的日常，当前便是如此

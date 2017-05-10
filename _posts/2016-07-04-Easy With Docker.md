@@ -216,6 +216,11 @@ COMMENT
 
 `docker rmi image_id`
 
+#### 删除所有的images
+
+`docker rmi $(docker images -q)`
+
+
 ### 查看当前运行中的容器
 
 `docker ps`
