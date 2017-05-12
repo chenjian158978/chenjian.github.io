@@ -175,11 +175,14 @@ COMMENT
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ##### 搭建前准备工作
 
@@ -217,38 +220,23 @@ mkdir /root/local/bin
 cat >> /etc/profile <<EOF
 # 最好使用 主机未用的网段 来定义服务网段和 Pod 网段
 
+# ===============基本信息===============
+# 当前部署的节点 IP
+export NODE_IP=192.168.1.175
+
+# 当前部署的Master的IP
+export MASTER_IP=192.168.1.171
+
+# 将创建好的文件夹加入环境变量
+# 后续的kubectl，kubelet等工具将放到该路径下
+export PATH=/root/local/bin:\$PATH
+# ===============基本信息===============
+
+
+# ===============ETCD===============
 ETCD_0=192.168.1.175
 ETCD_1=192.168.1.176
 ETCD_2=192.168.1.177
-
-# 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
-SERVICE_CIDR="10.254.0.0/16"
-
-# POD 网段 (Cluster CIDR），部署前路由不可达，**部署后**路由可达(flanneld保证)
-CLUSTER_CIDR="172.30.0.0/16"
-
-# 服务端口范围 (NodePort Range)，建议使用高端口
-export NODE_PORT_RANGE="30000-50000"
-
-# etcd 集群服务地址列表
-export ETCD_ENDPOINTS="https://\${ETCD_0}:2379,https://\${ETCD_1}:2379,https://\${ETCD_2}:2379"
-
-# flanneld 网络配置前缀
-export FLANNEL_ETCD_PREFIX="/kubernetes/network"
-
-# kubernetes服务IP 
-# 一般是SERVICE_CIDR中第一个IP
-export CLUSTER_KUBERNETES_SVC_IP="10.254.0.1"
-
-# 集群 DNS 服务 IP 
-# 从 SERVICE_CIDR 中预分配
-export CLUSTER_DNS_SVC_IP="10.254.0.2"
-
-# 集群 DNS 域名
-export CLUSTER_DNS_DOMAIN="cluster.local."
-
-# 将创建好的文件夹加入环境变量
-export PATH=/root/local/bin:\$PATH
 
 # 当前部署的机器名称
 # 随便定义，只要能区分不同机器即可
@@ -256,30 +244,79 @@ export PATH=/root/local/bin:\$PATH
 # 192.168.1.175的为etcd-host0
 # 192.168.1.176的为etcd-host1
 # 192.168.1.177的为etcd-host2
-export NODE_NAME=etcd-host0
+export ETCD_NODE_NAME=etcd-host0
 
-# 当前部署的机器 IP
-export NODE_IP=192.168.1.175
-
-# etcd 集群所有机器 IP
-export NODE_IPS="192.168.1.175 192.168.1.176 192.168.1.177" 
+# etcd集群所有机器 IP
+export ETCD_NODE_IPS="192.168.1.175 192.168.1.176 192.168.1.177" 
 
 # etcd 集群各机器名称和对应的IP、端口
 export ETCD_NODES=etcd-host0=https://\${ETCD_0}:2380,etcd-host1=https://\${ETCD_1}:2380,etcd-host2=https://\${ETCD_2}:2380
+
+# etcd 集群服务地址列表
+export ETCD_ENDPOINTS="https://\${ETCD_0}:2379,https://\${ETCD_1}:2379,https://\${ETCD_2}:2379"
+# ===============ETCD===============
+
+
+# ===============集群信息===============
+# 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
+SERVICE_CIDR="10.254.0.0/16"
+
+# POD网段(Cluster CIDR，部署前路由不可达，**部署后**路由可达(flanneld保证)
+CLUSTER_CIDR="172.30.0.0/16"
+
+# token文件
+BOOTSTRAP_TOKEN="2dc1235a021972ca7d9d486795e57369"
+
+# 服务端口范围 (NodePort Range)，建议使用高端口
+export NODE_PORT_RANGE="30000-50000"
+
+# kubernetes服务IP 
+# 一般是SERVICE_CIDR中第一个IP
+export CLUSTER_KUBERNETES_SVC_IP="10.254.0.1"
+
+# 集群DNS服务IP 
+# 从 SERVICE_CIDR 中预分配
+export CLUSTER_DNS_SVC_IP="10.254.0.2"
+
+# 集群DNS域名
+export CLUSTER_DNS_DOMAIN="cluster.local."
+
+# kubelet访问的kube-apiserver的地址
+export KUBE_APISERVER="https://\${MASTER_IP}:6443"
+# ===============集群信息===============
+
+
+# ===============FLANNEL信息===============
+# flanneld网络配置前缀
+export FLANNEL_ETCD_PREFIX="/kubernetes/network"
+
+# 当前部署的节点通信接口名称，使用和其它Node互通的接口即可
+export FLANNEL_OPTIONS="-iface=ens160"
+# ===============FLANNEL信息===============
+
 EOF
 
 # 激活配置
 source /etc/profile
 ```
 
+注：
+
+1. 如果是远程登录master节点，为保证环境变量登录后便激活，需要将这些环境变量加入`~/.bashrc`文件中，再激活配置
+2. token值，所有节点包括master均要相同
+
 - 添加CA认证文件
 
 ``` bash
 sudo mkdir -p /etc/kubernetes/ssl
-sudo cp ca.pem kubernetes-key.pem kubernetes.pem /etc/kubernetes/ssl
+sudo cp ca.pem /etc/kubernetes/ssl
+
+sudo mkdir -p /etc/etcd/ssl
+chmod -R 777 /etc/etcd/
+sudo cp etcd-key.pem  etcd.pem /etc/etcd/ssl
 ```
 	
-其中的`ca.pem kubernetes-key.pem kubernetes.pem`，请详细阅读[Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
+其中的`ca.pem etcd-key.pem etcd.pem`，请详细阅读[Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 
 ##### 安装ETCD
 
@@ -288,7 +325,7 @@ wget https://github.com/coreos/etcd/releases/download/v3.1.6/etcd-v3.1.6-linux-a
 tar -xvf etcd-v3.1.6-linux-amd64.tar.gz
 mkdir /root/local
 mkdir /root/local/bin
-sudo mv etcd-v3.1.6-linux-amd64/etcd* /root/local/bin
+sudo cp etcd-v3.1.6-linux-amd64/{etcd*,etcd} /root/local/bin
 ```
 
 ##### etcd.service
@@ -309,11 +346,11 @@ Documentation=https://github.com/coreos
 Type=notify
 WorkingDirectory=/var/lib/etcd/
 ExecStart=/root/local/bin/etcd \\
-  --name=${NODE_NAME} \\
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \\
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \\
-  --peer-cert-file=/etc/kubernetes/ssl/kubernetes.pem \\
-  --peer-key-file=/etc/kubernetes/ssl/kubernetes-key.pem \\
+  --name=${ETCD_NODE_NAME} \\
+  --cert-file=/etc/etcd/ssl/etcd.pem \\
+  --key-file=/etc/etcd/ssl/etcd-key.pem \\
+  --peer-cert-file=/etc/etcd/ssl/etcd.pem \\
+  --peer-key-file=/etc/etcd/ssl/etcd-key.pem \\
   --trusted-ca-file=/etc/kubernetes/ssl/ca.pem \\
   --peer-trusted-ca-file=/etc/kubernetes/ssl/ca.pem \\
   --initial-advertise-peer-urls=https://${NODE_IP}:2380 \\
@@ -335,13 +372,13 @@ EOF
 
 - 为了保证通信安全，需要指定etcd的公私钥(cert-file和key-file)、Peers通信的公私钥和CA证书(peer-cert-file、peer-key-file、peer-trusted-ca-file)、客户端的CA证书（trusted-ca-file）
 
-- 创建kubernetes.pem证书时使用的`kubernetes-csr.json`文件的hosts字段包含所有 etcd节点的NODE_IP，否则证书校验会出错；
+- 创建etcd.pem证书时使用的`etcd-csr.json`文件的hosts字段包含所有etcd节点的ETCD_NODE_IP，否则证书校验会出错；
 - `--initial-cluster-state`值为new时，`--name`的参数值必须位于`--initial-cluster`列表中；
 
 ##### 启动Etcd服务
 
 ``` bash
-sudo mv etcd.service /etc/systemd/system/
+sudo cp etcd.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable etcd
 sudo systemctl start etcd
@@ -369,11 +406,15 @@ Apr 25 17:09:31 192-168-1-175.etcd etcd[20318]: finished scheduled compaction at
 COMMENT
 ```
 
+注：
+
+- 第一台启动etcd服务的在`sudo systemctl start etcd`后，会停顿一段时间，等待其他etcd节点加入。等所有服务启动后，便正常运行
+
 ##### 验证Etcd集群可用性
 
 ``` bash
 # 验证服务
-for ip in ${NODE_IPS}; do
+for ip in ${ETCD_NODE_IPS}; do
 	ETCDCTL_API=3 /root/local/bin/etcdctl \
 	--endpoints=https://${ip}:2379  \
 	--cacert=/etc/kubernetes/ssl/ca.pem \

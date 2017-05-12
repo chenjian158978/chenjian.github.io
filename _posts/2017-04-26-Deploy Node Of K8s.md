@@ -17,11 +17,14 @@ tags:
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ### 准备工作
 
@@ -77,24 +80,55 @@ COMMENT
 cat >> /etc/profile <<EOF
 # 最好使用 主机未用的网段 来定义服务网段和 Pod 网段
 
+# ===============基本信息===============
+# 当前部署的节点 IP
+export NODE_IP=192.168.1.173
+
+# 当前部署的Master的IP
+export MASTER_IP=192.168.1.171
+
+# 将创建好的文件夹加入环境变量
+# 后续的kubectl，kubelet等工具将放到该路径下
+export PATH=/root/local/bin:\$PATH
+# ===============基本信息===============
+
+
+# ===============ETCD===============
 ETCD_0=192.168.1.175
 ETCD_1=192.168.1.176
 ETCD_2=192.168.1.177
 
-# 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
-SERVICE_CIDR="10.254.0.0/16"
+# 当前部署的机器名称
+# 随便定义，只要能区分不同机器即可
+# 例如
+# 192.168.1.175的为etcd-host0
+# 192.168.1.176的为etcd-host1
+# 192.168.1.177的为etcd-host2
+export ETCD_NODE_NAME=etcd-host0
 
-# POD 网段 (Cluster CIDR），部署前路由不可达，**部署后**路由可达(flanneld保证)
-CLUSTER_CIDR="172.30.0.0/16"
+# etcd集群所有机器 IP
+export ETCD_NODE_IPS="192.168.1.175 192.168.1.176 192.168.1.177" 
 
-# 服务端口范围 (NodePort Range)，建议使用高端口
-export NODE_PORT_RANGE="30000-50000"
+# etcd 集群各机器名称和对应的IP、端口
+export ETCD_NODES=etcd-host0=https://\${ETCD_0}:2380,etcd-host1=https://\${ETCD_1}:2380,etcd-host2=https://\${ETCD_2}:2380
 
 # etcd 集群服务地址列表
 export ETCD_ENDPOINTS="https://\${ETCD_0}:2379,https://\${ETCD_1}:2379,https://\${ETCD_2}:2379"
+# ===============ETCD===============
 
-# flanneld网络配置前缀
-export FLANNEL_ETCD_PREFIX="/kubernetes/network"
+
+# ===============集群信息===============
+# 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
+SERVICE_CIDR="10.254.0.0/16"
+
+# POD网段(Cluster CIDR，部署前路由不可达，**部署后**路由可达(flanneld保证)
+CLUSTER_CIDR="172.30.0.0/16"
+
+# token文件
+BOOTSTRAP_TOKEN="2dc1235a021972ca7d9d486795e57369"
+
+# 服务端口范围 (NodePort Range)，建议使用高端口
+export NODE_PORT_RANGE="30000-50000"
 
 # kubernetes服务IP 
 # 一般是SERVICE_CIDR中第一个IP
@@ -107,27 +141,37 @@ export CLUSTER_DNS_SVC_IP="10.254.0.2"
 # 集群DNS域名
 export CLUSTER_DNS_DOMAIN="cluster.local."
 
-# 将创建好的文件夹加入环境变量
-# 后续的kubectl，kubelet等工具将放到该路径下
-export PATH=/root/local/bin:\$PATH
+# kubelet访问的kube-apiserver的地址
+export KUBE_APISERVER="https://\${MASTER_IP}:6443"
+# ===============集群信息===============
+
+
+# ===============FLANNEL信息===============
+# flanneld网络配置前缀
+export FLANNEL_ETCD_PREFIX="/kubernetes/network"
 
 # 当前部署的节点通信接口名称，使用和其它Node互通的接口即可
 export FLANNEL_OPTIONS="-iface=ens160"
+# ===============FLANNEL信息===============
 
-# 当前部署的节点 IP
-export NODE_ADDRESS=192.168.1.173
 EOF
 
 # 激活配置
 source /etc/profile
 ```
 
+注：
+
+- 如果是远程登录master节点，为保证环境变量登录后便激活，需要将这些环境变量加入`~/.bashrc`文件中，再激活配置
+- token值，所有节点包括master均要相同
+
 ### TLS证书
 
 ``` bash
-sudo mkdir -p /etc/kubernetes/ssl /var/lib/kubelet /var/lib/kube-proxy
+sudo mkdir -p /etc/kubernetes/ssl /var/lib/kubelet /var/lib/kube-proxy /etc/flanneld/ssl
 sudo cp ca.pem kubernetes.pem kubernetes-key.pem /etc/kubernetes/ssl
 sudo cp bootstrap.kubeconfig kube-proxy.kubeconfig token.csv /etc/kubernetes
+sudo cp flanneld-key.pem  flanneld.pem /etc/flanneld/ssl
 
 ls /etc/kubernetes/
 <<'COMMENT'
@@ -136,183 +180,18 @@ COMMENT
 
 ls /etc/kubernetes/ssl/
 <<'COMMENT'
-ca.pem  kubelet-client.crt  kubelet-client.key  kubelet.crt  kubelet.key  kubernetes-key.pem  kubernetes.pem
+ca.pem kubelet.key  kubernetes-key.pem  kubernetes.pem
+COMMENT
+
+ls /etc/flanneld/ssl
+<<'COMMENT'
+flanneld-key.pem  flanneld.pem
 COMMENT
 ```
 
 ### 安装Flannel
 
-##### 向etcd 写入集群 Pod 网段信息
-
-操作服务器为：`192.168.1.175／192.168.1.176／192.168.1.177`的任意一台，即etcd集群的三台服务器的任意一台即可。
-
-``` bash
-/root/local/bin/etcdctl \
---endpoints=${ETCD_ENDPOINTS} \
---ca-file=/etc/kubernetes/ssl/ca.pem \
---cert-file=/etc/kubernetes/ssl/kubernetes.pem \
---key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-set ${FLANNEL_ETCD_PREFIX}/config '{"Network":"'${CLUSTER_CIDR}'", "SubnetLen": 24, "Backend": {"Type": "vxlan"}}'
-
-<<'COMMENT'
-2017-04-24 14:24:29.807639 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
-{"Network":"172.30.0.0/16", "SubnetLen": 24, "Backend": {"Type": "vxlan"}}
-COMMENT
-```
-
-##### 下载Flannel
-
-操作服务器IP：`192.168.1.173`，即`K8s-node`
-
-``` bash
-mkdir flannel
-wget https://github.com/coreos/flannel/releases/download/v0.7.1/flannel-v0.7.1-linux-amd64.tar.gz
-tar -xzvf flannel-v0.7.1-linux-amd64.tar.gz -C flannel
-sudo cp flannel/{flanneld,mk-docker-opts.sh} /root/local/bin
-```
-所有资源可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载
-
-##### flanneld.service
-
-``` bash
-cat >> flanneld.service <<EOF
-[Unit]
-Description=Flanneld overlay address etcd agent
-After=network.target
-After=network-online.target
-Wants=network-online.target
-After=etcd.service
-Before=docker.service
-
-[Service]
-Type=notify
-ExecStart=/root/local/bin/flanneld \\
-  -etcd-cafile=/etc/kubernetes/ssl/ca.pem \\
-  -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem \\
-  -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem \\
-  -etcd-endpoints=${ETCD_ENDPOINTS} \\
-  -etcd-prefix=${FLANNEL_ETCD_PREFIX} \\
-  $FLANNEL_OPTIONS
-ExecStartPost=/root/local/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-RequiredBy=docker.service
-EOF
-```
-
-- etcd集群启用了双向TLS认证，需要为flanneld指定与etcd集群通信的CA和秘钥
-
-- mk-docker-opts.sh脚本将分配给flanneld的Pod子网网段信息写入到`/run/flannel/docker`文件中，后续docker启动时使用这个文件中参数值设置`docker0`网桥
-
-- `-iface`选项值指定flanneld和其它Node通信的接口，如果机器有内、外网，则最好指定为内网接口
-
-##### 启动Flannel
-
-``` bash
-# 启动 flannelds
-sudo cp flanneld.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable flanneld
-
-<<'COMMENT'
-Created symlink from /etc/systemd/system/multi-user.target.wants/flanneld.service to /etc/systemd/system/flanneld.service.
-Created symlink from /etc/systemd/system/docker.service.requires/flanneld.service to /etc/systemd/system/flanneld.service.
-COMMENT
-
-sudo systemctl start flanneld
-sudo systemctl status flanneld
-
-<<'COMMENT'
-● flanneld.service - Flanneld overlay address etcd agent
-   Loaded: loaded (/etc/systemd/system/flanneld.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-24 14:37:32 CST; 3s ago
-  Process: 18832 ExecStartPost=/root/local/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker (code=exited, status=0/SUCCESS)
- Main PID: 18817 (flanneld)
-   CGroup: /system.slice/flanneld.service
-           └─18817 /root/local/bin/flanneld -etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc...
-
-Apr 24 14:37:31 192-168-1-173.node systemd[1]: Starting Flanneld overlay address etcd agent...
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.022092   18817 main.go:132] Installing signal handlers
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.023983   18817 manager.go:149] Using interface with name ens160 and address 1...68.1.173
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.024093   18817 manager.go:166] Defaulting external address to interface addre...8.1.173)
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.187706   18817 local_manager.go:179] Picking subnet in range 172.30.1.0 ... 172.30.255.0
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.192682   18817 manager.go:250] Lease acquired: 172.30.65.0/24
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.194026   18817 network.go:58] Watching for L3 misses
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.194063   18817 network.go:66] Watching for new subnet leases
-Apr 24 14:37:32 192-168-1-173.node systemd[1]: Started Flanneld overlay address etcd agent.
-Hint: Some lines were ellipsized, use -l to show in full.
-COMMENT
-```
-
-##### 检查 flanneld 服务
-
-``` bash
-# 检查 flanneld 服务
-journalctl  -u flanneld |grep 'Lease acquired'
-<<'COMMENT'
-Apr 24 14:37:32 192-168-1-173.node flanneld[18817]: I0424 14:37:32.192682   18817 manager.go:250] Lease acquired: 172.30.65.0/24
-COMMENT
-
-ifconfig flannel.1
-<<'COMMENT'
-flannel.1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1450
-        inet 172.30.65.0  netmask 255.255.255.255  broadcast 0.0.0.0
-        ether 42:1c:62:92:a9:3b  txqueuelen 0  (Ethernet)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 1 overruns 0  carrier 0  collisions 0
-COMMENT
-```
-
-##### 检查分配给各flannel的Pod网段信息
-
-操作服务器为：`192.168.1.175／192.168.1.176／192.168.1.177`的任意一台，即etcd集群的三台服务器的任意一台即可。
-
-``` bash
-# 检查分配给各 flanneld 的 Pod 网段信息
-/root/local/bin/etcdctl \
---endpoints=${ETCD_ENDPOINTS} \
---ca-file=/etc/kubernetes/ssl/ca.pem \
---cert-file=/etc/kubernetes/ssl/kubernetes.pem \
---key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-get ${FLANNEL_ETCD_PREFIX}/config
-
-<<'COMMENT'
-2017-04-24 15:18:07.601242 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
-{"Network":"172.30.0.0/16", "SubnetLen": 24, "Backend": {"Type": "vxlan"}}
-COMMENT
-
-
-# 查看已分配的 Pod 子网段列表(/24)
-/root/local/bin/etcdctl \
---endpoints=${ETCD_ENDPOINTS} \
---ca-file=/etc/kubernetes/ssl/ca.pem \
---cert-file=/etc/kubernetes/ssl/kubernetes.pem \
---key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-ls ${FLANNEL_ETCD_PREFIX}/subnets
-
-<<'COMMENT'
-2017-04-24 15:20:05.037504 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
-/kubernetes/network/subnets/172.30.65.0-24
-COMMENT
-
-# 查看某一 Pod 网段对应的 flanneld 进程监听的 IP 和网络参数
-/root/local/bin/etcdctl \
---endpoints=${ETCD_ENDPOINTS} \
---ca-file=/etc/kubernetes/ssl/ca.pem \
---cert-file=/etc/kubernetes/ssl/kubernetes.pem \
---key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-get ${FLANNEL_ETCD_PREFIX}/subnets/172.30.65.0-24
-
-<<'COMMENT'
-2017-04-24 15:20:45.836801 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
-{"PublicIP":"192.168.1.173","BackendType":"vxlan","BackendData":{"VtepMAC":"42:1c:62:92:a9:3b"}}
-COMMENT
-```
+请参考[Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 
 ### 安装Docker
 
@@ -333,6 +212,8 @@ COMMENT
 ```
 
 ##### 下载kubelet和kube-proxy二进制文件
+
+操作服务器IP：`192.168.1.173`，即`K8s-node`
 
 ``` bash
 wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.2/kubernetes.tar.gz
@@ -377,8 +258,8 @@ Requires=docker.service
 [Service]
 WorkingDirectory=/var/lib/kubelet
 ExecStart=/root/local/bin/kubelet \\
-  --address=${NODE_ADDRESS} \\
-  --hostname-override=${NODE_ADDRESS} \\
+  --address=${NODE_IP} \\
+  --hostname-override=${NODE_IP} \\
   --pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest \\
   --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig \\
   --kubeconfig=/etc/kubernetes/kubelet.kubeconfig \\
@@ -513,8 +394,8 @@ After=network.target
 [Service]
 WorkingDirectory=/var/lib/kube-proxy
 ExecStart=/root/local/bin/kube-proxy \\
-  --bind-address=${NODE_ADDRESS} \\
-  --hostname-override=${NODE_ADDRESS} \\
+  --bind-address=${NODE_IP} \\
+  --hostname-override=${NODE_IP} \\
   --cluster-cidr=${SERVICE_CIDR} \\
   --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig \\
   --logtostderr=true \\
@@ -544,7 +425,7 @@ EOF
 # 启动 kube-proxy
 sudo cp kube-proxy.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable kube-
+sudo systemctl enable kube-proxy
 
 <<'COMMENT'
 Created symlink from /etc/systemd/system/multi-user.target.wants/kube-proxy.service to /etc/systemd/system/kube-proxy.service.

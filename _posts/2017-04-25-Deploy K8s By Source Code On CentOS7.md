@@ -24,11 +24,14 @@ tags:
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ### Kubernetes框架
 
@@ -72,6 +75,10 @@ tags:
 
 [Kubernetes集群之创建kubeconfig文件-详文](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
 
+### Kubernetes集群之Flannel网络
+
+[Kubernetes集群之Flannel网络-详文](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
+
 ### Kubernetes集群之Master节点
 
 [Kubernetes集群之Master节点-详文](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
@@ -90,7 +97,13 @@ tags:
 [Kubernetes集群之Dashboard-详文](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
 
 
+### Kubernetes集群之Monitoring
 
+[Kubernetes集群之Monitoring-详文](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+
+### Kubernetes集群之清除集群
+
+[Kubernetes集群之清除集群-详文](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

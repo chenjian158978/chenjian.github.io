@@ -34,11 +34,14 @@ tags:
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ### docker安装
 
@@ -81,13 +84,13 @@ Docker version 1.11.2, build b9f10c9
 ``` bash
 wget https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz
 tar -xvf docker-17.04.0-ce.tgz
-cp docker/docker* /root/local/bin
+cp docker/{docker,docker*} /root/local/bin
 ```
 
 > docker.service
 
 ``` bash
-cat >> docker.service <<EOF
+cat > docker.service <<EOF
 [Unit]
 Description=Docker Application Container Engine
 Documentation=http://docs.docker.io
@@ -95,8 +98,8 @@ Documentation=http://docs.docker.io
 [Service]
 Environment="PATH=/root/local/bin:/bin:/sbin:/usr/bin:/usr/sbin"
 EnvironmentFile=-/run/flannel/docker
-ExecStart=/root/local/bin/dockerd --log-level=error $DOCKER_NETWORK_OPTIONS
-ExecReload=/bin/kill -s HUP $MAINPID
+ExecStart=/root/local/bin/dockerd --log-level=error \$DOCKER_NETWORK_OPTIONS
+ExecReload=/bin/kill -s HUP \$MAINPID
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=infinity
@@ -112,7 +115,7 @@ EOF
 
 - dockerd运行时会调用其它docker命令，如docker-proxy，所以需要将docker命令所在的目录加到PATH环境变量中
 
-- flanneld启动时将网络配置写入到`/run/flannel/docker`文件中的变量`DOCKER_NETWORK_OPTIONS`，dockerd命令行上指定该变量值来设置`docker0`网桥参数
+- flanneld启动时将网络配置写入到`/run/flannel/docker`文件中的变量`DOCKER_NETWORK_OPTIONS`，dockerd命令行上指定该变量值来设置`docker0`网桥参数。由此可以看出docker服务的启动在需要此参数的前提下，需要先安装Flanneld服务
 
 - 不能关闭默认开启的`--iptables`和`--ip-masq`选项；
 

@@ -17,11 +17,14 @@ tags:
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ### Master节点的组件
 
@@ -83,7 +86,8 @@ sudo cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kub
 
 ls /root/local/bin/
 <<'COMMENT'
-cfssl  cfssl-certinfo  cfssljson  environment.sh  kube-apiserver  kube-controller-manager  kubectl  kubefed  kubelet  kube-proxy  kube-scheduler
+cfssl           cfssljson       flanneld        kube-controller-manager  kubefed  kube-proxy      mk-docker-opts.sh
+cfssl-certinfo  environment.sh  kube-apiserver  kubectl                  kubelet  kube-scheduler
 COMMENT
 ```
 
@@ -179,22 +183,22 @@ sudo systemctl status kube-apiserver
 <<'COMMENT'
 ● kube-apiserver.service - Kubernetes API Server
    Loaded: loaded (/etc/systemd/system/kube-apiserver.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-24 13:14:28 CST; 4s ago
+   Active: active (running) since Thu 2017-05-11 14:12:04 CST; 5s ago
      Docs: https://github.com/GoogleCloudPlatform/kubernetes
- Main PID: 22121 (kube-apiserver)
+ Main PID: 5071 (kube-apiserver)
    CGroup: /system.slice/kube-apiserver.service
-           └─22121 /root/local/bin/kube-apiserver --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota --...
+           └─5071 /root/local/bin/kube-apiserver --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota --a...
 
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.111325   22121 storage_rbac.go:227] created role.rbac.authorization.k8...-public
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.127263   22121 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1...:37198]
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.151106   22121 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta...:37198]
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.151522   22121 storage_rbac.go:257] created rolebinding.rbac.authoriza...-system
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.167308   22121 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1...:37198]
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.190575   22121 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta...:37198]
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.191811   22121 storage_rbac.go:257] created rolebinding.rbac.authoriza...-system
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.207522   22121 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1...:37198]
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.230253   22121 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta...:37198]
-Apr 24 13:14:30 192-168-1-171.master kube-apiserver[22121]: I0424 13:14:30.230690   22121 storage_rbac.go:257] created rolebinding.rbac.authoriza...-public
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.787845    5071 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1/...:52700]
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.793909    5071 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta1...:52700]
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.794291    5071 storage_rbac.go:196] created clusterrolebinding.rbac.aut...troller
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.796895    5071 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1/...:52700]
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.803308    5071 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta1...:52700]
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.803961    5071 storage_rbac.go:196] created clusterrolebinding.rbac.aut...llector
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.806195    5071 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1/...:52700]
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.812121    5071 wrap.go:75] POST /apis/rbac.authorization.k8s.io/v1beta1...:52700]
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.813210    5071 storage_rbac.go:196] created clusterrolebinding.rbac.aut...oscaler
+May 11 14:12:05 192-168-1-171.master kube-apiserver[5071]: I0511 14:12:05.815368    5071 wrap.go:75] GET /apis/rbac.authorization.k8s.io/v1beta1/...:52700]
 Hint: Some lines were ellipsized, use -l to show in full.
 COMMENT
 ```
@@ -262,22 +266,22 @@ sudo systemctl status kube-controller-manager
 <<'COMMENT'
 ● kube-controller-manager.service - Kubernetes Controller Manager
    Loaded: loaded (/etc/systemd/system/kube-controller-manager.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-24 13:18:28 CST; 12s ago
+   Active: active (running) since Thu 2017-05-11 14:18:11 CST; 3s ago
      Docs: https://github.com/GoogleCloudPlatform/kubernetes
- Main PID: 22181 (kube-controller)
+ Main PID: 5132 (kube-controller)
    CGroup: /system.slice/kube-controller-manager.service
-           └─22181 /root/local/bin/kube-controller-manager --address=127.0.0.1 --master=http://192.168.1.171:8080 --allocate-node-cidrs=true --service-c...
+           └─5132 /root/local/bin/kube-controller-manager --address=127.0.0.1 --master=http://192.168.1.171:8080 --allocate-node-cidrs=true --service-cl...
 
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766205   22181 plugins.go:363] Loaded volume plugin "kubernete...ce-pd"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766238   22181 plugins.go:363] Loaded volume plugin "kubernete...inder"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766261   22181 plugins.go:363] Loaded volume plugin "kubernete...olume"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766287   22181 plugins.go:363] Loaded volume plugin "kubernete...olume"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766312   22181 plugins.go:363] Loaded volume plugin "kubernete...-disk"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766336   22181 plugins.go:363] Loaded volume plugin "kubernete...on-pd"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.766358   22181 plugins.go:363] Loaded volume plugin "kubernete...aleio"
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.767540   22181 attach_detach_controller.go:223] Starting Attac...roller
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.821029   22181 taint_controller.go:180] Starting NoExecuteTaintManager
-Apr 24 13:18:39 192-168-1-171.master kube-controller-manager[22181]: I0424 13:18:39.896085   22181 disruption.go:277] Sending events to api server.
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.397279    5132 controllermanager.go:427] Starting "replicaset"
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.398061    5132 controllermanager.go:437] Started "replicaset"
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.398088    5132 controllermanager.go:427] Starting "job"
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.408565    5132 controllermanager.go:437] Started "job"
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.408649    5132 plugins.go:101] No cloud provider specified.
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.409078    5132 nodecontroller.go:219] Sending events to api server.
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.409478    5132 ttlcontroller.go:117] Starting TTL controller
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.409737    5132 resource_quota_controller.go:240] Starting resou...roller
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.409833    5132 replica_set.go:155] Starting ReplicaSet controller
+May 11 14:18:12 192-168-1-171.master kube-controller-manager[5132]: I0511 14:18:12.560168    5132 garbagecollector.go:116] Garbage Collector: All ...arbage
 Hint: Some lines were ellipsized, use -l to show in full.
 COMMENT
 ```
@@ -324,19 +328,19 @@ sudo systemctl status kube-scheduler
 <<'COMMENT'
 ● kube-scheduler.service - Kubernetes Scheduler
    Loaded: loaded (/etc/systemd/system/kube-scheduler.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-24 13:22:08 CST; 10s ago
+   Active: active (running) since Thu 2017-05-11 14:19:27 CST; 3s ago
      Docs: https://github.com/GoogleCloudPlatform/kubernetes
- Main PID: 22240 (kube-scheduler)
+ Main PID: 5190 (kube-scheduler)
    CGroup: /system.slice/kube-scheduler.service
-           └─22240 /root/local/bin/kube-scheduler --address=127.0.0.1 --master=http://192.168.1.171:8080 --leader-elect=true --v=2
+           └─5190 /root/local/bin/kube-scheduler --address=127.0.0.1 --master=http://192.168.1.171:8080 --leader-elect=true --v=2
 
-Apr 24 13:22:08 192-168-1-171.master systemd[1]: Started Kubernetes Scheduler.
-Apr 24 13:22:08 192-168-1-171.master systemd[1]: Starting Kubernetes Scheduler...
-Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.693163   22240 factory.go:300] Creating scheduler from algorithm provi...ovider'
-Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.693334   22240 factory.go:346] Creating scheduler with fit predicates ...skConfl
-Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.693770   22240 leaderelection.go:179] attempting to acquire leader lease...
-Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.719180   22240 leaderelection.go:189] successfully acquired lease kube...heduler
-Apr 24 13:22:08 192-168-1-171.master kube-scheduler[22240]: I0424 13:22:08.719712   22240 event.go:217] Event(v1.ObjectReference{Kind:"Endpoints", Names...
+May 11 14:19:27 192-168-1-171.master systemd[1]: Started Kubernetes Scheduler.
+May 11 14:19:27 192-168-1-171.master systemd[1]: Starting Kubernetes Scheduler...
+May 11 14:19:28 192-168-1-171.master kube-scheduler[5190]: I0511 14:19:28.176209    5190 factory.go:300] Creating scheduler from algorithm provid...ovider'
+May 11 14:19:28 192-168-1-171.master kube-scheduler[5190]: I0511 14:19:28.176379    5190 factory.go:346] Creating scheduler with fit predicates '...eDiskPr
+May 11 14:19:28 192-168-1-171.master kube-scheduler[5190]: I0511 14:19:28.176818    5190 leaderelection.go:179] attempting to acquire leader lease...
+May 11 14:19:28 192-168-1-171.master kube-scheduler[5190]: I0511 14:19:28.211692    5190 leaderelection.go:189] successfully acquired lease kube-...heduler
+May 11 14:19:28 192-168-1-171.master kube-scheduler[5190]: I0511 14:19:28.213323    5190 event.go:217] Event(v1.ObjectReference{Kind:"Endpoints", Namesp...
 Hint: Some lines were ellipsized, use -l to show in full.
 COMMENT
 ```

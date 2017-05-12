@@ -17,11 +17,14 @@ tags:
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ### Kubeconfig文件
 
@@ -31,23 +34,12 @@ kubeconfig文件记录k8s集群的各种信息，对集群构建非常重要。
 
 - kubelet/kube-proxy等在Node上的程序进程同样通过`bootstrap.kubeconfig`和`kube-proxy.kubeconfig`上提供的认证与授权信息与Master进行通讯
 
-操作服务器IP：`192.168.1.171`，即`K8s-master`。在此之前，需要对服务器进行**准备工作**，具体操作请阅读[Security Settings Of K8s](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 
 ### 下载kubectl二进制文件
 
 ##### 增加环境变量
 
-``` bash
-# 添加系统环境变量
-cat >> /etc/profile <<EOF 
-export MASTER_IP=192.168.1.171
-export KUBE_APISERVER="https://\${MASTER_IP}:6443"
-export BOOTSTRAP_TOKEN=\$(head -c 16 /dev/urandom | od -An -t x | tr -d ' ')
-EOF
-
-# 激活配置
-source /etc/profile
-```
+操作服务器IP：`192.168.1.171`，即`K8s-master`。在此之前，需要对服务器进行**准备工作，例如环境变量的设置**，具体操作请阅读[Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 
 - KUBE_APISERVER指定kubelet访问的`kube-apiserver`的地址，后续被写入`~/.kube/config`配置文件
 
@@ -68,6 +60,19 @@ chmod a+x /root/local/bin/kube*
 ```
 
 所有的资源可以在[这里](https://pan.baidu.com/s/1pLhmqzL)进行下载
+
+### 生成Token文件
+
+Kubelet在首次启动时，会向kube-apiserver发送`TLS Bootstrapping`请求。如果kube-apiserver验证其与自己的token.csv一致，则为kubelete生成CA与key。
+
+``` bash
+# 生成Token文件
+cat > token.csv <<EOF 
+${BOOTSTRAP_TOKEN},kubelet-bootstrap,10001,"system:kubelet-bootstrap"
+EOF
+
+cp token.csv /etc/kubernetes/
+```
 
 ### 生成kubectl的kubeconfig文件
 
@@ -113,18 +118,13 @@ COMMENT
 
 - 生成的kubeconfig被保存到`~/.kube/config`文件
 
-### 生成Token文件
-
-Kubelet在首次启动时，会向kube-apiserver发送`TLS Bootstrapping`请求。如果kube-apiserver验证其与自己的token.csv一致，则为kubelete生成CA与key。
-
-``` bash
-# 生成Token文件
-cat > token.csv <<EOF 
-${BOOTSTRAP_TOKEN},kubelet-bootstrap,10001,"system:kubelet-bootstrap"
-EOF
-
-cp token.csv /etc/kubernetes/
+``` sh
+ls ~/.kube/
+<<'COMMENT'
+config
+COMMENT
 ```
+
 
 ### 生成kubelet的bootstrapping kubeconfig文件
 
@@ -230,6 +230,8 @@ COMMENT
 ``` bash
 sudo cp bootstrap.kubeconfig kube-proxy.kubeconfig /etc/kubernetes/
 ```
+
+将`~/.kube/config`文件拷贝到运行`kubelet`命令的机器的`~/.kube/`目录下
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

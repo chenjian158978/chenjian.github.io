@@ -17,11 +17,14 @@ tags:
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
 - [Kubernetes集群之搭建ETCD集群](https://o-my-chenjian.com/2017/04/08/Deploy-Etcd-Cluster/)
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
+- [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
 - [Kubernetes集群之Dashboard](https://o-my-chenjian.com/2017/04/08/Deploy-Dashboard-With-K8s/)
+- [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
+- [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
 
 ### K8s集群的安全设置
 
@@ -39,17 +42,20 @@ Kubernetes的安全设置有两种：
 
 ### 集群部件所需证书
 
-|  CA&Key  |     etcd      | kube-apiserver | kube-proxy |kubelet| kubectl|
-|:-----:|:------------:|:----------:|:-----:|:-----:|:-----:|
-| ca.pem | ✔️ | ✔️ | ✔️ |✔️|✔️|
-| ca-key.pem | | | | | |
-| kubernetes.pem | ✔️ |✔️ | ✔️ | | |
-| kubernetes-key.pem | ✔️| ✔️ | ✔️ | | |
-| kube-proxy.pem |  | | | | |
-| kube-proxy-key.pem |  | | | | |
-| admin.pem |  | | | | ✔️|
-| admin-key.pem|  | | | | ✔️| 
-
+|  CA&Key  |     etcd      | kube-apiserver | kube-proxy |kubelet| kubectl| flanneld|
+|:-----:|:------------:|:----------:|:-----:|:-----:|:-----:|:----:|
+| ca.pem | ✔️ | ✔️ | ✔️ |✔️|✔️|✔️|
+| ca-key.pem | | | | | || 
+| etcd.pem | ✔️ | | | | ||
+| etcd-key.pem| ✔️ | | | | ||
+| kubernetes.pem |  |✔️ | | | ||
+| kubernetes-key.pem | | ✔️ |  | | ||
+| kube-proxy.pem |  | | ✔️ | | ||
+| kube-proxy-key.pem |  | |✔️  | | ||
+| admin.pem |  | | | | ✔️||
+| admin-key.pem|  | | | | ✔️|| 
+| flanneld.pem|  | | | | |✔️|
+| flanneld-key.pem|  | | | | |✔️|
 
 ### CFSSL的安装
 
@@ -83,28 +89,65 @@ sudo systemctl disable firewalld
 mkdir /root/local
 mkdir /root/local/bin
 
+# TLS Bootstrapping使用的Token
+head -c 16 /dev/urandom | od -An -t x | tr -d ' '
+<<'COMMENT'
+2dc1235a021972ca7d9d486795e57369
+COMMENT
+
 # 环境变量
 cat >> /etc/profile <<EOF
 # 最好使用 主机未用的网段 来定义服务网段和 Pod 网段
 
+# ===============基本信息===============
+# 当前部署的节点 IP
+export NODE_IP=192.168.1.171
+
+# 当前部署的Master的IP
+export MASTER_IP=192.168.1.171
+
+# 将创建好的文件夹加入环境变量
+# 后续的kubectl，kubelet等工具将放到该路径下
+export PATH=/root/local/bin:\$PATH
+# ===============基本信息===============
+
+
+# ===============ETCD===============
 ETCD_0=192.168.1.175
 ETCD_1=192.168.1.176
 ETCD_2=192.168.1.177
 
-# 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
-SERVICE_CIDR="10.254.0.0/16"
+# 当前部署的机器名称
+# 随便定义，只要能区分不同机器即可
+# 例如
+# 192.168.1.175的为etcd-host0
+# 192.168.1.176的为etcd-host1
+# 192.168.1.177的为etcd-host2
+export ETCD_NODE_NAME=etcd-host0
 
-# POD 网段 (Cluster CIDR），部署前路由不可达，**部署后**路由可达(flanneld保证)
-CLUSTER_CIDR="172.30.0.0/16"
+# etcd集群所有机器 IP
+export ETCD_NODE_IPS="192.168.1.175 192.168.1.176 192.168.1.177" 
 
-# 服务端口范围 (NodePort Range)，建议使用高端口
-export NODE_PORT_RANGE="30000-50000"
+# etcd 集群各机器名称和对应的IP、端口
+export ETCD_NODES=etcd-host0=https://\${ETCD_0}:2380,etcd-host1=https://\${ETCD_1}:2380,etcd-host2=https://\${ETCD_2}:2380
 
 # etcd 集群服务地址列表
 export ETCD_ENDPOINTS="https://\${ETCD_0}:2379,https://\${ETCD_1}:2379,https://\${ETCD_2}:2379"
+# ===============ETCD===============
 
-# flanneld网络配置前缀
-export FLANNEL_ETCD_PREFIX="/kubernetes/network"
+
+# ===============集群信息===============
+# 服务网段 (Service CIDR），部署前路由不可达，部署后集群内使用IP:Port可达
+SERVICE_CIDR="10.254.0.0/16"
+
+# POD网段(Cluster CIDR，部署前路由不可达，**部署后**路由可达(flanneld保证)
+CLUSTER_CIDR="172.30.0.0/16"
+
+# token文件
+BOOTSTRAP_TOKEN="2dc1235a021972ca7d9d486795e57369"
+
+# 服务端口范围 (NodePort Range)，建议使用高端口
+export NODE_PORT_RANGE="30000-50000"
 
 # kubernetes服务IP 
 # 一般是SERVICE_CIDR中第一个IP
@@ -117,14 +160,30 @@ export CLUSTER_DNS_SVC_IP="10.254.0.2"
 # 集群DNS域名
 export CLUSTER_DNS_DOMAIN="cluster.local."
 
-# 将创建好的文件夹加入环境变量
-# 后续的kubectl，kubelet等工具将放到该路径下
-export PATH=/root/local/bin:\$PATH
+# kubelet访问的kube-apiserver的地址
+export KUBE_APISERVER="https://\${MASTER_IP}:6443"
+# ===============集群信息===============
+
+
+# ===============FLANNEL信息===============
+# flanneld网络配置前缀
+export FLANNEL_ETCD_PREFIX="/kubernetes/network"
+
+# 当前部署的节点通信接口名称，使用和其它Node互通的接口即可
+export FLANNEL_OPTIONS="-iface=ens160"
+# ===============FLANNEL信息===============
+
 EOF
 
 # 激活配置
 source /etc/profile
 ``` 
+
+注：
+
+- 如果是远程登录master节点，为保证环境变量登录后便激活，需要将这些环境变量加入`~/.bashrc`文件中，再激活配置
+- token值，所有节点包括master均要相同
+
 
 ##### 安装CFSSL
 
@@ -232,6 +291,69 @@ ca-config.json  ca.csr  ca-csr.json  ca-key.pem  ca.pem
 COMMENT
 ```
 
+### 创建etcd.pem和etcd-key.pem
+
+##### etcd证书申请表
+
+``` sh
+cat > etcd-csr.json <<EOF
+{
+  "CN": "etcd",
+  "hosts": [
+    "127.0.0.1",
+    "192.168.1.175",
+    "192.168.1.176",
+    "192.168.1.177"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "CN",
+      "ST": "BeiJing",
+      "L": "BeiJing",
+      "O": "k8s",
+      "OU": "System"
+    }
+  ]
+}
+EOF
+```
+
+- hosts 字段分别指定了etcd集群(192.168.1.175/192.168.1.176/192.168.1.177)、k8s-master的IP(192.168.1.171)
+
+##### 生成etcd.pem/etcd-key.pem
+
+``` sh
+cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes etcd-csr.json | cfssljson -bare etcd
+
+<<'COMMENT'
+2017/05/12 14:13:51 [INFO] generate received request
+2017/05/12 14:13:51 [INFO] received CSR
+2017/05/12 14:13:51 [INFO] generating key: rsa-2048
+2017/05/12 14:13:52 [INFO] encoded CSR
+2017/05/12 14:13:52 [INFO] signed certificate with serial number 513529097933554910472311565391610507353262197901
+2017/05/12 14:13:52 [WARNING] This certificate lacks a "hosts" field. This makes it unsuitable for
+websites. For more information see the Baseline Requirements for the Issuance and Management
+of Publicly-Trusted Certificates, v.1.1.6, from the CA/Browser Forum (https://cabforum.org);
+specifically, section 10.2.3 ("Information Requirements").
+COMMENT
+
+ls etcd*
+<<'COMMENT'
+etcd.csr  etcd-csr.json  etcd-key.pem  etcd.pem
+COMMENT
+```
+
+##### 保存证书
+
+``` bash
+sudo mkdir -p /etc/etcd/ssl
+sudo cp etcd-key.pem  etcd.pem /etc/etcd/ssl
+```
+
 ### 创建kubernetes.pem和kubernetes-key.pem
 
 ##### kubernetes证书申请表
@@ -243,9 +365,6 @@ cat <<EOF > kubernetes-csr.json
   "hosts": [
     "127.0.0.1",
     "192.168.1.171",
-    "192.168.1.175",
-    "192.168.1.176",
-    "192.168.1.177",
     "10.254.0.1",
     "kubernetes",
     "kubernetes.default",
@@ -271,7 +390,7 @@ cat <<EOF > kubernetes-csr.json
 EOF
 ```
 
-- hosts 字段分别指定了etcd集群(192.168.1.175/192.168.1.176/192.168.1.177)、k8s-master的IP(192.168.1.171)
+- hosts 字段分别指定了k8s-master的IP(192.168.1.171)
 
 - 添加 kube-apiserver注册的名为kubernetes的服务IP(Service Cluster IP)，一般是`kube-apiserver --service-cluster-ip-range`选项值指定的网段的第一个IP，如 "10.254.0.1"
 
@@ -406,6 +525,72 @@ kube-proxy.csr  kube-proxy-csr.json  kube-proxy-key.pem  kube-proxy.pem
 COMMENT
 ```
 
+##### 保存证书
+
+``` bash
+sudo mkdir -p /etc/kubernetes/ssl
+sudo cp *.pem /etc/kubernetes/ssl
+```
+
+### 创建flanneld.pem和flanneld-key.pem
+
+##### flanneld证书申请表
+
+``` sh
+cat >> flanneld-csr.json <<EOF
+{
+  "CN": "flanneld",
+  "hosts": [
+    "127.0.0.1",
+    "$NODE_IP"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "CN",
+      "ST": "BeiJing",
+      "L": "BeiJing",
+      "O": "k8s",
+      "OU": "System"
+    }
+  ]
+}
+EOF
+```
+
+##### 生成flanneld.pem/flanneld-key.pem
+
+``` sh
+cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -profile=kubernetes flanneld-csr.json | cfssljson -bare flanneld
+
+<<'COMMENT'
+2017/05/11 13:19:01 [INFO] generate received request
+2017/05/11 13:19:01 [INFO] received CSR
+2017/05/11 13:19:01 [INFO] generating key: rsa-2048
+2017/05/11 13:19:02 [INFO] encoded CSR
+2017/05/11 13:19:02 [INFO] signed certificate with serial number 727051974508936266314430125501920109141709126829
+2017/05/11 13:19:02 [WARNING] This certificate lacks a "hosts" field. This makes it unsuitable for
+websites. For more information see the Baseline Requirements for the Issuance and Management
+of Publicly-Trusted Certificates, v.1.1.6, from the CA/Browser Forum (https://cabforum.org);
+specifically, section 10.2.3 ("Information Requirements").
+COMMENT
+
+ls flanneld*
+<<'COMMENT'
+flanneld.csr  flanneld-csr.json  flanneld-key.pem  flanneld.pem
+COMMENT
+```
+
+##### 保存证书
+
+``` bash
+sudo mkdir -p /etc/flanneld/ssl
+sudo cp flanneld-key.pem  flanneld.pem /etc/flanneld/ssl
+```
+
 ### 验证证书可用性
 
 以kubernentes.pem为例
@@ -511,12 +696,7 @@ cfssl-certinfo -cert kubernetes.pem
 COMMENT
 ```
 
-### 保存证书
 
-``` bash
-sudo mkdir -p /etc/kubernetes/ssl
-sudo cp *.pem /etc/kubernetes/ssl
-```
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
