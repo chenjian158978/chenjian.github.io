@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      "我读我思-《百年孤独》"
-subtitle:   "Ideas About Cien años de soledad"
+subtitle:   "Ideas About One Hundred Years Of Solitude"
 date:       Fri, April 18 2014 11:33:06 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Ideas-About-Cien-años-de-soledad/head_blog.jpg"
+header-img: "img/in-post/Ideas-About-One-Hundred-Years-Of-Solitude/head_blog.jpg"
 tags:
     - 生活
     - 读后随笔
@@ -24,4 +24,4 @@ tags:
 
 浙江理工大学
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2014/04/18/Ideas-About-Cien-a%C3%B1os-de-soledad/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2014/04/18/Ideas-About-One-Hundred-Years-Of-Solitude/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

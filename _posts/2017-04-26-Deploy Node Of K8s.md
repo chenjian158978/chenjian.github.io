@@ -19,6 +19,7 @@ tags:
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
 - [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+- [Kubernetes集群之高可用性Master集群](https://o-my-chenjian.com/2017/05/20/Deploy-HA-Master-Clusters-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
@@ -26,6 +27,7 @@ tags:
 - [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
 - [Kubernetes集群之Logging](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
 - [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
+
 
 ### 准备工作
 
@@ -108,7 +110,7 @@ ETCD_2=192.168.1.177
 export ETCD_NODE_NAME=etcd-host0
 
 # etcd集群所有机器 IP
-export ETCD_NODE_IPS="192.168.1.175 192.168.1.176 192.168.1.177" 
+export ETCD_NODE_IPS="\${ETCD_0} \${ETCD_1} \${ETCD_2}" 
 
 # etcd 集群各机器名称和对应的IP、端口
 export ETCD_NODES=etcd-host0=https://\${ETCD_0}:2380,etcd-host1=https://\${ETCD_1}:2380,etcd-host2=https://\${ETCD_2}:2380
@@ -176,12 +178,12 @@ sudo cp flanneld-key.pem  flanneld.pem /etc/flanneld/ssl
 
 ls /etc/kubernetes/
 <<'COMMENT'
-bootstrap.kubeconfig  kubelet.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv
+bootstrap.kubeconfig  kube-proxy.kubeconfig  ssl  token.csv
 COMMENT
 
 ls /etc/kubernetes/ssl/
 <<'COMMENT'
-ca.pem kubelet.key  kubernetes-key.pem  kubernetes.pem
+ca.pem kubernetes-key.pem  kubernetes.pem
 COMMENT
 
 ls /etc/flanneld/ssl
@@ -361,7 +363,7 @@ NAME            STATUS     AGE       VERSION
 COMMENT
 ```
 
-操作服务器IP：`192.168.1.173`，即`K8s-node`
+操作服务器IP：`192.168.1.173`，即`K8s-node`。会自动生成以下文件：
 
 ``` bash
 ls -l /etc/kubernetes/kubelet.kubeconfig 

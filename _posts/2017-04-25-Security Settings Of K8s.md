@@ -19,6 +19,7 @@ tags:
 - [Kubernetes集群之创建kubeconfig文件](https://o-my-chenjian.com/2017/04/26/Create-The-File-Of-Kubeconfig-For-K8s/)
 - [Kubernetes集群之Flannel网络](https://o-my-chenjian.com/2017/05/11/Deploy-Pod-Network-Of-Flannel/)
 - [Kubernetes集群之Master节点](https://o-my-chenjian.com/2017/04/26/Deploy-Master-Of-K8s/)
+- [Kubernetes集群之高可用性Master集群](https://o-my-chenjian.com/2017/05/20/Deploy-HA-Master-Clusters-Of-K8s/)
 - [Kubernetes集群之Node节点](https://o-my-chenjian.com/2017/04/26/Deploy-Node-Of-K8s/)
 - [带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)
 - [Kubernetes集群之Kubedns](https://o-my-chenjian.com/2017/04/26/Deploy-Kubedns-Of-K8s/)
@@ -26,6 +27,7 @@ tags:
 - [Kubernetes集群之Monitoring](https://o-my-chenjian.com/2017/04/08/Deploy-Monitoring-With-K8s/)
 - [Kubernetes集群之Logging](https://o-my-chenjian.com/2017/04/08/Deploy-Logging-With-K8s/)
 - [Kubernetes集群之清除集群](https://o-my-chenjian.com/2017/05/11/Clear-The-Cluster-Of-K8s/)
+
 
 ### K8s集群的安全设置
 
@@ -81,6 +83,7 @@ sysctl kernel.hostname=${ipname}.${nodetype}
 # 关闭防火墙
 sudo systemctl stop firewalld
 sudo systemctl disable firewalld
+setenforce 0
 ```
 
 设置集群的环境变量
@@ -127,7 +130,7 @@ ETCD_2=192.168.1.177
 export ETCD_NODE_NAME=etcd-host0
 
 # etcd集群所有机器 IP
-export ETCD_NODE_IPS="192.168.1.175 192.168.1.176 192.168.1.177" 
+export ETCD_NODE_IPS="\${ETCD_0} \${ETCD_1} \${ETCD_2}" 
 
 # etcd 集群各机器名称和对应的IP、端口
 export ETCD_NODES=etcd-host0=https://\${ETCD_0}:2380,etcd-host1=https://\${ETCD_1}:2380,etcd-host2=https://\${ETCD_2}:2380
@@ -502,7 +505,7 @@ EOF
 
 - CN 指定该证书的User为system:kube-proxy
 
-- kube-apiserver预定义的RoleBinding cluster-admin将User system:kube-proxy 与Role system:node-proxier绑定，该Role授予了调用kube-apiserver Proxy相关API的权限
+- kube-apiserver预定义的RoleBinding system:node-proxier将User system:kube-proxy 与Role system:node-proxier绑定，该Role授予了调用kube-apiserver Proxy相关API的权限
 
 ##### 生成kube-proxy.pem/kube-proxy-key.pem
 

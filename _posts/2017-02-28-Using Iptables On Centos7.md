@@ -18,7 +18,7 @@ tags:
 
 ### 准备工作
 
-``` bash
+``` sh
 # 关闭firewalld服务
 sudo systemctl disable firewalld
 sudo systemctl stop firewalld
@@ -43,7 +43,7 @@ sudo yum install -y iptables-services
 
 - 基本操作：
 
-``` bash
+``` sh
 ## 查看iptables现有规则
 iptables -L -v -n --line-number
 
@@ -62,7 +62,7 @@ iptables -D INPUT 5
 
 - 添加8080端口：
 
-``` bash
+``` sh
 iptables -A INPUT -d 10.0.0.42 -p tcp --dport 8080 -m limit --limit 2/second --limit-burst 3 -m state --state NEW -j ACCEPT
 ```
 
@@ -88,9 +88,11 @@ iptables -A INPUT -d 10.0.0.42 -p tcp --dport 8080 -m limit --limit 2/second --l
 
 ##### 用例
 
+- 通过命令iptables改变防火墙设置
+
 目标：只允许10.0.0.44可以ssh（端口22）链接192.168.1.179
 
-``` bash
+``` sh
 # 首先是允许10.0.0.44可以ssh链接
 iptables -A INPUT -d 10.0.0.44 -p tcp --dport 22 -j ACCEPT
 iptables -A OUTPUT -d 10.0.0.44 -p tcp --dport 22 -j ACCEPT
@@ -102,9 +104,10 @@ iptables -A OUTPUT -p tcp --sport 22 -j DROP
 
 查看iptables状态
 
-``` bash
+``` sh
 # iptables -L -v -n --line-number
 
+<<'COMMENT'
 Chain INPUT (policy ACCEPT 20151 packets, 3544K bytes)
 num   pkts bytes target     prot opt in     out     source               destination         
 1        0     0 ACCEPT     udp  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            udp dpt:53
@@ -128,14 +131,43 @@ Chain OUTPUT (policy ACCEPT 327 packets, 40172 bytes)
 num   pkts bytes target     prot opt in     out     source               destination         
 1        0     0 ACCEPT     udp  --  *      virbr0  0.0.0.0/0            0.0.0.0/0            udp dpt:68
 2        0     0 ACCEPT     tcp  --  *      *       10.0.0.44            0.0.0.0/0            tcp dpt:22
+COMMENT
 ```
 
 > 还有很多服务，例如ssh服务的22，邮件服务器的25,110端口， FTP服务器的21端口，DNS服务器的53端口，HTTP的80端口，HTTPS的443端口等等
 
 ##### 启动iptables服务
 
-``` bash
+``` sh
 # 保存上述规则
+service iptables save
+
+# 注册iptables服务
+# 相当于以前的chkconfig iptables on
+systemctl enable iptables.service
+
+# 开启服务
+systemctl start iptables.service
+
+# 查看状态
+systemctl status iptables.service
+```
+
+- 通过写iptables配置文件改变防火墙设置
+
+``` sh
+# 通过命令行改变iptables是临时的，永远改变iptables需要在/etc/sysconfig/iptables中写入配置
+cat >> /etc/sysconfig/iptables <<EOF
+sed -i'/COMMIT/i \-A INPUT -d 10.0.0.44 -p tcp --dport 22 -j ACCEPT' /etc/sysconfig/iptables
+sed -i'/COMMIT/i \-A OUTPUT -d 10.0.0.44 -p tcp --dport 22 -j ACCEPT' /etc/sysconfig/iptables
+sed -i'/COMMIT/i \-A INPUT -p tcp --dport 22 -j DROP' /etc/sysconfig/iptables
+sed -i'/COMMIT/i \-A OUTPUT -p tcp --sport 22 -j DROP' /etc/sysconfig/iptables
+EOF
+
+# 重启服务
+service iptables restart
+
+# 保存上述规则。此命令单独运行会让配置文件复原，需要在restart之后运行
 service iptables save
 
 # 注册iptables服务
