@@ -300,9 +300,9 @@ WantedBy=basic.target
 COMMENT
 
 # 写入iptables配置，注意涉及所需端口
-sed -i'/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT' /etc/sysconfig/iptables
-sed -i'/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 1080 -j ACCEPT' /etc/sysconfig/iptables
-sed -i'/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 5002 -j ACCEPT' /etc/sysconfig/iptables
+sed -i '/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT' /etc/sysconfig/iptables
+sed -i '/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 1080 -j ACCEPT' /etc/sysconfig/iptables
+sed -i '/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 5002 -j ACCEPT' /etc/sysconfig/iptables
 
 # 开启服务
 systemctl restart iptables.service

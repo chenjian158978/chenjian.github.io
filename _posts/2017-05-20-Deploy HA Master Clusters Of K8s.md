@@ -19,7 +19,7 @@ tags:
 
 同时，再次感谢作者**opsnull**，以及其在Github上的[opsnull/follow-me-install-kubernetes-cluster](https://github.com/opsnull/follow-me-install-kubernetes-cluster)项目，如有兴趣请star或者fork他的项目。还要感谢**深圳-小刚**提供的思路，这里不方便透露朋友的信息，在此请给予原谅。
 
-### 系类博文
+### 系列博文
 
 - [在CentOS7上使用二进制方式部署Kubernetes](https://o-my-chenjian.com/2017/04/25/Deploy-K8s-By-Source-Code-On-CentOS7/)
 - [Kubernetes集群之安全设置](https://o-my-chenjian.com/2017/04/25/Security-Settings-Of-K8s/)
@@ -292,6 +292,8 @@ kubectl config set-cluster kubernetes \
 Cluster "kubernetes" set.
 COMMENT
 ```
+
+该操作只需要在`K8s-master-1`上操作。
 
 ### Kubernetes集群之Master节点
 
