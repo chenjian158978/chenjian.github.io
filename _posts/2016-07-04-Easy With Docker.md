@@ -158,7 +158,7 @@ COMMENT
 ``` bash
 sudo cp docker.service /etc/systemd/system/docker.service
 sudo systemctl daemon-reload
-sudo iptables -F && sudo iptables -X && sudo iptables -F -t nat && sudo iptables -X -t nat
+#sudo iptables -F && sudo iptables -X && sudo iptables -F -t nat && sudo iptables -X -t nat
 sudo systemctl enable docker
 
 <<'COMMENT'

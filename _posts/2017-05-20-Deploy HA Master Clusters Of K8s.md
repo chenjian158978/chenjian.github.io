@@ -416,6 +416,59 @@ EOF
 
 在安装kubelet之前，需要[在Linux上部署Haproxy](https://o-my-chenjian.com/2017/05/20/Deploy-Haproxy-On-Linux/)，使其打开并监听`端口5002`
 
+注意顺序：
+
+1. 部署Haproxy
+2. 部署flannel
+3. 部署docker
+
+如此顺序下来，结果的`iptables`内容如下：
+
+``` sh
+iptables -L -v -n --line-number
+
+<<'COMMENT'
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination         
+1    62751   80M KUBE-FIREWALL  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+2    66907   80M ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            state RELATED,ESTABLISHED
+3        0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+4      325 47782 ACCEPT     all  --  lo     *       0.0.0.0/0            0.0.0.0/0           
+5        0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:22
+6        0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:80
+7        0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:1080
+8        0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:5002
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination         
+1      250 65052 DOCKER-ISOLATION  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+2      122 56173 ACCEPT     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED
+3        0     0 DOCKER     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           
+4      128  8879 ACCEPT     all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           
+5        0     0 ACCEPT     all  --  docker0 docker0  0.0.0.0/0            0.0.0.0/0           
+
+
+Chain OUTPUT (policy ACCEPT 413 packets, 54963 bytes)
+num   pkts bytes target     prot opt in     out     source               destination         
+1    37382 2649K KUBE-SERVICES  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes service portals */
+2    37908 2722K KUBE-FIREWALL  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+
+Chain DOCKER (1 references)
+num   pkts bytes target     prot opt in     out     source               destination         
+
+Chain DOCKER-ISOLATION (1 references)
+num   pkts bytes target     prot opt in     out     source               destination         
+1      250 65052 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+
+Chain KUBE-FIREWALL (2 references)
+num   pkts bytes target     prot opt in     out     source               destination         
+1        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes firewall for dropping marked packets */ mark match 0x8000/0x8000
+
+Chain KUBE-SERVICES (1 references)
+num   pkts bytes target     prot opt in     out     source               destination
+COMMENT
+```
+
 - 更新之处：
 
 ##### 通过kubelet的TLS证书请求

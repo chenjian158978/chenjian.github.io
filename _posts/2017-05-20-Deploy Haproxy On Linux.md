@@ -240,6 +240,8 @@ ln -s /usr/local/haproxy/conf/haproxy.cfg /etc/haproxy/
 # 配置开机自动启动
 cp haproxy/examples/haproxy.init /etc/rc.d/init.d/haproxy
 chmod +x /etc/rc.d/init.d/haproxy
+chkconfig --add haproxy
+chkconfig haproxy on
 
 # 设置全局启动文件
 ln -s /usr/local/haproxy/sbin/haproxy /usr/sbin/
@@ -300,6 +302,7 @@ WantedBy=basic.target
 COMMENT
 
 # 写入iptables配置，注意涉及所需端口
+sed -i '/REJECT/d' /etc/sysconfig/iptables
 sed -i '/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT' /etc/sysconfig/iptables
 sed -i '/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 1080 -j ACCEPT' /etc/sysconfig/iptables
 sed -i '/COMMIT/i \-A INPUT -p tcp -m state --state NEW -m tcp --dport 5002 -j ACCEPT' /etc/sysconfig/iptables
