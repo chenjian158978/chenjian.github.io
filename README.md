@@ -103,6 +103,12 @@
 
 - 添加baidu认证文件
 
+### 2017.05.27
+
+- 修改博文中代码片段的高亮问题，使用highlight.js中的styles:solarized-dark.css
+
+- 修改部分css文件
+
 ### 参考
 
 1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)

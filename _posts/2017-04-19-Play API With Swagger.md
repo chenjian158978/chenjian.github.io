@@ -15,7 +15,7 @@ tags:
 
 ##### 下载Swagger-UI项目
 
-``` git
+``` sh
 git clone https://github.com/swagger-api/swagger-ui.git
 ```
 
@@ -41,7 +41,7 @@ git clone https://github.com/swagger-api/swagger-ui.git
 
 ##### 下载Swagger-Editor项目
 
-``` git
+``` sh
 git clone https://github.com/swagger-api/swagger-editor
 ```
 
@@ -49,7 +49,7 @@ git clone https://github.com/swagger-api/swagger-editor
 
 运行：
 
-``` bash
+``` sh
 npm start
 ```
 
@@ -66,7 +66,7 @@ npm start
 
 
 
-``` bash
+``` sh
 node -v
 v6.9.5
 
@@ -120,7 +120,7 @@ cd docs
 
 运行：
 
-``` bash
+``` sh
 node index.js
 ```
 
@@ -133,7 +133,7 @@ node index.js
 
 没玩过**Docker**，来看[带你玩转Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)吧！
 
-``` bash
+``` sh
 # 在Swagger-UI项目下
 docker build -t swagger-ui .
 docker run -idt -p 80:8080 swagger-ui
@@ -157,7 +157,7 @@ ADD swagger.yaml /usr/share/nginx/html/swagger.yaml
 
 - 修改docker-run.sh文件夹
 
-``` bash
+``` sh
 # 该句含义很简单。就是判断${SWAGGER_YAML},即
 # /usr/share/nginx/html/swagger.yaml 
 # 这个文件是否存在
@@ -177,7 +177,7 @@ fi
 
 - 创建镜像与运行
 
-``` bash
+``` sh
 # 在Swagger-UI项目下
 docker build -t swagger-ui-diy .
 docker run -idt -p 80:8080 swagger-ui-diy
@@ -207,7 +207,7 @@ docker run -idt -p 80:8080 swagger-ui-diy
 
 ##### 创建app
 
-``` bash
+``` sh
 # 在Django项目的app文件夹下
 mkdir apidoc
 
