@@ -277,6 +277,54 @@ plt.show()
 其中由于是断点，取值点数多少，最大最小值会影响到最终的结果。
 例如点数为偶数时，\\(J(\theta_{0}, \theta_{1})\\)的最小值不为0，而是无限接近0.
 
+### 梯度下降算法在代价函数上的应用
+
+##### 代价函数
+
+$$h_{\theta}(x)=\theta_{0}+\theta_{1}x$$
+
+$$J(\theta_{0}, \theta_{1})=\frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2$$
+
+##### 梯度下降算法
+
+重复直至收敛:
+
+$$\theta_{j}:=\theta_{j}-\alpha\frac{\partial}{\partial{\theta_{j}}}J(\theta_{0},\theta_{1})$$
+
+则：
+
+$$
+	\begin{align}
+	\frac{\partial}{\partial{\theta_{j}}}J(\theta_{0},\theta_{1})= & \frac{\partial}{\partial{\theta_{j}}}\frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2 \\\\
+	& =\frac{\partial}{\partial{\theta_{j}}}\frac{1}{2m}\sum_{i=1}^m(\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2
+	\end{align}
+$$
+
+当\\(j=0\\)时，
+
+$$
+	\begin{align}
+	\frac{\partial}{\partial{\theta_{0}}}J(\theta_{0},\theta_{1})= & \frac{\partial}{\partial{\theta_{0}}}\frac{1}{2m}\sum_{i=1}^m(\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2 \\\\
+	& =\frac{1}{2m}\cdot2\sum_{i=1}^m(\theta_{0}+\theta_{1}x^{(i)}-y^{(i)}) \\\\
+	& =\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})
+	\end{align}
+$$
+
+当\\(j=1\\)时，
+
+$$
+	\begin{align}
+	\frac{\partial}{\partial{\theta_{1}}}J(\theta_{0},\theta_{1}) & =\frac{\partial}{\partial{\theta_{1}}}\frac{1}{2m}\sum_{i=1}^m(\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2 \\\\
+	& =\frac{1}{2m}\cdot2\cdot\sum_{i=1}^m(\theta_{0}+\theta_{1}x^{(i)}-y^{(i)}){x^{(i)}} \\\\
+	& =\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)}){x^{(i)}}	\end{align}
+$$
+
+综上所述，
+
+$$\theta_{0}:=\theta_{0}-\alpha\cdot\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})$$
+
+$$\theta_{1}:=\theta_{1}-\alpha\cdot\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)}){x^{(i)}}$$
+
 
 ### Troubleshooting
 

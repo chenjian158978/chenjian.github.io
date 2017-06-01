@@ -322,6 +322,104 @@ echo "/dev/sdb1 /mnt ext4 defaults 1 2" >> /etc/fstab
 - 1: 使用dump是否要记录，0是不要
 - 2: 开机时检查的顺序，是boot系统文件就为1，其他文件系统都为2，如不要检查就为0
 
+### Mac上的硬盘挂载
+
+##### 获取硬盘信息
+
+``` sh
+diskutil list
+
+<<'COMMENT'
+/dev/disk0 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *500.3 GB   disk0
+   1:                        EFI EFI                     209.7 MB   disk0s1
+   2:          Apple_CoreStorage Macintosh HD            499.4 GB   disk0s2
+   3:                 Apple_Boot Recovery HD             650.0 MB   disk0s3
+
+/dev/disk1 (internal, virtual):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:                  Apple_HFS Macintosh HD           +499.1 GB   disk1
+                                 Logical Volume on disk0s2
+                                 12E6ECD1-780D-428C-94A4-500CA2054F2C
+                                 Unlocked Encrypted
+
+/dev/disk2 (disk image):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:                            MATLAB_R2016A          +7.7 GB     disk2
+
+/dev/disk3 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *15.7 GB    disk3
+   1:                  Apple_HFS yhy                     15.7 GB    disk3s1
+COMMENT
+```
+
+- 可以看到类型为`Apple_HFS`的名为`yhy`的ID为`disk3s1`，该硬盘默认路径为`/Volumes/`下面
+
+##### 获取硬盘的UUID
+
+``` sh
+diskutil info /Volumes/yhy
+
+<<'COMMENT'
+   Device Identifier:        disk3s1
+   Device Node:              /dev/disk3s1
+   Whole:                    No
+   Part of Whole:            disk3
+
+   Volume Name:              yhy
+   Mounted:                  Yes
+   Mount Point:              /Volumes/yhy
+
+   Partition Type:           Apple_HFS
+   File System Personality:  Journaled HFS+
+   Type (Bundle):            hfs
+   Name (User Visible):      Mac OS Extended (Journaled)
+   Journal:                  Journal size 8192 KB at offset 0x78000
+   Owners:                   Disabled
+
+   OS Can Be Installed:      No
+   Media Type:               Generic
+   Protocol:                 USB
+   SMART Status:             Not Supported
+   Volume UUID:              A35BB405-4443-372B-9889-AA73D680D985
+
+   Disk Size:                15.7 GB (15720250368 Bytes) (exactly 30703614 512-Byte-Units)
+   Device Block Size:        512 Bytes
+
+   Volume Total Space:       15.7 GB (15720247296 Bytes) (exactly 30703608 512-Byte-Units)
+   Volume Used Space:        40.5 MB (40521728 Bytes) (exactly 79144 512-Byte-Units) (0.3%)
+   Volume Available Space:   15.7 GB (15679725568 Bytes) (exactly 30624464 512-Byte-Units) (99.7%)
+   Allocation Block Size:    4096 Bytes
+
+   Read-Only Media:          No
+   Read-Only Volume:         No
+
+   Device Location:          External
+   Removable Media:          Removable
+   Media Removal:            Software-Activated
+COMMENT
+```
+
+- 可以得知`UUID=A35BB405-4443-372B-9889-AA73D680D985`
+
+##### 写入fstab文件
+
+``` sh
+echo "UUID=A35BB405-4443-372B-9889-AA73D680D985 /tmp hfs auto" >> /etc/fstab
+```
+
+- `/etc/fstab`在默认初始环境中不存在的
+
+##### Disk-Utility工具
+
+在Mac上有硬盘工具(Disk Utility)，在其中可以查看硬盘信息
+
+点击`Unmount`，再点`Mount`，则可以看到硬盘`yhy`已挂载载`/tmp`上
+
+![Disk-Utility](/img/in-post/Play-Disk-On-Linux/disk.jpg)
+
 ### 参考
 
 1. [Linux下添加新硬盘,分区及挂载](http://blog.chinaunix.net/uid-25829053-id-3067619.html)
@@ -330,5 +428,7 @@ echo "/dev/sdb1 /mnt ext4 defaults 1 2" >> /etc/fstab
 4. [Linux硬盘合并](http://blog.csdn.net/walk_persuit/article/details/45037613)
 5. [pvcreate命令](http://man.linuxde.net/pvcreate)
 6. [pv,vg和lv的概念](http://www.cnblogs.com/zk47/p/4753987.html)
+7. [mac设置自动挂载分区到指定路径](http://nanfeibobo.blog.51cto.com/7138082/1753982)
+8. [Mac下用一个单独的磁盘分区作为/Users的挂载点](http://bbs.feng.com/read-htm-tid-7295204.html)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/05/10/Play-Disk-On-Linux/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
