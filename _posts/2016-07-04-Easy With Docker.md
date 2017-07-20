@@ -399,6 +399,15 @@ exported-imported：丢失所有历史,无法进行回滚
 
 其中`“$()”`可以与`“``”`互换
 
+### 查看容器中的Volume
+
+查看： `docker volume ls -qf dangling=true`
+
+删除容器时(随便删除volume)： `docker rm -vf container_id`
+
+批量删除： `docker volume rm $(docker volume ls -qf dangling=true)`
+
+
 ### docker环境变量
 
 命令：`docker run -e "CHENJIAN=chenjian" image_id`
@@ -628,5 +637,6 @@ $host-ip 是主的shipyard节点的IP，该脚本需要运行在从node的主机
 9. [Control and configure Docker with systemd](https://docs.docker.com/engine/admin/systemd/)
 10. [Docker网络详解及pipework源码解读与实践](http://www.infoq.com/cn/articles/docker-network-and-pipework-open-source-explanation-practice/)
 11. [http://www.shipyard-project.com/](http://www.shipyard-project.com/)
+12. [Docker存储之卷Volume](http://www.cnblogs.com/sammyliu/p/5932996.html)
  
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

@@ -69,19 +69,22 @@ Eshell V5.10.4  (abort with ^G)
 
 -  记住IP：`cat /etc/hostname` 
 
-``` bash
+``` sh
 cat /etc/hostname
 
+<<'COMMENT'
 administrator158
+COMMENT
 ```
 
 - 命令：`vim /etc/hosts`
 
 修改为：
 
-``` bash
+``` sh
 cat /etc/hosts
 
+<<'COMMENT'
 127.0.0.1       localhost
 127.0.1.1       administrator158
 192.168.1.157   administrator157
@@ -95,6 +98,7 @@ fe00::0 ip6-localnet
 ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
+COMMENT
 ```
 
 > **修改完后，重启电脑。**
@@ -112,7 +116,9 @@ ff02::2 ip6-allrouters
 ``` bash
 cat /var/lib/rabbitmq/.erlang.cookie
 
+<<'COMMENT'
 AZPRQAAHZQUNBRRDXNLX
+COMMENT
 ```
 
 - 将这个Cookie放到157,159上，例如在157上进行操作：
@@ -120,104 +126,108 @@ AZPRQAAHZQUNBRRDXNLX
 - 查看修改`.erlang.cookie`权限
 
 ``` bash
-root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
-	
+ll /var/lib/rabbitmq/.erlang.cookie
+
+<<'COMMENT'
 -r-------- 1 rabbitmq rabbitmq 20 10月 28 00:00 /var/lib/rabbitmq/.erlang.cookie
+COMMENT
 
-root@administrator157:/home/administrator# chmod 777 /var/lib/rabbitmq/.erlang.cookie
+chmod 777 /var/lib/rabbitmq/.erlang.cookie
 
-root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
+ll /var/lib/rabbitmq/.erlang.cookie
 
+<<'COMMENT'
 -rwxrwxrwx 1 rabbitmq rabbitmq 20 10月 28 00:00 /var/lib/rabbitmq/.erlang.cookie*
+COMMENT
 ```
 	
 - 修改Cookie
 		
-``` bash
-root@administrator157:/home/administrator# vim /var/lib/rabbitmq/.erlang.cookie
-root@administrator157:/home/administrator# cat /var/lib/rabbitmq/.erlang.cookie
+``` sh
+vim /var/lib/rabbitmq/.erlang.cookie
 
+cat /var/lib/rabbitmq/.erlang.cookie
+<<'COMMENT'
 AZPRQAAHZQUNBRRDXNLX
+COMMENT
 ```
 
 > **或者，可以通过sftp进行文件传输，一定要确保Cookie相同，例如读写（400），用户（rabbitmq），用户组权限（rabbitmq）。**
 
-> `chgrp rabbitmq /var/lib/rabbitmq/.erlang.cookie`
+``` sh
+chgrp rabbitmq /var/lib/rabbitmq/.erlang.cookie
 
-> `chown rabbitmq /var/lib/rabbitmq/.erlang.cookie` 
+chown rabbitmq /var/lib/rabbitmq/.erlang.cookie
+``` 
 
 - 再次修改`.erlang.cookie`权限
 
-``` bash
-root@administrator157:/home/administrator# chmod 400 /var/lib/rabbitmq/.erlang.cookie
-root@administrator157:/home/administrator# ll /var/lib/rabbitmq/.erlang.cookie
+``` sh
+chmod 400 /var/lib/rabbitmq/.erlang.cookie
 
+ll /var/lib/rabbitmq/.erlang.cookie
+
+<<'COMMENT'
 -r-------- 1 rabbitmq rabbitmq 21 10月 28 15:20 /var/lib/rabbitmq/.erlang.cookie
+COMMENT
 ```
 
 - RabbitMQ重启
 
-- `rabbitmqctl stop`
+**以下操作在192.168.1.159上操作**
 
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl stop
+``` sh
+rabbitmqctl stop
 
+<<'COMMENT'
 Stopping and halting node rabbit@administrator159 ...
+COMMENT
 ```
 
--  `service rabbitmq-server start`
+此命令让`service rabbitmq-server status`为`dead`
 
-``` bash
-root@administrator159:/home/administrator# sudo service rabbitmq-server start
+
+``` sh
+sudo service rabbitmq-server start
  
+<<'COMMENT'
  * Starting message broker rabbitmq-server
  * message broker already running
    ...done.
+COMMENT
 ```
 
 ##### 链接nodes
 
 在192.168.1.159上操作：
 
-- `rabbitmqctl stop_app`
+``` sh
+rabbitmqctl stop_app
 
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl stop_app
-
+<<'COMMENT'
 Stopping node rabbit@administrator159 ...
-```
+COMMENT
 
-- `rabbitmqctl reset`
+rabbitmqctl reset
 
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl reset
-
+<<'COMMENT'
 Resetting node rabbit@administrator159 ...
-```
+COMMENT
 
-- `rabbitmqctl join_cluster --ram rabbit@administrator158`
+rabbitmqctl join_cluster --ram rabbit@administrator158
 
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl join_cluster --ram rabbit@administrator158
-
+<<'COMMENT'
 Clustering node rabbit@administrator159 with rabbit@administrator158 ...
-```
+COMMENT
 
-> *如果要使administrator159在集群里也是磁盘节点，join_cluster 命令去掉--ram参数即可。只要在节点列表里包含了自己，它就成为一个磁盘节点。在RabbitMQ集群里，必须至少有一个磁盘节点存在。*
+rabbitmqctl start_app
 
-- `rabbitmqctl start_app`
-
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl start_app
-
+<<'COMMENT'
 Starting node rabbit@administrator159 ...
-```
+COMMENT
 
-- 查看集群状态：`rabbitmqctl cluster_status`
-
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl cluster_status
-
+rabbitmqctl cluster_status
+<<'COMMENT'
 Cluster status of node rabbit@administrator159 ...
 [{nodes,[{disc,[rabbit@administrator158]},
          {ram,[rabbit@administrator159,rabbit@administrator157]}]},
@@ -228,16 +238,23 @@ Cluster status of node rabbit@administrator159 ...
  {alarms,[{rabbit@administrator158,[]},
           {rabbit@administrator157,[]},
           {rabbit@administrator159,[]}]}]
+COMMENT
 ```
 
-可以看到disc为administrator158，而ram为157和159
+> 可以看到disc为administrator158，而ram为157和159
 
-- 队列消息一致：`rabbitmqctl list_queues -p chenjian`
+> *如果要使administrator159在集群里也是磁盘节点，join_cluster 命令去掉--ram参数即可。只要在节点列表里包含了自己，它就成为一个磁盘节点。在RabbitMQ集群里，必须至少有一个磁盘节点存在。*
 
-``` bash
-root@administrator159:/home/administrator# rabbitmqctl list_queues -p hrsystem
+> 注意系统中的防火墙服务问题
 
+- 队列消息一致：
+
+``` sh
+rabbitmqctl list_queues -p hrsystem
+
+<<'COMMENT'
 Listing queues ...
+COMMENT
 ```
 
 > *-p参数为vhost名称*
@@ -250,16 +267,30 @@ Listing queues ...
 
 ### RabbitMQ设置
 
-- 添加用户：`sudo rabbitmqctl add_user chenjian chenjian`
+- 添加用户：
 
-- 添加虚拟队列： `sudo rabbitmqctl add_vhost chenjian`
+``` sh 
+sudo rabbitmqctl add_user chenjian chenjian
+```
 
-- 添加后台管理插件：`sudo rabbitmq-plugins enable rabbitmq_management`
+- 添加虚拟队列： 
+
+``` sh
+sudo rabbitmqctl add_vhost chenjian
+```
+
+- 添加后台管理插件：
+
+``` sh
+sudo rabbitmq-plugins enable rabbitmq_management
+```
+
 显示：
 
-``` bash
-administrator@administrator159:~$ sudo rabbitmq-plugins enable rabbitmq_management
+``` sh
+sudo rabbitmq-plugins enable rabbitmq_management
 
+<<'COMMENT'
 The following plugins have been enabled:
   mochiweb
   webmachine
@@ -269,13 +300,14 @@ The following plugins have been enabled:
   rabbitmq_management
 
 Applying plugin configuration to rabbit@administrator159... started 6 plugins.
+COMMENT
 ```
 
 - 添加用户权限： `rabbitmqctl set_permissions -p chenjian chenjian ".*" ".*" ".*"` 或者 `sudo rabbitmqctl set_permissions -p chenjian chenjian ConfP  WriteP  ReadP`
 
 结果：
 
-``` bash
+``` sh
 Setting permissions for user "chenjian" in vhost "chenjian" ...
 ```
 
@@ -293,7 +325,7 @@ Setting tags for user "chenjian" to [administrator] ...
 命令： `sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'`
 
 ``` bash
-administrator@administrator158:~$ sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'
+sudo rabbitmqctl set_policy -p chenjian ha-allqueue "^" '{"ha-mode":"all"}'
 
 Setting policy "ha-allqueue" for pattern "^" to "{\"ha-mode\":\"all\"}" with priority "0" ...
 ```
@@ -378,15 +410,15 @@ listen rabbitmq_cluster
 
 查看haproxy的监听：
 
-`netstat -nl| grep 5672`
+``` sh
+netstat -nl| grep 5672
 
-``` bash
-root@administrator78:/etc/haproxy# netstat -nl| grep 5672
-
+<<'COMMENT'
 tcp        0      0 0.0.0.0:5672            0.0.0.0:*               LISTEN
+COMMENT
 ```
 
-或者可以登录`http：//192.168.1.78:8888/rabbitmq_stats`
+或者可以登录`http://192.168.1.78:8888/rabbitmq_stats`
 
 ### python程序中填写
 

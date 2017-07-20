@@ -70,7 +70,7 @@ $$h(\theta_{0},\theta_{1})=\theta_{0}+\theta_{1}x$$
 
 取参数项\\(\theta_{0}=0\\).
 
-Python代码如下：
+##### Python下的编程
 
 ``` python 
 # -*- coding:utf8 -*-
@@ -134,7 +134,6 @@ plt.show()
 
 可知，不同的\\(\theta_{1}\\)得到不同的拟合直线，即获得以下\\(J(\theta)\\)的图形。
 
-Python代码如下：
 
 ``` python
 # -*- coding:utf8 -*-
@@ -276,6 +275,59 @@ plt.show()
 
 其中由于是断点，取值点数多少，最大最小值会影响到最终的结果。
 例如点数为偶数时，\\(J(\theta_{0}, \theta_{1})\\)的最小值不为0，而是无限接近0.
+
+##### Matlab下的编程
+
+- main.m
+
+``` matlab
+data = [0 0; 1 1; 2 2; 4 4];x = data(:,1); y = data(:,2);figure;plot(x, y, 'rx', 'MarkerSize', 10);xlabel('x'); ylabel('y');title('Data Map')fprintf('Program paused. Press enter to continue.\n');pause;m = length(y);X = [ones(m, 1), data(:,1)];theta = zeros(2, 1);alpha = 0.01;iterations = 1500;theta = GradientDescent(X, y, theta, alpha, iterations);hold on;plot(x, X*theta, '-')legend('Training data', 'Linear regression')hold off;fprintf('the theta_0 is %f\n', theta(1,1));fprintf('the theta_1 is %f\n', theta(2,1));min_x=-20;max_x=20;num=110;theta_1=linspace(min_x, max_x, num);theta_0=linspace(min_x, max_x, num);J = zeros(length(theta_0), length(theta_1));for i = 1:num    for j = 1:num        t = [theta_0(i); theta_1(j)];        h = X * t;        J(i, j) = sum((h - y).^2) / (2 * m);    endendfigure;surf(theta_0, theta_1, J);xlabel('\theta_0');ylabel('\theta_1');zlabel('J(\theta_0, \theta_1)')title('Cost Function Map')[b, c] = find(J==min(J(:)));disp([b, c]);figure;contour(theta_0, theta_1, J, logspace(-2, 3, 20))xlabel('\theta_0'); ylabel('\theta_1');title('Contour Map')hold on;plot(theta_0(c), theta_1(b), 'rx', 'MarkerSize', 10, 'LineWidth', 2);hold off;```
+
+- CostFunction.m
+	
+``` matlab
+function J = CostFunction(X, y, theta)
+
+m = length(y);
+J = 0;
+
+h = X * theta;
+J = sum((h - y).^2) / (2 * m);
+
+end
+```
+
+- GradientDescent.m
+
+``` matlab
+function [theta, J_history] = GradientDescent(X, y, theta, alpha, iterations_num)
+
+m = length(y);
+J_history = zeros(iterations_num, 1);
+
+for iter = 1:iterations_num
+    h = X * theta;
+    t = [0; 0];
+    for i = 1:m
+        t = t + (h(i) - y(i)) * X(i,:)';
+    end
+    
+    theta = theta - alpha * (1 / m) * t;
+    
+    J_history(iter) = CostFunction(X, y, theta);
+end
+
+end
+```
+
+结果如下：
+
+![data-matlab](/img/in-post/Cost-Function-Of-ML/data_map.png)
+
+![cost-function-matlab](/img/in-post/Cost-Function-Of-ML/cost_function_matlab.png)
+
+![contour_map-matlab](/img/in-post/Cost-Function-Of-ML/contour_map.png)
+
 
 ### 梯度下降算法在代价函数上的应用
 
