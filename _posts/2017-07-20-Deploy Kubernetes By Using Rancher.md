@@ -177,7 +177,7 @@ COMMENT
 
 在Rancher界面中的第二栏选择`KUBERNETES-仪表板-Kubernete UI`，直接就跳入Dashboard的界面，如下图所示：
 
-![Dashboard](/img/in-post/Deploy-Kubernetes-By-Using-Racher/dashboard.jpg)
+![Dashboard](/img/in-post/Deploy-Kubernetes-By-Using-Rancher/dashboard.jpg)
 
 ### Rancher重启
 
