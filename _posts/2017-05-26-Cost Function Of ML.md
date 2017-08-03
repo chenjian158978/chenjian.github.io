@@ -201,15 +201,12 @@ plt.show()
 @date: Tue, May 23 2017
 
 @time: 19:05:20 GMT+8
-"""
 
-"""
-Spyder Editor
-
-Python 3.6, Belter, 20170401
+matplotlib version: 2.0.2
 """
 
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.axes3d import Axes3D
 import numpy as np
 
 
@@ -254,8 +251,8 @@ for i in range(points_num):
         cost = calcu_cost(current_theta_0, current_theta_1, X, Y)
         J_list.append(cost[0, 0])
 
-
-ax = plt.subplot(111, projection='3d')
+fig = plt.figure()
+ax = Axes3D(fig)
 ax.scatter(theta_0_list, theta_1_list, J_list, color='c')
 
 for j in range(len(theta_0_list)):
@@ -271,7 +268,7 @@ plt.show()
 
 ```
 
-![cost-function2](/img/in-post/Cost-Function-Of-ML/cost_function.png)
+![cost-function2](/img/in-post/Cost-Function-Of-ML/cost_function.jpg)
 
 其中由于是断点，取值点数多少，最大最小值会影响到最终的结果。
 例如点数为偶数时，\\(J(\theta_{0}, \theta_{1})\\)的最小值不为0，而是无限接近0.
