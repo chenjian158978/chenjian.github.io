@@ -17,6 +17,8 @@ tags:
 - [词译-Sandrevan Lullaby-Lifestyles](https://o-my-chenjian.com/2017/05/08/Sandrevan-Lullaby/)
 - [词译-I Think Of You](https://o-my-chenjian.com/2016/09/14/I-Think-Of-You/)
 - [词译-A Most Disgusting Song](https://o-my-chenjian.com/2016/09/01/A-Most-Disgusting-Song/)
+- [词译-Silver Words](https://o-my-chenjian.com/2017/07/26/Silver-Words/)
+- [词译-Cause](https://o-my-chenjian.com/2017/08/03/Cause/)
 
 ### Sandrevan Lullaby-Lifestyles
 
