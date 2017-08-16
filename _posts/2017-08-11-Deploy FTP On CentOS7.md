@@ -7,7 +7,8 @@ author:     "ChenJian"
 header-img: "img/in-post/Deploy-FTP-On-CentOS7/head_blog.jpg"
 catalog:    true
 tags:
-    - 读书
+    - 工作
+    - Python
 ---
 
 ### 安装配置vsftp
