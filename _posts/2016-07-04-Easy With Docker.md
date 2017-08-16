@@ -237,7 +237,13 @@ COMMENT
 
 ### 运行一个image
 
-进入容器的命令行：`docker run -it image_name /bin/bash`
+进入容器的命令行：`docker run -it --restart=always image_name /bin/bash`
+
+- `-t`: Allocate a pseudo-TTY
+- `-i`: Keep STDIN open even if not attached
+- `-d`: Run container in background and print container ID
+- `--restart=always`: 总是自动重启容器
+- `--restart=on-failure:5`: 退出代码为非0值，自动重启，最多5次
 
 退出容器命令行：`exit`
 
@@ -248,6 +254,10 @@ COMMENT
 ### 查看docker(images/container)详细信息
 
 `docker inspect images_id/container_id` 
+
+### 查看容器内运行的进程
+
+`docker top container_id`
 
 ### 由改变后的container生成image
 

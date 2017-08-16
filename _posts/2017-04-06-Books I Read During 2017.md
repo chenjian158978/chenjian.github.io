@@ -22,4 +22,11 @@ tags:
 
 - 译文版 (5.4)：2005 年 12 月—2006 年 4 月 (update-060425)
 
-- 英文原版 (5.4)：2004 年 5 月 20 日<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+- 英文原版 (5.4)：2004 年 5 月 20 日
+
+### 《第一本docker书》
+
+![第一本docker书](https://img1.doubanio.com/lpic/s27967469.jpg)
+
+- 作家： [澳]詹姆斯•特恩布尔（James Turnbull）  - 出版社:  人民邮电出版社- 译者:  李兆海 刘斌 巨震- 出版年：2014-12
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
