@@ -1,0 +1,1249 @@
+
+----------------------------------
+date:Tue Aug 29 19:57:07 CST 2017
+----------------------------------
+
+=================安装所需软件=================
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.zju.edu.cn
+ * extras: mirrors.zju.edu.cn
+ * updates: mirrors.163.com
+Package net-tools-2.0-0.17.20131004git.el7.x86_64 already installed and latest version
+Nothing to do
+=================安装所需软件=================
+
+=================操作系统信息=================
+内核信息:
+Linux 192-168-1-168.node 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+
+当前用户名为:
+192-168-1-168.node
+
+操作系统版本:
+CentOS Linux release 7.3.1611 (Core) 
+
+所有PCI设备:
+-[0000:00]-+-00.0  Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge
+           +-01.0-[01]--
+           +-07.0  Intel Corporation 82371AB/EB/MB PIIX4 ISA
+           +-07.1  Intel Corporation 82371AB/EB/MB PIIX4 IDE
+           +-07.3  Intel Corporation 82371AB/EB/MB PIIX4 ACPI
+           +-07.7  VMware Virtual Machine Communication Interface
+           +-0f.0  VMware SVGA II Adapter
+           +-10.0  LSI Logic / Symbios Logic 53c1030 PCI-X Fusion-MPT Dual Ultra320 SCSI
+           +-11.0-[02]--
+           +-15.0-[03]----00.0  VMware VMXNET3 Ethernet Controller
+           +-15.1-[04]--
+           +-15.2-[05]--
+           +-15.3-[06]--
+           +-15.4-[07]--
+           +-15.5-[08]--
+           +-15.6-[09]--
+           +-15.7-[0a]--
+           +-16.0-[0b]--
+           +-16.1-[0c]--
+           +-16.2-[0d]--
+           +-16.3-[0e]--
+           +-16.4-[0f]--
+           +-16.5-[10]--
+           +-16.6-[11]--
+           +-16.7-[12]--
+           +-17.0-[13]--
+           +-17.1-[14]--
+           +-17.2-[15]--
+           +-17.3-[16]--
+           +-17.4-[17]--
+           +-17.5-[18]--
+           +-17.6-[19]--
+           +-17.7-[1a]--
+           +-18.0-[1b]--
+           +-18.1-[1c]--
+           +-18.2-[1d]--
+           +-18.3-[1e]--
+           +-18.4-[1f]--
+           +-18.5-[20]--
+           +-18.6-[21]--
+           \-18.7-[22]--
+
+加载的内核模块:
+Module                  Size  Used by
+veth                   13410  0 
+ip_set_hash_net        31664  2 
+xt_mac                 12492  6 
+ip6t_rpfilter          12595  1 
+xt_set                 13181  3 
+ip_set_hash_ip         27260  1 
+ip_set                 36439  3 ip_set_hash_net,ip_set_hash_ip,xt_set
+ipip                   13465  0 
+tunnel4                13252  1 ipip
+ip_tunnel              25163  1 ipip
+nf_conntrack_netlink    40449  0 
+ip6table_raw           12683  1 
+nfnetlink              14696  2 ip_set,nf_conntrack_netlink
+ip6table_filter        12815  1 
+ip6table_nat           12864  1 
+nf_conntrack_ipv6      18894  9 
+nf_defrag_ipv6         35104  1 nf_conntrack_ipv6
+nf_nat_ipv6            14131  1 ip6table_nat
+ip6_tables             26901  3 ip6table_filter,ip6table_nat,ip6table_raw
+xt_nat                 12681  5 
+xt_recent              18542  2 
+ipt_REJECT             12541  0 
+nf_reject_ipv4         13373  1 ipt_REJECT
+xt_comment             12504  105 
+xt_mark                12563  104 
+ipt_MASQUERADE         12678  4 
+nf_nat_masquerade_ipv4    13412  1 ipt_MASQUERADE
+iptable_nat            12875  1 
+nf_conntrack_ipv4      19108  10 
+nf_defrag_ipv4         12729  1 nf_conntrack_ipv4
+nf_nat_ipv4            14115  1 iptable_nat
+xt_addrtype            12676  5 
+iptable_filter         12810  1 
+xt_conntrack           12760  17 
+nf_nat                 26147  4 nf_nat_ipv4,nf_nat_ipv6,xt_nat,nf_nat_masquerade_ipv4
+nf_conntrack          111302  8 nf_nat,nf_nat_ipv4,nf_nat_ipv6,xt_conntrack,nf_nat_masquerade_ipv4,nf_conntrack_netlink,nf_conntrack_ipv4,nf_conntrack_ipv6
+br_netfilter           22209  0 
+bridge                107151  1 br_netfilter
+stp                    12976  1 bridge
+llc                    14552  2 stp,bridge
+dm_thin_pool           65565  37 
+dm_persistent_data     67216  1 dm_thin_pool
+dm_bio_prison          15907  1 dm_thin_pool
+dm_bufio               27972  1 dm_persistent_data
+loop                   28121  4 
+intel_powerclamp       14419  0 
+coretemp               13444  0 
+crc32_pclmul           13113  0 
+ghash_clmulni_intel    13259  0 
+aesni_intel            69884  0 
+lrw                    13286  1 aesni_intel
+gf128mul               14951  1 lrw
+glue_helper            13990  1 aesni_intel
+ablk_helper            13597  1 aesni_intel
+cryptd                 20359  3 ghash_clmulni_intel,aesni_intel,ablk_helper
+ppdev                  17671  0 
+vmw_balloon            18190  0 
+pcspkr                 12718  0 
+sg                     40721  0 
+vmw_vmci               67106  0 
+shpchp                 37032  0 
+i2c_piix4              22106  0 
+parport_pc             28165  0 
+parport                42348  2 ppdev,parport_pc
+ip_tables              27115  2 iptable_filter,iptable_nat
+xfs                   985347  38 
+libcrc32c              12644  2 xfs,dm_persistent_data
+sr_mod                 22416  0 
+sd_mod                 46322  3 
+cdrom                  42556  1 sr_mod
+crc_t10dif             12714  1 sd_mod
+crct10dif_generic      12647  0 
+ata_generic            12910  0 
+pata_acpi              13038  0 
+vmwgfx                235043  1 
+drm_kms_helper        146456  1 vmwgfx
+syscopyarea            12529  1 drm_kms_helper
+sysfillrect            12701  1 drm_kms_helper
+sysimgblt              12640  1 drm_kms_helper
+fb_sys_fops            12703  1 drm_kms_helper
+ttm                    93908  1 vmwgfx
+mptspi                 22542  2 
+scsi_transport_spi     30732  1 mptspi
+crct10dif_pclmul       14289  1 
+crct10dif_common       12595  3 crct10dif_pclmul,crct10dif_generic,crc_t10dif
+ata_piix               35038  0 
+drm                   372540  4 ttm,drm_kms_helper,vmwgfx
+crc32c_intel           22079  1 
+serio_raw              13462  0 
+mptscsih               40150  1 mptspi
+libata                247095  3 pata_acpi,ata_generic,ata_piix
+i2c_core               40756  3 drm,i2c_piix4,drm_kms_helper
+vmxnet3                53833  0 
+mptbase               105960  2 mptspi,mptscsih
+floppy                 69417  0 
+fjes                   32197  0 
+dm_mirror              22135  0 
+dm_region_hash         20862  1 dm_mirror
+dm_log                 18411  2 dm_region_hash,dm_mirror
+dm_mod                114430  86 dm_log,dm_persistent_data,dm_mirror,dm_bufio,dm_thin_pool
+
+环境变量:
+HOSTNAME=192-168-1-168.node
+TERM=vt100
+HISTSIZE=1000
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+USERNAME=root
+MAIL=/var/spool/mail/administrator
+LANG=en_US.UTF-8
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+LOGNAME=root
+USER=root
+HOME=/root
+SUDO_COMMAND=/bin/env
+SUDO_USER=root
+SUDO_UID=0
+SUDO_GID=0
+=================操作系统信息=================
+
+=================服务器信息=================
+服务器型号:
+VMware Virtual Platform
+
+内存插条数，已使用插槽数，及每条内存大小:
+     1		Size: 16384 MB
+     2		Size: No Module Installed
+     3		Size: No Module Installed
+     4		Size: No Module Installed
+     5		Size: No Module Installed
+     6		Size: No Module Installed
+     7		Size: No Module Installed
+     8		Size: No Module Installed
+     9		Size: No Module Installed
+    10		Size: No Module Installed
+    11		Size: No Module Installed
+    12		Size: No Module Installed
+    13		Size: No Module Installed
+    14		Size: No Module Installed
+    15		Size: No Module Installed
+    16		Size: No Module Installed
+    17		Size: No Module Installed
+    18		Size: No Module Installed
+    19		Size: No Module Installed
+    20		Size: No Module Installed
+    21		Size: No Module Installed
+    22		Size: No Module Installed
+    23		Size: No Module Installed
+    24		Size: No Module Installed
+    25		Size: No Module Installed
+    26		Size: No Module Installed
+    27		Size: No Module Installed
+    28		Size: No Module Installed
+    29		Size: No Module Installed
+    30		Size: No Module Installed
+    31		Size: No Module Installed
+    32		Size: No Module Installed
+    33		Size: No Module Installed
+    34		Size: No Module Installed
+    35		Size: No Module Installed
+    36		Size: No Module Installed
+    37		Size: No Module Installed
+    38		Size: No Module Installed
+    39		Size: No Module Installed
+    40		Size: No Module Installed
+    41		Size: No Module Installed
+    42		Size: No Module Installed
+    43		Size: No Module Installed
+    44		Size: No Module Installed
+    45		Size: No Module Installed
+    46		Size: No Module Installed
+    47		Size: No Module Installed
+    48		Size: No Module Installed
+    49		Size: No Module Installed
+    50		Size: No Module Installed
+    51		Size: No Module Installed
+    52		Size: No Module Installed
+    53		Size: No Module Installed
+    54		Size: No Module Installed
+    55		Size: No Module Installed
+    56		Size: No Module Installed
+    57		Size: No Module Installed
+    58		Size: No Module Installed
+    59		Size: No Module Installed
+    60		Size: No Module Installed
+    61		Size: No Module Installed
+    62		Size: No Module Installed
+    63		Size: No Module Installed
+    64		Size: No Module Installed
+
+内存的频率:
+     1		Speed: Unknown
+     2		Speed: Unknown
+     3		Speed: Unknown
+     4		Speed: Unknown
+     5		Speed: Unknown
+     6		Speed: Unknown
+     7		Speed: Unknown
+     8		Speed: Unknown
+     9		Speed: Unknown
+    10		Speed: Unknown
+    11		Speed: Unknown
+    12		Speed: Unknown
+    13		Speed: Unknown
+    14		Speed: Unknown
+    15		Speed: Unknown
+    16		Speed: Unknown
+    17		Speed: Unknown
+    18		Speed: Unknown
+    19		Speed: Unknown
+    20		Speed: Unknown
+    21		Speed: Unknown
+    22		Speed: Unknown
+    23		Speed: Unknown
+    24		Speed: Unknown
+    25		Speed: Unknown
+    26		Speed: Unknown
+    27		Speed: Unknown
+    28		Speed: Unknown
+    29		Speed: Unknown
+    30		Speed: Unknown
+    31		Speed: Unknown
+    32		Speed: Unknown
+    33		Speed: Unknown
+    34		Speed: Unknown
+    35		Speed: Unknown
+    36		Speed: Unknown
+    37		Speed: Unknown
+    38		Speed: Unknown
+    39		Speed: Unknown
+    40		Speed: Unknown
+    41		Speed: Unknown
+    42		Speed: Unknown
+    43		Speed: Unknown
+    44		Speed: Unknown
+    45		Speed: Unknown
+    46		Speed: Unknown
+    47		Speed: Unknown
+    48		Speed: Unknown
+    49		Speed: Unknown
+    50		Speed: Unknown
+    51		Speed: Unknown
+    52		Speed: Unknown
+    53		Speed: Unknown
+    54		Speed: Unknown
+    55		Speed: Unknown
+    56		Speed: Unknown
+    57		Speed: Unknown
+    58		Speed: Unknown
+    59		Speed: Unknown
+    60		Speed: Unknown
+    61		Speed: Unknown
+    62		Speed: Unknown
+    63		Speed: Unknown
+    64		Speed: Unknown
+=================服务器信息=================
+
+=================资源信息=================
+内存使用量和交换区使用量:
+              total        used        free      shared  buff/cache   available
+Mem:            15G         11G        401M         66M        3.9G        3.8G
+Swap:          5.0G        650M        4.4G
+
+各分区使用情况:
+Filesystem           Size  Used Avail Use% Mounted on
+/dev/mapper/cl-root   44G   13G   32G  30% /
+devtmpfs             7.8G     0  7.8G   0% /dev
+tmpfs                7.8G     0  7.8G   0% /dev/shm
+tmpfs                7.8G   66M  7.7G   1% /run
+tmpfs                7.8G     0  7.8G   0% /sys/fs/cgroup
+/dev/sda1           1014M  184M  831M  19% /boot
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/14624471-8bba-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-jrmkj
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/146240d6-8bba-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-jrmkj
+/dev/dm-3             10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/f8233027a1bcc9809bbe18a7fe56212f1919ab6fe607e3daf7eeb471c777eede
+shm                   64M     0   64M   0% /var/lib/docker/containers/957b912ec1526a6ae21339f2a599a33f8986bbc5cd3ea3261541db760db3c815/shm
+/dev/dm-4             10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/f6e4d08ba90e16607707b3f2afda5901103b58b2d7b8773c35258f050a77e092
+shm                   64M     0   64M   0% /var/lib/docker/containers/221c79baf6fc654ac863d919b120e02cc4c66117b79dd9791ca407bec9669f46/shm
+/dev/dm-6             10G  281M  9.8G   3% /var/lib/docker/devicemapper/mnt/a42f7957afad6a7c27b43b3ca1361e4e093cfe5c2dfa83b864e389156cd1bc9b
+/dev/dm-5             10G  220M  9.8G   3% /var/lib/docker/devicemapper/mnt/d28f1663e1730ee49bb05477e66f167b4c78458af120445bf66d6f56d29972f7
+/dev/dm-7             10G   98M  9.9G   1% /var/lib/docker/devicemapper/mnt/83d8cb872f4f0a50f6ae6e1eb91e954957d9478fe9dade7549c73f797835a4e8
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/d0b10695-8bc4-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-8             10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/3975aadb0376cc5739c4368f428075f27f59ed0ad440f77657de90f9cf2798b1
+shm                   64M     0   64M   0% /var/lib/docker/containers/89fd23ae8fc5c5131e22103926faee4bb189854a1625d63cd9ec1c2720149124/shm
+/dev/dm-9             10G   58M   10G   1% /var/lib/docker/devicemapper/mnt/44689d14ca02102c032ac27b7086b4fe6b0d183282cf20d540b614121373d3ec
+/dev/dm-10            10G   58M   10G   1% /var/lib/docker/devicemapper/mnt/f2baeaf380b5d41ed8df1aa8115ef51e0d0d36a0e37509de6860226905378d1d
+/dev/dm-11            10G   58M   10G   1% /var/lib/docker/devicemapper/mnt/5e87adb9a972e816794ddeb9faccdc08bbd760cbded9d6ff54ec22cd1e4ecb5a
+/dev/dm-12            10G   58M   10G   1% /var/lib/docker/devicemapper/mnt/dcb24b837043d39cb7b587a0c8a62f3e9bea605e833d3c927df8d7535612fdbc
+/dev/dm-13            10G   58M   10G   1% /var/lib/docker/devicemapper/mnt/a44855d64e1119ea74fbc9d331cb67315d1238eeadb6cd72ffc81c66f6645aa6
+/dev/dm-14            10G   58M   10G   1% /var/lib/docker/devicemapper/mnt/04d4dda8d848a94a89fb89a007cbbd513d69eb8750dcbafc8459a04aaf1b2e82
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/4daea5fa-8bc5-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-15            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/19a9c176924be017134a89f21e25f904f7acf36bb4f3c0b3378c5a8eb2103dea
+shm                   64M     0   64M   0% /var/lib/docker/containers/2ebf03e2a6f2247587cd85c57da8ea3ef56503f4eba9ae425f7d1ba267c74915/shm
+/dev/dm-16            10G  208M  9.8G   3% /var/lib/docker/devicemapper/mnt/3f98e4cf713c63d3f4b6667f878b0fb2223f5c273fd42b2750829a9aa0c37740
+/dev/dm-17            10G  208M  9.8G   3% /var/lib/docker/devicemapper/mnt/158c6e7bae12563cf924bfff99aa73df521acd6faf4c4dcf52a46d7c97707edb
+/dev/dm-18            10G  208M  9.8G   3% /var/lib/docker/devicemapper/mnt/8d33d26bfd1174432453026b7dd6b3a112c3d51bcb19ce23ef40143a56fd9135
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/5efdbac5-8bc5-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-19            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/1f2b10011c5410ec5041dcf98e9ef5e6afe7f1a8f8ad5d42825276d3f7ba2f8f
+shm                   64M     0   64M   0% /var/lib/docker/containers/be966e6d7ac40f5bb11dffa17dc4d216a00cf7298687fa0a476c1f56c177f85f/shm
+/dev/dm-20            10G  200M  9.8G   2% /var/lib/docker/devicemapper/mnt/76ddad0044053616fea42f5a15bcaed49c7ab6d870ffddefcf845266e4b2c10d
+/dev/dm-21            10G  199M  9.8G   2% /var/lib/docker/devicemapper/mnt/d7cc0b26df1a8170212fecec57ff53feb7ef5c653c897cf27febffca2f362d0f
+/dev/dm-22            10G  199M  9.8G   2% /var/lib/docker/devicemapper/mnt/799045008eb964c2db592887d8f2481298099441da7508a26002428be8bbb49a
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/bdcb48f3-8bc6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-23            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/c03c8dce873ed83a7320339df451b031ddbb1e0ba2adb660d514e9caa9af879d
+shm                   64M     0   64M   0% /var/lib/docker/containers/3634ec8d4d3d0f50285abb037433e52a37f136fea9e0153e6d7ff27394571949/shm
+/dev/dm-24            10G  276M  9.8G   3% /var/lib/docker/devicemapper/mnt/4069267cde06d063353c41dcb7d99a1311a82884c66a23c091417db9b903990a
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/dd4d57fe-8bc6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-25            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/dfb3c15f2160f1fbc4d6443faf8dea414fca65f5bd89becf6eaa7edf13510e75
+shm                   64M     0   64M   0% /var/lib/docker/containers/f6f9ce9bcf7a7f5798c3c3a1b0bff43d6c92baa211e7db4e39a0d52afe7ca22f/shm
+/dev/dm-26            10G  276M  9.8G   3% /var/lib/docker/devicemapper/mnt/849b449e001daf969cccdc6db29e65d282215446a2d46013de8854363421dd67
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/f3ece7e2-8bc6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-27            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/3e3721a32be924ea8e44dd3f2ecf21da3be5dcba2f4a46870c28c455207a09f4
+shm                   64M     0   64M   0% /var/lib/docker/containers/aa40d7b27f614d61303cc46adcf59b19bd7a7a1ac615d11c0c3fe20594d18874/shm
+/dev/dm-28            10G  388M  9.7G   4% /var/lib/docker/devicemapper/mnt/162a9f5ae0cca1966155dc3da66bdf7da0c20901c398acfe2dad9285221cc1a4
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/8651c21d-8bd6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-29            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/33a4c50b6c04320581c0bb067afb0733be8c5b7d4916768de03c823b2e2f0541
+shm                   64M     0   64M   0% /var/lib/docker/containers/a8d9626e67f6206ce8e792602603f76974cf3de663cba94caddd375c33fd2470/shm
+/dev/dm-30            10G  110M  9.9G   2% /var/lib/docker/devicemapper/mnt/d1796e5cea0ecdb8200f2632e4d48672eec6e3e3dbd91a246fc774e31a97008a
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/0a6f38bd-8bd7-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/0a6f358d-8bd7-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/0a6f33ec-8bd7-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+/dev/dm-32            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/c02175c232a4e749403994e8192d3bf8b592dc3ef21ef08ed9f43b53acca7f1e
+shm                   64M     0   64M   0% /var/lib/docker/containers/6635081f1b522f16918a7e5be0fa32666e4029020354173b5c4abbb3fa36ac62/shm
+/dev/dm-33            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/e8e5f9cb87c05664eee78a999f3dc785ed12b16cdb5e59960ba6bc75a4dd4d96
+shm                   64M     0   64M   0% /var/lib/docker/containers/9e540e1c6128b04f82be4457b4db3f7526a37211de1a794d1bf19d63aabd7f19/shm
+/dev/dm-31            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/81cd1465196a2e03c9b3058ab6666664131c8fefca1b72e49111f6d8c38c1905
+shm                   64M     0   64M   0% /var/lib/docker/containers/b217beecf41e9f29b9c92d76d16d8a2a6af36f9cb1ec3d474a2b532318809b63/shm
+/dev/dm-34            10G  245M  9.8G   3% /var/lib/docker/devicemapper/mnt/823df58ec6c1ce97dee923c336ad64a1cc9f270d8ab8b6fb5698ec00147675c6
+/dev/dm-35            10G  245M  9.8G   3% /var/lib/docker/devicemapper/mnt/e3660948f52e97bcd72a191cddd43c732c33c14e7ac8934470a580f79da3da66
+/dev/dm-36            10G  245M  9.8G   3% /var/lib/docker/devicemapper/mnt/2e996d34aa37f35ac863e0676f16dbe5889466da344004b9f0efeb83ac20b698
+tmpfs                7.8G   12K  7.8G   1% /var/lib/kubelet/pods/080333ff-8bd8-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33
+tmpfs                7.8G  8.0K  7.8G   1% /var/lib/kubelet/pods/080333ff-8bd8-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/npms-nginx-secret
+/dev/dm-37            10G   34M   10G   1% /var/lib/docker/devicemapper/mnt/96a65bb16088b1a2c969c1e600e898b6664d868d6a67cef9ea61f649358a95ee
+shm                   64M     0   64M   0% /var/lib/docker/containers/a7bb413a521e4b368a54e2b2dbb3a95c380800f62163410d3b7410240fb10f41/shm
+/dev/dm-38            10G  231M  9.8G   3% /var/lib/docker/devicemapper/mnt/a09117ff6b020f5aca902589dd7e0cba505bc8b40abc02c43f1b99c30f9aaee8
+tmpfs                1.6G     0  1.6G   0% /run/user/1000
+
+系统运行时间、用户数、负载:
+ 19:57:08 up 1 day,  5:40,  1 user,  load average: 0.29, 0.39, 0.46
+
+系统负载:
+0.29 0.39 0.46 1/1930 8560
+=================资源信息=================
+
+=================磁盘与分区=================
+挂接的分区状态:
+sysfs                                                                                             on  /sys                                                                                                         type  sysfs       (rw,nosuid,nodev,noexec,relatime,seclabel)
+proc                                                                                              on  /proc                                                                                                        type  proc        (rw,nosuid,nodev,noexec,relatime)
+devtmpfs                                                                                          on  /dev                                                                                                         type  devtmpfs    (rw,nosuid,seclabel,size=8122916k,nr_inodes=2030729,mode=755)
+securityfs                                                                                        on  /sys/kernel/security                                                                                         type  securityfs  (rw,nosuid,nodev,noexec,relatime)
+tmpfs                                                                                             on  /dev/shm                                                                                                     type  tmpfs       (rw,nosuid,nodev,seclabel)
+devpts                                                                                            on  /dev/pts                                                                                                     type  devpts      (rw,nosuid,noexec,relatime,seclabel,gid=5,mode=620,ptmxmode=000)
+tmpfs                                                                                             on  /run                                                                                                         type  tmpfs       (rw,nosuid,nodev,seclabel,mode=755)
+tmpfs                                                                                             on  /sys/fs/cgroup                                                                                               type  tmpfs       (ro,nosuid,nodev,noexec,seclabel,mode=755)
+cgroup                                                                                            on  /sys/fs/cgroup/systemd                                                                                       type  cgroup      (rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd)
+pstore                                                                                            on  /sys/fs/pstore                                                                                               type  pstore      (rw,nosuid,nodev,noexec,relatime)
+cgroup                                                                                            on  /sys/fs/cgroup/cpuset                                                                                        type  cgroup      (rw,nosuid,nodev,noexec,relatime,cpuset)
+cgroup                                                                                            on  /sys/fs/cgroup/blkio                                                                                         type  cgroup      (rw,nosuid,nodev,noexec,relatime,blkio)
+cgroup                                                                                            on  /sys/fs/cgroup/devices                                                                                       type  cgroup      (rw,nosuid,nodev,noexec,relatime,devices)
+cgroup                                                                                            on  /sys/fs/cgroup/pids                                                                                          type  cgroup      (rw,nosuid,nodev,noexec,relatime,pids)
+cgroup                                                                                            on  /sys/fs/cgroup/memory                                                                                        type  cgroup      (rw,nosuid,nodev,noexec,relatime,memory)
+cgroup                                                                                            on  /sys/fs/cgroup/cpu,cpuacct                                                                                   type  cgroup      (rw,nosuid,nodev,noexec,relatime,cpuacct,cpu)
+cgroup                                                                                            on  /sys/fs/cgroup/net_cls,net_prio                                                                              type  cgroup      (rw,nosuid,nodev,noexec,relatime,net_prio,net_cls)
+cgroup                                                                                            on  /sys/fs/cgroup/perf_event                                                                                    type  cgroup      (rw,nosuid,nodev,noexec,relatime,perf_event)
+cgroup                                                                                            on  /sys/fs/cgroup/hugetlb                                                                                       type  cgroup      (rw,nosuid,nodev,noexec,relatime,hugetlb)
+cgroup                                                                                            on  /sys/fs/cgroup/freezer                                                                                       type  cgroup      (rw,nosuid,nodev,noexec,relatime,freezer)
+configfs                                                                                          on  /sys/kernel/config                                                                                           type  configfs    (rw,relatime)
+/dev/mapper/cl-root                                                                               on  /                                                                                                            type  xfs         (rw,relatime,seclabel,attr2,inode64,noquota)
+selinuxfs                                                                                         on  /sys/fs/selinux                                                                                              type  selinuxfs   (rw,relatime)
+systemd-1                                                                                         on  /proc/sys/fs/binfmt_misc                                                                                     type  autofs      (rw,relatime,fd=29,pgrp=1,timeout=300,minproto=5,maxproto=5,direct)
+debugfs                                                                                           on  /sys/kernel/debug                                                                                            type  debugfs     (rw,relatime)
+mqueue                                                                                            on  /dev/mqueue                                                                                                  type  mqueue      (rw,relatime,seclabel)
+hugetlbfs                                                                                         on  /dev/hugepages                                                                                               type  hugetlbfs   (rw,relatime,seclabel)
+/dev/sda1                                                                                         on  /boot                                                                                                        type  xfs         (rw,relatime,seclabel,attr2,inode64,noquota)
+/dev/mapper/cl-root                                                                               on  /var/lib/docker/devicemapper                                                                                 type  xfs         (rw,relatime,seclabel,attr2,inode64,noquota)
+proc                                                                                              on  /run/docker/netns/default                                                                                    type  proc        (rw,nosuid,nodev,noexec,relatime)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/14624471-8bba-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-jrmkj  type  tmpfs       (rw,relatime,seclabel)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/146240d6-8bba-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-jrmkj  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-f8233027a1bcc9809bbe18a7fe56212f1919ab6fe607e3daf7eeb471c777eede  on  /var/lib/docker/devicemapper/mnt/f8233027a1bcc9809bbe18a7fe56212f1919ab6fe607e3daf7eeb471c777eede            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/957b912ec1526a6ae21339f2a599a33f8986bbc5cd3ea3261541db760db3c815/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-f6e4d08ba90e16607707b3f2afda5901103b58b2d7b8773c35258f050a77e092  on  /var/lib/docker/devicemapper/mnt/f6e4d08ba90e16607707b3f2afda5901103b58b2d7b8773c35258f050a77e092            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/221c79baf6fc654ac863d919b120e02cc4c66117b79dd9791ca407bec9669f46/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-a42f7957afad6a7c27b43b3ca1361e4e093cfe5c2dfa83b864e389156cd1bc9b  on  /var/lib/docker/devicemapper/mnt/a42f7957afad6a7c27b43b3ca1361e4e093cfe5c2dfa83b864e389156cd1bc9b            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-d28f1663e1730ee49bb05477e66f167b4c78458af120445bf66d6f56d29972f7  on  /var/lib/docker/devicemapper/mnt/d28f1663e1730ee49bb05477e66f167b4c78458af120445bf66d6f56d29972f7            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-83d8cb872f4f0a50f6ae6e1eb91e954957d9478fe9dade7549c73f797835a4e8  on  /var/lib/docker/devicemapper/mnt/83d8cb872f4f0a50f6ae6e1eb91e954957d9478fe9dade7549c73f797835a4e8            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/d0b10695-8bc4-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-3975aadb0376cc5739c4368f428075f27f59ed0ad440f77657de90f9cf2798b1  on  /var/lib/docker/devicemapper/mnt/3975aadb0376cc5739c4368f428075f27f59ed0ad440f77657de90f9cf2798b1            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/89fd23ae8fc5c5131e22103926faee4bb189854a1625d63cd9ec1c2720149124/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-44689d14ca02102c032ac27b7086b4fe6b0d183282cf20d540b614121373d3ec  on  /var/lib/docker/devicemapper/mnt/44689d14ca02102c032ac27b7086b4fe6b0d183282cf20d540b614121373d3ec            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-f2baeaf380b5d41ed8df1aa8115ef51e0d0d36a0e37509de6860226905378d1d  on  /var/lib/docker/devicemapper/mnt/f2baeaf380b5d41ed8df1aa8115ef51e0d0d36a0e37509de6860226905378d1d            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-5e87adb9a972e816794ddeb9faccdc08bbd760cbded9d6ff54ec22cd1e4ecb5a  on  /var/lib/docker/devicemapper/mnt/5e87adb9a972e816794ddeb9faccdc08bbd760cbded9d6ff54ec22cd1e4ecb5a            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-dcb24b837043d39cb7b587a0c8a62f3e9bea605e833d3c927df8d7535612fdbc  on  /var/lib/docker/devicemapper/mnt/dcb24b837043d39cb7b587a0c8a62f3e9bea605e833d3c927df8d7535612fdbc            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-a44855d64e1119ea74fbc9d331cb67315d1238eeadb6cd72ffc81c66f6645aa6  on  /var/lib/docker/devicemapper/mnt/a44855d64e1119ea74fbc9d331cb67315d1238eeadb6cd72ffc81c66f6645aa6            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-04d4dda8d848a94a89fb89a007cbbd513d69eb8750dcbafc8459a04aaf1b2e82  on  /var/lib/docker/devicemapper/mnt/04d4dda8d848a94a89fb89a007cbbd513d69eb8750dcbafc8459a04aaf1b2e82            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/4daea5fa-8bc5-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-19a9c176924be017134a89f21e25f904f7acf36bb4f3c0b3378c5a8eb2103dea  on  /var/lib/docker/devicemapper/mnt/19a9c176924be017134a89f21e25f904f7acf36bb4f3c0b3378c5a8eb2103dea            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/2ebf03e2a6f2247587cd85c57da8ea3ef56503f4eba9ae425f7d1ba267c74915/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-3f98e4cf713c63d3f4b6667f878b0fb2223f5c273fd42b2750829a9aa0c37740  on  /var/lib/docker/devicemapper/mnt/3f98e4cf713c63d3f4b6667f878b0fb2223f5c273fd42b2750829a9aa0c37740            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-158c6e7bae12563cf924bfff99aa73df521acd6faf4c4dcf52a46d7c97707edb  on  /var/lib/docker/devicemapper/mnt/158c6e7bae12563cf924bfff99aa73df521acd6faf4c4dcf52a46d7c97707edb            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-8d33d26bfd1174432453026b7dd6b3a112c3d51bcb19ce23ef40143a56fd9135  on  /var/lib/docker/devicemapper/mnt/8d33d26bfd1174432453026b7dd6b3a112c3d51bcb19ce23ef40143a56fd9135            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/5efdbac5-8bc5-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-1f2b10011c5410ec5041dcf98e9ef5e6afe7f1a8f8ad5d42825276d3f7ba2f8f  on  /var/lib/docker/devicemapper/mnt/1f2b10011c5410ec5041dcf98e9ef5e6afe7f1a8f8ad5d42825276d3f7ba2f8f            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/be966e6d7ac40f5bb11dffa17dc4d216a00cf7298687fa0a476c1f56c177f85f/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-76ddad0044053616fea42f5a15bcaed49c7ab6d870ffddefcf845266e4b2c10d  on  /var/lib/docker/devicemapper/mnt/76ddad0044053616fea42f5a15bcaed49c7ab6d870ffddefcf845266e4b2c10d            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-d7cc0b26df1a8170212fecec57ff53feb7ef5c653c897cf27febffca2f362d0f  on  /var/lib/docker/devicemapper/mnt/d7cc0b26df1a8170212fecec57ff53feb7ef5c653c897cf27febffca2f362d0f            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-799045008eb964c2db592887d8f2481298099441da7508a26002428be8bbb49a  on  /var/lib/docker/devicemapper/mnt/799045008eb964c2db592887d8f2481298099441da7508a26002428be8bbb49a            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/bdcb48f3-8bc6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-c03c8dce873ed83a7320339df451b031ddbb1e0ba2adb660d514e9caa9af879d  on  /var/lib/docker/devicemapper/mnt/c03c8dce873ed83a7320339df451b031ddbb1e0ba2adb660d514e9caa9af879d            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/3634ec8d4d3d0f50285abb037433e52a37f136fea9e0153e6d7ff27394571949/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-4069267cde06d063353c41dcb7d99a1311a82884c66a23c091417db9b903990a  on  /var/lib/docker/devicemapper/mnt/4069267cde06d063353c41dcb7d99a1311a82884c66a23c091417db9b903990a            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/dd4d57fe-8bc6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-dfb3c15f2160f1fbc4d6443faf8dea414fca65f5bd89becf6eaa7edf13510e75  on  /var/lib/docker/devicemapper/mnt/dfb3c15f2160f1fbc4d6443faf8dea414fca65f5bd89becf6eaa7edf13510e75            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/f6f9ce9bcf7a7f5798c3c3a1b0bff43d6c92baa211e7db4e39a0d52afe7ca22f/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-849b449e001daf969cccdc6db29e65d282215446a2d46013de8854363421dd67  on  /var/lib/docker/devicemapper/mnt/849b449e001daf969cccdc6db29e65d282215446a2d46013de8854363421dd67            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/f3ece7e2-8bc6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-3e3721a32be924ea8e44dd3f2ecf21da3be5dcba2f4a46870c28c455207a09f4  on  /var/lib/docker/devicemapper/mnt/3e3721a32be924ea8e44dd3f2ecf21da3be5dcba2f4a46870c28c455207a09f4            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/aa40d7b27f614d61303cc46adcf59b19bd7a7a1ac615d11c0c3fe20594d18874/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-162a9f5ae0cca1966155dc3da66bdf7da0c20901c398acfe2dad9285221cc1a4  on  /var/lib/docker/devicemapper/mnt/162a9f5ae0cca1966155dc3da66bdf7da0c20901c398acfe2dad9285221cc1a4            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/8651c21d-8bd6-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-33a4c50b6c04320581c0bb067afb0733be8c5b7d4916768de03c823b2e2f0541  on  /var/lib/docker/devicemapper/mnt/33a4c50b6c04320581c0bb067afb0733be8c5b7d4916768de03c823b2e2f0541            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/a8d9626e67f6206ce8e792602603f76974cf3de663cba94caddd375c33fd2470/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-d1796e5cea0ecdb8200f2632e4d48672eec6e3e3dbd91a246fc774e31a97008a  on  /var/lib/docker/devicemapper/mnt/d1796e5cea0ecdb8200f2632e4d48672eec6e3e3dbd91a246fc774e31a97008a            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/0a6f38bd-8bd7-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/0a6f358d-8bd7-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/0a6f33ec-8bd7-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-c02175c232a4e749403994e8192d3bf8b592dc3ef21ef08ed9f43b53acca7f1e  on  /var/lib/docker/devicemapper/mnt/c02175c232a4e749403994e8192d3bf8b592dc3ef21ef08ed9f43b53acca7f1e            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/6635081f1b522f16918a7e5be0fa32666e4029020354173b5c4abbb3fa36ac62/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+proc                                                                                              on  /run/docker/netns/54f58b48de97                                                                               type  proc        (rw,nosuid,nodev,noexec,relatime)
+/dev/mapper/docker-253:0-287662-e8e5f9cb87c05664eee78a999f3dc785ed12b16cdb5e59960ba6bc75a4dd4d96  on  /var/lib/docker/devicemapper/mnt/e8e5f9cb87c05664eee78a999f3dc785ed12b16cdb5e59960ba6bc75a4dd4d96            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/9e540e1c6128b04f82be4457b4db3f7526a37211de1a794d1bf19d63aabd7f19/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+proc                                                                                              on  /run/docker/netns/c244c87b5c64                                                                               type  proc        (rw,nosuid,nodev,noexec,relatime)
+/dev/mapper/docker-253:0-287662-81cd1465196a2e03c9b3058ab6666664131c8fefca1b72e49111f6d8c38c1905  on  /var/lib/docker/devicemapper/mnt/81cd1465196a2e03c9b3058ab6666664131c8fefca1b72e49111f6d8c38c1905            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/b217beecf41e9f29b9c92d76d16d8a2a6af36f9cb1ec3d474a2b532318809b63/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+proc                                                                                              on  /run/docker/netns/7378bbc60734                                                                               type  proc        (rw,nosuid,nodev,noexec,relatime)
+/dev/mapper/docker-253:0-287662-823df58ec6c1ce97dee923c336ad64a1cc9f270d8ab8b6fb5698ec00147675c6  on  /var/lib/docker/devicemapper/mnt/823df58ec6c1ce97dee923c336ad64a1cc9f270d8ab8b6fb5698ec00147675c6            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-e3660948f52e97bcd72a191cddd43c732c33c14e7ac8934470a580f79da3da66  on  /var/lib/docker/devicemapper/mnt/e3660948f52e97bcd72a191cddd43c732c33c14e7ac8934470a580f79da3da66            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+/dev/mapper/docker-253:0-287662-2e996d34aa37f35ac863e0676f16dbe5889466da344004b9f0efeb83ac20b698  on  /var/lib/docker/devicemapper/mnt/2e996d34aa37f35ac863e0676f16dbe5889466da344004b9f0efeb83ac20b698            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/080333ff-8bd8-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/default-token-2bq33  type  tmpfs       (rw,relatime,seclabel)
+tmpfs                                                                                             on  /var/lib/kubelet/pods/080333ff-8bd8-11e7-97f6-005056a30b7b/volumes/kubernetes.io~secret/npms-nginx-secret    type  tmpfs       (rw,relatime,seclabel)
+/dev/mapper/docker-253:0-287662-96a65bb16088b1a2c969c1e600e898b6664d868d6a67cef9ea61f649358a95ee  on  /var/lib/docker/devicemapper/mnt/96a65bb16088b1a2c969c1e600e898b6664d868d6a67cef9ea61f649358a95ee            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+shm                                                                                               on  /var/lib/docker/containers/a7bb413a521e4b368a54e2b2dbb3a95c380800f62163410d3b7410240fb10f41/shm              type  tmpfs       (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k)
+/dev/mapper/docker-253:0-287662-a09117ff6b020f5aca902589dd7e0cba505bc8b40abc02c43f1b99c30f9aaee8  on  /var/lib/docker/devicemapper/mnt/a09117ff6b020f5aca902589dd7e0cba505bc8b40abc02c43f1b99c30f9aaee8            type  xfs         (rw,relatime,seclabel,nouuid,attr2,inode64,logbsize=64k,sunit=128,swidth=128,noquota)
+tmpfs                                                                                             on  /run/user/1000                                                                                               type  tmpfs       (rw,nosuid,nodev,relatime,seclabel,size=1626728k,mode=700,uid=1000,gid=1000)
+
+查看所有分区:
+
+Disk /dev/sda: 53.7 GB, 53687091200 bytes, 104857600 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x000c8dbc
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     2099199     1048576   83  Linux
+/dev/sda2         2099200   104857599    51379200   8e  Linux LVM
+
+Disk /dev/mapper/cl-root: 47.2 GB, 47240445952 bytes, 92266496 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/cl-swap: 5368 MB, 5368709120 bytes, 10485760 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-pool: 107.4 GB, 107374182400 bytes, 209715200 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-f8233027a1bcc9809bbe18a7fe56212f1919ab6fe607e3daf7eeb471c777eede: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-f6e4d08ba90e16607707b3f2afda5901103b58b2d7b8773c35258f050a77e092: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-a42f7957afad6a7c27b43b3ca1361e4e093cfe5c2dfa83b864e389156cd1bc9b: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-d28f1663e1730ee49bb05477e66f167b4c78458af120445bf66d6f56d29972f7: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-83d8cb872f4f0a50f6ae6e1eb91e954957d9478fe9dade7549c73f797835a4e8: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-3975aadb0376cc5739c4368f428075f27f59ed0ad440f77657de90f9cf2798b1: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-44689d14ca02102c032ac27b7086b4fe6b0d183282cf20d540b614121373d3ec: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-f2baeaf380b5d41ed8df1aa8115ef51e0d0d36a0e37509de6860226905378d1d: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-5e87adb9a972e816794ddeb9faccdc08bbd760cbded9d6ff54ec22cd1e4ecb5a: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-dcb24b837043d39cb7b587a0c8a62f3e9bea605e833d3c927df8d7535612fdbc: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-a44855d64e1119ea74fbc9d331cb67315d1238eeadb6cd72ffc81c66f6645aa6: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-04d4dda8d848a94a89fb89a007cbbd513d69eb8750dcbafc8459a04aaf1b2e82: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-19a9c176924be017134a89f21e25f904f7acf36bb4f3c0b3378c5a8eb2103dea: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-3f98e4cf713c63d3f4b6667f878b0fb2223f5c273fd42b2750829a9aa0c37740: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-158c6e7bae12563cf924bfff99aa73df521acd6faf4c4dcf52a46d7c97707edb: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-8d33d26bfd1174432453026b7dd6b3a112c3d51bcb19ce23ef40143a56fd9135: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-1f2b10011c5410ec5041dcf98e9ef5e6afe7f1a8f8ad5d42825276d3f7ba2f8f: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-76ddad0044053616fea42f5a15bcaed49c7ab6d870ffddefcf845266e4b2c10d: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-d7cc0b26df1a8170212fecec57ff53feb7ef5c653c897cf27febffca2f362d0f: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-799045008eb964c2db592887d8f2481298099441da7508a26002428be8bbb49a: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-c03c8dce873ed83a7320339df451b031ddbb1e0ba2adb660d514e9caa9af879d: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-4069267cde06d063353c41dcb7d99a1311a82884c66a23c091417db9b903990a: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-dfb3c15f2160f1fbc4d6443faf8dea414fca65f5bd89becf6eaa7edf13510e75: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-849b449e001daf969cccdc6db29e65d282215446a2d46013de8854363421dd67: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-3e3721a32be924ea8e44dd3f2ecf21da3be5dcba2f4a46870c28c455207a09f4: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-162a9f5ae0cca1966155dc3da66bdf7da0c20901c398acfe2dad9285221cc1a4: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-33a4c50b6c04320581c0bb067afb0733be8c5b7d4916768de03c823b2e2f0541: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-d1796e5cea0ecdb8200f2632e4d48672eec6e3e3dbd91a246fc774e31a97008a: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-c02175c232a4e749403994e8192d3bf8b592dc3ef21ef08ed9f43b53acca7f1e: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-e8e5f9cb87c05664eee78a999f3dc785ed12b16cdb5e59960ba6bc75a4dd4d96: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-81cd1465196a2e03c9b3058ab6666664131c8fefca1b72e49111f6d8c38c1905: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-823df58ec6c1ce97dee923c336ad64a1cc9f270d8ab8b6fb5698ec00147675c6: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-e3660948f52e97bcd72a191cddd43c732c33c14e7ac8934470a580f79da3da66: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-2e996d34aa37f35ac863e0676f16dbe5889466da344004b9f0efeb83ac20b698: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-96a65bb16088b1a2c969c1e600e898b6664d868d6a67cef9ea61f649358a95ee: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+Disk /dev/mapper/docker-253:0-287662-a09117ff6b020f5aca902589dd7e0cba505bc8b40abc02c43f1b99c30f9aaee8: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 65536 bytes / 65536 bytes
+
+
+所有交换分区:
+Filename				Type		Size	Used	Priority
+/dev/dm-1                              	partition	5242876	665676	-1
+
+启动时IDE设备检测状况:
+[    0.408274] pci 0000:00:07.1: legacy IDE quirk: reg 0x10: [io  0x01f0-0x01f7]
+[    0.408285] pci 0000:00:07.1: legacy IDE quirk: reg 0x14: [io  0x03f6]
+[    0.408290] pci 0000:00:07.1: legacy IDE quirk: reg 0x18: [io  0x0170-0x0177]
+[    0.408294] pci 0000:00:07.1: legacy IDE quirk: reg 0x1c: [io  0x0376]
+[    1.767609] scsi target2:0:0: FAST-40 WIDE SCSI 80.0 MB/s ST (25 ns, offset 127)
+[    1.832982] ata2.00: ATAPI: VMware Virtual IDE CDROM Drive, 00000001, max UDMA/33
+[    1.839616] scsi 1:0:0:0: CD-ROM            NECVMWar VMware IDE CDR10 1.00 PQ: 0 ANSI: 5
+=================磁盘与分区=================
+
+=================CPU信息=================
+CPU个数为:
+11
+
+CPU核数信息:
+     10 address sizes	: 40 bits physical, 48 bits virtual
+      1 physical id	: 0
+      1 physical id	: 10
+      1 physical id	: 12
+      1 physical id	: 14
+      1 physical id	: 16
+      1 physical id	: 18
+      1 physical id	: 2
+      1 physical id	: 4
+      1 physical id	: 6
+      1 physical id	: 8
+
+CPU信息型号:
+ Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
+
+CPU运行位数:
+64
+
+CPU的Long Mode数值。如果大于0，则支持64bit计算
+10
+=================CPU信息=================
+
+=================网络信息=================
+所有网络接口的属性:
+cali2e2a3b31de8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::bc0e:16ff:fecf:fea6  prefixlen 64  scopeid 0x20<link>
+        ether be:0e:16:cf:fe:a6  txqueuelen 0  (Ethernet)
+        RX packets 3761262  bytes 3473515788 (3.2 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3761262  bytes 3473515788 (3.2 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+cali43fef2cdaba: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::f888:dbff:feaf:8ff9  prefixlen 64  scopeid 0x20<link>
+        ether fa:88:db:af:8f:f9  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+calie2f588997c4: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::b0bd:4ff:fe9e:bf68  prefixlen 64  scopeid 0x20<link>
+        ether b2:bd:04:9e:bf:68  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+        ether 02:42:f1:b7:73:1b  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ens160: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.168  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::4d2d:980f:61b0:6341  prefixlen 64  scopeid 0x20<link>
+        ether 00:50:56:a3:49:dd  txqueuelen 1000  (Ethernet)
+        RX packets 3902621  bytes 3076920949 (2.8 GiB)
+        RX errors 0  dropped 15  overruns 0  frame 0
+        TX packets 5790231  bytes 465192335 (443.6 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 3761262  bytes 3473515788 (3.2 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3761262  bytes 3473515788 (3.2 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+tunl0: flags=193<UP,RUNNING,NOARP>  mtu 1440
+        inet 192.168.208.64  netmask 255.255.255.255
+        tunnel   txqueuelen 1  (IPIP Tunnel)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+防火墙设置:
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+felix-INPUT  all  --  anywhere             anywhere            
+KUBE-FIREWALL  all  --  anywhere             anywhere            
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+felix-FORWARD  all  --  anywhere             anywhere            
+DOCKER-ISOLATION  all  --  anywhere             anywhere            
+DOCKER     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+felix-OUTPUT  all  --  anywhere             anywhere            
+KUBE-SERVICES  all  --  anywhere             anywhere             /* kubernetes service portals */
+KUBE-FIREWALL  all  --  anywhere             anywhere            
+
+Chain DOCKER (1 references)
+target     prot opt source               destination         
+
+Chain DOCKER-ISOLATION (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere            
+
+Chain KUBE-FIREWALL (2 references)
+target     prot opt source               destination         
+DROP       all  --  anywhere             anywhere             /* kubernetes firewall for dropping marked packets */ mark match 0x8000/0x8000
+
+Chain KUBE-SERVICES (1 references)
+target     prot opt source               destination         
+
+Chain felix-FAILSAFE-IN (0 references)
+target     prot opt source               destination         
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+
+Chain felix-FAILSAFE-OUT (0 references)
+target     prot opt source               destination         
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:2379
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:2380
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:newoak
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:afs3-callback
+
+Chain felix-FORWARD (1 references)
+target     prot opt source               destination         
+DROP       all  --  anywhere             anywhere             ctstate INVALID
+DROP       all  --  anywhere             anywhere             ctstate INVALID
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+felix-FROM-ENDPOINT  all  --  anywhere             anywhere            
+felix-TO-ENDPOINT  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+
+Chain felix-FROM-ENDPOINT (2 references)
+target     prot opt source               destination         
+felix-from-2e2a3b31de8  all  --  anywhere             anywhere            [goto] 
+felix-from-e2f588997c4  all  --  anywhere             anywhere            [goto] 
+felix-from-43fef2cdaba  all  --  anywhere             anywhere            [goto] 
+DROP       all  --  anywhere             anywhere             /* From unknown endpoint */
+
+Chain felix-FROM-HOST-IF (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere             /* Unknown interface, return */
+
+Chain felix-INPUT (1 references)
+target     prot opt source               destination         
+DROP       ipv4 --  anywhere             anywhere             ! match-set felix-calico-hosts-4 src
+DROP       all  --  anywhere             anywhere             ctstate INVALID
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+MARK       all  --  anywhere             anywhere             MARK and 0xfbffffff
+MARK       all  --  anywhere             anywhere             MARK or 0x4000000
+felix-FROM-HOST-IF  all  --  anywhere             anywhere            [goto]  mark match 0x0/0x4000000
+ACCEPT     udp  --  anywhere             anywhere             udp spt:bootpc dpt:bootps
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+felix-FROM-ENDPOINT  all  --  anywhere             anywhere            
+
+Chain felix-OUTPUT (1 references)
+target     prot opt source               destination         
+DROP       all  --  anywhere             anywhere             ctstate INVALID
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+MARK       all  --  anywhere             anywhere             MARK and 0xfbffffff
+MARK       all  --  anywhere             anywhere             MARK or 0x4000000
+felix-TO-HOST-IF  all  --  anywhere             anywhere            [goto]  mark match 0x0/0x4000000
+
+Chain felix-TO-ENDPOINT (1 references)
+target     prot opt source               destination         
+felix-to-2e2a3b31de8  all  --  anywhere             anywhere            [goto] 
+felix-to-e2f588997c4  all  --  anywhere             anywhere            [goto] 
+felix-to-43fef2cdaba  all  --  anywhere             anywhere            [goto] 
+DROP       all  --  anywhere             anywhere             /* To unknown endpoint */
+
+Chain felix-TO-HOST-IF (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere             /* Unknown interface, return */
+
+Chain felix-from-2e2a3b31de8 (1 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK and 0xfeffffff
+DROP       all  --  anywhere             anywhere             MAC ! 9A:4E:8A:11:9C:06 /* Incorrect source MAC */
+MARK       all  --  anywhere             anywhere             /* Start of tier default */ MARK and 0xfdffffff
+felix-p-_722590149132d26-o  all  --  anywhere             anywhere             mark match 0x0/0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Return if policy accepted */
+DROP       all  --  anywhere             anywhere             mark match 0x0/0x2000000 /* Drop if no policy in tier passed */
+felix-p-k8s_ns.npms-o  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Profile accepted packet */
+DROP       all  --  anywhere             anywhere             /* Packet did not match any profile (endpoint eth0) */
+
+Chain felix-from-43fef2cdaba (1 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK and 0xfeffffff
+DROP       all  --  anywhere             anywhere             MAC ! 9A:13:BC:EB:55:BE /* Incorrect source MAC */
+MARK       all  --  anywhere             anywhere             /* Start of tier default */ MARK and 0xfdffffff
+felix-p-_722590149132d26-o  all  --  anywhere             anywhere             mark match 0x0/0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Return if policy accepted */
+DROP       all  --  anywhere             anywhere             mark match 0x0/0x2000000 /* Drop if no policy in tier passed */
+felix-p-k8s_ns.npms-o  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Profile accepted packet */
+DROP       all  --  anywhere             anywhere             /* Packet did not match any profile (endpoint eth0) */
+
+Chain felix-from-e2f588997c4 (1 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK and 0xfeffffff
+DROP       all  --  anywhere             anywhere             MAC ! F6:40:CC:58:40:A6 /* Incorrect source MAC */
+MARK       all  --  anywhere             anywhere             /* Start of tier default */ MARK and 0xfdffffff
+felix-p-_722590149132d26-o  all  --  anywhere             anywhere             mark match 0x0/0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Return if policy accepted */
+DROP       all  --  anywhere             anywhere             mark match 0x0/0x2000000 /* Drop if no policy in tier passed */
+felix-p-k8s_ns.npms-o  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Profile accepted packet */
+DROP       all  --  anywhere             anywhere             /* Packet did not match any profile (endpoint eth0) */
+
+Chain felix-p-_722590149132d26-i (3 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK or 0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x2000000/0x2000000
+
+Chain felix-p-_722590149132d26-o (3 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK or 0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x2000000/0x2000000
+
+Chain felix-p-k8s_ns.npms-i (3 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK or 0x1000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000
+
+Chain felix-p-k8s_ns.npms-o (3 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK or 0x1000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000
+
+Chain felix-to-2e2a3b31de8 (1 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK and 0xfeffffff
+MARK       all  --  anywhere             anywhere             /* Start of tier default */ MARK and 0xfdffffff
+felix-p-_722590149132d26-i  all  --  anywhere             anywhere             mark match 0x0/0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Return if policy accepted */
+DROP       all  --  anywhere             anywhere             mark match 0x0/0x2000000 /* Drop if no policy in tier passed */
+felix-p-k8s_ns.npms-i  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Profile accepted packet */
+DROP       all  --  anywhere             anywhere             /* Packet did not match any profile (endpoint eth0) */
+
+Chain felix-to-43fef2cdaba (1 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK and 0xfeffffff
+MARK       all  --  anywhere             anywhere             /* Start of tier default */ MARK and 0xfdffffff
+felix-p-_722590149132d26-i  all  --  anywhere             anywhere             mark match 0x0/0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Return if policy accepted */
+DROP       all  --  anywhere             anywhere             mark match 0x0/0x2000000 /* Drop if no policy in tier passed */
+felix-p-k8s_ns.npms-i  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Profile accepted packet */
+DROP       all  --  anywhere             anywhere             /* Packet did not match any profile (endpoint eth0) */
+
+Chain felix-to-e2f588997c4 (1 references)
+target     prot opt source               destination         
+MARK       all  --  anywhere             anywhere             MARK and 0xfeffffff
+MARK       all  --  anywhere             anywhere             /* Start of tier default */ MARK and 0xfdffffff
+felix-p-_722590149132d26-i  all  --  anywhere             anywhere             mark match 0x0/0x2000000
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Return if policy accepted */
+DROP       all  --  anywhere             anywhere             mark match 0x0/0x2000000 /* Drop if no policy in tier passed */
+felix-p-k8s_ns.npms-i  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere             mark match 0x1000000/0x1000000 /* Profile accepted packet */
+DROP       all  --  anywhere             anywhere             /* Packet did not match any profile (endpoint eth0) */
+
+网卡速率信息:
+Settings for ens160:
+	Supported ports: [ TP ]
+	Supported link modes:   1000baseT/Full 
+	                        10000baseT/Full 
+	Supported pause frame use: No
+	Supports auto-negotiation: No
+	Advertised link modes:  Not reported
+	Advertised pause frame use: No
+	Advertised auto-negotiation: No
+	Speed: 10000Mb/s
+	Duplex: Full
+	Port: Twisted Pair
+	PHYAD: 0
+	Transceiver: internal
+	Auto-negotiation: off
+	MDI-X: Unknown
+	Supports Wake-on: uag
+	Wake-on: d
+	Link detected: yes
+
+当前暴露出来的服务端口:
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:10248         0.0.0.0:*               LISTEN      18800/kubelet       
+tcp        0      0 127.0.0.1:10249         0.0.0.0:*               LISTEN      19119/kube-proxy    
+tcp        0      0 0.0.0.0:6379            0.0.0.0:*               LISTEN      10563/redis-server  
+tcp        0      0 0.0.0.0:6380            0.0.0.0:*               LISTEN      10645/redis-server  
+tcp        0      0 0.0.0.0:6381            0.0.0.0:*               LISTEN      10721/redis-server  
+tcp        0      0 0.0.0.0:6382            0.0.0.0:*               LISTEN      10795/redis-server  
+tcp        0      0 0.0.0.0:6383            0.0.0.0:*               LISTEN      10405/redis-server  
+tcp        0      0 0.0.0.0:6384            0.0.0.0:*               LISTEN      10483/redis-server  
+tcp        0      0 0.0.0.0:179             0.0.0.0:*               LISTEN      19378/bird          
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      986/sshd            
+tcp        0      0 0.0.0.0:32792           0.0.0.0:*               LISTEN      28513/nginx: master 
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1947/master         
+tcp        0      0 0.0.0.0:32379           0.0.0.0:*               LISTEN      28513/nginx: master 
+tcp        0      0 0.0.0.0:16379           0.0.0.0:*               LISTEN      10563/redis-server  
+tcp        0      0 0.0.0.0:16380           0.0.0.0:*               LISTEN      10645/redis-server  
+tcp        0      0 0.0.0.0:16381           0.0.0.0:*               LISTEN      10721/redis-server  
+tcp        0      0 0.0.0.0:16382           0.0.0.0:*               LISTEN      10795/redis-server  
+tcp        0      0 0.0.0.0:16383           0.0.0.0:*               LISTEN      10405/redis-server  
+tcp        0      0 0.0.0.0:16384           0.0.0.0:*               LISTEN      10483/redis-server  
+tcp6       0      0 192.168.1.168:9094      :::*                    LISTEN      14503/java          
+tcp6       0      0 192.168.1.168:2888      :::*                    LISTEN      13559/java          
+tcp6       0      0 :::40520                :::*                    LISTEN      13456/java          
+tcp6       0      0 :::10250                :::*                    LISTEN      18800/kubelet       
+tcp6       0      0 :::6379                 :::*                    LISTEN      10563/redis-server  
+tcp6       0      0 :::36044                :::*                    LISTEN      13559/java          
+tcp6       0      0 :::6380                 :::*                    LISTEN      10645/redis-server  
+tcp6       0      0 :::6381                 :::*                    LISTEN      10721/redis-server  
+tcp6       0      0 :::6382                 :::*                    LISTEN      10795/redis-server  
+tcp6       0      0 192.168.1.168:3887      :::*                    LISTEN      13456/java          
+tcp6       0      0 :::6383                 :::*                    LISTEN      10405/redis-server  
+tcp6       0      0 :::10255                :::*                    LISTEN      18800/kubelet       
+tcp6       0      0 :::8080                 :::*                    LISTEN      30593/java          
+tcp6       0      0 :::40464                :::*                    LISTEN      14503/java          
+tcp6       0      0 192.168.1.168:3888      :::*                    LISTEN      13559/java          
+tcp6       0      0 :::6384                 :::*                    LISTEN      10483/redis-server  
+tcp6       0      0 192.168.1.168:3889      :::*                    LISTEN      13674/java          
+tcp6       0      0 :::21810                :::*                    LISTEN      13456/java          
+tcp6       0      0 :::21811                :::*                    LISTEN      13559/java          
+tcp6       0      0 :::21812                :::*                    LISTEN      13674/java          
+tcp6       0      0 :::8181                 :::*                    LISTEN      29910/java          
+tcp6       0      0 :::8182                 :::*                    LISTEN      29074/java          
+tcp6       0      0 :::22                   :::*                    LISTEN      986/sshd            
+tcp6       0      0 :::32791                :::*                    LISTEN      19425/node          
+tcp6       0      0 :::44761                :::*                    LISTEN      14196/java          
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1947/master         
+tcp6       0      0 :::32378                :::*                    LISTEN      19119/kube-proxy    
+tcp6       0      0 :::16379                :::*                    LISTEN      10563/redis-server  
+tcp6       0      0 :::16380                :::*                    LISTEN      10645/redis-server  
+tcp6       0      0 :::16381                :::*                    LISTEN      10721/redis-server  
+tcp6       0      0 :::16382                :::*                    LISTEN      10795/redis-server  
+tcp6       0      0 :::16383                :::*                    LISTEN      10405/redis-server  
+tcp6       0      0 :::34208                :::*                    LISTEN      14813/java          
+tcp6       0      0 :::16384                :::*                    LISTEN      10483/redis-server  
+tcp6       0      0 :::37857                :::*                    LISTEN      13674/java          
+tcp6       0      0 :::4194                 :::*                    LISTEN      18800/kubelet       
+tcp6       0      0 192.168.1.168:9092      :::*                    LISTEN      14813/java          
+tcp6       0      0 192.168.1.168:9093      :::*                    LISTEN      14196/java          
+
+路由信息:
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 ens160
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 ens160
+192.168.202.64  192.168.1.169   255.255.255.192 UG    0      0        0 tunl0
+192.168.208.64  0.0.0.0         255.255.255.192 U     0      0        0 *
+192.168.208.65  0.0.0.0         255.255.255.255 UH    0      0        0 cali43fef2cdaba
+192.168.208.66  0.0.0.0         255.255.255.255 UH    0      0        0 calie2f588997c4
+192.168.208.67  0.0.0.0         255.255.255.255 UH    0      0        0 cali2e2a3b31de8
+=================网络信息=================
+
+=================用户信息=================
+活动用户:
+ 19:57:09 up 1 day,  5:40,  1 user,  load average: 0.29, 0.39, 0.46
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+administ pts/0    192.168.131.151  19:52    5.00s  0.13s  0.42s sshd: administrator [priv]
+
+用户登录日志:
+administ pts/0        192.168.131.151  Tue Aug 29 19:52   still logged in   
+administ pts/0        192.168.129.151  Tue Aug 29 15:50 - 17:50  (02:00)    
+administ pts/1        192.168.131.151  Tue Aug 29 09:49 - 17:08  (07:18)    
+administ pts/0        192.168.129.151  Tue Aug 29 09:18 - 11:18  (02:00)    
+administ pts/2        192.168.131.151  Mon Aug 28 17:05 - 19:48  (02:43)    
+administ pts/0        192.168.131.104  Mon Aug 28 17:00 - 19:12  (02:11)    
+administ pts/0        192.168.131.104  Mon Aug 28 15:58 - 16:22  (00:23)    
+administ pts/0        192.168.131.104  Mon Aug 28 15:30 - 15:56  (00:26)    
+administ pts/1        192.168.129.151  Mon Aug 28 14:19 - 17:58  (03:38)    
+administ pts/0        192.168.129.151  Mon Aug 28 14:16 - 14:38  (00:21)    
+reboot   system boot  3.10.0-514.26.2. Mon Aug 28 14:16 - 19:57 (1+05:40)   
+administ pts/3        192.168.129.151  Mon Aug 28 14:02 - 14:09  (00:07)    
+administ pts/1        192.168.131.104  Mon Aug 28 13:53 - 14:09  (00:16)    
+administ pts/2        192.168.129.151  Mon Aug 28 13:52 - 14:09  (00:16)    
+administ pts/1        192.168.129.151  Mon Aug 28 13:52 - 13:52  (00:00)    
+administ pts/1        192.168.129.151  Mon Aug 28 13:48 - 13:52  (00:03)    
+administ pts/0        192.168.131.151  Mon Aug 28 11:28 - 14:09  (02:40)    
+root     tty1                          Mon Aug 28 10:23 - 14:09  (03:46)    
+reboot   system boot  3.10.0-514.el7.x Mon Aug 28 10:23 - 19:57 (1+09:34)   
+
+wtmp begins Mon Aug 28 10:23:04 2017
+
+系统所有用户:
+root
+bin
+daemon
+adm
+lp
+sync
+shutdown
+halt
+mail
+operator
+games
+ftp
+nobody
+systemd-bus-proxy
+systemd-network
+dbus
+polkitd
+tss
+sshd
+postfix
+chrony
+administrator
+
+系统所有组:
+root
+bin
+daemon
+sys
+adm
+tty
+disk
+lp
+mem
+kmem
+wheel
+cdrom
+mail
+man
+dialout
+floppy
+games
+tape
+video
+ftp
+lock
+audio
+nobody
+users
+utmp
+utempter
+input
+systemd-journal
+systemd-bus-proxy
+systemd-network
+dbus
+polkitd
+ssh_keys
+dip
+tss
+sshd
+postdrop
+postfix
+chrony
+administrator
+cgred
+docker
+
+当前用户的计划任务:
+
+所有系统服务:
+netconsole     	0:off	1:off	2:off	3:off	4:off	5:off	6:off
+network        	0:off	1:off	2:on	3:on	4:on	5:on	6:off
+=================用户信息=================
+

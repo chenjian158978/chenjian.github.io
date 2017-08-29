@@ -15,34 +15,27 @@ tags:
 
 ##### 脚本使用说明
 
-目前该脚本只针对Centos7系统和Ubuntu系统
+目前该脚本只针对**Centos7系统**和**Ubuntu系统**,
 
 ``` sh
 sudo chmod 777 checkSystemConfig.sh
+
+# 修改相关的系统参数
+vim checkSystemConfig.sh 
+
 ./checkSystemConfig.sh
 ```
 
 ##### 信息结果
 
-[ddddd](https://github.com/notablemind/downloadbutton/blob/master/save-as.js)
+1. 结果输出到当前屏幕上；
+2. `checkSystemConfig.log`中，例如以下样本：
 
-##### [Shell脚本](dddd)
+	[checkSystemConfig.log](/download/Check-System-Config/checkSystemConfig.log)
 
-var fileData = {
-  filename: 'hello.txt',
-  contents: 'Hello download!',
-  mime: 'text/plain',
-};
-var title = <span>
-  Download File
-  <i className="mdi-file-file-download right"/>
-</span>;
+##### checkSystemConfig.sh
 
-
-<DownloadButton
-  className='waves-effect waves-light btn' 
-  downloadTitle={title}
-  fileData={fileData}/>
+代码下载： [checkSystemConfig.sh](/download/Check-System-Config/checkSystemConfig.sh)
 
 ``` sh
 #!/bin/bash
@@ -50,7 +43,7 @@ var title = <span>
 # =================基本配置=================
 # C: centos U: ubuntu
 SYSTEM_VERSION='C'
-# 
+# 需要检查的网卡
 NETWORK_CARD='ens160'
 # =================基本配置=================
 
@@ -242,3 +235,7 @@ echo -e
 2. [linux 查看服务器配置](http://blog.csdn.net/zdwzzu2006/article/details/46818077)
 3. [ubuntu下查看各种服务命令service及关闭apache的方法](http://www.aiseminar.com/bbs/home.php?mod=space&uid=3&do=blog&id=2707)
 4. [在Ubuntu Linux上安装netstat](http://blog.sina.com.cn/s/blog_72ef7bea0101fos3.html)
+
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/08/29/Check-System-Config/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

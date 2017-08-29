@@ -3,13 +3,14 @@
 # =================基本配置=================
 # C: centos U: ubuntu
 SYSTEM_VERSION='C'
+# 需要检查的网卡
 NETWORK_CARD='ens160'
 # =================基本配置=================
 
 # 将屏幕输出的文件，同时保存在文档中
 # 用到知识点：文件描述符与重定向，管道
-logfile=test_std.log
-fifofile=test_std.fifo
+logfile=checkSystemConfig.log
+fifofile=checkSystemConfig.fifo
 mkfifo ${fifofile}
 cat ${fifofile} | tee -a ${logfile} &
 exec 1>${fifofile}
