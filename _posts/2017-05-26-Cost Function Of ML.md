@@ -131,6 +131,7 @@ plt.show()
 
 ![cost-function](/img/in-post/Cost-Function-Of-ML/liner_gression_error.png)
 
+[cost-function](/img/in-post/Cost-Function-Of-ML/liner_gression_error.png)
 
 可知，不同的\\(\theta_{1}\\)得到不同的拟合直线，即获得以下\\(J(\theta)\\)的图形。
 
