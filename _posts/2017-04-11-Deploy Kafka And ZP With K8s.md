@@ -98,6 +98,8 @@ kubectl create -f createTopics/topic-create.yaml
 
 没玩过**Docker**，来看[Easy With Docker](https://o-my-chenjian.com/2016/07/04/Easy-With-Docker/)吧！
 
+代码下载：[Dockerfile](/download/Deploy-Kafka-And-ZP-With-K8s/Dockerfile)
+
 ``` docker
 FROM ubuntu:14.04
 MAINTAINER chenjian "chenjian158978@gmail.com"
@@ -145,6 +147,8 @@ ADD whilerun.py /
 
 ##### whilerun.py
 
+代码下载：[whilerun.py](/download/Deploy-Kafka-And-ZP-With-K8s/whilerun.py)
+
 为保证容器后台有一直运行的程序
 
 ``` python
@@ -173,6 +177,8 @@ if __name__ == '__main__':
 
 ##### zpkafka.yaml
 
+代码下载：[zpkafka.yaml](/download/Deploy-Kafka-And-ZP-With-K8s/zpkafka.yaml)
+
 ``` yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -197,6 +203,8 @@ spec:
 - 注意namespace要和kafka相同
 
 ##### confluentkafka.py
+
+代码下载：[confluentkafka.py](/download/Deploy-Kafka-And-ZP-With-K8s/confluentkafka.py)
 
 ``` python
 # -*- coding:utf8 -*-
@@ -285,6 +293,8 @@ if __name__ == '__main__':
 	- 方法test_producer()是信息生产者，方法test_consumer()是消息消费者
 
 #### nodejs连接Kafka/ZP
+
+代码下载：[connectKafka.js](/download/Deploy-Kafka-And-ZP-With-K8s/connectKafka.js)
 
 ``` javascript
 /**

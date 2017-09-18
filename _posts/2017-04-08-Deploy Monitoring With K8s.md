@@ -175,6 +175,8 @@ Session Affinity:       None
 
 - grafana-deployment.yaml
 
+代码下载：[grafana-deployment.yaml](/download/Deploy-Monitoring-With-K8s/grafana-deployment.yaml)
+
 ``` yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -223,6 +225,8 @@ spec:
 
 - grafana-service.yaml
 
+代码下载：[grafana-service.yaml](/download/Deploy-Monitoring-With-K8s/grafana-service.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: Service
@@ -242,6 +246,8 @@ spec:
 ```
 
 - heapster-deployment.yaml
+
+代码下载：[heapster-deployment.yaml](/download/Deploy-Monitoring-With-K8s/heapster-deployment.yaml)
 
 ``` yaml
 apiVersion: extensions/v1beta1
@@ -271,6 +277,8 @@ spec:
 
 - heapster-rbac.yaml
 
+代码下载：[heapster-rbac.yaml](/download/Deploy-Monitoring-With-K8s/heapster-rbac.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -292,9 +300,12 @@ roleRef:
   kind: ClusterRole
   name: system:heapster
   apiGroup: rbac.authorization.k8s.io
+
 ```
 
 - heapster-service.yaml
+
+代码下载：[heapster-service.yaml](/download/Deploy-Monitoring-With-K8s/heapster-service.yaml)
 
 ``` yaml
 apiVersion: v1
@@ -312,9 +323,12 @@ spec:
     targetPort: 8082
   selector:
     k8s-app: heapster
+
 ```
 
 - influxdb-cm.yaml
+
+代码下载：[influxdb-cm.yaml](/download/Deploy-Monitoring-With-K8s/influxdb-cm.yaml)
 
 ``` yaml
 apiVersion: v1
@@ -456,6 +470,8 @@ data:
 
 - influxdb-deployment.yaml
 
+代码下载：[influxdb-deployment.yaml](/download/Deploy-Monitoring-With-K8s/influxdb-deployment.yaml)
+
 ``` yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -488,6 +504,8 @@ spec:
 ```
 
 - influxdb-service.yaml
+
+代码下载：[influxdb-service.yaml](/download/Deploy-Monitoring-With-K8s/influxdb-service.yaml)
 
 ``` yaml
 apiVersion: v1

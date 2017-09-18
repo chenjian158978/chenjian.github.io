@@ -206,6 +206,8 @@ systemctl restart vsftpd.service
 
 ### 使用Python操作FTP
 
+代码下载：[connectFTP.py](/download/Deploy-FTP-On-CentOS7/connectFTP.py)
+
 ``` python
 # -*- coding:utf8 -*-
 
@@ -314,7 +316,7 @@ if __name__ == '__main__':
 运行：
 
 ``` sh
-python test_ftp.py
+python connectFTP.py
 
 <<'COMMENT'
 *get* '220 Welcome to FTP service.\r\n'
@@ -376,6 +378,8 @@ COMMENT
 ```
 
 ### Shell操作FTP
+
+代码下载：[connectFTP.sh](/download/Deploy-FTP-On-CentOS7/connectFTP.sh)
 
 ``` sh
 #!/usr/bin/env bash

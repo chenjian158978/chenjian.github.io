@@ -27,6 +27,8 @@ tags:
 
 ##### Dockerfile
 
+代码下载：[Dockerfile](/download/Cost-Function-Of-ML/Redis-Base/Dockerfile)
+
 ``` docker 
 FROM alpine:latest
 MAINTAINER chenjian chenjian158978@gmail.com
@@ -54,16 +56,20 @@ RUN apk update \
 
 ##### build.sh
 
+代码下载：[build.sh](/download/Cost-Function-Of-ML/Redis-Base/build.sh)
+
 ``` sh
 #!/bin/sh
 sudo docker build -t redis_base .
 
-echo 镜像redis_base制作完成
+echo "镜像redis_base制作完成"
 ```
 
 ### Redis集群镜像
 
 ##### Dockerfile
+
+代码下载：[Dockerfile](/download/Cost-Function-Of-ML/Redis-Cluster/Dockerfile)
 
 ``` docker
 FROM redis_base:latest
@@ -82,6 +88,8 @@ ENTRYPOINT ["/start.sh"]
 ```
 
 ##### redis-6379.conf
+
+代码下载：[redis-6379.conf](/download/Cost-Function-Of-ML/Redis-Cluster/redis-6379.conf)
 
 ``` sh
 egrep -v "^$|^#" redis-6379.conf
@@ -146,23 +154,32 @@ COMMENT
 
 ##### start.sh
 
+代码下载：[start.sh](/download/Cost-Function-Of-ML/Redis-Cluster/start.sh)
+
 具体使用哪个config文件，为传入的环境变量所定。
 
 ``` sh
 #!/bin/bash
+
 cd /usr/local/redis/bin
 ./redis-server ${conf_file}
+
 ```
 
 ##### build.sh
+
+代码下载：[build.sh](/download/Cost-Function-Of-ML/Redis-Cluster/build.sh)
 
 ``` sh
 #!/bin/bash
 
 sudo docker build -t redis-cluster .
+
 ```
 
-### 运行容器
+### 运行容器-run.sh
+
+代码下载：[run.sh](/download/Cost-Function-Of-ML/Redis-Cluster/run.sh)
 
 ``` sh
 #!/bin/bash
@@ -173,6 +190,7 @@ sudo docker run -d -e 'conf_file=redis-6381.conf' --network=host --name redis-cl
 sudo docker run -d -e 'conf_file=redis-6382.conf' --network=host --name redis-cluster_6382 redis-cluster
 sudo docker run -d -e 'conf_file=redis-6383.conf' --network=host --name redis-cluster_6383 redis-cluster
 sudo docker run -d -e 'conf_file=redis-6384.conf' --network=host --name redis-cluster_6384 redis-cluster
+
 ```
 
 - `--network=host`使容器与寄主机同Ip，即内部端口暴露在寄主机上
@@ -194,7 +212,11 @@ sudo tar -xf redis-3.2.5.tar.gz
 
 ##### create_cluster.sh
 
+代码下载：[create_cluster.sh](/download/Cost-Function-Of-ML/Redis-Cluster/create_cluster.sh)
+
 ``` sh
+#!/bin/bash
+
 cd redis-3.2.5
 
 src/redis-trib.rb create --replicas 1 10.0.6.79:6379 10.0.6.79:6380 10.0.6.79:6381 10.0.6.79:6382 10.0.6.79:6383 10.0.6.79:6384

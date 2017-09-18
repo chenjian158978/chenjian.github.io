@@ -241,6 +241,8 @@ STATICFILES_DIRS = (
 
 ##### view.py
 
+代码下载：[view.py](/download/Play-API-With-Swagger/view.py)
+
 ``` python
 #!/usr/bin/python
 # -*- encoding=utf-8 -*-
@@ -261,7 +263,12 @@ def api_documents(request):
 
 ##### apidoc/urls.py
 
+代码下载：[urls.py](/download/Play-API-With-Swagger/apidoc/urls.py)
+
 ``` python
+#!/usr/bin/python
+# -*- encoding=utf-8 -*-
+
 from django.conf.urls import url
 from qgsprocessor2017.apps.apidoc.views import api_documents
 
@@ -272,7 +279,12 @@ urlpatterns = [
 
 ##### 整个项目的urls.py
 
+代码下载：[urls.py](/download/Play-API-With-Swagger/urls.py)
+
 ``` python
+#!/usr/bin/python
+# -*- encoding=utf-8 -*-
+
 from django.conf.urls import include, url
 
 urlpatterns = [
@@ -281,6 +293,8 @@ urlpatterns = [
 ```
 
 ##### 修改index.html
+
+代码下载：[index.html](/download/Play-API-With-Swagger/index.html)
 
 ``` html
 {% raw %}{% load staticfiles %}

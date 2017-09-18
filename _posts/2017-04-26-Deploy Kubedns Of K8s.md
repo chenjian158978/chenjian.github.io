@@ -39,6 +39,8 @@ tags:
 
 ##### kubedns-cm.yaml
 
+代码下载：[kubedns-cm.yaml](/download/Deploy-Kubedns-Of-K8s/kubedns-cm.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: ConfigMap
@@ -51,6 +53,8 @@ metadata:
 ```
 
 ##### kubedns-controller.yaml
+
+代码下载：[kubedns-controller.yaml](/download/Deploy-Kubedns-Of-K8s/kubedns-controller.yaml)
 
 ``` yaml
 apiVersion: extensions/v1beta1
@@ -210,6 +214,8 @@ spec:
 
 ##### kubedns-sa.yaml
 
+代码下载：[kubedns-sa.yaml](/download/Deploy-Kubedns-Of-K8s/kubedns-sa.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -222,6 +228,8 @@ metadata:
 ```
 
 ##### kubedns-svc.yaml
+
+代码下载：[kubedns-svc.yaml](/download/Deploy-Kubedns-Of-K8s/kubedns-svc.yaml)
 
 ``` yaml
 apiVersion: v1

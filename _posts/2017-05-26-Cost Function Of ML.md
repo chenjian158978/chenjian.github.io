@@ -72,6 +72,8 @@ $$h(\theta_{0},\theta_{1})=\theta_{0}+\theta_{1}x$$
 
 ##### Python下的编程
 
+代码下载：[costFunctionExam.py](/download/Cost-Function-Of-ML/costFunctionExam.py)
+
 ``` python 
 # -*- coding:utf8 -*-
 
@@ -133,6 +135,7 @@ plt.show()
 
 可知，不同的\\(\theta_{1}\\)得到不同的拟合直线，即获得以下\\(J(\theta)\\)的图形。
 
+代码下载：[costFunctionExam1.py](/download/Cost-Function-Of-ML/costFunctionExam1.py)
 
 ``` python
 # -*- coding:utf8 -*-
@@ -189,7 +192,9 @@ plt.show()
 
 从图中轻易看出，当\\(\theta=1\\)时，代价函数\\(J(\theta)\\)取到最小值。
 
-若取参数项\\(\theta_{0}不为0\\)，则有两个参数。代码如下：
+若取参数项\\(\theta_{0}不为0\\)，则有两个参数。
+
+代码下载：[costFunctionExam2.py](/download/Cost-Function-Of-ML/costFunctionExam2.py)
 
 ``` python
 # -*- coding:utf8 -*-
@@ -276,10 +281,71 @@ plt.show()
 
 - main.m
 
+代码下载：[main.m](/download/Cost-Function-Of-ML/main.m)
+
 ``` matlab
-data = [0 0; 1 1; 2 2; 4 4];x = data(:,1); y = data(:,2);figure;plot(x, y, 'rx', 'MarkerSize', 10);xlabel('x'); ylabel('y');title('Data Map')fprintf('Program paused. Press enter to continue.\n');pause;m = length(y);X = [ones(m, 1), data(:,1)];theta = zeros(2, 1);alpha = 0.01;iterations = 1500;theta = GradientDescent(X, y, theta, alpha, iterations);hold on;plot(x, X*theta, '-')legend('Training data', 'Linear regression')hold off;fprintf('the theta_0 is %f\n', theta(1,1));fprintf('the theta_1 is %f\n', theta(2,1));min_x=-20;max_x=20;num=110;theta_1=linspace(min_x, max_x, num);theta_0=linspace(min_x, max_x, num);J = zeros(length(theta_0), length(theta_1));for i = 1:num    for j = 1:num        t = [theta_0(i); theta_1(j)];        h = X * t;        J(i, j) = sum((h - y).^2) / (2 * m);    endendfigure;surf(theta_0, theta_1, J);xlabel('\theta_0');ylabel('\theta_1');zlabel('J(\theta_0, \theta_1)')title('Cost Function Map')[b, c] = find(J==min(J(:)));disp([b, c]);figure;contour(theta_0, theta_1, J, logspace(-2, 3, 20))xlabel('\theta_0'); ylabel('\theta_1');title('Contour Map')hold on;plot(theta_0(c), theta_1(b), 'rx', 'MarkerSize', 10, 'LineWidth', 2);hold off;```
+data = [0 0; 1 1; 2 2; 4 4];
+x = data(:,1); y = data(:,2);
+
+figure;
+plot(x, y, 'rx', 'MarkerSize', 10);
+xlabel('x'); ylabel('y');title('Data Map')
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+m = length(y);
+
+X = [ones(m, 1), data(:,1)];
+theta = zeros(2, 1);
+alpha = 0.01;
+iterations = 1500;
+
+theta = GradientDescent(X, y, theta, alpha, iterations);
+
+hold on;
+plot(x, X*theta, '-')
+legend('Training data', 'Linear regression')
+hold off;
+
+fprintf('the theta_0 is %f\n', theta(1,1));
+fprintf('the theta_1 is %f\n', theta(2,1));
+
+min_x=-20;
+max_x=20;
+num=110;
+theta_1=linspace(min_x, max_x, num);
+theta_0=linspace(min_x, max_x, num);
+
+J = zeros(length(theta_0), length(theta_1));
+
+for i = 1:num
+    for j = 1:num
+        t = [theta_0(i); theta_1(j)];
+        h = X * t;
+        J(i, j) = sum((h - y).^2) / (2 * m);
+    end
+end
+
+figure;
+surf(theta_0, theta_1, J);
+xlabel('\theta_0');ylabel('\theta_1');zlabel('J(\theta_0, \theta_1)')
+title('Cost Function Map')
+
+[b, c] = find(J==min(J(:)));
+disp([b, c]);
+
+figure;
+contour(theta_0, theta_1, J, logspace(-2, 3, 20))
+xlabel('\theta_0'); ylabel('\theta_1');
+title('Contour Map')
+hold on;
+plot(theta_0(c), theta_1(b), 'rx', 'MarkerSize', 10, 'LineWidth', 2);
+hold off;
+```
 
 - CostFunction.m
+
+代码下载：[CostFunction.m](/download/Cost-Function-Of-ML/CostFunction.m)
 	
 ``` matlab
 function J = CostFunction(X, y, theta)
@@ -294,6 +360,8 @@ end
 ```
 
 - GradientDescent.m
+
+代码下载：[GradientDescent.m](/download/Cost-Function-Of-ML/GradientDescent.m)
 
 ``` matlab
 function [theta, J_history] = GradientDescent(X, y, theta, alpha, iterations_num)

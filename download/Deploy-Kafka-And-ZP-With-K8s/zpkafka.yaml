@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zpkafka
+  namespace: kafka
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zpkafka
+    spec:
+      containers:
+        - name: zpkafka
+          image: zpkafka:test
+          command:
+            - "python"
+            - "whilerun.py"

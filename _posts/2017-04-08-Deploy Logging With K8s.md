@@ -112,6 +112,8 @@ template:
 
 - es-controller.yaml
 
+代码下载：[es-controller.yaml](/download/Deploy-Logging-With-K8s/es-controller.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: ReplicationController
@@ -168,6 +170,8 @@ spec:
 
 - es-rbac.yaml
 
+代码下载：[es-rbac.yaml](/download/Deploy-Logging-With-K8s/es-rbac.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -193,6 +197,8 @@ roleRef:
 
 - es-service.yaml
 
+代码下载：[es-service.yaml](/download/Deploy-Logging-With-K8s/es-service.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: Service
@@ -215,6 +221,8 @@ spec:
 ```
 
 - fluentd-es-ds.yaml
+
+代码下载：[fluentd-es-ds.yaml](/download/Deploy-Logging-With-K8s/fluentd-es-ds.yaml)
 
 ``` yaml
 apiVersion: extensions/v1beta1
@@ -277,6 +285,8 @@ spec:
 
 - fluentd-es-rbac.yaml
 
+代码下载：[fluentd-es-rbac.yaml](/download/Deploy-Logging-With-K8s/fluentd-es-rbac.yaml)
+
 ``` yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -302,8 +312,10 @@ roleRef:
 
 - kibana-controller.yaml
 
+代码下载：[kibana-controller.yaml](/download/Deploy-Logging-With-K8s/kibana-controller.yaml)
+
 ``` yaml
- apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: kibana-logging
@@ -344,6 +356,8 @@ spec:
 ```
 
 - kibana-service.yaml
+
+代码下载：[kibana-service.yaml](/download/Deploy-Logging-With-K8s/kibana-service.yaml)
 
 ``` yaml
 apiVersion: v1

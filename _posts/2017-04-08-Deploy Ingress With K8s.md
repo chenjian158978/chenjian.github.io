@@ -52,6 +52,8 @@ spec:
 
 `kubectl create -f dashboard-ingress.yaml`
 
+代码下载：[dashboard-ingress.yaml](/download/Deploy-Ingress-With-K8s/dashboard-ingress.yaml)
+
 ``` yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
