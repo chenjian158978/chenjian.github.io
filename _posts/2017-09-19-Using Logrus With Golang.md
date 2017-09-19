@@ -220,7 +220,7 @@ func main() {
 		"chenjian158978@gmail.com",
 		"271802559@qq.com",
 		"chenjian158978@gmail.com",
-		"KuyvKVg[k*fx?Lq8W7V7EU/R9x=3iU",
+		"xxxxxxx",
 	)
 	if err == nil {
 		logger.Hooks.Add(hook)
