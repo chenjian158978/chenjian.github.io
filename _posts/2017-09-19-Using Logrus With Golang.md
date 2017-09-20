@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Golang之使用logrus包"
+title:      "Golang之使用Logrus"
 subtitle:   "Using Logrus With Golang"
 date:       Tue, Sep 19 2017 00:07:35 GMT+8
 author:     "ChenJian"
