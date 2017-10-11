@@ -90,6 +90,8 @@ tar -xvf docker-17.04.0-ce.tgz
 cp docker/{docker,docker*} /root/local/bin
 ```
 
+关于**docker二进制文件的制作**，可参考博文：[centos7下docker二进制文件编译](https://o-my-chenjian.com/2017/10/11/Make-Docker-Executable-File-On-CentOS7/)
+
 > docker.service
 
 ``` bash
