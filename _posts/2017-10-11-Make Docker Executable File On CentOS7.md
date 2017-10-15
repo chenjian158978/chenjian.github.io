@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "centos7下docker二进制文件编译"
+title:      "Centos7下docker二进制文件编译"
 subtitle:   "Make Docker Executable File On CentOS7"
 date:       Wed, Oct 11 2017 22:36:37 GMT+8
 author:     "ChenJian"

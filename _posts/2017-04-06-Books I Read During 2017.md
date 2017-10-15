@@ -34,4 +34,13 @@ tags:
 
 ![少年维特之烦恼](https://img3.doubanio.com/lpic/s2899473.jpg)
 
-- 作家： [德]约翰•沃尔夫冈•歌德 - 出版社:  长江文艺出版社出版- 译者:  白山 江龙- 出版年：2006.1<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+- 作家： [德]约翰•沃尔夫冈•歌德 - 出版社:  长江文艺出版社出版- 译者:  白山 江龙- 出版年：2006.1### 《东京昆虫物语》
+
+![东京昆虫物语](https://img3.doubanio.com/lpic/s6892880.jpg)
+
+- 作家： [日] 泉麻人 著/安永一正 图 - 出版社:  上海人民出版社- 译者:   黄瑾瑜- 出版年：2011-9
+### 《Kubernetes实战》
+
+![Kubernetes实战](https://img1.doubanio.com/lpic/s28627908.jpg)
+
+- 作家： 龙辉- 出版社:  电子工业出版社- 出版年：2016-4<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
