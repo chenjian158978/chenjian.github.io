@@ -146,6 +146,35 @@ git clone -b v17.05.0-ce https://github.com/moby/moby.git
 
 cp -R moby/ docker && rm -rf moby/
 
+# docker info - version
+cat VERSION
+<<'COMMENT'
+17.05.0-ce
+COMMENT
+
+sed -i "s/Version            string = \"library-import\"/Version            string = \"17.05.0-ce\"/g" dockerversion/version_lib.go
+
+# 对于docker -v或者docker --version，以及docker version
+# 其均是获取源码dockerversion中version_lib.go的值(gitcommit,version,buildtime，默认均为library-import)
+# 其中version是根目录下VERSION的值
+# 其中gitcommit是当前分支所在的commitid
+# 其中buildtime是当前创建的时间
+# docker info - git commit
+git rev-parse --short HEAD
+<<'COMMENT'
+89658be
+COMMENT
+
+sed -i "s/GitCommit          string = \"library-import\"/GitCommit          string = \"89658be\"/g" dockerversion/version_lib.go
+
+# docker info - build-time
+date --rfc-3339 ns 2> /dev/null | sed -e 's/ /T/'
+<<'COMMENT'
+2017-10-18T15:01:17.473727446+08:00
+COMMENT
+
+sed -i "s/BuildTime          string = \"library-import\"/BuildTime          string = \"2017-10-18T15:01:17.473727446+08:00\"/g" dockerversion/version_lib.go
+
 # docker编译
 cd  $GOPATH/src/github.com/docker/docker/cmd/docker
 go build
