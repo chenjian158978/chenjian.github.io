@@ -351,19 +351,19 @@ COMMENT
 docker version
 <<'COMMENT'
 Client:
- Version:      library-import
+ Version:      17.05.0-ce
  API version:  1.29
  Go version:   go1.8.4
- Git commit:   library-import
- Built:        library-import
+ Git commit:   89658be
+ Built:        Wed Oct 18 15:01:17 2017
  OS/Arch:      linux/amd64
 
 Server:
- Version:      library-import
+ Version:      17.05.0-ce
  API version:  1.29 (minimum version 1.12)
  Go version:   go1.8.4
- Git commit:   library-import
- Built:        library-import
+ Git commit:   89658be
+ Built:        Wed Oct 18 15:01:17 2017
  OS/Arch:      linux/amd64
  Experimental: false
 COMMENT
