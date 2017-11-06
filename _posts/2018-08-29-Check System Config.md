@@ -155,17 +155,23 @@ echo '=================磁盘与分区================='
 echo -e
 
 echo '=================CPU信息================='
-echo 'CPU个数为:'
-sudo cat /proc/cpuinfo | grep physical  | sort -n | uniq | wc -l
-echo -e
 
-echo 'CPU核数信息:'
-sudo cat /proc/cpuinfo  | grep physical | sort -n | uniq -c
-echo -e
-
+echo 'CPU总核数 = 物理CPU个数 * 每颗物理CPU的核数' 
+echo '总逻辑CPU数 = 物理CPU个数 * 每颗物理CPU的核数 * 超线程数'
 echo 'CPU信息型号:'
 sudo cat /proc/cpuinfo | grep name | cut -f2 -d:  | uniq
 echo -e
+
+echo '物理CPU个数为:'
+sudo cat /proc/cpuinfo | grep physical  | sort -n | uniq | wc -l
+echo -e
+
+echo '每个物理CPU中core的个数(即核数):'
+sudo cat /proc/cpuinfo  | grep physical | sort -n | uniq -c
+echo -e
+
+echo '查看逻辑CPU的个数'
+sudo cat /proc/cpuinfo| grep "processor"| wc -l
 
 echo 'CPU运行位数:'
 sudo getconf LONG_BIT
@@ -235,6 +241,7 @@ echo -e
 2. [linux 查看服务器配置](http://blog.csdn.net/zdwzzu2006/article/details/46818077)
 3. [ubuntu下查看各种服务命令service及关闭apache的方法](http://www.aiseminar.com/bbs/home.php?mod=space&uid=3&do=blog&id=2707)
 4. [在Ubuntu Linux上安装netstat](http://blog.sina.com.cn/s/blog_72ef7bea0101fos3.html)
+5. [Linux查看物理CPU个数、核数、逻辑CPU个数](http://www.cnblogs.com/bugutian/p/6138880.html)
 
 
 
