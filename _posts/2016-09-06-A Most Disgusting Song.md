@@ -18,6 +18,7 @@ tags:
 - [词译-A Most Disgusting Song](https://o-my-chenjian.com/2016/09/01/A-Most-Disgusting-Song/)
 - [词译-Silver Words](https://o-my-chenjian.com/2017/07/26/Silver-Words/)
 - [词译-Cause](https://o-my-chenjian.com/2017/08/03/Cause/)
+- [词译-Street Boy](https://o-my-chenjian.com/2017/11/19/Street-Boy/)
 
 ### A Most Disgusting Song
 
