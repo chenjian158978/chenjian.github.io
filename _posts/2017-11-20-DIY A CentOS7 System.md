@@ -193,6 +193,10 @@ label linux
 
 - inst.stage2为安装介质位置，hd:LABEL为介质标签，例如CentOS7。这个和后续生成ISO镜像文件的命令genisoimage的参数`-V`有关。
 
+- modprobe.blacklist=nouveau; 禁用nouveau驱动安装，用于NVIDIA驱动的安装准备工作；
+
+- net.ifnames=0 biosdevname=0； 用于禁用centos7的"一致性网络设备命名法".
+
 > 启动路径改为ks=cdrom:/ks.cfg
 
 ``` sh
@@ -435,6 +439,7 @@ COMMENT
 6. [Building a custom CentOS 7 kickstart disc](http://blog.chinaunix.net/xmlrpc.php?r=blog/article&uid=26000137&id=4710595)
 7. [cobbler中ks.cfg文件配置详解](http://www.codexiu.cn/linux/blog/1939/#OSC_h6_47)
 8. [linux权限详解](http://blog.csdn.net/fan_zhen_hua/article/details/2050009)
+9. [KICKSTART 语法参考](https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/11/20/DIY-A-CentOS7-System/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
 
