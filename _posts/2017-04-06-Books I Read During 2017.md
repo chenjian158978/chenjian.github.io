@@ -59,4 +59,16 @@ tags:
 
 ![飘](https://img3.doubanio.com/lpic/s29479921.jpg)
 
-- 作家：  [美] 玛格丽特·米切尔 - 出版社:  译林出版社- 译者:  李美华- 出版年： 2010-6<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+- 作家：  [美] 玛格丽特·米切尔 - 出版社:  译林出版社- 译者:  李美华- 出版年： 2010-6
+
+### 《富爸爸穷爸爸》
+
+![富爸爸穷爸爸](https://img3.doubanio.com/lpic/s3354143.jpg)
+
+- 作家：  [美] 罗伯特·T·清崎  - 出版社:  南海出版社- 出版年： 2008-10
+
+### 《世界美术名作二十讲》
+
+![世界美术名作二十讲](https://img3.doubanio.com/lpic/s29289440.jpg)
+
+- 作家：  傅雷- 出版社:  江苏人民出版社- 出版年： 2017-1-1<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/04/06/Books-I-Read-During-2017/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
