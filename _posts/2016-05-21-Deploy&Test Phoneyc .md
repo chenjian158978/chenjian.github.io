@@ -17,7 +17,7 @@ honeynet是一个致力于研究蜜罐系统的非盈利组织,以了解黑客�
 
 ### phoneyc结构图
 
-![phoneyc结构图](/img/in-post/Deploy&Test-Phoneyc/1481300891650_2.jpg)
+![phoneyc结构图](/img/in-post/Deploy&Test-Phoneyc/phoneyc_future_archtecture.png)
 
 ### 安装
 
