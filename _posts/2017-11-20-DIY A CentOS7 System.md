@@ -20,7 +20,7 @@ tags:
 ### 安装制作工具
 
 ``` sh
-yum -y install anaconda createrepo mkisofs rsync
+yum -y install anaconda createrepo mkisofs rsync syslinux
 ```
 
 ### 挂载光盘，同步文件
@@ -333,7 +333,7 @@ COMMENT
 cd /ISO
 
 # 注意参数中的-V，和上面的isolinux.cfg文件有关
-genisoimage -joliet-long -V CentOS7 -o CentOS-7-ChenjianOS.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -cache-inodes -T /ISO
+genisoimage -joliet-long -V CentOS7 -o CentOS-7-ChenjianOS.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -cache-inodes -T -eltorito-alt-boot -e images/efiboot.img -no-emul-boot /ISO
 
 I: -input-charset not specified, using utf-8 (detected in locale settings)
 genisoimage 1.1.11 (Linux)
@@ -404,6 +404,14 @@ Done with: Ending Padblock                         Block(s)    150
 Max brk space used 85000
 349350 extents written (736 MB)
 
+```
+
+### Hybird模式
+
+采用“hybird模式”（混合模式），操作系统可以直接刻录成物理光盘，也可以直接做成可引导的U盘。
+
+``` shell
+isohybird -v /ISO/CentOS-7-ChenjianOS.iso
 ```
 
 ### 制作镜像MD5值
