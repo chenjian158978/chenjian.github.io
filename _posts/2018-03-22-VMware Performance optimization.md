@@ -335,7 +335,7 @@ Thread(s) per core:    1
 ...
 COMMENT
 
-# 安装工具
+# 安装工具libvirt，适用于KVM
 yum install -y libvirt
 
 # 增加虚拟机的CPU核数，添加数目不得超过xml中的最大数目
