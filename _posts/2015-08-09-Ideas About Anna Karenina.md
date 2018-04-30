@@ -6,7 +6,7 @@ date:       Sun, Aug 9 2015 18:34:50 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Anna-Karenina/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 

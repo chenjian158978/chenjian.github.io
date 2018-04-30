@@ -6,9 +6,9 @@ date:       Tue, Sep 06 2016 11:22:24 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Where-Do-The-Children-Play/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 > **此歌反映了1960年代末涉及的一切问题，战争、城市扩张、贫穷、环境灾难以及人类的未来，Stevens在歌曲中重复演唱着同样的主题**

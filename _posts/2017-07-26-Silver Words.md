@@ -6,9 +6,9 @@ date:       Wed, Jul 26 2017 15:05:15 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Silver-Words/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 ### 专辑Coming from Reality

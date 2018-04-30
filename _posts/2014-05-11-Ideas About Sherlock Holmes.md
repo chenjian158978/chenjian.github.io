@@ -6,7 +6,7 @@ date:       Sun, May 11 2014 16:34:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Sherlock-Holmes/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 

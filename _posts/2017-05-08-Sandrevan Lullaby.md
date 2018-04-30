@@ -7,9 +7,9 @@ author:     "ChenJian"
 header-img: "img/in-post/Sandrevan-Lullaby-Lifestyles/head_blog.jpg"
 catalog:    true
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 ### 专辑Coming from Reality

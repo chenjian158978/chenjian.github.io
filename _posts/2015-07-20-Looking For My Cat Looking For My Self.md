@@ -1,16 +1,16 @@
 ---
 layout:     post
-title:      "我读我思-寻找猫寻找自我"
-subtitle:   "Looking For My Cat Looking For My Self"
+title:      "我读我思-《遗失了一只猫》"
+subtitle:   "Ideas About Missing My Cat"
 date:       Mon, July 20 16:42:45 2015 GMT+8
 author:     "ChenJian"
-header-img: "img/in-post/Looking-For-My-Cat-Looking-For-My-Self/head_blog.jpg"
+header-img: "img/in-post/Ideas-About-Missing-My-Cat/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 
-![Missing My Cat](https://img5.doubanio.com/lpic/s4073096.jpg)
+![Missing My Cat](https://img3.doubanio.com/view/subject/l/public/s4073096.jpg)
 
 好吧，写点东西，虽然还有任务在身。
 
@@ -39,6 +39,8 @@ tags:
 
 浙江理工大学
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2015/07/20/Looking-For-My-Cat-Looking-For-My-Self/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+P.S. 本文原名为《寻找猫寻找自我》(Looking For My Cat Looking For My Self)
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2015/07/20/Ideas-About-Missing-My-Cat/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
 
 

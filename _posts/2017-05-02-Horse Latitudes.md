@@ -6,9 +6,9 @@ date:       Tue, May 2 2017 07:42:32 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Horse-Latitudes/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 ### Horse Latitudes

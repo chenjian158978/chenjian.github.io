@@ -6,9 +6,9 @@ date:       Thu, Jul 20 2017 20:55:11 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Love-Song-To-A-Stranger/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 ### Love Song To A Stranger

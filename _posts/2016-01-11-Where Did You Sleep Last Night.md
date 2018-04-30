@@ -6,9 +6,9 @@ date:       Mon, Jan 11 2016 18:04:47 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Where-Did-You-Sleep-Last-Night/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 > My girl, my girl, don’t lie to me

@@ -6,9 +6,9 @@ date:       Thu, Aug 03 2017 10:05:15 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Two-Soldiers/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
     - BobDylan
 ---
 

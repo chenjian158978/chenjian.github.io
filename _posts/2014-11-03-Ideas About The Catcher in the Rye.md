@@ -6,7 +6,7 @@ date:       Mon, Nov 3 2014 17:08:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-The-Catcher-In-The-Rye/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 

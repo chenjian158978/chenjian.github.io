@@ -6,7 +6,7 @@ date:       Mon, May 26 2014 22:25:20 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Recording-Of-JiaBian-Gou/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 

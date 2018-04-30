@@ -6,7 +6,7 @@ date:       Fri, April 18 2014 11:33:06 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-One-Hundred-Years-Of-Solitude/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 

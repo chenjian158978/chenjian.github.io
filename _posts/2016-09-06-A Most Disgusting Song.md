@@ -6,9 +6,8 @@ date:       Tue, Sep 01 2016 16:13:51 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/A-Most-Disgusting-Song/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
 ---
 
 ### 专辑Coming from Reality

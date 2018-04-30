@@ -6,9 +6,8 @@ date:       Wed, Sep 14 2016 04:19:07 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/I-Think-Of-You/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
 ---
 
 > 记。在去武汉的路上，夜深人静，此歌让我想起了你，随译

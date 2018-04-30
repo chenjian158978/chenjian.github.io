@@ -6,9 +6,8 @@ date:       Mon, May 22 2017 10:11:34 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Famous-Blue-Raincoat/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
 ---
 
 ### Famous Blue Raincoat

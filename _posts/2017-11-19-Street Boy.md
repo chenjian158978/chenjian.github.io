@@ -6,9 +6,9 @@ date:       Sun, Nov 19 2017 16:40:49 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Street-Boy/head_blog.jpg"
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    
+    - 歌词翻译
+    
 ---
 
 ### 专辑Coming from Reality

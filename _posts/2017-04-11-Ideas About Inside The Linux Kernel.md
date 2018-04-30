@@ -8,7 +8,6 @@ header-img: "img/in-post/Ideas-About-Inside-The-Linux-Kernel/head_blog.jpg"
 catalog:    true
 tags:
      - Linux
-     - 读后随笔
 ---
 
 ### 前言

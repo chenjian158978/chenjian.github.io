@@ -5,10 +5,10 @@ subtitle:   "The Man In Me"
 date:       Fri, Apr 27 2018 22:55:02 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/The-Man-In-Me/head_blog.jpg"
+catalog:    true
 tags:
-    - 生活
-    - 翻译
-    - 音乐
+    - BobDylan
+    - 歌词翻译
 ---
 
 ### The Man In Me

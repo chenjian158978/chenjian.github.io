@@ -6,7 +6,7 @@ date:       Wed, Dec 24 2014 21:42:43 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-The-Happy-Prince-And-Other-Tales/head_blog.jpg"
 tags:
-    - 生活
+    
     - 读后随笔
 ---
 
