@@ -175,7 +175,7 @@ docker-%:
 
 
 
-### 参考文献:
+### 参考文献
 
 
 1. [Makefile中使用$$的使用](http://makaidong.com/LiuYanYGZ/664768_4491452.html)
