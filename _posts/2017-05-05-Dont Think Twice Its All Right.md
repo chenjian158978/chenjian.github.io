@@ -5,6 +5,7 @@ subtitle:   "Dont Think Twice Its All Right"
 date:       Fri, May 05 2017 17:36:14 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Dont-Think-Twice-Its-All-Right/head_blog.jpg"
+catalog:    true
 tags:
     - 歌词翻译
     - BobDylan

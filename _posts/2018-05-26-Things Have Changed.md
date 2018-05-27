@@ -5,6 +5,7 @@ subtitle:   "Things Have Changed"
 date:       Sat, May 26 2018 18:18:48 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Things-Have-Changed/head_blog.jpg"
+catalog:    true
 tags:
     - 歌词翻译
     - BobDylan
