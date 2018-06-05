@@ -11,6 +11,14 @@ tags:
     - 歌词翻译
 ---
 
+### 歌曲播放
+
+<audio  controls="controls">
+    <source src="/backgroundmusic/The-Man-In-Me/the_man_in_me_bob_dylan.mp3" type="audio/mpeg" />
+    <source src="/backgroundmusic/The-Man-In-Me/the_man_in_me_bob_dylan.ogg" type="audio/ogg" />
+    换个浏览器，便可听到美妙的歌曲!
+</audio>
+
 ### The Man In Me
 
 > The man in me will do nearly any task
