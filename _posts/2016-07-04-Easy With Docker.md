@@ -6,9 +6,7 @@ date:       Mon, July 4 2016 17:32:07 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Easy-With-Docker/head_blog.jpg"
 catalog:     true
-tags:
-    - 工作
-    - Docker
+tags: [工作, Docker]
 ---
 
 ### 系列博文
@@ -636,7 +634,7 @@ Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz
 
 $host-ip 是主的shipyard节点的IP，该脚本需要运行在从node的主机上,不是主机节点的机器上。
 
-### 参考
+### 参考博文
 
 1. [Docker私有仓库Registry的搭建验证](http://www.cnblogs.com/lienhua34/p/4922130.html)
 2. [Linux查看环境变量当前信息和查看命令](http://os.51cto.com/art/201005/202463.htm)

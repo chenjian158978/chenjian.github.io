@@ -6,9 +6,7 @@ date:       Sun, Jan 28 2018 22:44:51 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Five-Ways-To-Find-The-Kernel-Version/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 前言
@@ -176,7 +174,7 @@ drwx------. 2 root root    16384 Jan 18 14:04 lost+found
 这个命令输出一些版本参考，与当前已安装和正在运行内核相同，例如`vmlinuz-3.10.0-693.el7.x86_64`。`vmlinuz`是压缩后的Linux内核，其具有`可引导性`,也就是说它可以将操作系统加载到内存中，从而使计算机变得可用，应用程序能够运行。
 
 
-参考文献：
+### 参考博文
 
 1. [How to Find The Kernel Version](http://www.linfo.org/find_kernel_version.html)
 

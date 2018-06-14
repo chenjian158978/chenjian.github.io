@@ -5,10 +5,7 @@ subtitle:   "Street Boy"
 date:       Sun, Nov 19 2017 16:40:49 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Street-Boy/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
-    
+tags: [歌词翻译]
 ---
 
 ### 专辑Coming from Reality
@@ -20,6 +17,15 @@ tags:
 - [词译-Cause](https://o-my-chenjian.com/2017/08/03/Cause/)
 - [词译-Street Boy](https://o-my-chenjian.com/2017/11/19/Street-Boy/)
 
+
+<div 
+    class="aplayer"
+    data-id="29379926"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Street Boy
 
@@ -237,8 +243,17 @@ tags:
 > 
 > 亲爱的男孩
 
+### 博客音乐列表
 
-### 参考
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
+
+
+### 参考博文
 
 1. [Street Boy Rodriguez 歌词中文翻译](https://zhidao.baidu.com/question/1175629112508016899.html)
 

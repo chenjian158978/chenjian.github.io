@@ -5,9 +5,7 @@ subtitle:   "Ideas About Anna Karenina"
 date:       Sun, Aug 9 2015 18:34:50 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Anna-Karenina/head_blog.jpg"
-tags:
-    
-    - 读后随笔
+tags: [读后随笔]
 ---
 
 > 伟大作品的不朽，不仅是诞生之初的广泛深刻的影响力，或者完美细腻的艺术价值，而是因为它本身更接近真正的美，更能体现神的存在。

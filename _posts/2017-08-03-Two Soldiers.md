@@ -6,10 +6,18 @@ date:       Thu, Aug 03 2017 10:05:15 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Two-Soldiers/head_blog.jpg"
 catalog:    true
-tags:
-    - 歌词翻译
-    - BobDylan
+aplayer: true
+tags: [歌词翻译, BobDylan]
 ---
+
+<div 
+    class="aplayer"
+    data-id="22088915"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Two Soldiers
 
@@ -172,6 +180,15 @@ tags:
 就此歌曲，由Alice Gerrard在专辑《Hazel & Alice》中翻唱，是两位女性的双合声，颇有特色；由Jerry Garcia在专辑《Garcia Grisman》中翻唱，琴声清脆，旋律多变，勾人心弦，发音比起Bob Dylan更为清晰；由Cowboy Junkies在专辑《Early 21st Century Blues》中翻唱，其特点是加入了多种乐器组合，给人一种更现代的感觉，类似流行民谣一般；由Ricky Skaggs在专辑《Divided & United: The Songs Of The Civil War》中翻唱，副歌编曲丰富，主歌以人声为主，咬字清晰。
 
 相对于这么多翻唱，还是更喜欢原版的。主要是沙哑的声带，模糊的演唱，更为吸引人。
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/08/03/Two-Soldiers/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

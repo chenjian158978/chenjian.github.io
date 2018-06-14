@@ -6,9 +6,7 @@ date:       Sat, Jan 27 2018 00:00:41 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Prometheus-And-Grafana-On-Kubernetes/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 集群版本信息说明
@@ -340,7 +338,7 @@ sum(container_memory_working_set_bytes{id="/",instance=~"^$node$"})
 
 
 
-### 参考文献
+### 参考博文
 
 1. [Prometheus入门教程](http://caosiyang.github.io/2017/10/27/prometheus/)
 2. [Prometheus入门](https://www.hi-linux.com/posts/25047.html)

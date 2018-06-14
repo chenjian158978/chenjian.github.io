@@ -5,10 +5,7 @@ subtitle:   "I Shot The Sheriff"
 date:       Thu, Feb 25 2016 23:26:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/I-Shot-The-Sheriff/head_blog.jpg"
-tags:
-    
-    
-    - 歌词翻译
+tags: [歌词翻译]
 ---
 
 - **法官**

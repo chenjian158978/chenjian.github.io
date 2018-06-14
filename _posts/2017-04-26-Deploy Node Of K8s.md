@@ -6,9 +6,7 @@ date:       Wed, Apr 26 2017 11:39:29 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Node-Of-K8s/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 系列博文

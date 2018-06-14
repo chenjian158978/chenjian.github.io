@@ -6,8 +6,7 @@ date:       Tue, Apr 11 2017 13:07:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Inside-The-Linux-Kernel/head_blog.jpg"
 catalog:    true
-tags:
-     - Linux
+tags: [Linux]
 ---
 
 ### 前言

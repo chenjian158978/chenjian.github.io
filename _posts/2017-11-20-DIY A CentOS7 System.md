@@ -6,9 +6,7 @@ date:       Mon, Nov 20 2017 23:20:10 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/DIY-A-CentOS7-System/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 官网下载ISO版本镜像
@@ -437,7 +435,7 @@ COMMENT
 
 > 当选项均为`x`时，即表示正常无误，可以不进行操作，其自动进入下一步安装过程，直至安装成功，然后自动重启，显示登录界面。
 
-### 参考文献
+### 参考博文
 
 1. [制作CentOS 6.5一键自安装ISO镜像光盘](http://yangfannie.com/771.html)
 2. [制作CentOS 7一键自安装ISO镜像光盘](http://blog.csdn.net/u013870094/article/details/53179531)

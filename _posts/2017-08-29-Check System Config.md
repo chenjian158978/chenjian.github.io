@@ -6,9 +6,7 @@ date:       Tue, Aug 29 2017 15:43:03 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Check-System-Config/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 收集Linux系统配置信息
@@ -235,7 +233,7 @@ echo '=================用户信息================='
 echo -e
 ```
 
-### 参考
+### 参考博文
 
 1. [服务器的配置查看方法](http://server.zzidc.com/fwqpz/520.html)
 2. [linux 查看服务器配置](http://blog.csdn.net/zdwzzu2006/article/details/46818077)

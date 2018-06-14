@@ -6,10 +6,7 @@ date:       Tue, Feb 28 2017 15:04:33 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Iptables-On-Centos7/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
-    - Kubernetes
+tags: [工作, Linux, Kubernetes]
 ---
 
 ### 前言
@@ -181,7 +178,7 @@ systemctl start iptables.service
 systemctl status iptables.service
 ```
 
-### 参考
+### 参考博文
 
 1. [centos7搭建集群必知：centos7已经无iptables，只有firewall](http://www.aboutyun.com/thread-17535-1-1.html)
 2. [看了那么多iptables的教程，这篇教程还是比较全面易懂的](https://www.91yun.org/archives/1690)

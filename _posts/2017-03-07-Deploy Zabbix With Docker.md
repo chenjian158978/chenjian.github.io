@@ -6,9 +6,7 @@ date:       Tue, Mar 7 2017 15:40:58 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Zabbix-With-Docker/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Docker
+tags: [工作, Docker]
 ---
 
 ### 镜像berngp
@@ -188,7 +186,7 @@ docker run \
 	million12/zabbix-agent
 ```
 
-### 参考
+### - 参考博文
 
 1. [Git@OSC 项目推荐 —— Zabbix 的 Docker 映像](http://www.tuicool.com/articles/MFrAZf6)
 2. [centos7 安装zabbix-agent](http://blog.csdn.net/linglong0820/article/details/48196895)

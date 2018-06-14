@@ -5,10 +5,18 @@ subtitle:   "I Think Of You"
 date:       Wed, Sep 14 2016 04:19:07 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/I-Think-Of-You/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="29379917"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 > 记。在去武汉的路上，夜深人静，此歌让我想起了你，随译
 
@@ -20,6 +28,7 @@ tags:
 - [词译-Silver Words](https://o-my-chenjian.com/2017/07/26/Silver-Words/)
 - [词译-Cause](https://o-my-chenjian.com/2017/08/03/Cause/)
 - [词译-Street Boy](https://o-my-chenjian.com/2017/11/19/Street-Boy/)
+
 
 ### I Think Of You
 
@@ -132,6 +141,16 @@ tags:
 > 想念你
 > 
 > 我真的愿意...
+
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/09/14/I-Think-Of-You/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

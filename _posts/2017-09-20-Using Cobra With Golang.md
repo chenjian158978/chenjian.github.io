@@ -6,9 +6,7 @@ date:       Wed, Sep 20 2017 23:19:10 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Cobra-With-Golang/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Golang
+tags: [工作, Golang]
 ---
 
 
@@ -736,7 +734,7 @@ COMMENT
 ```
 
 
-# 参考文献
+### 参考文献
 
 1. [Cobra简介](http://time-track.cn/cobra-brief-introduction.html)
 2. [golang命令行库cobra的使用](http://www.cnblogs.com/borey/p/5715641.html?hmsr=studygolang.com&utm_medium=studygolang.com&utm_source=studygolang.com)

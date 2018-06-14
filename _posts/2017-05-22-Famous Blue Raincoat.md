@@ -5,10 +5,18 @@ subtitle:   "Famous Blue Raincoat"
 date:       Mon, May 22 2017 10:11:34 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Famous-Blue-Raincoat/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="1646819"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Famous Blue Raincoat
 
@@ -219,7 +227,16 @@ Ron Cornelius是专辑《Songs of Love and Hate》的吉他手，同样有几年
 
 其中这篇信件是男子A写给男子B，而两个男的之间便是女人简。故事是这样的，我们把Leonard Cohen看作一个人格分裂为**诗人**与**歌手**的两个人。歌手觉得女人背弃了他，和诗人在一起，可是诗人不愿意女人走进自己的内心，女人痴迷，可最后发现诗人不是一个可以托付的人，只是一堆闪亮亮的碎片，于是女人回到歌手身边，这时候，歌手不再接受她。于是，好事的我们不由得疑惑：为什么？这是本诗最大的悬念。这首诗是歌手写给诗人的信，通篇充满了强者的假惺惺和恣意凌辱，还有情敌的咬牙切齿的嫉妒。 
 
-### 参考
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
+
+### 参考博文
 
 1. [Famous Blue Raincoat](https://www.douban.com/group/topic/6374010/)
 2. [Famous blue raincoat背后的故事](http://tieba.baidu.com/p/107865589)

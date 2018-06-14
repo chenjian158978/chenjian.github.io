@@ -5,9 +5,7 @@ subtitle:   "Ideas About Recording Of JiaBian Gou"
 date:       Mon, May 26 2014 22:25:20 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Recording-Of-JiaBian-Gou/head_blog.jpg"
-tags:
-    
-    - 读后随笔
+tags: [读后随笔]
 ---
 
 > 我们常说，文学的力量在于虚构，但在这样的真实面前，你会觉得一切虚构都失去了力量。

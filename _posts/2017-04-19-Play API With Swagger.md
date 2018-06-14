@@ -6,9 +6,7 @@ date:       Wed, Apr 19 2017 10:13:44 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Play-API-With-Swagger/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Python
+tags: [工作, Python]
 ---
 
 ### DIY搭建Swagger-UI

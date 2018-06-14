@@ -6,11 +6,18 @@ date:       Mon, May 8 2017 10:08:38 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Sandrevan-Lullaby-Lifestyles/head_blog.jpg"
 catalog:    true
-tags:
-    
-    - 歌词翻译
-    
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="29379920"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### 专辑Coming from Reality
 
@@ -20,6 +27,7 @@ tags:
 - [词译-Silver Words](https://o-my-chenjian.com/2017/07/26/Silver-Words/)
 - [词译-Cause](https://o-my-chenjian.com/2017/08/03/Cause/)
 - [词译-Street Boy](https://o-my-chenjian.com/2017/11/19/Street-Boy/)
+
 
 ### Sandrevan Lullaby-Lifestyles
 
@@ -165,9 +173,16 @@ tags:
 > “Sandrevan Lullaby – Lifestyles” was also a general thing of
 the day. We were in the middle of a war and stuff. I think that peace is harder; war is easy. There’s going to be war, but peace will come. And they say the system’s gonna fall through too, or if not the system, the ideas within the system. They’re always asking, is the world gonna end? No, they are gonna end. The world’s gonna go on. So if I could rewrite that, I’d say those ideas of that are gonna go.
 
+### 博客音乐列表
 
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
-### 参考
+### 参考博文
 
 1. [SEIZE THE MOMENT Rodriguez](http://blurtonline.com/feature/seize-the-moment-rodriguez-2/)
 2. [试译Rodriguez歌词四首](https://www.douban.com/note/263079785/)

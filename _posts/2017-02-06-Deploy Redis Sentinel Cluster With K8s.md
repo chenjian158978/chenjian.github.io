@@ -6,12 +6,7 @@ date:       Mon, Feb 6 2017 09:42:59 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-Sentinel-Cluster-With-K8s/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Redis
-    - Kubernetes
-    - Python
-    - JavaScript
+tags: [工作, Redis, Kubernetes, Python, JavaScript]
 ---
 
 ### 系列博文
@@ -191,7 +186,7 @@ redis.get('foo', function (err, res) {
 bar
 ```
 
-### 参考
+### 参考博文
 
 1. [Reliable, Scalable Redis on Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/storage/redis)
 2. [redis的python客户端redis-py初识](http://www.tuicool.com/articles/FzmaeiY)

@@ -6,9 +6,7 @@ date:       Fri, Aug 11 2017 14:16:46 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-FTP-On-CentOS7/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Python
+tags: [工作, Python]
 ---
 
 ### 安装配置vsftp
@@ -403,7 +401,7 @@ EOF
 ```
 
 
-### 参考
+### 参考博文
 
 1. [CentOS7安装和配置FTP](http://blog.csdn.net/the_victory/article/details/52192085)
 2. [两种方式建立Vsftpd虚拟用户](http://yuanbin.blog.51cto.com/363003/129071/)

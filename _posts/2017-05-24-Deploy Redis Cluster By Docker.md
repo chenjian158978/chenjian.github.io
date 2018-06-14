@@ -6,10 +6,7 @@ date:       Wed, May 24 2017 13:22:10 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-Cluster-By-Docker/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Redis
-    - Docker
+tags: [工作, Redis, Docker]
 ---
 
 ### 基础信息

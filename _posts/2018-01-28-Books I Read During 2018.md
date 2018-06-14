@@ -7,7 +7,7 @@ author:     "ChenJian"
 header-img: "img/in-post/Books-I-Read-During-2018/head_blog.jpg"
 catalog:    true
 tags:       [阅读清单]
-...
+---
 
 ### 《群魔(上下)》
 

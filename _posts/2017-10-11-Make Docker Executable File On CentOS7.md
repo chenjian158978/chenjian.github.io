@@ -6,10 +6,7 @@ date:       Wed, Oct 11 2017 22:36:37 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Make-Docker-Executable-File-On-CentOS7/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Golang
-    - Docker
+tags: [工作, Golang, Docker]
 ---
 
 ### 相关博文
@@ -453,7 +450,7 @@ COMMENT
 参考： [lc错误](http://blog.csdn.net/shudaqi2010/article/details/32938715)
 
 
-### 参考文献
+### 参考博文
 
 1. [编译Docker源码](http://blog.csdn.net/zhonglinzhang/article/details/76180059)
 2. [docker源代码编译](http://www.ybojj.com/docker%E6%BA%90%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91/?d=1)

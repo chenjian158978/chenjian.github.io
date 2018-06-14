@@ -6,8 +6,7 @@ date:       Wed, May 10 2017 09:29:40 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Play-Disk-On-Linux/head_blog.jpg"
 catalog:    true
-tags:
-    - Linux
+tags: [Linux]
 ---
 
 ### 基础知识
@@ -420,7 +419,7 @@ echo "UUID=A35BB405-4443-372B-9889-AA73D680D985 /tmp hfs auto" >> /etc/fstab
 
 ![Disk-Utility](/img/in-post/Play-Disk-On-Linux/disk.jpg)
 
-### 参考
+### 参考博文
 
 1. [Linux下添加新硬盘,分区及挂载](http://blog.chinaunix.net/uid-25829053-id-3067619.html)
 2. [为什么Linux的fdisk分区时第一块磁盘分区的First Sector是2048](http://www.cnblogs.com/silenceli/p/3472101.html)

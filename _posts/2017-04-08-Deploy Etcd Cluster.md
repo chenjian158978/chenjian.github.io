@@ -6,9 +6,7 @@ date:       Sat, Apr 8 2017 09:05:47 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Etcd-Cluster/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 搭建说明

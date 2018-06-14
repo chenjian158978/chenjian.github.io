@@ -5,9 +5,7 @@ subtitle:   "Ideas About The Picture Of Dorian Gray"
 date:       Thu, Jan 08 2015 23:42:10 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-The-Picture-Of-Dorian-Gray/head_blog.jpg"
-tags:
-    
-    - 读后随笔
+tags: [读后随笔]
 ---
 
 读完王尔德的《道连·格雷的画像》已经有一周左右，迟迟写下书评，内心总有惭愧。现在手边的是马尔克斯的《霍乱时期的爱情》，读书永远是享受，而这两本书完全是不同的感觉，要么细腻于生活的细节，感情的微动，要么碰撞于思想的巅峰，观点的新颖。读起《道连·格雷的画像》便是后一种精神上的享受，甚至有肉体上的贪婪与痴迷。

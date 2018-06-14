@@ -6,10 +6,18 @@ date:       Sat, May 26 2018 18:18:48 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Things-Have-Changed/head_blog.jpg"
 catalog:    true
-tags:
-    - 歌词翻译
-    - BobDylan
+aplayer: true
+tags: [歌词翻译, BobDylan]
 ---
+
+<div 
+    class="aplayer"
+    data-id="1080625"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Things Have Changed
 
@@ -315,6 +323,15 @@ In his awards speech, broadcast from Sydney, Dylan said: "I want to thank the me
 > On February 2, 2014, an arrangement of "Things Have Changed" was used in a commercial for the Chrysler 200, aired during Super Bowl XLVIII. Dylan narrated and starred in the commercial, saying “When it’s made here, it’s made with the one thing you can’t import from anywhere else — American pride… So let Germany brew your beer, let Switzerland make your watch, let Asia assemble your phone. We will build your car.”
 
 在2014年2月2号，一个整修过的版本“Things Have Changed”被用作商业活动中，在超级碗(Super Bowl XLVIII)期间的克莱斯勒200宣传片中，Dylan出现在宣传片中，讲到“但它被在此制作，它就被一种无法替代的东西去制作——美国荣耀。所以，让德国为你造酒，让瑞士为你造表，让亚洲为你组装手机。让我们为你造车。(When it’s made here, it’s made with the one thing you can’t import from anywhere else — American pride… So let Germany brew your beer, let Switzerland make your watch, let Asia assemble your phone. We will build your car.)”
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 ### 参考博文

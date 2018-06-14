@@ -6,10 +6,7 @@ date:       Tue, Oct 17 2017 00:06:37 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/The-Pause-Container-Of-Kubernetes/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
-    - Docker
+tags: [工作, Kubernetes, Docker]
 ---
 
 ### pause根容器
@@ -339,7 +336,7 @@ COMMENT
 
 可以看出来，busybox中的`PID 1`由`pause`容器提供。
 
-### 参考文献
+### 参考博文
 
 1. [scratch镜像](https://hub.docker.com/r/library/scratch/)
 2. [gcc参数问题](https://zhidao.baidu.com/question/501561674.html)

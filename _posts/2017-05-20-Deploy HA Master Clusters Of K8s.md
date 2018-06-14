@@ -6,9 +6,7 @@ date:       Sat, May 20 2017 13:56:13 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-HA-Master-Clusters-Of-K8s/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 申明

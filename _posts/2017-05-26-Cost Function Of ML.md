@@ -7,9 +7,7 @@ author:     "ChenJian"
 header-img: "img/in-post/Cost-Function-Of-ML/head_blog.jpg"
 catalog:    true
 mathjax:    true
-tags:
-    - 工作
-    - 机器学习
+tags: [工作, 机器学习]
 ---
 
 ### 概念
@@ -470,7 +468,7 @@ EOF
 
 
 
-### 参考
+### 参考博文
 
 1. [MathJax basic tutorial and quick reference](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
 2. [基本数学公式语法MathJax](http://blog.csdn.net/ethmery/article/details/50670297)

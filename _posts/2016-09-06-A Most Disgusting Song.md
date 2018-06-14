@@ -5,10 +5,18 @@ subtitle:   "A Most Disgusting Song"
 date:       Tue, Sep 01 2016 16:13:51 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/A-Most-Disgusting-Song/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="29379916"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### 专辑Coming from Reality
 
@@ -18,6 +26,7 @@ tags:
 - [词译-Silver Words](https://o-my-chenjian.com/2017/07/26/Silver-Words/)
 - [词译-Cause](https://o-my-chenjian.com/2017/08/03/Cause/)
 - [词译-Street Boy](https://o-my-chenjian.com/2017/11/19/Street-Boy/)
+
 
 ### A Most Disgusting Song
 
@@ -208,6 +217,15 @@ Getting high, getting drunk, getting horny
 Lost, even, at Martha's Vineyard, again
 
 > 如堕烟海，再一次，欢迎来到玛莎的葡萄园
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 [^1]: 类似国内的送葬车队，会有一些音乐演奏。国外是摩托车送葬方式，驾驶者的旁边或者后面，好的有车厢，差的有木板，与摩托车相连，里面或者上面放着棺材或者骨灰盒等。

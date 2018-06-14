@@ -6,9 +6,7 @@ date:       Wed, Mar 21 2018 23:04:44 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ready-Time-Of-Performance-Optimization-In-VMware/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - VMware
+tags: [工作, VMware]
 ---
 
 
@@ -111,7 +109,7 @@ tags:
 
 
 
-### 参考文献
+### 参考博文
 
 1. [利用VisualEsxtop工具图形化查看esxtop参数](http://blog.51cto.com/huanwenli/1749214)
 2. [CPU性能分析与监控之就绪时间(ready time)分析](http://blog.csdn.net/jinguangliu/article/details/38340989)

@@ -6,10 +6,7 @@ date:       Sun, Oct 09 2016 17:49:22 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Redis-On-Ubuntu14.04/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Redis
-    - Ubuntu
+tags: [工作, Redis, Ubuntu]
 ---
 
 ### Redis的安装
@@ -236,7 +233,7 @@ print r.get('chenjian')
 26
 ```
 
-### 参考
+### 参考博文
 
 1. [Redis的三种启动方式](http://www.tuicool.com/articles/aQbQ3u)
 2. [redis安装部署维护备份](http://blog.csdn.net/huwei2003/article/details/40536905)

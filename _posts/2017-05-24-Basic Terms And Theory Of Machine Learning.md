@@ -7,9 +7,7 @@ author:     "ChenJian"
 header-img: "img/in-post/Basic-Terms-And-Theory-Of-Machine-Learning/head_blog.jpg"
 catalog:    true
 mathjax:    true
-tags:
-    - 工作
-    - 机器学习
+tags: [工作, 机器学习]
 ---
 
 

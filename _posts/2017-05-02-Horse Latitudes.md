@@ -5,11 +5,18 @@ subtitle:   "Horse Latitudes"
 date:       Tue, May 2 2017 07:42:32 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Horse-Latitudes/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
-    
+aplayer: true
+tags: [歌词翻译] 
 ---
+
+<div 
+    class="aplayer"
+    data-id="21979205"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Horse Latitudes
 
@@ -114,5 +121,14 @@ Jim Morrison – Los Angeles
 - 其三便是此马，它现在是整个舞台的焦点，作为主角，它尽情的表演着，挣扎与喘息，在下沉中同时望着它的舞台，船上的人们，冷漠与悲痛，欣赏与赞许，存活与死亡。这一切，它都做的很好。
 
 或许有更多的一个角度，便是有着上帝视角的听者。他们可以站在船上，或者潜入海中，去感受这故事的一切。
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/05/02/Horse-Latitudes/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

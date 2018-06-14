@@ -670,7 +670,8 @@ kubeadm init xxxx
 `route add 10.96.0.1 gw <your real master IP>`
 
 
-### 参考
+### 参考博文
+
 1.  [Installing Kubernetes on Linux with kubeadm](http://kubernetes.io/docs/getting-started-guides/kubeadm/)
 2. [漠然博客](https://mritd.me/)
 3. [ubuntu 16.04 L2TP](http://blog.csdn.net/hhbgk/article/details/52549816)

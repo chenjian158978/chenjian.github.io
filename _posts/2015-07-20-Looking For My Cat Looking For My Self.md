@@ -5,9 +5,7 @@ subtitle:   "Ideas About Missing My Cat"
 date:       Mon, July 20 16:42:45 2015 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-Missing-My-Cat/head_blog.jpg"
-tags:
-    
-    - 读后随笔
+tags: [读后随笔]
 ---
 
 ![Missing My Cat](https://img3.doubanio.com/view/subject/l/public/s4073096.jpg)

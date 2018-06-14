@@ -6,9 +6,7 @@ date:       Sat, May 20 2017 09:44:00 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Haproxy-On-Linux/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 下载Haproxy

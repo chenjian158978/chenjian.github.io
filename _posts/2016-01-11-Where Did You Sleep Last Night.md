@@ -5,11 +5,20 @@ subtitle:   "Where Did You Sleep Last Night"
 date:       Mon, Jan 11 2016 18:04:47 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Where-Did-You-Sleep-Last-Night/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
-    
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="21304215"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
+
+### Where Did You Sleep Last Night
 
 > My girl, my girl, don’t lie to me
 >
@@ -87,7 +96,7 @@ tags:
 > 
 > I would shiver the whole night through
 
----
+### 昨夜你在何处入眠
 
 > 女人，女人，不要含糊
 >
@@ -165,8 +174,7 @@ tags:
 > 
 > 整夜，我为你伴舞
 
-
-
+### 随笔
 
 “Where did you sleep last night”，这首歌我听的时间很短，也是Nirvana这个乐队第一首给我很深感触的歌曲。没有想到在短短的半天时间内，对这首歌曲的感受与理解会快速的发展并且完善，从而产生了这篇歌词的翻译和后文，以及对该乐队的兴趣。
 
@@ -202,6 +210,15 @@ tags:
 好了，脑洞结束，剧情有点老套，但是我感觉还不错。
 
 浙江理工大学
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2016/01/11/Where-Did-You-Sleep-Last-Night/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

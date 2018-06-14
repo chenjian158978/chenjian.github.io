@@ -6,9 +6,7 @@ date:       Wed, Sep 20 2017 23:35:12 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Flag-And-Pflag-With-Golang/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Golang
+tags: [工作, Golang]
 ---
 
 ### Flag

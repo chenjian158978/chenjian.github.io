@@ -6,9 +6,7 @@ date:       Wed, Apr 11 2017 16:01:18 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Kafka-And-ZP-With-K8s/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 系列博文
@@ -366,7 +364,7 @@ consumer.on('message', function (message) {
 });
 ```
 
-### 参考
+### 参考博文
 
 1. [工作日志——k8s_pv/pvc](http://blog.csdn.net/xts_huangxin/article/details/51494472)
 2. [工作日志——k8s_pv/pvc二](http://blog.csdn.net/xts_huangxin/article/details/51500358)

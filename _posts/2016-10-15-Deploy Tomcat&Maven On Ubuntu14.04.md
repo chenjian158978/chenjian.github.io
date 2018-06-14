@@ -6,8 +6,7 @@ date:       Mon, Oct 15 2016 09:52:25 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Tomcat&Maven-On-Ubuntu14.04/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
+tags: [工作]
 ---
 
 ###  TOMCAT

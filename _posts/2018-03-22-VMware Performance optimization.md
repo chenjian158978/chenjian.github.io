@@ -6,9 +6,7 @@ date:       Thu, Mar 22 2018 23:01:10 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/VMware-Performance-Optimization/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - VMware
+tags: [工作, VMware]
 ---
 
 ### 性能优化

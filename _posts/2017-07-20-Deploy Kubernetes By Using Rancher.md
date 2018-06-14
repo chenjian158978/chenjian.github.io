@@ -194,7 +194,7 @@ sudo docker rm `docker ps -aq`
 sudo docker volume rm $(docker volume ls -qf dangling=true)
 ```
 
-### 参考
+### 参考博文
 
 1. [Rancher-k8s加速安装文档](https://mp.weixin.qq.com/s/z9Xz84eDbXU3_lJl_KGw2w)
 2. [Rancher使用入门](http://tonybai.com/2016/04/14/an-introduction-about-rancher/)

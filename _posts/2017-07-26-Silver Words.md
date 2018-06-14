@@ -5,11 +5,19 @@ subtitle:   "Silver Words"
 date:       Wed, Jul 26 2017 15:05:15 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Silver-Words/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
-    
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="29379924"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
+
 
 ### 专辑Coming from Reality
 
@@ -122,7 +130,16 @@ I have just received a CD called 'Rock On' which features Delroy Wilson's versio
 
 ![silverwords](/img/in-post/Silver-Words/rock_on_rod.jpg)
 
-### 参考
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
+
+### 参考博文
 
 1. [Rodriguez-The Music](http://sugarman.org/rod_cover_silver_words.html)
 

@@ -6,9 +6,7 @@ date:       Tue, Sep 19 2017 00:07:35 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Using-Logrus-With-Golang/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Golang
+tags: [工作, Golang]
 ---
 
 
@@ -251,7 +249,7 @@ func main() {
 默认的Logger在并发写入的时候由mutex保护，其在调用hooks和写入logs时被启用。如果你认为此锁是没有必要的，可以添加`logger.SetNoLock()`来让锁失效。
 
 
-### 参考文献
+### 参考博文
 
 1. [sirupsen/logrus](https://github.com/sirupsen/logrus)
 2. [Logrus的使用](http://www.jianshu.com/p/5fac8bed4505)

@@ -6,10 +6,7 @@ date:       Thu, Dec 8 2016 17:55:56 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-K8s-by-Kubeadm-on-Linux/head_blog.jpg"
 catalog:     true
-tags:
-    - 工作
-    - Linux
-    - Kubernetes
+tags: [工作, Linux, Kubernetes]
 ---
 
 ### 系列博文
@@ -688,7 +685,8 @@ kubeadm init xxxx
 `route add 10.96.0.1 gw <your real master IP>`
 
 
-### 参考
+### 参考博文
+
 1.  [Installing Kubernetes on Linux with kubeadm](http://kubernetes.io/docs/getting-started-guides/kubeadm/)
 2. [漠然博客](https://mritd.me/)
 3. [ubuntu 16.04 L2TP](http://blog.csdn.net/hhbgk/article/details/52549816)

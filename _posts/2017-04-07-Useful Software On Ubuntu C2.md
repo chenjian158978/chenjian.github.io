@@ -6,9 +6,7 @@ date:       Fri, Apr 7 2017 09:15:53 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Useful-Software-On-Ubuntu/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Ubuntu
+tags: [工作, Ubuntu]
 ---
 
 ### 系列博文

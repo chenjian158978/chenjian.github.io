@@ -6,9 +6,7 @@ date:       Mon, Mar 19 2018 23:21:35 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Install-Php27-With-Apache2-From-Source/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 操作系统

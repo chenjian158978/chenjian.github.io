@@ -6,9 +6,7 @@ date:       Mon, Apr 10 2017 17:16:49 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Useful-Software-On-Mac-C1/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Mac
+tags: [工作, Mac]
 ---
 
 ### 摘要
@@ -303,7 +301,7 @@ Flux是一款护眼软件。
 
 数据库客户端
 
-##### 参考
+##### 参考博文
 
 [Sequel Pro官网](https://www.sequelpro.com/)
 

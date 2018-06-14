@@ -6,9 +6,7 @@ date:       Tue, Apr 25 2017 13:17:35 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-K8s-By-Source-Code-On-CentOS7/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 申明

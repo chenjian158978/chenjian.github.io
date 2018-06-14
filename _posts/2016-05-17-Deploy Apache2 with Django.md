@@ -6,9 +6,7 @@ date:       Tue, May 17 2016 15:16:04 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Apache2-With-Django/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Python
+tags: [工作, Python]
 ---
 
 ### Django项目
@@ -259,7 +257,8 @@ chrome浏览器中输入：[http://127.0.0.1/admin/](http://127.0.0.1/admin/)
 2. 编码问题，在wsgi.py中加入`#-*- coding:ut-8 -*-`
 
 
-### 参考
+### 参考博文
+
 1. [《自强学堂——Django 部署(Apache)》](http://www.ziqiangxuetang.com/django/django-deploy.html)
 2. [Problems with Apache servers and A LOT of httpd processes](http://stackoverflow.com/questions/15922194/problems-with-apache-servers-and-a-lot-of-httpd-processes)
 3. [Apache MPM Common Directives](https://httpd.apache.org/docs/current/mod/mpm_common.html)

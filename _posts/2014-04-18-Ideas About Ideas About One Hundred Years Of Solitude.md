@@ -5,9 +5,7 @@ subtitle:   "Ideas About One Hundred Years Of Solitude"
 date:       Fri, April 18 2014 11:33:06 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Ideas-About-One-Hundred-Years-Of-Solitude/head_blog.jpg"
-tags:
-    
-    - 读后随笔
+tags: [读后随笔]
 ---
 
 2014.4.18.11:33am

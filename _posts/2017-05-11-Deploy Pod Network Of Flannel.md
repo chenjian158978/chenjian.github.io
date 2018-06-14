@@ -6,9 +6,7 @@ date:       Thu, May 11 2017 13:36:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Pod-Network-Of-Flannel/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 系列博文

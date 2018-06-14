@@ -6,9 +6,7 @@ date:       Thu, Feb 01 2018 23:10:37 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Have-Fun-On-Linux-Terminal/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 包下载网站推荐
@@ -532,7 +530,7 @@ toilet -f mono9 -F gay I Love You
 ![toilet](/img/in-post/Have-Fun-On-Linux-Terminal/toilet.jpg)
 
 
-### 参考文献
+### 参考博文
 
 1. [Linux下使用cmatrix正确的装逼](http://blog.csdn.net/qq_31573519/article/details/53667871)
 2. [动画演示10个有趣但毫无用处的Linux命令](http://www.linuxidc.com/Linux/2013-12/94300.htm)

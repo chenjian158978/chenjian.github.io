@@ -5,11 +5,18 @@ subtitle:   "Love Song To A Stranger"
 date:       Thu, Jul 20 2017 20:55:11 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Love-Song-To-A-Stranger/head_blog.jpg"
-tags:
-    
-    - 歌词翻译
-    
+aplayer: true
+tags: [歌词翻译]
 ---
+
+<div 
+    class="aplayer"
+    data-id="2774736"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Love Song To A Stranger
 
@@ -166,7 +173,16 @@ tags:
 >我只能以我深幽的眸子融解你的灵魂，让它流向它想去的那个地方。
 
 
-### 参考
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
+
+### 参考博文
 
 1. [Love Song To A Stranger](http://blog.sina.com.cn/s/blog_4a6550a20100jpch.html)
 2. [Come from the Shadows](https://en.wikipedia.org/wiki/Come_from_the_Shadows)

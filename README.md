@@ -117,6 +117,18 @@
 
 - 联系gmail更换点击模式
 
+### 2018.06.06
+
+- 添加html5的音乐播放
+
+- 更新部分"歌词翻译"博文
+
+### 2018.06.15
+
+- 更换为aplayer+metingjs在线播放音乐
+
+- 更换博文头文件
+
 ### 参考
 
 1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)

@@ -6,9 +6,7 @@ date:       Sun, Apr 29 2018 18:31:37 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/NUMA-Technology/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - VMware
+tags: [工作, VMware]
 ---
 
 
@@ -216,7 +214,7 @@ VPD是将NUMA技术暴露在虚拟机上的结构。VPD数目取决于vCPU数目
 
 
 
-### 参考文献
+### 参考博文
 
 1. [服务器体系(SMP, NUMA, MPP)与共享存储器架构(UMA和NUMA)](https://blog.csdn.net/gatieme/article/details/52098615)
 2. [NUMA And vNUMA – Back To The Basic](https://www.teimouri.net/numa-vnuma-back-basic/#.WuPSBC5uaCo)

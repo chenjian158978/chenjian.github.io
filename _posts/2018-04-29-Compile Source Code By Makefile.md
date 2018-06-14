@@ -6,8 +6,7 @@ date:       Sun, Apr 29 2018 18:31:37 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Compile-Source-Code-By-Makefile/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
+tags: [工作]
 ---
 
 ### 编译和链接
@@ -175,7 +174,7 @@ docker-%:
 
 
 
-### 参考文献
+### 参考博文
 
 
 1. [Makefile中使用$$的使用](http://makaidong.com/LiuYanYGZ/664768_4491452.html)

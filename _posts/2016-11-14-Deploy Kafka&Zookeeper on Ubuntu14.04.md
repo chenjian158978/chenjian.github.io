@@ -6,8 +6,7 @@ date:       Mon, Nov 14 2016 17:40:56 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Kafka&Zookeeper-on-Ubuntu14.04/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
+tags: [工作]
 ---
 
 

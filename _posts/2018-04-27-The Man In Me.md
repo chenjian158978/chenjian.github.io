@@ -6,18 +6,18 @@ date:       Fri, Apr 27 2018 22:55:02 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/The-Man-In-Me/head_blog.jpg"
 catalog:    true
-tags:
-    - BobDylan
-    - 歌词翻译
+aplayer: true
+tags: [歌词翻译 ,BobDylan]
 ---
 
-### 歌曲播放
-
-<audio  controls="controls">
-    <source src="/backgroundmusic/The-Man-In-Me/the_man_in_me_bob_dylan.mp3" type="audio/mpeg" />
-    <source src="/backgroundmusic/The-Man-In-Me/the_man_in_me_bob_dylan.ogg" type="audio/ogg" />
-    换个浏览器，便可听到美妙的歌曲!
-</audio>
+<div 
+    class="aplayer"
+    data-id="22088628"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### The Man In Me
 
@@ -112,5 +112,13 @@ tags:
 
 该曲被总多歌手翻唱，在此就不一一列举。具体参看[The Man In Me - wiki](https://en.wikipedia.org/wiki/The_Man_in_Me)
 
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2018/04/27/The-Man-In-Me/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

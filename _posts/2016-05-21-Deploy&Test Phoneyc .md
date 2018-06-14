@@ -6,8 +6,7 @@ date:       Sat, May 21 2016 18:07:08 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy&Test-Phoneyc/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
+tags: [工作] 
 ---
 
 ### 介绍
@@ -159,7 +158,7 @@ eb0359eb05e8f8ffffff494937494949494949494949494949494949515a6a625830423050416b41
 
 OK 安装成功~
 
-## 参考
+## 参考博文
 
 1. [phoneyc安装笔记](http://godorz.info/2010/04/note-of-installing-phoenyc)
 2. [phoneyc官网](https://github.com/buffer/phoneyc/tree/master)

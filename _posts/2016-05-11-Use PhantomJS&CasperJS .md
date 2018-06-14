@@ -6,10 +6,7 @@ date:       Wed, May 11 2016 14:42:29 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Use-PhantomJS&CasperJS/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - PhantomJS
-    - JavaScript
+tags: [工作, JavaScript]
 ---
 
 ### 摘要
@@ -71,7 +68,7 @@ brower.run();
 	
 	结果：`518.00`
 
-### 参考
+### 参考博文
 
 1. [Ubuntu 14.04 下安装 Phantomjs + Casperjs](http://gaoke0820.blog.163.com/blog/static/2166496520152310371358/)
 2. [萌萌CasperJS第1篇 1分钟写完爬虫 拿亚马逊商品数据](http://blog.csdn.net/sagomilk/article/details/20800543)

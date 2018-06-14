@@ -6,8 +6,7 @@ date:       Fri, Oct 28 2016 18:03:59 2016 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-RabbitMQ-Cluster-On-Ubuntu14.04/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
+tags: [工作]
 ---
 
 ### 介绍
@@ -434,7 +433,7 @@ BROKER_URL = "amqp://%s:%s@%s:%s/%s" % (CELERY_BROKER_USER,
                                         CELERY_BROKER_PORT, CELERY_BROKER_VHOST)
 ```
 
-### 参考
+### 参考博文
 
 1. [rabbitmq的web管理界面无法使用guest用户登录](http://www.cnblogs.com/mingaixin/p/4134920.html)
 2. [Rabbitmq集群高可用测试

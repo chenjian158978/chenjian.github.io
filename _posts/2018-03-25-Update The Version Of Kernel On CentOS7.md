@@ -6,9 +6,7 @@ date:       Sun, Mar 25 2018 08:22:35 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Update-The-Version-Of-Kernel-On-CentOS7/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Linux
+tags: [工作, Linux]
 ---
 
 ### 查看当前Kernel版本

@@ -6,10 +6,18 @@ date:       Sun, May 27 2018 21:16:43 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Melancholy-Mood/head_blog.jpg"
 catalog:    true
-tags:
-    - 歌词翻译
-    - BobDylan
+aplayer: true
+tags: [歌词翻译, BobDylan]
 ---
+
+<div 
+    class="aplayer"
+    data-id="413961583"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Melancholy Mood
 
@@ -103,6 +111,16 @@ tags:
 ##### 原唱
 
 - [Frank Sinatra](https://en.wikipedia.org/wiki/Walter_Schumann)
+
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 ### 参考博文

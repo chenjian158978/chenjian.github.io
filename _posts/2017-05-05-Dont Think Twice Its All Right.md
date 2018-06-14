@@ -6,10 +6,19 @@ date:       Fri, May 05 2017 17:36:14 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Dont-Think-Twice-Its-All-Right/head_blog.jpg"
 catalog:    true
-tags:
-    - 歌词翻译
-    - BobDylan
+aplayer: true
+tags: [歌词翻译, BobDylan]
 ---
+
+<div 
+    class="aplayer"
+    data-id="29379920"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
+
 
 ### Don’t Think Twice, It’s All Right
 
@@ -159,5 +168,14 @@ tags:
 这首歌在最初阶段并没有吸引我，直到Bob Dylan的`Cool Beauty`专辑，里面的优美的吉他旋律，完美无暇的和声。再一两个月之后，才将其拾起翻译。此歌颇为有趣，仿佛就是一段“自言自语”，自己如何深爱过，而如今却如此洒脱，如果那个女孩这样做，我或许会留下，或许......这一切自言自语，让“我”变得快乐。这首歌的魅力便在这里，它让你变得洒脱和快乐。
 
 除了Bob Dylan的专辑`The Freewheelin' Bob Dylan`和`Music & Photos`包含此曲，还有Eric在`Bob Dylan The 30th Anniversary Concert Celebration`上面的演唱，该曲我不太感冒，感觉旋律过于绚丽。有一首也很赞，Patrick Baker的`Don't Think Twice, It's All Right`，节奏感和新颖感很强。
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/05/05/Dont-Think-Twice-Its-All-Right/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。

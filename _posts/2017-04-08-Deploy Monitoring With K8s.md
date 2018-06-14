@@ -6,9 +6,7 @@ date:       Sat, Apr 8 2017 09:31:44 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Monitoring-With-K8s/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 使用kubeadm搭建Monitoring

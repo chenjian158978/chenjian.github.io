@@ -6,10 +6,18 @@ date:       Thu, May 31 2018 22:11:58 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Soon-After-Midnight/head_blog.jpg"
 catalog:    true
-tags:
-    - 歌词翻译
-    - BobDylan
+aplayer: true
+tags: [歌词翻译, BobDylan]
 ---
+
+<div 
+    class="aplayer"
+    data-id="22089043"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="true"
+    data-fixed="true">
+</div>
 
 ### Soon After Midnight
 
@@ -115,6 +123,15 @@ tags:
 > 
 > 子夜浅处，除了你，我谁都不要
 
+
+### 博客音乐列表
+
+<div
+    class="aplayer"
+    data-id="2258267343"
+    data-server="netease"
+    data-type="playlist">
+</div>
 
 
 ### 参考博文

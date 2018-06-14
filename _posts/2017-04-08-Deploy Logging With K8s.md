@@ -6,9 +6,7 @@ date:       Sat, Apr 8 2017 09:41:07 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Deploy-Logging-With-K8s/head_blog.jpg"
 catalog:    true
-tags:
-    - 工作
-    - Kubernetes
+tags: [工作, Kubernetes]
 ---
 
 ### 使用kubeadm搭建Monitoring
@@ -449,7 +447,7 @@ COMMENT
 
 ![Kibana界面](/img/in-post/Deploy-Logging-With-K8s/kibana.jpg)
 
-### 参考
+### 参考博文
 
 1. [Kubernetes 容器集群中的日志系统集成实践](https://juejin.im/entry/57a91c216be3ff00654978af)
 
