@@ -218,10 +218,49 @@ Ron Cornelius是专辑《Songs of Love and Hate》的吉他手，同样有几年
 
 这首歌曲已经听了近3个月。听过以下版本：
 
-1. 专辑《The Essential Leonard Cohen 3.0》- Leonard Cohen
-2. 专辑《Songs of Love and Hate》- Leonard Cohen
-3. 专辑《Diamonds & Rust in the Bullring [live]》 - Joan Baez
-4. 专辑《Famous Blue Raincoat》 - Jennifer Warnes
+-  专辑《The Essential Leonard Cohen 3.0》- Leonard Cohen
+
+<div 
+    class="aplayer"
+    data-id="20954157"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="false"
+    data-fixed="true">
+</div>
+
+- 专辑《Songs of Love and Hate》- Leonard Cohen
+
+<div 
+    class="aplayer"
+    data-id="1646819"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="false"
+    data-fixed="true">
+</div>
+
+- 专辑《Diamonds & Rust in the Bullring [live]》 - Joan Baez
+
+<div 
+    class="aplayer"
+    data-id="2774254"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="false"
+    data-fixed="true">
+</div>
+
+- 专辑《Famous Blue Raincoat》 - Jennifer Warnes
+
+<div 
+    class="aplayer"
+    data-id="2776964"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="false"
+    data-fixed="true">
+</div>
 
 其中Jennifer Warnes最为出名，但是我更喜欢Joan Baez版本，因为后者的节奏更快一点，但是前者感情更深入。原本嘛，还是非常不错的。
 

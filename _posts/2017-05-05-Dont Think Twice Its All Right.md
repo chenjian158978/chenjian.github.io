@@ -12,7 +12,7 @@ tags: [歌词翻译, BobDylan]
 
 <div 
     class="aplayer"
-    data-id="29379920"
+    data-id="435015261"
     data-server="netease"
     data-type="song"
     data-autoplay="true"

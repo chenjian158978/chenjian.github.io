@@ -5,6 +5,7 @@ subtitle:   "Street Boy"
 date:       Sun, Nov 19 2017 16:40:49 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Street-Boy/head_blog.jpg"
+aplayer: true
 tags: [歌词翻译]
 ---
 

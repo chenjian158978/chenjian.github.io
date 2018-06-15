@@ -112,6 +112,15 @@ tags: [歌词翻译, BobDylan]
 
 - [Frank Sinatra](https://en.wikipedia.org/wiki/Walter_Schumann)
 
+<div 
+    class="aplayer"
+    data-id="555694766"
+    data-server="netease"
+    data-type="song"
+    data-autoplay="false"
+    data-fixed="true">
+</div>
+
 
 ### 博客音乐列表
 
