@@ -129,6 +129,10 @@
 
 - 更换博文头文件
 
+### 2018.06.16
+
+- 解决yaml的头信息（front matter）问题，主要是换行格式问题，应该为LF格式！
+
 ### 参考
 
 1. [使用jekyll和hexo搭建免费博客](http://www.alonemonkey.com/2016/05/20/blog-by-jekyll-hexo/)
