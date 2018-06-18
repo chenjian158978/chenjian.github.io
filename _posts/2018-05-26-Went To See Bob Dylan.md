@@ -5,6 +5,7 @@ subtitle:   "Went To See Bob Dylan"
 date:       Sat, May 26 2018 16:29:09 GMT+8
 author:     "ChenJian"
 header-img: "img/in-post/Went-To-See-Bob-Dylan/head_blog.jpg"
+aplayer: true
 tags: [生活, BobDylan]
 ---
 
