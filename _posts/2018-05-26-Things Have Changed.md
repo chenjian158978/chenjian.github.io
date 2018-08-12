@@ -256,7 +256,7 @@ tags: [歌词翻译, BobDylan]
 
 > Dylan critics disagree about when this song was recorded. According to Olof Björner, "Things Have Changed" was recorded in May 1999 at Sterling Sound studios in New York. Clinton Heylin, in his account of Dylan's songs between 1974 and 2008, believes the song was recorded at Sony Studios, New York, probably on 25 and 26 July 1999. During this latter date, Dylan was touring the US with Paul Simon.
 
-Dylan的评论者对这首歌的录制方式持不同意见。根据Olof Björner所述说，"Things Have Changed"的录制时间在1999年5月，地点是纽约的Sterling Sound录音室。而在Clinton Heylin对1974年到2008年的Dylan歌曲纪录中，认为歌曲是在纽约索尼录音室录制，时间大约在199年7月的25号，或者26号。而在后续的时间中，Dylan正在和Paul Simon在美国巡回演出。
+Dylan的评论者对这首歌的录制方式持不同意见。根据Olof Björner所述说，"Things Have Changed"的录制时间在1999年5月，地点是纽约的Sterling Sound录音室。而在Clinton Heylin对1974年到2008年的Dylan歌曲纪录中，认为歌曲是在纽约索尼录音室录制，时间大约在1999年7月的25号，或者26号。而在后续的时间中，Dylan正在和Paul Simon在美国巡回演出。
 
 > Sources agree the musicians who accompanied Dylan in the studio were his touring band at the time: Charlie Sexton and Larry Campbell on guitar, Tony Garnier on bass and David Kemper on drums.
 
