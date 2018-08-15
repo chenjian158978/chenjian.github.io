@@ -409,7 +409,7 @@ Max brk space used 85000
 采用“hybird模式”（混合模式），操作系统可以直接刻录成物理光盘，也可以直接做成可引导的U盘。
 
 ``` shell
-isohybird -v /ISO/CentOS-7-ChenjianOS.iso
+isohybrid -v /ISO/CentOS-7-ChenjianOS.iso
 ```
 
 ### 制作镜像MD5值
