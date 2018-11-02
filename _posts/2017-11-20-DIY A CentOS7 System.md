@@ -93,6 +93,8 @@ install
 keyboard --vckeymap=us --xlayouts='us'
 # Root password
 rootpw --iscrypted $1$Jg7P7.9/$TT.baSvBhZy/wOkSs9CDT/
+# (Required) Wrapper around the authconfig command CCE-14063-2 (row 80)
+authconfig --enableshadow --passalgo=sha512
 # System language
 lang en_US.UTF-8
 # Firewall configuration
@@ -150,12 +152,16 @@ echo "                                                                 " >> /etc
 echo "                 blog: https://o-my-chenjian.com                 " >> /etc/motd
 echo "                 gmail: chenjian158978@gmail.com                 " >> /etc/motd
 
+# 尝试次数：5  最少不同字符：3 最小密码长度：10  最少大写字母：1 最少小写字母：3 最少数字：3 密码字典：/usr/share/cracklib/pw_dict
+sed -i 's/pam_cracklib\.so$/password  requisite pam_cracklib.so retry=5  difok=3 minlen=10 ucredit=-1 lcredit=-3 dcredit=-3/g' /etc/pam.d/system-auth
+chage -d 0 root
+
 %end
 
 %post --nochroot
 
 cp /run/install/repo/game_driver/* /mnt/sysimage/usr/bin
-chmod 755 /mnt/sysimage/root/game-x86_64-7d5.1.run
+chmod 755 /mnt/sysimage/root/game-7d5.1.bin
 
 %end
 EOF
@@ -446,6 +452,7 @@ COMMENT
 7. [cobbler中ks.cfg文件配置详解](http://www.codexiu.cn/linux/blog/1939/#OSC_h6_47)
 8. [linux权限详解](http://blog.csdn.net/fan_zhen_hua/article/details/2050009)
 9. [KICKSTART 语法参考](https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax)
+10. [CentOS设置密码复杂度及过期时间等](https://www.cnblogs.com/minseo/p/7880338.html)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2017/11/20/DIY-A-CentOS7-System/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
 

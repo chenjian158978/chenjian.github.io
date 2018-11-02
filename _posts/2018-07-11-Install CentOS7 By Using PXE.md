@@ -253,6 +253,8 @@ install
 keyboard --vckeymap=us --xlayouts='us'
 # Root password
 rootpw --iscrypted $1$Jg7P7.19/$T.dd/wOkddT/
+# (Required) Wrapper around the authconfig command CCE-14063-2 (row 80)
+authconfig --enableshadow --passalgo=sha512
 # System language
 lang en_US.UTF-8
 # Firewall configuration
@@ -305,6 +307,9 @@ echo "                                                                 " >> /etc
 echo "                 blog: https://o-my-chenjian.com                 " >> /etc/motd
 echo "                 gmail: chenjian158978@gmail.com                 " >> /etc/motd
 
+# 尝试次数：5  最少不同字符：3 最小密码长度：10  最少大写字母：1 最少小写字母：3 最少数字：3 密码字典：/usr/share/cracklib/pw_dict
+sed -i 's/pam_cracklib\.so$/password  requisite pam_cracklib.so retry=5  difok=3 minlen=10 ucredit=-1 lcredit=-3 dcredit=-3/g' /etc/pam.d/system-auth
+chage -d 0 root
 
 %post --log=/mnt/sysimage/root/ks-post.log
 
@@ -346,6 +351,56 @@ wget ftp://192.168.20.1/CentOS_7_4/o-my-chenjian -c -P /mnt/sysimage/root/o-my-c
 
 4. 等待安装结束，自动重启完。
 
+### 解压文件包
+
+在使用`wget`从	`ftp`上下载文件包的时候，发现一个问题：会丢失一些目录结构较深的文件。对于这个问题的解决方案，采用**下载解压包，在本地解压**。同样带来了一个问题，如歌解压更快，同时不丢失文件。
+
+##### linux下使用cpu并发解压缩来加快速度
+
+`pigz`是支持并行的gzip,默认用当前逻辑cpu个数来并发压缩，无法检测个数的话，则并发8个线程。
+
+##### 安装pigz
+
+``` shell
+yum install -y pigz
+```
+
+##### 压缩
+
+``` shell
+starttime=`date +'%Y-%m-%d %H:%M:%S'`
+
+tar --use-compress-program=pigz -cvpf package.tgz -C /root/package .
+
+endtime=`date +'%Y-%m-%d %H:%M:%S'`
+start_seconds=$(date --date="$starttime" +%s);
+end_seconds=$(date --date="$endtime" +%s);
+echo "本次运行时间： "$((end_seconds-start_seconds))"s"
+```
+
+##### 解压
+
+``` shell
+starttime=`date +'%Y-%m-%d %H:%M:%S'`
+
+mkdir -p /home/chenjian/package
+tar --use-compress-program=pigz -xvpf package.tgz -C /home/chenjian/package
+
+endtime=`date +'%Y-%m-%d %H:%M:%S'`
+start_seconds=$(date --date="$starttime" +%s);
+end_seconds=$(date --date="$endtime" +%s);
+echo "本次运行时间： "$((end_seconds-start_seconds))"s"
+```
+
+- 可选进程数的解压方式
+
+``` shell
+pigz -dc -p 28 package.tgz | tar -xC  /home/chenjian/package
+
+# -p 是指进程数，可通过以下命令查看
+cat /proc/cpuinfo |grep "processor" | wc -l
+```
+
 ### 参考博文
 
 1. [wget命令下载FTP整个目录进行文件备份](https://www.cnblogs.com/crxis/p/7072813.html)
@@ -356,6 +411,11 @@ wget ftp://192.168.20.1/CentOS_7_4/o-my-chenjian -c -P /mnt/sysimage/root/o-my-c
 6. [超详细的pxe实现系统自动安装的图文说明](https://blog.csdn.net/heshijie87/article/details/74090335)
 7. [Kickstart无人值守安装系统](http://blog.51cto.com/renjunjie622/1782543)
 8. [pxe+kickstart部署多个版本的Linux操作系统](https://www.cnblogs.com/sunhongleibibi/p/7851382.html)
+9. [CentOS设置密码复杂度及过期时间等](https://www.cnblogs.com/minseo/p/7880338.html)
+10. [linux下使用cpu并发解压缩来加快速度](https://blog.csdn.net/lj402159806/article/details/76618174)
+11. [Shell 脚本计算时间差](https://www.cnblogs.com/leixingzhi7/p/6281675.html)
+12. [pigz多线程压缩工具](http://www.ywnds.com/?p=10332)
+13. [linux下使用cpu并发解压缩来加快速度](https://blog.csdn.net/lj402159806/article/details/76618174)
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2018/07/11/Install-CentOS7-By-Using-PXE/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
