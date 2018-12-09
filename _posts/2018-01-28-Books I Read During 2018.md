@@ -102,4 +102,22 @@ tags:       [阅读清单]
 - 译者：陈震  
 - 出版年：2017-11
 
+### 《Go语言实战》
+
+![Go语言实战](https://img3.doubanio.com/view/subject/l/public/s29439084.jpg)
+
+- 作家：威廉·肯尼迪 (William Kennedy) / 布赖恩·克特森 (Brian Ketelsen) / 埃里克·圣马丁 (Erik St.Martin)   
+- 出版社：人民邮电出版社
+- 译者：李兆海  
+- 出版年：2017-03-01
+
+### 《卡拉马佐夫兄弟》
+
+![地下室手记](/img/in-post/Books-I-Read-During-2018/s28241597.jpg)
+
+- 作家：[俄] 费奥多尔·陀思妥耶夫斯基 
+- 出版社：上海三联书店
+- 译者：臧仲伦 
+- 出版年：2015-4-1
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2018/01/28/Books-I-Read-During-2018/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
