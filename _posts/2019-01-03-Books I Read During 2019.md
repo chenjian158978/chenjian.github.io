@@ -65,5 +65,25 @@ tags:       [阅读清单]
 - 出版社：人民文学出版社
 - 出版年：2004-1
 
+### 《太空生存指南》
+
+![太空生存指南](/img/in-post/Books-I-Read-During-2019/s29550973.jpg)
+
+- 作家：美］阿里尔·瓦尔德曼（Ariel Waldman） / ［美］布莱恩·斯坦福（Brian Standeford） 插图  
+- 出版社：浙江人民出版社
+- 原作名: What's It Like in Space？ ：stories from astronauts who've been there
+- 译者：苟利军/黄月  
+- 出版年： 2017-9
+
+### 《伟大的博弈》
+
+![伟大的博弈](/img/in-post/Books-I-Read-During-2019/s1305500.jpg)
+
+- 作家：[美] 约翰·S·戈登 
+- 出版社： 中信出版社
+- 原作名: The Great Game: The Emergence of Wall Street as a World Power
+- 译者： 祁斌  
+- 出版年： 2005-1
+
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>本作品由<a xmlns:cc="http://creativecommons.org/ns#" href="https://o-my-chenjian.com/2019/01/03/Books-I-Read-During-2019/" property="cc:attributionName" rel="cc:attributionURL">陈健</a>采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
